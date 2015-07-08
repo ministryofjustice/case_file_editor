@@ -1,0 +1,3 @@
+class Defendant
+  # TODO
+end

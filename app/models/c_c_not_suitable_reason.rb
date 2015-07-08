@@ -1,0 +1,3 @@
+class CCNotSuitableReason
+  # TODO
+end

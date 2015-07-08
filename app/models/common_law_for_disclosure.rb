@@ -1,0 +1,3 @@
+class CommonLawForDisclosure
+  # TODO
+end

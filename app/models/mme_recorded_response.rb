@@ -1,0 +1,3 @@
+class MmeRecordedResponse
+  # TODO
+end

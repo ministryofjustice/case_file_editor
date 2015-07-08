@@ -1,0 +1,3 @@
+class CompensationApplication
+  # TODO
+end

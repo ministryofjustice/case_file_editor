@@ -1,0 +1,3 @@
+class Injuries
+  # TODO
+end

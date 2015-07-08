@@ -1,0 +1,3 @@
+class Arrest
+  # TODO
+end

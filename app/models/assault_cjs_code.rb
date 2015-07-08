@@ -1,0 +1,3 @@
+class AssaultCjsCode
+  # TODO
+end

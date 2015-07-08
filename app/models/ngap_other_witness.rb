@@ -1,0 +1,3 @@
+class NgapOtherWitness
+  # TODO
+end

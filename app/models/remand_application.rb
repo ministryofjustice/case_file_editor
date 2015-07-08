@@ -1,0 +1,3 @@
+class RemandApplication
+  # TODO
+end

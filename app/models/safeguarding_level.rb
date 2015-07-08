@@ -1,0 +1,3 @@
+class SafeguardingLevel
+  # TODO
+end

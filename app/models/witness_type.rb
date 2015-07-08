@@ -1,0 +1,3 @@
+class WitnessType
+  # TODO
+end

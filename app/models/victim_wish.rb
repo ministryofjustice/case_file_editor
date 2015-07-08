@@ -1,0 +1,3 @@
+class VictimWish
+  # TODO
+end

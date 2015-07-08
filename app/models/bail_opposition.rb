@@ -1,0 +1,3 @@
+class BailOpposition
+  # TODO
+end

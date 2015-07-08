@@ -1,0 +1,3 @@
+class SafeguardingAssessment
+  # TODO
+end

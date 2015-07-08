@@ -1,0 +1,3 @@
+class AssaultInterviewExtension
+  # TODO
+end

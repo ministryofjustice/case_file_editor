@@ -1,0 +1,3 @@
+class MmeType
+  # TODO
+end

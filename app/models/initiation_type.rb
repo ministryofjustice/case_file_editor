@@ -1,0 +1,3 @@
+class InitiationType
+  # TODO
+end

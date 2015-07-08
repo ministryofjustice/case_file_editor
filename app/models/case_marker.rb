@@ -1,0 +1,3 @@
+class CaseMarker
+  # TODO
+end

@@ -1,0 +1,3 @@
+class ExistingBail
+  # TODO
+end

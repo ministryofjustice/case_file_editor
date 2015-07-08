@@ -1,0 +1,3 @@
+class CommonLawNotForDisclosure
+  # TODO
+end

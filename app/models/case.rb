@@ -1,0 +1,3 @@
+class Case
+  # TODO
+end

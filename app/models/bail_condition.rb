@@ -1,0 +1,3 @@
+class BailCondition
+  # TODO
+end
