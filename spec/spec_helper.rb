@@ -6,6 +6,10 @@ SimpleCov.start 'rails' do
 end
 SimpleCov.minimum_coverage 100
 
+Dir[File.expand_path('../../{lib,app/*}', __FILE__)].each do |path|
+  $LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
+end
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
