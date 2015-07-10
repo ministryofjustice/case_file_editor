@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+$stdin.read.strip.split(/\n/).each do |line|
+  next if line.strip.empty?
+
+  m = line.match(%r{^
+    \+ (?<name>[a-z_0-9]+) \s* : \s*
+    (?<type>[A-Za-z]+) \s*
+    (?<array>\[\])? \s*
+    (?:=\s*["“](?<default>.+?)[”"])?
+  }x)
+
+  if m
+    parts =  ["  attribute :#{m[:name]}"]
+    if m[:array]
+      parts << "Array[#{m[:type]}]"
+    else
+      parts << m[:type]
+    end
+    if m[:default]
+      parts << "default: '#{m[:default]}'"
+    end
+
+    puts parts.join(', ')
+  else
+    puts "  # TODO: #{line}"
+  end
+end
