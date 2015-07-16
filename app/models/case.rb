@@ -2,7 +2,7 @@ class Case
   include Virtus.model
 
   attribute :pti_urn, String
-  attribute :type, String, default: 'CaseFile'
+  attribute :type, String, writer: :private, default: 'CaseFile'
   attribute :associated_case_urns, Array[String]
   attribute :version, Integer
   attribute :case_markers, Array[CaseMarker]

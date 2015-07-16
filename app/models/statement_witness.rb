@@ -1,7 +1,7 @@
 class StatementWitness < Witness
   include Person
 
-  attribute :type, String, default: 'StatementWitness'
+  attribute :type, String, writer: :private, default: 'StatementWitness'
   attribute :name, PersonName
   attribute :witness_type, Array[WitnessType]
   attribute :date_of_birth, Date

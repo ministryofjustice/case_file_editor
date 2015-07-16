@@ -1,5 +1,5 @@
 class RetailTheftOffence < Offence
-  attribute :type, String, default: 'RetailTheftOffence'
+  attribute :type, String, writer: :private, default: 'RetailTheftOffence'
   attribute :cjs_offence_code, String
   attribute :property_ids, Array[Integer]
   attribute :interview_extension, RetailTheftInterviewExtension

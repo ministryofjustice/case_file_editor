@@ -1,7 +1,7 @@
 class StandardInterview < Interview
   include Virtus.model
 
-  attribute :type, String, default: 'StandardInterview'
+  attribute :type, String, writer: :private, default: 'StandardInterview'
   attribute :date, Date
   attribute :defendant_legally_represented, Boolean
   attribute :legally_represented_by, PersonName
