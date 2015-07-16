@@ -1,3 +1,6 @@
 class InitiationType
-  # TODO
+  # TODO: Enumeration
+  # charge_sheet
+  # postal_requisition
+  # summons
 end

@@ -1,6 +1,8 @@
-class Person
-  include Virtus.model
+module Person
+  extend ActiveSupport::Concern
 
-  attribute :name, Array[PersonName]
-  attribute :date_of_birth, Date
+  included do
+    attribute :name, Array[PersonName]
+    attribute :date_of_birth, Date
+  end
 end

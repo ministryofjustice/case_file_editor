@@ -1,6 +1,5 @@
-class Offence
+class Offence < Event
   extend AbstractClass
-  include Virtus.model
 
   attribute :type, String, writer: :private, default: 'offence'
   attribute :from_date, Date

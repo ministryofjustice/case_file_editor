@@ -1,3 +1,7 @@
 class SafeguardingLevel
-  # TODO
+  # TODO: Enumeration
+  # moderate 
+  # moderate_serious
+  # serious
+  # severe
 end

@@ -1,4 +1,3 @@
-class Interview
+class Interview < Event
   extend AbstractClass
-  include Virtus.model
 end

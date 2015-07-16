@@ -1,3 +1,6 @@
 class BailOpposition
-  # TODO
+  include Virtus.model
+
+  attribute :opposition_ground, BailOppositionGround
+  attribute :justification, String
 end

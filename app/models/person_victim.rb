@@ -1,6 +1,7 @@
 class PersonVictim < Victim
-  attribute :type, String, writer: :private, default: 'PersonVictim'
+  include Person
 
+  attribute :type, String, writer: :private, default: 'PersonVictim'
   attribute :name, OrganisationName
   attribute :name, PersonName
   attribute :date_of_birth, Date

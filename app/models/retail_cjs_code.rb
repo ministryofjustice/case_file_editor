@@ -1,3 +1,4 @@
 class RetailCjsCode
-  # TODO
+  # TODO: Enumeration
+  # h410
 end

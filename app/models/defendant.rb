@@ -1,3 +1,50 @@
 class Defendant
-  # TODO
+  include Virtus.model
+
+  attribute :defendant_id, String
+  attribute :name, PersonName
+  attribute :date_of_birth, Date
+  attribute :arrest, Arrest
+  attribute :conditional_caution_considered, Boolean
+  attribute :cc_not_suitable_reasons, Array[CCNotSuitableReason]
+  attribute :offences, Array[OffenceGroup]
+  attribute :occupation, String
+  attribute :class_a_drug_test_provided, Boolean
+  attribute :class_a_drug_test_details, String
+  attribute :accepts_drugs_result, Boolean
+  attribute :has_eec_passports, Boolean
+  attribute :eec_check_submitted, Boolean
+  attribute :eec_convictions_record_received, Boolean
+  attribute :foreign_national_offender, Boolean
+  attribute :breach_of_order, Boolean
+  attribute :breach_order_date_issued, Date
+  attribute :breach_order_court_issued, OrganisationLocation
+  attribute :breach_order_title, CourtOrderTitle
+  attribute :breach_order_title_other, String
+  attribute :breach_order_lapse_date, Date
+  attribute :remand_application, RemandApplication
+  attribute :breach_of_bail, Array[BreachOfBail]
+  attribute :pnc_check_perforrmed, Boolean
+  attribute :pnc_convictions, Boolean
+  attribute :court_order_applications, Array[CourtOrder]
+  attribute :interpretor_required, Boolean
+  attribute :interpretor_language_or_dialect, String
+  attribute :multimedia_evidence_response, MmeResponse
+  attribute :notice_to_provide_bad_character_evidence, Boolean
+  attribute :bad_character_details, String
+  attribute :dealt_with_in_welsh, String
+  attribute :person_remand_status, String
+  attribute :given_charges, Boolean
+  attribute :initiation_type, InitiationType
+  attribute :signed_charge_sheet, Boolean
+  attribute :date_sent, Date
+  attribute :parent_guardian_copy, Boolean
+  attribute :parent_gardian_date_sent, Date
+  attribute :bail_conditions_provided, Boolean
+  attribute :signed_for_bail, Boolean
+  attribute :bail_conditions, Array[BailCondition]
+  attribute :interview, Standardnterview
+  attribute :domestic_violence, DomesticViolence
+  attribute :first_hearing_datetime, Datetime
+  attribute :first_learing_location, OrganisationLocation
 end

@@ -1,3 +1,3 @@
-class NotInterviewed
-  # TODO
+class NotInterviewed < Interview
+  attribute :reason, String
 end

@@ -1,3 +1,2 @@
-class CommonLawForDisclosure
-  # TODO
+class CommonLawForDisclosure < CommonLaw
 end

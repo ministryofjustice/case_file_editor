@@ -1,3 +1,5 @@
 class TestCode
-  # TODO
+  # TODO: Enumeration
+  # threshold_test
+  # full_code_test
 end
