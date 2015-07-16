@@ -4,7 +4,7 @@ class Case
   attribute :pti_urn, String
   attribute :type, String, default: 'CaseFile'
   attribute :associated_case_urns, Array[String]
-  attribute :version, Number
+  attribute :version, Integer
   attribute :case_markers, Array[CaseMarker]
   attribute :brief_description_of_case, String
   attribute :defendants, Array[Defendant]
