@@ -1,4 +1,4 @@
-class Injuries
+class Injury
   include Virtus.model
 
   attribute :names_of_defendants_causing_injuries, Array[PersonName]

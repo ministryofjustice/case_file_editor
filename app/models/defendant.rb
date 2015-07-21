@@ -7,7 +7,7 @@ class Defendant
   attribute :arrest, Arrest
   attribute :conditional_caution_considered, Boolean
   attribute :cc_not_suitable_reasons, Array[CCNotSuitableReason]
-  attribute :offences, Array[OffenceGroup]
+  attribute :offences, Array[OffenceCollection]
   attribute :occupation, String
   attribute :class_a_drug_test_provided, Boolean
   attribute :class_a_drug_test_details, String
