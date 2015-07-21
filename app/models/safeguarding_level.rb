@@ -1,7 +1,11 @@
 class SafeguardingLevel
-  # TODO: Enumeration
-  # moderate 
-  # moderate_serious
-  # serious
-  # severe
+  VALUES = %w[
+    moderate
+    moderate_serious
+    serious
+    severe
+  ]
+
+  attribute :value, String
+  validates :value, inclusion: { in: VALUES }
 end
