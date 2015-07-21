@@ -1,0 +1,86 @@
+#!/usr/bin/env ruby
+APP_PATH = File.expand_path('../../config/application',  __FILE__)
+require_relative '../config/boot'
+require APP_PATH
+Rails.application.require_environment!
+
+def decode_type(type)
+  if type < Axiom::Types::Type
+    type.to_s.split(/::/).last
+  else
+    type
+  end
+end
+
+def decode_attr(attr)
+  case attr
+  when Virtus::Attribute::Collection
+    [:many, attr.send(:member_type).primitive]
+  when Virtus::Attribute::Boolean
+    [:one, 'boolean']
+  when Virtus::Attribute::EmbeddedValue
+    [:one, attr.primitive]
+  when Virtus::Attribute
+    [:one, attr.primitive.to_s.downcase]
+  end
+end
+
+def attributes(klass)
+  klass.attribute_set.instance_variable_get('@index').
+    select { |name, _| name.kind_of?(Symbol) }.
+    map { |name, attr| [name, *decode_attr(attr)] }
+end
+
+def build_model(klass)
+  ancestors = (klass.ancestors - klass.included_modules - Object.ancestors).
+    drop(1)
+
+  {
+    class: klass,
+    ancestors: ancestors,
+    attributes: attributes(klass)
+  }
+end
+
+models = Dir['app/models/*.rb'].
+  map { |f|
+    snake_case = File.basename(f, '.rb')
+    require snake_case
+
+    klass =
+      ActiveSupport::Inflector.constantize(
+        ActiveSupport::Inflector.camelize(snake_case))
+  }.
+  select { |c| c.is_a?(Class) }.
+  map { |klass| build_model(klass) }.
+  sort_by { |m| [m[:ancestors].length, m[:class].to_s] }
+
+puts <<END
+digraph g {
+  overlap=false;
+  splines=true;
+  fontname="Lato";
+  node [shape=record, fontname="Lato", style=filled, penwidth=1, labeljust=l, fillcolor="#ffffff"];
+  edge [fontname="Lato", len=2, fontsize=10, style=filled];
+END
+models.each do |model|
+  unless [nil, Enumeration].include?(model[:ancestors].first)
+    puts "#{model[:class]} -> #{model[:ancestors].first} [arrowhead=empty];"
+  end
+
+
+  if model[:class] < Enumeration
+    lines = model[:class].values.map { |v| %{\\"#{v}\\"} }.join("\\l")
+  else
+    lines = model[:attributes].map { |name, ord, type|
+      "#{name}: #{ord == :many ? "[#{type}]" : type}"
+    }.join("\\l")
+  end
+  puts %{#{model[:class]} [label="{#{model[:class]}|#{lines}\\l}"];}
+
+  model[:attributes].each do |name, _, type|
+    next if type.is_a?(String)
+    # puts %{#{model[:class]} -> #{type} [label="#{name}" arrowhead=none];}
+  end
+end
+puts '}'
