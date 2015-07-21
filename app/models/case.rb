@@ -18,7 +18,7 @@ class Case
   attribute :test_code, TestCode
   attribute :pca_cps, String
   attribute :safe_guarding_assessment, SafeguardingAssessment
-  attribute :property, Array[property]
+  attribute :property, Array[Property]
   attribute :officer_in_the_case, PersonName
   attribute :signatory_name, PersonName
   attribute :date, Date

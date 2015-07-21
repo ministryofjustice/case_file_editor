@@ -1,6 +1,6 @@
 class MmeRecordedResponse < MmeResponse
   attribute :type, String, writer: :private, default: 'MmeRecordedResponse'
-  attribute :id, string
+  attribute :id, String
   attribute :defendant_shown, Boolean
   attribute :reasons_if_not_shown, String
   attribute :defendant_comments_if_shown, String

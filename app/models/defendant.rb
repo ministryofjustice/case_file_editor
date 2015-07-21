@@ -43,8 +43,8 @@ class Defendant
   attribute :bail_conditions_provided, Boolean
   attribute :signed_for_bail, Boolean
   attribute :bail_conditions, Array[BailCondition]
-  attribute :interview, Standardnterview
+  attribute :interview, StandardInterview
   attribute :domestic_violence, DomesticViolence
-  attribute :first_hearing_datetime, Datetime
+  attribute :first_hearing_datetime, DateTime
   attribute :first_learing_location, OrganisationLocation
 end

@@ -2,7 +2,7 @@ class Mme < Event
   attribute :id, String
   attribute :date, Date
   attribute :end_date, Date
-  attribute :type, Mmetype
+  attribute :type, MmeType
   attribute :evidential_value, Boolean
   attribute :relied_upon_trial, Boolean
   attribute :relied_upon_sentence, Boolean
