@@ -1,9 +1,6 @@
-class AssaultCjsCode
-  VALUES = %w[
+class AssaultCjsCode < Enumeration
+  self.values = %w[
     h4302
     h901
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

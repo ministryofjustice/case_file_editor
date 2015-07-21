@@ -1,5 +1,5 @@
-class CaseMarker
-  VALUES = %w[
+class CaseMarker < Enumeration
+  self.values = %w[
     AE
     CO
     DH
@@ -17,7 +17,4 @@ class CaseMarker
     RP
     TG
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

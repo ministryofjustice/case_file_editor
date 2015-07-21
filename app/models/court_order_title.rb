@@ -1,5 +1,5 @@
-class CourtOrderTitle
-  VALUES = %w[
+class CourtOrderTitle < Enumeration
+  self.values = %w[
     antisocial_behaviour_order
     application_for_costs_against_convicted_defendant
     bind_over
@@ -58,7 +58,4 @@ class CourtOrderTitle
     travel_restriction_order
     violent_offender_order
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

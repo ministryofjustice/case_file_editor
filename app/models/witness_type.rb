@@ -1,5 +1,5 @@
-class WitnessType
-  VALUES = %w[
+class WitnessType < Enumeration
+  self.values = %w[
     expert
     eye
     identity
@@ -17,7 +17,4 @@ class WitnessType
     intimidated
     other
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

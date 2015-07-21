@@ -1,11 +1,8 @@
-class PropertyAction
-  VALUES = %w[
+class PropertyAction < Enumeration
+  self.values = %w[
     stolen_not_recovered
     stolen_recovered
     stolen_recovered_damaged
     damaged
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

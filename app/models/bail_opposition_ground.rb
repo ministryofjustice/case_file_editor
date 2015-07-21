@@ -1,6 +1,6 @@
-class BailOppositionGround
+class BailOppositionGround < Enumeration
   # rubocop:disable LineLength
-  VALUES = %w[
+  self.values = %w[
     breach_of_bail
     failed_to_surrender_to_custody
     commit_offences_on_bail
@@ -11,7 +11,4 @@ class BailOppositionGround
     the_only_way_to_protect_the_public_from_serious_harm
     to_prevent_the_commission_of_imprisonable_offences
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

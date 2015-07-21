@@ -1,5 +1,5 @@
-class CCNotSuitableReason
-  VALUES = %w[
+class CCNotSuitableReason < Enumeration
+  self.values = %w[
     offence_not_one_for_which_conditional_caution_can_be_offered
     offence_not_admitted
     partial_defence_raised
@@ -11,7 +11,4 @@ class CCNotSuitableReason
     reoffending_risk_response_to_sentence_bail
     reoffending_risk_not_reduced_by_conditions
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

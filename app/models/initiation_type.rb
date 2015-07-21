@@ -1,10 +1,7 @@
-class InitiationType
-  VALUES = %w[
+class InitiationType < Enumeration
+  self.values = %w[
     charge_sheet
     postal_requisition
     summons
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end

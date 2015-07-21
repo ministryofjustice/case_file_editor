@@ -1,11 +1,8 @@
-class SafeguardingLevel
-  VALUES = %w[
+class SafeguardingLevel < Enumeration
+  self.values = %w[
     moderate
     moderate_serious
     serious
     severe
   ]
-
-  attribute :value, String
-  validates :value, inclusion: { in: VALUES }
 end
