@@ -13,7 +13,7 @@ class StandardInterview < Interview
   attribute :admissions_made, String
   attribute :denials, String
   attribute :defences, String
-  attribute :explainations, String
+  attribute :explanations, String
   attribute :mitigations, String
   attribute :aggravating_features, String
   attribute :appropriate_adults, Name

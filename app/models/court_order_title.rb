@@ -8,7 +8,7 @@ class CourtOrderTitle < Enumeration
     cash_seizure_and_forfeiture_order
     civil_disclosure_order
     civil_recovery_order
-    closure_notice_for_premesis
+    closure_notice_for_premises
     confiscation_order
     criminal_antisocial_behaviour_order
     criminal_behaviour_order
@@ -25,7 +25,7 @@ class CourtOrderTitle < Enumeration
     enforcement_receivership_order
     european_arrest_warrant
     european_protection_order
-    exclusion_order_licenced_premesis
+    exclusion_order_licenced_premises
     financial_reporting_order
     football_banning_order
     forced_marriage_protection_order

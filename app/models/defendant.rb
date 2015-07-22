@@ -24,11 +24,11 @@ class Defendant
   attribute :breach_order_lapse_date, Date
   attribute :remand_application, RemandApplication
   attribute :breach_of_bail, Array[BreachOfBail]
-  attribute :pnc_check_perforrmed, Boolean
+  attribute :pnc_check_performed, Boolean
   attribute :pnc_convictions, Boolean
   attribute :court_order_applications, Array[CourtOrder]
-  attribute :interpretor_required, Boolean
-  attribute :interpretor_language_or_dialect, String
+  attribute :interpreter_required, Boolean
+  attribute :interpreter_language_or_dialect, String
   attribute :multimedia_evidence_response, MmeResponse
   attribute :notice_to_provide_bad_character_evidence, Boolean
   attribute :bad_character_details, String
@@ -46,5 +46,5 @@ class Defendant
   attribute :interview, StandardInterview
   attribute :domestic_violence, DomesticViolence
   attribute :first_hearing_datetime, DateTime
-  attribute :first_learing_location, OrganisationLocation
+  attribute :first_hearing_location, OrganisationLocation
 end

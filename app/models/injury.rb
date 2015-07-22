@@ -9,5 +9,5 @@ class Injury
   attribute :reason_images_not_taken, String
   attribute :received_medical_treatment, Boolean
   attribute :details_of_medical_treatment, String
-  attribute :inguries_visible, Boolean
+  attribute :injuries_visible, Boolean
 end

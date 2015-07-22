@@ -4,5 +4,5 @@ class Victim < Witness
   attribute :victim_wish_to_attend_court, VictimWish
   attribute :rep_wish, VictimWish
   attribute :is_retraction_statement, Boolean
-  attribute :compensation_appications, Array[CompensationApplication]
+  attribute :compensation_applications, Array[CompensationApplication]
 end
