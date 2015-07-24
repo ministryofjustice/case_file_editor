@@ -62,8 +62,19 @@ digraph g {
   fontname="Lato";
   sep=0.25;
   epsilon=0.001;
-  node [shape=record, fontname="Lato", style=filled, penwidth=1, labeljust=l, fillcolor="#ffffff"];
-  edge [fontname="Lato", len=2, fontsize=10, style=filled];
+  node [
+    shape=record,
+    fontname="Lato",
+    style=filled,
+    penwidth=1,
+    labeljust=l,
+    fillcolor="#ffffff"
+  ];
+  edge [
+    fontname="Lato",
+    fontsize=10,
+    style=filled
+  ];
 END
 
 models.sort_by { |k, _| k.to_s }.each do |klass, model|
