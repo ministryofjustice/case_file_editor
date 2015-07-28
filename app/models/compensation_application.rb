@@ -1,5 +1,6 @@
 class CompensationApplication
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :defendant_names, Array[PersonName]
   attribute :reason_for_application, Array[String]

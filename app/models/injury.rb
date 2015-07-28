@@ -1,5 +1,6 @@
 class Injury
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :names_of_defendants_causing_injuries, Array[PersonName]
   attribute :description_of_injuries, String

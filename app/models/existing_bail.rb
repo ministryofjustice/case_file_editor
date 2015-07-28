@@ -1,5 +1,6 @@
 class ExistingBail
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :original_charge_wording, Array[String]
   attribute :bailed_from, String

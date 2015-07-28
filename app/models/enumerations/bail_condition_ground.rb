@@ -1,5 +1,5 @@
-class BailConditionGround < Enumeration
-  self.values = %w[
+module Enumerations
+  BailConditionGround = %w[
     failing_to_surrender_to_custody
     interfering_with_witnesses_or_otherwise_obstructing_the_course_of_justice
     commiting_an_offence_whilst_on_bail

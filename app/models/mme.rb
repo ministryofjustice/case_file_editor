@@ -2,7 +2,8 @@ class Mme < Event
   attribute :id, String
   attribute :date, Date
   attribute :end_date, Date
-  attribute :type, MmeType
+  attribute :type, String
+  validates :type, inclusion: { in: Enumerations::MmeType }
   attribute :evidential_value, Boolean
   attribute :relied_upon_trial, Boolean
   attribute :relied_upon_sentence, Boolean

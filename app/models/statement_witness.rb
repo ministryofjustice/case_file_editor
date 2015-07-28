@@ -3,7 +3,8 @@ class StatementWitness < Witness
 
   attribute :type, String, writer: :private, default: 'StatementWitness'
   attribute :name, PersonName
-  attribute :witness_type, Array[WitnessType]
+  attribute :witness_type, Array[String]
+  validates :witness_type, array_inclusion: { in: Enumerations::WitnessType }
   attribute :date_of_birth, Date
   attribute :reason_dob_not_provided, String
   attribute :visually_recorded_interview, Boolean

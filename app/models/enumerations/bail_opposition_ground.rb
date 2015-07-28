@@ -1,6 +1,6 @@
-class BailOppositionGround < Enumeration
+module Enumerations
   # rubocop:disable LineLength
-  self.values = %w[
+  BailOppositionGround = %w[
     breach_of_bail
     failed_to_surrender_to_custody
     commit_offences_on_bail

@@ -1,5 +1,6 @@
 class OrganisationLocation
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :ou_top_level_name, String
   attribute :ou_second_level_name, String

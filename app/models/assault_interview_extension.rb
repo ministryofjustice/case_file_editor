@@ -1,5 +1,6 @@
 class AssaultInterviewExtension
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :admits_involvement_in_incident, Boolean
   attribute :admits_assaulting_victim, Boolean

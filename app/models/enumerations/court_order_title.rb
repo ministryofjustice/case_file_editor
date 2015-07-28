@@ -1,5 +1,5 @@
-class CourtOrderTitle < Enumeration
-  self.values = %w[
+module Enumerations
+  CourtOrderTitle = %w[
     antisocial_behaviour_order
     application_for_costs_against_convicted_defendant
     bind_over
@@ -42,7 +42,6 @@ class CourtOrderTitle < Enumeration
     no_orders_required
     notification_requirements_sex_offender_register
     obligatory_driving_disqualification
-    other
     parental_bind_order
     parenting_order
     property_freezing_order
@@ -57,5 +56,6 @@ class CourtOrderTitle < Enumeration
     sexual_risk_order
     travel_restriction_order
     violent_offender_order
+    other
   ]
 end

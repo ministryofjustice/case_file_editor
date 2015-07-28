@@ -1,5 +1,5 @@
-class InitiationType < Enumeration
-  self.values = %w[
+module Enumerations
+  InitiationType = %w[
     charge_sheet
     postal_requisition
     summons

@@ -1,5 +1,5 @@
-class CCNotSuitableReason < Enumeration
-  self.values = %w[
+module Enumerations
+  CCNotSuitableReason = %w[
     offence_not_one_for_which_conditional_caution_can_be_offered
     offence_not_admitted
     partial_defence_raised

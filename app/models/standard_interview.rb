@@ -1,5 +1,6 @@
 class StandardInterview < Interview
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :type, String, writer: :private, default: 'StandardInterview'
   attribute :date, Date

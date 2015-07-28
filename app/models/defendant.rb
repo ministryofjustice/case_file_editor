@@ -1,12 +1,17 @@
+require 'enumerations/c_c_not_suitable_reason'
+
 class Defendant
   include Virtus.model
+  include ActiveModel::Validations
 
   attribute :defendant_id, String
   attribute :name, PersonName
   attribute :date_of_birth, Date
   attribute :arrest, Arrest
   attribute :conditional_caution_considered, Boolean
-  attribute :cc_not_suitable_reasons, Array[CCNotSuitableReason]
+  attribute :cc_not_suitable_reasons, Array[String]
+  validates :cc_not_suitable_reasons,
+    array_inclusion: { in: Enumerations::CCNotSuitableReason }
   attribute :offences, Array[OffenceCollection]
   attribute :occupation, String
   attribute :class_a_drug_test_provided, Boolean
@@ -19,7 +24,9 @@ class Defendant
   attribute :breach_of_order, Boolean
   attribute :breach_order_date_issued, Date
   attribute :breach_order_court_issued, OrganisationLocation
-  attribute :breach_order_title, CourtOrderTitle
+  attribute :breach_order_title, String
+  validates :breach_order_title,
+    inclusion: { in: Enumerations::CourtOrderTitle }
   attribute :breach_order_title_other, String
   attribute :breach_order_lapse_date, Date
   attribute :remand_application, RemandApplication
@@ -35,7 +42,9 @@ class Defendant
   attribute :dealt_with_in_welsh, String
   attribute :person_remand_status, String
   attribute :given_charges, Boolean
-  attribute :initiation_type, InitiationType
+  attribute :initiation_type, String
+  validates :initiation_type,
+    inclusion: { in: Enumerations::InitiationType }
   attribute :signed_charge_sheet, Boolean
   attribute :date_sent, Date
   attribute :parent_guardian_copy, Boolean

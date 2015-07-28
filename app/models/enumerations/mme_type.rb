@@ -1,5 +1,5 @@
-class MmeType < Enumeration
-  self.values = %w[
+module Enumerations
+  MmeType = %w[
     cctv
     facewatch
     body_worn_video
