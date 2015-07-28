@@ -2,6 +2,7 @@ class StatementWitnessMapper < Yaks::Mapper
   attributes \
     :witness_id,
     :type,
+    :witness_type,
     :nature_of_involvement,
     :evidence_they_can_give,
     :special_measures,
@@ -14,8 +15,4 @@ class StatementWitnessMapper < Yaks::Mapper
     :visually_recorded_interview,
     :url,
     :rank
-
-  attribute :witness_type do
-    object.witness_type.value
-  end
 end

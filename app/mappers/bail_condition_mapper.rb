@@ -1,9 +1,6 @@
 class BailConditionMapper < Yaks::Mapper
   attributes \
+    :grounds,
     :condition,
     :reason
-
-  attribute :grounds do
-    object.grounds.value
-  end
 end

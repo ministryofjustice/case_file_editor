@@ -5,6 +5,7 @@ class DefendantMapper < Yaks::Mapper
     :date_of_birth,
     :arrest,
     :conditional_caution_considered,
+    :cc_not_suitable_reasons,
     :offences,
     :occupation,
     :class_a_drug_test_provided,
@@ -17,6 +18,7 @@ class DefendantMapper < Yaks::Mapper
     :breach_of_order,
     :breach_order_date_issued,
     :breach_order_court_issued,
+    :breach_order_title,
     :breach_order_title_other,
     :breach_order_lapse_date,
     :remand_application,
@@ -32,6 +34,7 @@ class DefendantMapper < Yaks::Mapper
     :dealt_with_in_welsh,
     :person_remand_status,
     :given_charges,
+    :initiation_type,
     :signed_charge_sheet,
     :date_sent,
     :parent_guardian_copy,
@@ -43,16 +46,4 @@ class DefendantMapper < Yaks::Mapper
     :domestic_violence,
     :first_hearing_datetime,
     :first_hearing_location
-
-  attribute :cc_not_suitable_reasons do
-    object.cc_not_suitable_reasons.value
-  end
-
-  attribute :breach_order_title do
-    object.breach_order_title.value
-  end
-
-  attribute :initiation_type do
-    object.initiation_type.value
-  end
 end

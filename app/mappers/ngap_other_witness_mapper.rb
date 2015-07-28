@@ -2,6 +2,7 @@ class NgapOtherWitnessMapper < Yaks::Mapper
   attributes \
     :witness_id,
     :type,
+    :witness_type,
     :nature_of_involvement,
     :evidence_they_can_give,
     :special_measures,
@@ -11,8 +12,4 @@ class NgapOtherWitnessMapper < Yaks::Mapper
     :name,
     :number,
     :rank
-
-  attribute :witness_type do
-    object.witness_type.value
-  end
 end

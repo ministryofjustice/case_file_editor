@@ -2,6 +2,7 @@ class OrganisationVictimMapper < Yaks::Mapper
   attributes \
     :witness_id,
     :type,
+    :witness_type,
     :nature_of_involvement,
     :evidence_they_can_give,
     :special_measures,
@@ -10,20 +11,10 @@ class OrganisationVictimMapper < Yaks::Mapper
     :wish_to_use_video_link,
     :victim_code_requirements_met,
     :has_the_victim_made_a_vps_isb,
+    :victim_wish_to_attend_court,
+    :rep_wish,
     :is_retraction_statement,
     :compensation_applications,
     :name,
     :date_of_birth
-
-  attribute :witness_type do
-    object.witness_type.value
-  end
-
-  attribute :victim_wish_to_attend_court do
-    object.victim_wish_to_attend_court.value
-  end
-
-  attribute :rep_wish do
-    object.rep_wish.value
-  end
 end

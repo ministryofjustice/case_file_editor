@@ -1,6 +1,7 @@
 class MmeMapper < Yaks::Mapper
   attributes \
     :date,
+    :type,
     :id,
     :end_date,
     :evidential_value,
@@ -9,8 +10,4 @@ class MmeMapper < Yaks::Mapper
     :description_of_what_is_seen_in_multimedia_evidence,
     :total_duration,
     :url
-
-  attribute :type do
-    object.type.value
-  end
 end

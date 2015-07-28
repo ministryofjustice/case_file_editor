@@ -13,10 +13,7 @@ class RetailTheftOffenceMapper < Yaks::Mapper
     :committed_on_bail,
     :children_present,
     :ages_of_children,
+    :cjs_offence_code,
     :property_ids,
     :interview_extension
-
-  attribute :cjs_offence_code do
-    object.cjs_offence_code.value
-  end
 end
