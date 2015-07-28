@@ -56,28 +56,17 @@ models = Dir['app/models/*.rb'].
   to_h
 
 models.sort_by { |k, _| k.to_s }.each do |klass, model|
-  next if model[:class] < Enumeration ||  model[:class] == Enumeration
-
   mapper_class_name = "#{klass}Mapper"
   snake_case = ActiveSupport::Inflector.underscore(mapper_class_name)
   path = "app/mappers/#{snake_case}.rb"
   puts path
 
-  enum_attributes = model[:attributes].select { |_, _, k| !k.is_a?(String) && k < Enumeration }
   File.open(path, 'w') do |f|
     f.puts <<RUBY
 class #{mapper_class_name} < Yaks::Mapper
   attributes \\
-    #{(model[:attributes] - enum_attributes).map { |name, _, _| ":#{name}" }.join(",\n    ")}
+    #{model[:attributes].map { |name, _, _| ":#{name}" }.join(",\n    ")}
+end
 RUBY
-    enum_attributes.each do |name, _, _|
-      f.puts <<RUBY
-
-  attribute :#{name} do
-    object.#{name}.value
-  end
-RUBY
-    end
-    f.puts "end"
   end
 end
