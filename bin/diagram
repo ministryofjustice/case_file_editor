@@ -78,22 +78,17 @@ digraph g {
 END
 
 models.sort_by { |k, _| k.to_s }.each do |klass, model|
-  unless [nil, Enumeration].include?(model[:ancestors].first)
+  if model[:ancestors].any?
     puts "#{model[:class]} -> #{model[:ancestors].first} [arrowhead=empty];"
   end
 
   attributes = model[:ancestors].
     inject(model[:attributes]) { |a, e| a - models[e][:attributes] }
 
-  if model[:class] < Enumeration
-    lines = "+ value : string"
-  elsif model[:class] == Enumeration
-  else
-    lines = attributes.map { |name, ord, type|
-      "+ #{name} : #{ord == :many ? "[#{type}]" : type}"
-    }.join("\\l")
-  end
-  puts %{#{model[:class]} [label="{#{model[:class]}|#{lines}\\l}"];} if lines
+  lines = attributes.map { |name, ord, type|
+    "+ #{name} : #{ord == :many ? "[#{type}]" : type}"
+  }.join("\\l")
+  puts %{#{model[:class]} [label="{#{model[:class]}|#{lines}\\l}"];}
 
   attributes.each do |name, _, type|
     next if type.is_a?(String)
