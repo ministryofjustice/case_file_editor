@@ -1,7 +1,4 @@
-class AssaultOffence
-  include Virtus.model
-  include ActiveModel::Validations
-
+class AssaultOffence < Offence
   attribute :type, String, writer: :private, default: 'AssaultOffence'
   attribute :cjs_offence_code, String
   validates :cjs_offence_code, inclusion: { in: Enumerations::AssaultCjsCode }
