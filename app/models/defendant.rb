@@ -30,13 +30,14 @@ class Defendant
   attribute :breach_order_title_other, String
   attribute :breach_order_lapse_date, Date
   attribute :remand_application, RemandApplication
-  attribute :breach_of_bail, Array[BreachOfBail]
+  attribute :breach_of_bail, BreachOfBail
   attribute :pnc_check_performed, Boolean
   attribute :pnc_convictions, Boolean
   attribute :court_order_applications, Array[CourtOrder]
   attribute :interpreter_required, Boolean
   attribute :interpreter_language_or_dialect, String
-  attribute :multimedia_evidence_response, MmeResponse
+  # attribute :multimedia_evidence_response, MmeResponse
+  # TODO: make this work with the weird union type
   attribute :notice_to_provide_bad_character_evidence, Boolean
   attribute :bad_character_details, String
   attribute :dealt_with_in_welsh, String
