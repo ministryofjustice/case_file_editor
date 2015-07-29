@@ -78,7 +78,7 @@
         "witness_statement_establishes_breach": true,
         "key_evidence": "Key Evidence",
         "existing_bail_breached": {
-          "original_charge_wording": "CJS Original Charge Wording.",
+          "original_charge_wording": ["CJS Original Charge Wording."],
           "bailed_from": {
             "ou_top_level_name": "AA",
             "ou_second_level_name": "BB",
@@ -93,7 +93,7 @@
             "ou_bottom_level_name": "DD"
           },
           "datetime_to_appear": "2014-01-01T12:00Z",
-          "list_of_conditions": [ "Condition 1", "Condition 2" ]
+          "list_of_conditions": []
         }
 
       },
@@ -133,14 +133,14 @@
         "type": "StandardInterview",
         "date": "2014-01-01",
         "defendant_legally_represented": true,
-        "legally_represented_by": [
+        "legally_represented_by":
           {
             "given_name": [ "Jennie", "Claire" ],
             "surname": "Jones"
           }
-        ],
+        ,
         "legal_representative_firm": "The firm",
-        "interpretors": [
+        "interpreters": [
           {
             "given_name": [ "Jennie", "Claire" ],
             "surname": "Jones"
