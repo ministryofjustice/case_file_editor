@@ -1,4 +1,8 @@
 class GenericImporter
+  def self.importer(object)
+    new(object)
+  end
+
   def initialize(object)
     @object = object
   end
@@ -43,7 +47,7 @@ private
 
   def importer(target, value)
     name = target.to_s + 'Importer'
-    ActiveSupport::Inflector.constantize(name).new(value)
+    ActiveSupport::Inflector.constantize(name).importer(value)
   end
 
   def fields
