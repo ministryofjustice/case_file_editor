@@ -4,44 +4,6 @@ require_relative '../config/boot'
 require APP_PATH
 Rails.application.require_environment!
 
-def decode_type(type)
-  if type < Axiom::Types::Type
-    type.to_s.split(/::/).last
-  else
-    type
-  end
-end
-
-def decode_attr(attr)
-  case attr
-  when Virtus::Attribute::Collection
-    [:many, decode_attr(attr.send(:member_type)).last]
-  when Virtus::Attribute::Boolean
-    [:one, 'boolean']
-  when Virtus::Attribute::EmbeddedValue
-    [:one, attr.primitive]
-  when Virtus::Attribute
-    [:one, attr.primitive.to_s.downcase]
-  end
-end
-
-def attributes(klass)
-  klass.attribute_set.instance_variable_get('@index').
-    select { |name, _| name.kind_of?(Symbol) }.
-    map { |name, attr| [name, *decode_attr(attr)] }
-end
-
-def build_model(klass)
-  ancestors = (klass.ancestors - klass.included_modules - Object.ancestors).
-    drop(1)
-
-  {
-    class: klass,
-    ancestors: ancestors,
-    attributes: attributes(klass)
-  }
-end
-
 models = Dir['app/models/*.rb'].
   map { |f|
     snake_case = File.basename(f, '.rb')
@@ -52,10 +14,10 @@ models = Dir['app/models/*.rb'].
         ActiveSupport::Inflector.camelize(snake_case))
   }.
   select { |c| c.is_a?(Class) }.
-  map { |klass| [klass, build_model(klass)] }.
+  map { |klass| [klass, FieldInspector.new.fields(klass)] }.
   to_h
 
-models.sort_by { |k, _| k.to_s }.each do |klass, model|
+models.sort_by { |k, _| k.to_s }.each do |klass, fields|
   mapper_class_name = "#{klass}Mapper"
   snake_case = ActiveSupport::Inflector.underscore(mapper_class_name)
   path = "app/mappers/#{snake_case}.rb"
@@ -65,7 +27,7 @@ models.sort_by { |k, _| k.to_s }.each do |klass, model|
     f.puts <<RUBY
 class #{mapper_class_name} < Yaks::Mapper
   attributes \\
-    #{model[:attributes].map { |name, _, _| ":#{name}" }.join(",\n    ")}
+    #{fields.map { |f| ":#{f.name}" }.join(",\n    ")}
 end
 RUBY
   end

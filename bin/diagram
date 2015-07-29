@@ -4,33 +4,6 @@ require_relative '../config/boot'
 require APP_PATH
 Rails.application.require_environment!
 
-def decode_type(type)
-  if type < Axiom::Types::Type
-    type.to_s.split(/::/).last
-  else
-    type
-  end
-end
-
-def decode_attr(attr)
-  case attr
-  when Virtus::Attribute::Collection
-    [:many, decode_attr(attr.send(:member_type)).last]
-  when Virtus::Attribute::Boolean
-    [:one, 'boolean']
-  when Virtus::Attribute::EmbeddedValue
-    [:one, attr.primitive]
-  when Virtus::Attribute
-    [:one, attr.primitive.to_s.downcase]
-  end
-end
-
-def attributes(klass)
-  klass.attribute_set.instance_variable_get('@index').
-    select { |name, _| name.kind_of?(Symbol) }.
-    map { |name, attr| [name, *decode_attr(attr)] }
-end
-
 def build_model(klass)
   ancestors = (klass.ancestors - klass.included_modules - Object.ancestors).
     drop(1)
@@ -38,7 +11,7 @@ def build_model(klass)
   {
     class: klass,
     ancestors: ancestors,
-    attributes: attributes(klass)
+    fields: FieldInspector.new.fields(klass)
   }
 end
 
@@ -82,17 +55,17 @@ models.sort_by { |k, _| k.to_s }.each do |klass, model|
     puts "#{model[:class]} -> #{model[:ancestors].first} [arrowhead=empty];"
   end
 
-  attributes = model[:ancestors].
-    inject(model[:attributes]) { |a, e| a - models[e][:attributes] }
+  fields = model[:ancestors].
+    inject(model[:fields]) { |a, e| a - models[e][:fields] }
 
-  lines = attributes.map { |name, ord, type|
-    "+ #{name} : #{ord == :many ? "[#{type}]" : type}"
+  lines = fields.map { |f|
+    "+ #{f.name} : #{f.array? ? "[#{f.type}]" : f.type}"
   }.join("\\l")
   puts %{#{model[:class]} [label="{#{model[:class]}|#{lines}\\l}"];}
 
-  attributes.each do |name, _, type|
-    next if type.is_a?(String)
-    puts %{#{model[:class]} -> #{type} [arrowhead=none];}
+  fields.each do |f|
+    next if f.basic?
+    puts %{#{model[:class]} -> #{f.type} [arrowhead=none];}
   end
 end
 
