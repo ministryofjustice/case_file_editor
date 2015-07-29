@@ -1,22 +1,28 @@
 class GenericImporter
-  def import(obj)
-    target_class.new(params(obj))
+  def initialize(object)
+    @object = object
+  end
+
+  def import
+    target_class.new(params)
   end
 
 private
 
-  def params(obj)
-    fields.map { |f| import_field(f, obj) }.compact.to_h
+  attr_reader :object
+
+  def params
+    fields.map { |f| import_field(f) }.compact.to_h
   end
 
-  def import_field(field, obj)
+  def import_field(field)
     key = field.name.to_s
-    return nil unless obj.key?(key)
+    return nil unless object.key?(key)
 
     if field.array?
-      value = obj.fetch(key).map { |v| import_one(field, v) }
+      value = object.fetch(key).map { |v| import_one(field, v) }
     else
-      value = import_one(field, obj.fetch(key))
+      value = import_one(field, object.fetch(key))
     end
 
     [field.name, value]
@@ -26,7 +32,7 @@ private
     if field.basic?
       value
     else
-      importer(field.type).import(value)
+      importer(field.type, value).import
     end
   end
 
@@ -35,9 +41,9 @@ private
     ActiveSupport::Inflector.constantize(name)
   end
 
-  def importer(target)
+  def importer(target, value)
     name = target.to_s + 'Importer'
-    ActiveSupport::Inflector.constantize(name).new
+    ActiveSupport::Inflector.constantize(name).new(value)
   end
 
   def fields
