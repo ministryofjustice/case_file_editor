@@ -39,6 +39,10 @@ Style/CollectionMethods:
     inject: 'inject'
     reduce: 'inject'
 
+Style/ConstantName:
+  Exclude:
+    - 'app/models/enumerations/*'
+
 # Chain methods with trailing dots.
 Style/DotPosition:
   EnforcedStyle: trailing
@@ -56,6 +60,7 @@ Metrics/LineLength:
   Max: 80
   Exclude:
     - 'spec/**/*'
+    - 'app/models/enumerations/*'
 
 # Don't worry about long methods in specs.
 Metrics/MethodLength:

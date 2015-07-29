@@ -1,5 +1,4 @@
 module Enumerations
-  # rubocop:disable LineLength
   BailOppositionGround = %w[
     breach_of_bail
     failed_to_surrender_to_custody
