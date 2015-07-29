@@ -1,4 +1,4 @@
-require 'enumerations/c_c_not_suitable_reason'
+require_dependency 'enumerations/c_c_not_suitable_reason'
 
 class Defendant
   include Virtus.model
