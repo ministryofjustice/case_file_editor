@@ -1,0 +1,2 @@
+class StandardInterviewImporter < GenericImporter
+end

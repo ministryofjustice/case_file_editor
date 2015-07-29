@@ -1,0 +1,2 @@
+class BailOppositionImporter < GenericImporter
+end

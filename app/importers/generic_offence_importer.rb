@@ -1,0 +1,2 @@
+class GenericOffenceImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class OrganisationLocationImporter < GenericImporter
+end

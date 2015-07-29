@@ -1,0 +1,2 @@
+class CommonLawImporter < GenericImporter
+end

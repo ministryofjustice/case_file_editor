@@ -1,0 +1,2 @@
+class CommonLawForDisclosureImporter < GenericImporter
+end

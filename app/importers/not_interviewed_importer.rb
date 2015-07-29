@@ -1,0 +1,2 @@
+class NotInterviewedImporter < GenericImporter
+end

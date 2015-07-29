@@ -1,0 +1,2 @@
+class WitnessImporter < GenericImporter
+end

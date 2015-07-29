@@ -1,0 +1,2 @@
+class OrganisationVictimImporter < GenericImporter
+end

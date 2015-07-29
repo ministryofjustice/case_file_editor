@@ -1,0 +1,2 @@
+class DomesticViolenceImporter < GenericImporter
+end

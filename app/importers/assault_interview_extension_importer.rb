@@ -1,0 +1,2 @@
+class AssaultInterviewExtensionImporter < GenericImporter
+end

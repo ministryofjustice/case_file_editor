@@ -1,0 +1,2 @@
+class NameImporter < GenericImporter
+end

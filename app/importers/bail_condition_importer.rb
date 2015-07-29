@@ -1,0 +1,2 @@
+class BailConditionImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class CompensationApplicationImporter < GenericImporter
+end

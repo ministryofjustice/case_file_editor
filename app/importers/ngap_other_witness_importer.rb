@@ -1,0 +1,2 @@
+class NgapOtherWitnessImporter < GenericImporter
+end

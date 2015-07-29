@@ -1,0 +1,2 @@
+class StatementWitnessImporter < GenericImporter
+end

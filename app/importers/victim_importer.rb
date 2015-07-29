@@ -1,0 +1,2 @@
+class VictimImporter < GenericImporter
+end

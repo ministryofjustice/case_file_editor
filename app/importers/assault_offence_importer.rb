@@ -1,0 +1,2 @@
+class AssaultOffenceImporter < GenericImporter
+end

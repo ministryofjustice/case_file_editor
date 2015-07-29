@@ -1,0 +1,2 @@
+class PropertyImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class ArrestImporter < GenericImporter
+end

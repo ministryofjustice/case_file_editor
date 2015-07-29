@@ -1,0 +1,2 @@
+class RetailTheftInterviewExtensionImporter < GenericImporter
+end

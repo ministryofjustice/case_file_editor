@@ -1,0 +1,2 @@
+class PersonVictimImporter < GenericImporter
+end

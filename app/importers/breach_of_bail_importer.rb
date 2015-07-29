@@ -1,0 +1,2 @@
+class BreachOfBailImporter < GenericImporter
+end

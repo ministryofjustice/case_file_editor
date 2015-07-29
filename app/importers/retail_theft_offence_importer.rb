@@ -1,0 +1,2 @@
+class RetailTheftOffenceImporter < GenericImporter
+end

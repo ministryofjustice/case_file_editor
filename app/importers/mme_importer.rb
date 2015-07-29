@@ -1,0 +1,2 @@
+class MmeImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class CourtOrderImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class DefendantImporter < GenericImporter
+end

@@ -1,0 +1,2 @@
+class SafeguardingAssessmentImporter < GenericImporter
+end

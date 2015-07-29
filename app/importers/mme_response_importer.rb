@@ -1,0 +1,2 @@
+class MmeResponseImporter < GenericImporter
+end
