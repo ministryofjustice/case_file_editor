@@ -15,5 +15,5 @@ class RetailTheftOffenceExporter < GenericExporter
     :ages_of_children,
     :cjs_offence_code,
     :property_ids,
-    :interview_extension
+    :retail_theft_interview_extension
 end
