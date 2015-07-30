@@ -28,6 +28,7 @@ class DefendantExporter < GenericExporter
     :court_order_applications,
     :interpreter_required,
     :interpreter_language_or_dialect,
+    :multimedia_evidence_response,
     :notice_to_provide_bad_character_evidence,
     :bad_character_details,
     :dealt_with_in_welsh,

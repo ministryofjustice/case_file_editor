@@ -36,7 +36,7 @@ class Defendant
   attribute :court_order_applications, Array[CourtOrder]
   attribute :interpreter_required, Boolean
   attribute :interpreter_language_or_dialect, String
-  # attribute :multimedia_evidence_response, MmeResponse
+  attribute :multimedia_evidence_response, [MmeRecordedResponse]
   # TODO: make this work with the weird union type
   attribute :notice_to_provide_bad_character_evidence, Boolean
   attribute :bad_character_details, String
