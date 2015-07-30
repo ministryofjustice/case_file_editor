@@ -3,7 +3,7 @@ class Case
   include ActiveModel::Validations
 
   attribute :pti_urn, String
-  attribute :type, String, writer: :private, default: 'CaseFile'
+  attribute :type, String, writer: :private, default: 'FirstHearingDCF'
   attribute :associated_case_urns, Array[String]
   attribute :version, Integer
   attribute :case_markers, Array[String]
