@@ -3,9 +3,7 @@ class StandardInterviewMapper < Yaks::Mapper
     :date,
     :type,
     :defendant_legally_represented,
-    :legally_represented_by,
     :legal_representative_firm,
-    :interpreters,
     :special_warnings_given,
     :no_comment_response,
     :questions_asked,
@@ -14,6 +12,8 @@ class StandardInterviewMapper < Yaks::Mapper
     :defences,
     :explanations,
     :mitigations,
-    :aggravating_features,
-    :appropriate_adults
+    :aggravating_features
+  has_one :legally_represented_by
+  has_many :interpreters
+  has_one :appropriate_adults
 end

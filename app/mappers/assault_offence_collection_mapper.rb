@@ -1,4 +1,3 @@
 class AssaultOffenceCollectionMapper < Yaks::Mapper
-  attributes \
-    :assault_offences
+  has_many :assault_offences
 end

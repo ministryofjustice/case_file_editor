@@ -14,6 +14,6 @@ class GenericOffenceMapper < Yaks::Mapper
     :children_present,
     :ages_of_children,
     :cjs_offence_code,
-    :property_ids,
-    :victim_names
+    :property_ids
+  has_many :victim_names
 end

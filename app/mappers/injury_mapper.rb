@@ -1,6 +1,5 @@
 class InjuryMapper < Yaks::Mapper
   attributes \
-    :names_of_defendants_causing_injuries,
     :description_of_injuries,
     :images_taken,
     :image_urls,
@@ -9,4 +8,5 @@ class InjuryMapper < Yaks::Mapper
     :received_medical_treatment,
     :details_of_medical_treatment,
     :injuries_visible
+  has_many :names_of_defendants_causing_injuries
 end

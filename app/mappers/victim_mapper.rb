@@ -13,6 +13,6 @@ class VictimMapper < Yaks::Mapper
     :has_the_victim_made_a_vps_isb,
     :victim_wish_to_attend_court,
     :rep_wish,
-    :is_retraction_statement,
-    :compensation_applications
+    :is_retraction_statement
+  has_many :compensation_applications
 end

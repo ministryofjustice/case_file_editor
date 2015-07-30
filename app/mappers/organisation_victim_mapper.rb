@@ -14,7 +14,7 @@ class OrganisationVictimMapper < Yaks::Mapper
     :victim_wish_to_attend_court,
     :rep_wish,
     :is_retraction_statement,
-    :compensation_applications,
-    :name,
     :date_of_birth
+  has_many :compensation_applications
+  has_one :name
 end

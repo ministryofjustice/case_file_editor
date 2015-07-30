@@ -1,12 +1,9 @@
 class DefendantMapper < Yaks::Mapper
   attributes \
     :defendant_id,
-    :name,
     :date_of_birth,
-    :arrest,
     :conditional_caution_considered,
     :cc_not_suitable_reasons,
-    :offences,
     :occupation,
     :class_a_drug_test_provided,
     :class_a_drug_test_details,
@@ -17,18 +14,13 @@ class DefendantMapper < Yaks::Mapper
     :foreign_national_offender,
     :breach_of_order,
     :breach_order_date_issued,
-    :breach_order_court_issued,
     :breach_order_title,
     :breach_order_title_other,
     :breach_order_lapse_date,
-    :remand_application,
-    :breach_of_bail,
     :pnc_check_performed,
     :pnc_convictions,
-    :court_order_applications,
     :interpreter_required,
     :interpreter_language_or_dialect,
-    :multimedia_evidence_response,
     :notice_to_provide_bad_character_evidence,
     :bad_character_details,
     :dealt_with_in_welsh,
@@ -41,9 +33,16 @@ class DefendantMapper < Yaks::Mapper
     :parent_gardian_date_sent,
     :bail_conditions_provided,
     :signed_for_bail,
-    :bail_conditions,
-    :interview,
-    :domestic_violence,
-    :first_hearing_datetime,
-    :first_hearing_location
+    :first_hearing_datetime
+  has_one :name
+  has_one :arrest
+  has_many :offences
+  has_one :breach_order_court_issued
+  has_one :remand_application
+  has_one :breach_of_bail
+  has_many :court_order_applications
+  has_many :bail_conditions
+  has_one :interview
+  has_one :domestic_violence
+  has_one :first_hearing_location
 end

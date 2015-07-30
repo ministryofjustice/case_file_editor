@@ -9,10 +9,10 @@ class StatementWitnessMapper < Yaks::Mapper
     :interpreter_required,
     :interpreter_language_or_dialect,
     :wish_to_use_video_link,
-    :name,
     :date_of_birth,
     :reason_dob_not_provided,
     :visually_recorded_interview,
     :url,
     :rank
+  has_one :name
 end

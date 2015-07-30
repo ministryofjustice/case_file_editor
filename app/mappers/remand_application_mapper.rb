@@ -1,5 +1,4 @@
 class RemandApplicationMapper < Yaks::Mapper
-  attributes \
-    :substantial_grounds,
-    :bail_conditions
+  has_many :substantial_grounds
+  has_many :bail_conditions
 end

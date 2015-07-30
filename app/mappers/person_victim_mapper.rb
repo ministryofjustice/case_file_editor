@@ -14,11 +14,11 @@ class PersonVictimMapper < Yaks::Mapper
     :victim_wish_to_attend_court,
     :rep_wish,
     :is_retraction_statement,
-    :compensation_applications,
-    :name,
     :date_of_birth,
     :reason_dob_not_provided,
     :visually_recorded_interview,
-    :url,
-    :injuries
+    :url
+  has_many :compensation_applications
+  has_one :name
+  has_one :injuries
 end

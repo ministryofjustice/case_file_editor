@@ -1,4 +1,3 @@
 class GenericOffenceCollectionMapper < Yaks::Mapper
-  attributes \
-    :generic_offences
+  has_many :generic_offences
 end

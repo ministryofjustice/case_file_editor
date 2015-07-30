@@ -14,6 +14,6 @@ class RetailTheftOffenceMapper < Yaks::Mapper
     :children_present,
     :ages_of_children,
     :cjs_offence_code,
-    :property_ids,
-    :interview_extension
+    :property_ids
+  has_one :interview_extension
 end

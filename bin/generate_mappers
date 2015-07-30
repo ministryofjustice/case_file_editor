@@ -23,12 +23,19 @@ models.sort_by { |k, _| k.to_s }.each do |klass, fields|
   path = "app/mappers/#{snake_case}.rb"
   puts path
 
-  File.open(path, 'w') do |f|
-    f.puts <<RUBY
-class #{mapper_class_name} < Yaks::Mapper
-  attributes \\
-    #{fields.map { |f| ":#{f.name}" }.join(",\n    ")}
-end
-RUBY
+  File.open(path, 'w') do |file|
+    file.puts "class #{mapper_class_name} < Yaks::Mapper"
+    if fields.any?(&:basic?)
+      file.puts '  attributes \\'
+      file.puts fields.select(&:basic?).map { |f| "    :#{f.name}" }.join(",\n")
+    end
+    fields.reject(&:basic?).each do |f|
+      if f.array?
+        file.puts "  has_many :#{f.name}"
+      else
+        file.puts "  has_one :#{f.name}"
+      end
+    end
+    file.puts "end"
   end
 end

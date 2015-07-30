@@ -9,7 +9,7 @@ class NgapOtherWitnessMapper < Yaks::Mapper
     :interpreter_required,
     :interpreter_language_or_dialect,
     :wish_to_use_video_link,
-    :name,
     :number,
     :rank
+  has_one :name
 end

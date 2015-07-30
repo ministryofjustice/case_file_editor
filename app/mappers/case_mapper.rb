@@ -6,20 +6,20 @@ class CaseMapper < Yaks::Mapper
     :version,
     :case_markers,
     :brief_description_of_case,
-    :defendants,
-    :witnesses,
-    :common_law_disclosure,
     :likely_case_progression,
-    :multimedia_evidence,
     :is_hearsay,
     :hearsay_details,
     :expert_evidence,
     :test_code,
     :pca_cps,
-    :safe_guarding_assessment,
-    :property,
-    :officer_in_the_case,
-    :signatory_name,
     :date,
     :signatory_rank
+  has_many :defendants
+  has_many :witnesses
+  has_one :common_law_disclosure
+  has_many :multimedia_evidence
+  has_one :safeguarding_assessment
+  has_many :property
+  has_one :officer_in_the_case
+  has_one :signatory_name
 end
