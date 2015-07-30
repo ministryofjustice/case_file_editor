@@ -1,0 +1,2 @@
+class FixnumExporter < BasicObjectExporter
+end

@@ -1,0 +1,2 @@
+class StringExporter < BasicObjectExporter
+end

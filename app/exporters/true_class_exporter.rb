@@ -1,0 +1,2 @@
+class TrueClassExporter < BasicObjectExporter
+end

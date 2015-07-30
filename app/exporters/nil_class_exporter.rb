@@ -1,0 +1,2 @@
+class NilClassExporter < BasicObjectExporter
+end
