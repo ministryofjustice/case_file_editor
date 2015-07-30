@@ -24,7 +24,7 @@ class Case
   validates :test_code,
     inclusion: { in: Enumerations::TestCode }
   attribute :pca_cps, String
-  attribute :safe_guarding_assessment, SafeguardingAssessment
+  attribute :safeguarding_assessment, SafeguardingAssessment
   attribute :property, Array[Property]
   attribute :officer_in_the_case, PersonName
   attribute :signatory_name, PersonName

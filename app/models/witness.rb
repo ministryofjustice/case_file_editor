@@ -9,7 +9,7 @@ class Witness
   attribute :nature_of_involvement, String
   attribute :evidence_they_can_give, String
   attribute :special_measures, Boolean
-  attribute :interpretor_required, Boolean
-  attribute :interpretor_language_or_dialect, String
+  attribute :interpreter_required, Boolean
+  attribute :interpreter_language_or_dialect, String
   attribute :wish_to_use_video_link, Boolean
 end
