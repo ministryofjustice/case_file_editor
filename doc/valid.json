@@ -25,16 +25,13 @@
             {
               "type": "RetailTheftOffence",
               "cjs_offence_code": "h410",
-              "offence": {
-                "type": "Offence",
-                "from_date": "2014-01-01",
-                "to_date": "2014-01-01",
-                "offence_title": "Offence Title from PNLD",
-                "charge_wording": "This is the charge wording",
-                "points_to_prove_met_by": "Description of how the points to prove have been met.",
-                "anticipated_plea": "guilty",
-                "committed_on_bail": false
-              },
+              "from_date": "2014-01-01",
+              "to_date": "2014-01-01",
+              "offence_title": "Offence Title from PNLD",
+              "charge_wording": "This is the charge wording",
+              "points_to_prove_met_by": "Description of how the points to prove have been met.",
+              "anticipated_plea": "guilty",
+              "committed_on_bail": false,
               "property_ids": [ 1 ],
               "retail_theft_interview_extension": {
                 "admit_taking_property": true,
@@ -180,12 +177,9 @@
         "given_name": [ "Jennie", "Claire" ],
         "surname": "Jones"
       },
-      "witness": {
-        "nature_of_involvement": "Nature of involvement",
-        "evidence_they_can_give": "Evidence they can give",
-        "wish_to_provide_evidence_via_video_link": false
-      },
-
+      "nature_of_involvement": "Nature of involvement",
+      "evidence_they_can_give": "Evidence they can give",
+      "wish_to_use_video_link": false,
       "date_of_birth": "1980-08-01",
       "visually_recorded_interview": false
     }
