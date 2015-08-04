@@ -90,4 +90,24 @@ RSpec.describe DefendantImporter do
       end
     end
   end
+
+  context 'without an MME entry' do
+    let(:source) { {} }
+
+    describe 'multimedia_evidence_recorded_responses' do
+      subject { super().multimedia_evidence_recorded_responses }
+
+      it 'is empty' do
+        expect(subject).to be_empty
+      end
+    end
+
+    describe 'multimedia_evidence_not_recorded_response' do
+      subject { super().multimedia_evidence_not_recorded_response }
+
+      it 'is empty' do
+        expect(subject).to be_nil
+      end
+    end
+  end
 end
