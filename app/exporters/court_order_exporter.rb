@@ -6,9 +6,10 @@ class CourtOrderExporter < GenericExporter
     :draft_conditions
 
   def export
-    exported = super
-    exported.merge(
-      court_order_title: { court_order_title: exported[:court_order_title] }
+    super.merge(
+      'court_order_title' => {
+        'court_order_title' => object.court_order_title
+      }
     )
   end
 end

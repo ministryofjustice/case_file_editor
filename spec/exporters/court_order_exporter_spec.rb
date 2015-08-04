@@ -14,7 +14,7 @@ RSpec.describe CourtOrderExporter do
   }
 
   it 'generates a court_order_title structure' do
-    expect(subject[:court_order_title]).
-      to eq(court_order_title: 'confiscation_order')
+    expect(subject['court_order_title']).
+      to eq('court_order_title' => 'confiscation_order')
   end
 end
