@@ -1,7 +1,7 @@
 class Offence < Event
   extend AbstractClass
 
-  attribute :type, String, writer: :private, default: 'offence'
+  attribute :type, String, writer: :private, default: 'Offence'
   attribute :from_date, Date
   attribute :to_date, Date
   attribute :offence_title, String
