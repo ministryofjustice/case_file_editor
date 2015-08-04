@@ -28,7 +28,6 @@ class DefendantExporter < GenericExporter
     :court_order_applications,
     :interpreter_required,
     :interpreter_language_or_dialect,
-    :multimedia_evidence_response,
     :notice_to_provide_bad_character_evidence,
     :bad_character_details,
     :dealt_with_in_welsh,
@@ -46,4 +45,19 @@ class DefendantExporter < GenericExporter
     :domestic_violence,
     :first_hearing_datetime,
     :first_hearing_location
+
+  def export
+    super.merge(
+      'multimedia_evidence_response' =>
+        exporter(multimedia_evidence_response).export
+    )
+  end
+
+  def multimedia_evidence_response
+    if object.multimedia_evidence_recorded_responses.any?
+      object.multimedia_evidence_recorded_responses
+    else
+      object.multimedia_evidence_not_recorded_response
+    end
+  end
 end

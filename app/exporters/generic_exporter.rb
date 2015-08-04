@@ -17,7 +17,9 @@ class GenericExporter
 
 private
 
-  def exporter(object)
-    "#{object.class}Exporter".constantize.new(object)
+  attr_reader :object
+
+  def exporter(obj)
+    "#{obj.class}Exporter".constantize.new(obj)
   end
 end
