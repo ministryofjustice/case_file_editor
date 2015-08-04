@@ -7,7 +7,7 @@ class Mme < Event
   attribute :evidential_value, Boolean
   attribute :relied_upon_trial, Boolean
   attribute :relied_upon_sentence, Boolean
-  attribute :description_of_what_is_seen_in_multimedia_evidence, Array[String]
+  attribute :description_of_what_is_contained_in_multimedia_evidence, String
   attribute :total_duration, String
   attribute :url, String
 end
