@@ -1,4 +1,5 @@
 class GenericOffenceCollectionExporter < GenericExporter
   attributes \
-    :generic_offences
+    :generic_offences,
+    :type
 end
