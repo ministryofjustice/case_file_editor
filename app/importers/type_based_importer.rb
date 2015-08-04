@@ -1,7 +1,7 @@
 class TypeBasedImporter < GenericImporter
-  def self.importer(object)
-    klass = importer_class[object.fetch('type')]
-    fail "#{self} can't import #{object.fetch('type')}" unless klass
-    klass.new(object)
+  def self.importer(source)
+    klass = importer_class[source.fetch('type')]
+    fail "#{self} can't import #{source.fetch('type')}" unless klass
+    klass.new(source)
   end
 end

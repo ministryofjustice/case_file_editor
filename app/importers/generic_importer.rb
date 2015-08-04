@@ -1,10 +1,10 @@
 class GenericImporter
-  def self.importer(object)
-    new(object)
+  def self.importer(source)
+    new(source)
   end
 
-  def initialize(object)
-    @object = object
+  def initialize(source)
+    @source = source
   end
 
   def import
@@ -13,7 +13,7 @@ class GenericImporter
 
 private
 
-  attr_reader :object
+  attr_reader :source
 
   def params
     fields.map { |f| import_field(f) }.compact.to_h
@@ -21,12 +21,12 @@ private
 
   def import_field(field)
     key = field.name.to_s
-    return nil unless object.key?(key)
+    return nil unless source.key?(key)
 
     if field.array?
-      value = object.fetch(key).map { |v| import_one(field, v) }
+      value = source.fetch(key).map { |v| import_one(field, v) }
     else
-      value = import_one(field, object.fetch(key))
+      value = import_one(field, source.fetch(key))
     end
 
     [field.name, value]
