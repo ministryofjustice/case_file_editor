@@ -78,7 +78,7 @@
         "witness_statement_establishes_breach": true,
         "key_evidence": "Key Evidence",
         "existing_bail_breached": {
-          "original_charge_wording": ["CJS Original Charge Wording."],
+          "original_charge_wording": [ "CJS Original Charge Wording 1", "CJS Original Charge Wording 2" ],
           "bailed_from": {
             "ou_top_level_name": "AA",
             "ou_second_level_name": "BB",
@@ -93,7 +93,18 @@
             "ou_bottom_level_name": "DD"
           },
           "datetime_to_appear": "2014-01-01T12:00Z",
-          "list_of_conditions": []
+          "list_of_conditions": [
+            {
+              "grounds": [ "commiting_an_offence_whilst_on_bail" ],
+              "condition": "Condition Description",
+              "reason": "Reason Description"
+            },
+            {
+              "grounds": [ "failing_to_surrender_to_custody" ],
+              "condition": "Condition Description",
+              "reason": "Reason Description"
+            }
+          ]
         }
 
       },
@@ -101,18 +112,17 @@
       "pnc_convictions": true,
       "court_order_applications": [
         {
-          "court_order_title": "antisocial_behaviour_order",
+          "court_order_title": { "court_order_title": "antisocial_behaviour_order" },
           "reason_for_the_request": "These are the reasons for request 1"
         },
         {
-          "court_order_title": "confiscation_order",
+          "court_order_title": { "court_order_title": "confiscation_order" },
           "reason_for_the_request": "These are the reasons for request 2",
           "draft_conditions": [
             "Condition 1",
             "Condition 2"
           ]
         }
-
       ],
       "interpreter_required": false,
       "multimedia_evidence_response": [
@@ -137,8 +147,7 @@
           {
             "given_name": [ "Jennie", "Claire" ],
             "surname": "Jones"
-          }
-        ,
+          },
         "legal_representative_firm": "The firm",
         "interpreters": [
           {
