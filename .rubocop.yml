@@ -101,4 +101,8 @@ Style/PercentLiteralDelimiters:
 ClassAndModuleChildren:
   Enabled: false
 
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*'
+
 require: rubocop-rspec
