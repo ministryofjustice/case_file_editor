@@ -10,9 +10,9 @@ class GenericExporter
   end
 
   def export
-    self.class.attributes.map { |name|
-      [name.to_s, exporter(@object.public_send(name)).export]
-    }.reject { |_, v| v.nil? || v == [] }.to_h
+    self.class.attributes.
+      map { |name| [name.to_s, exporter(@object.public_send(name)).export] }.
+      reject { |_, v| v.nil? || v == [] }.to_h
   end
 
 private
