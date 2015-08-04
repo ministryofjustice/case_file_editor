@@ -12,7 +12,7 @@ class GenericExporter
   def export
     self.class.attributes.map { |name|
       [name, exporter(@object.public_send(name)).export]
-    }.to_h
+    }.reject { |_, v| v.nil? || v == [] }.to_h
   end
 
 private
