@@ -4,6 +4,6 @@ class DateTimeExporter
   end
 
   def export
-    @value.iso8601
+    @value.utc.strftime('%FT%RZ')
   end
 end
