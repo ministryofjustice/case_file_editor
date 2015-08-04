@@ -13,7 +13,7 @@
       "date_of_birth": "1990-01-01",
       "arrest": {
         "type": "Arrest",
-        "date_time": "2015-01-01",
+        "date_time": "2015-01-01T12:00Z",
         "comments_on_arrest_and_caution": "Some comments"
       },
       "conditional_caution_considered": true,
@@ -186,7 +186,7 @@
         "wish_to_provide_evidence_via_video_link": false
       },
 
-      "date_of_birth": "1980-08-01T12:00Z",
+      "date_of_birth": "1980-08-01",
       "visually_recorded_interview": false
     }
   ],
