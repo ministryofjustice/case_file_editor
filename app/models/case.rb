@@ -23,7 +23,7 @@ class Case
   attribute :test_code, String
   validates :test_code,
     inclusion: { in: Enumerations::TestCode }
-  attribute :pca_cps, String
+  attribute :pca_cps, Boolean
   attribute :safeguarding_assessment, SafeguardingAssessment
   attribute :property, Array[Property]
   attribute :officer_in_the_case, PersonName

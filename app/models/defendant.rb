@@ -40,7 +40,7 @@ class Defendant
   # TODO: make this work with the weird union type
   attribute :notice_to_provide_bad_character_evidence, Boolean
   attribute :bad_character_details, String
-  attribute :dealt_with_in_welsh, String
+  attribute :dealt_with_in_welsh, Boolean
   attribute :person_remand_status, String
   attribute :given_charges, Boolean
   attribute :initiation_type, String

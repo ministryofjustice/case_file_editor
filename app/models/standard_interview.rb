@@ -8,7 +8,7 @@ class StandardInterview < Interview
   attribute :legally_represented_by, PersonName
   attribute :legal_representative_firm, String
   attribute :interpreters, Array[PersonName]
-  attribute :special_warnings_given, String
+  attribute :special_warnings_given, Boolean
   attribute :no_comment_response, Boolean
   attribute :questions_asked, String
   attribute :admissions_made, String
