@@ -10,10 +10,7 @@ class FieldInspector
   end
 
   def fields(klass)
-    # Unfortunately, Virtus doesn't expose field names via its API
-    klass.attribute_set.instance_variable_get('@index').
-      select { |name, _| name.is_a?(Symbol) }.
-      map { |name, attr| Field.new(name, *decode_attr(attr)) }
+    klass.attribute_set.map { |a| Field.new(a.name, *decode_attr(a)) }
   end
 
 private
