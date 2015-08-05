@@ -19,6 +19,11 @@ RSpec.describe ArrayUniquenessValidator do
     expect(subject).to be_valid
   end
 
+  it 'passes validation if the array is empty' do
+    subject.wotsit = []
+    expect(subject).to be_valid
+  end
+
   it 'fails validation if an attribute is repeated' do
     subject.wotsit = ['This is OK', 'This is bad', 'This is bad']
     expect(subject).not_to be_valid

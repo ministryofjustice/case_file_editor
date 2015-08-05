@@ -19,6 +19,11 @@ RSpec.describe ArrayInclusionValidator do
     expect(subject).to be_valid
   end
 
+  it 'passes validation if the array is empty' do
+    subject.wotsit = []
+    expect(subject).to be_valid
+  end
+
   it 'fails validation if an attribute is not in the acceptable list' do
     subject.wotsit = %w[ OK bad ]
     expect(subject).not_to be_valid

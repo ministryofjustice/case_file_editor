@@ -19,6 +19,11 @@ RSpec.describe ArrayFormatValidator do
     expect(subject).to be_valid
   end
 
+  it 'passes validation if the array is empty' do
+    subject.wotsit = []
+    expect(subject).to be_valid
+  end
+
   it 'fails validation if an attribute does not match the format' do
     subject.wotsit = ['This is OK', 'This is bad']
     expect(subject).not_to be_valid
