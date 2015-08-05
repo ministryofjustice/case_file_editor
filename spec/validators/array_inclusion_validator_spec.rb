@@ -14,18 +14,13 @@ RSpec.describe ArrayInclusionValidator do
 
   subject { klass.new }
 
-  it 'passes validation if the attribute is in the acceptable list' do
-    subject.wotsit = 'OK'
+  it 'passes validation if all attributes are in the acceptable list' do
+    subject.wotsit = %w[ OK ]
     expect(subject).to be_valid
   end
 
-  it 'fails validation if the attribute is missing' do
-    subject.wotsit = nil
-    expect(subject).to be_valid
-  end
-
-  it 'fails validation if the attribute is not in the acceptable list' do
-    subject.wotsit = 'something else'
+  it 'fails validation if an attribute is not in the acceptable list' do
+    subject.wotsit = %w[ OK bad ]
     expect(subject).not_to be_valid
   end
 end
