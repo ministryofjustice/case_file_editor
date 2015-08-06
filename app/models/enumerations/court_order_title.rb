@@ -1,5 +1,6 @@
 module Enumerations
   CourtOrderTitle = %w[
+    no_orders_required
     antisocial_behaviour_order
     application_for_costs_against_convicted_defendant
     bind_over
@@ -39,7 +40,6 @@ module Enumerations
     forfeiture_of_obscene_publications
     immunity_agreements
     interim_receiving_order
-    no_orders_required
     notification_requirements_sex_offender_register
     obligatory_driving_disqualification
     parental_bind_order
