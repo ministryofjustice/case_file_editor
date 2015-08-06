@@ -56,6 +56,10 @@ Style/FormatString:
 Style/GuardClause:
   Enabled: false
 
+Metrics/ClassLength:
+  Exclude:
+    - 'app/models/**/*'
+
 Metrics/LineLength:
   Max: 80
   Exclude:
