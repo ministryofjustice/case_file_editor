@@ -1,6 +1,7 @@
 class PersonName < Name
   attribute :surname, String
-  attribute :given_name, Array[String]
+  validates :surname, presence: true
 
-  # TODO: validate 1+ unique given_name
+  attribute :given_name, Array[String]
+  validates :given_name, length: { minimum: 1 }
 end
