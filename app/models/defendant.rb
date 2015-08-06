@@ -50,7 +50,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :class_a_drug_test_provided
   validates :accepts_drugs_result,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :class_a_drug_test_provided
 
   attribute :has_eec_passports, Boolean
@@ -61,7 +61,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :has_eec_passports
   validates :eec_check_submitted,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :has_eec_passports
 
   attribute :eec_convictions_record_received, Boolean
@@ -69,7 +69,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :has_eec_passports
   validates :eec_convictions_record_received,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :has_eec_passports
 
   attribute :foreign_national_offender, Boolean
@@ -127,7 +127,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :pnc_check_performed
   validates :pnc_convictions,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :pnc_check_performed
 
   attribute :court_order_applications, Array[CourtOrder]
@@ -182,7 +182,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :initiated_as_charge?
   validates :signed_charge_sheet,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :initiated_as_charge?
 
   attribute :date_sent, Date
@@ -207,7 +207,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :conditional_bail?
   validates :bail_conditions_provided,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :conditional_bail?
 
   attribute :signed_for_bail, Boolean
@@ -215,7 +215,7 @@ class Defendant
     inclusion: { in: [true, false] },
     if: :unconditional_bail?
   validates :signed_for_bail,
-    absence: true,
+    inclusion: { in: [nil] },
     unless: :unconditional_bail?
 
   attribute :bail_conditions, Array[BailCondition]
