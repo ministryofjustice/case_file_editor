@@ -1,0 +1,2 @@
+class ExpertWitnessImporter < GenericImporter
+end

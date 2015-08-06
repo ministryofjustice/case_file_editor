@@ -3,6 +3,7 @@ class WitnessImporter < TypeBasedImporter
     {
       'NgapOtherWitness' => NgapOtherWitnessImporter,
       'StatementWitness' => StatementWitnessImporter,
+      'ExpertWitness' => ExpertWitnessImporter,
       'OrganisationVictim' => OrganisationVictimImporter,
       'PersonVictim' => PersonVictimImporter
     }
