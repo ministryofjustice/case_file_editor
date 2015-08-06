@@ -28,4 +28,9 @@ RSpec.describe ArrayFormatValidator do
     subject.wotsit = ['This is OK', 'This is bad']
     expect(subject).not_to be_valid
   end
+
+  it 'fails validation if an attribute is nil' do
+    subject.wotsit = ['This is OK', nil]
+    expect(subject).not_to be_valid
+  end
 end
