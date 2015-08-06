@@ -1,7 +1,7 @@
 module Enumerations
   InitiationType = %w[
-    charge_sheet
-    postal_requisition
+    charge
+    requisition
     summons
   ]
 end
