@@ -4,6 +4,7 @@
   "associated_case_urns": [ "AAAA1111115", "AAAA2222215" ],
   "version": 1,
   "brief_description_of_case": "A brief description of the case.",
+  "case_markers": ["DV"],
   "defendants": [
     {
       "name": {
