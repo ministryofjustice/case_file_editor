@@ -7,8 +7,7 @@ class Case
 
   attribute :pti_urn, String
   validates :pti_urn,
-    format: { with: VALID_URN },
-    presence: true
+    format: { with: VALID_URN }
 
   attribute :type, String, writer: :private, default: 'FirstHearingDCF'
 
@@ -68,8 +67,7 @@ class Case
 
   attribute :test_code, String
   validates :test_code,
-    inclusion: { in: Enumerations::TestCode },
-    presence: true
+    inclusion: { in: Enumerations::TestCode }
 
   attribute :pca_cps, Boolean
   validates :pca_cps, inclusion: { in: [true, false] }
