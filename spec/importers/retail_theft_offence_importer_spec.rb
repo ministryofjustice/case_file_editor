@@ -25,19 +25,21 @@ RSpec.describe RetailTheftOffenceImporter do
     }
   }
 
-  subject {
-    described_class.new(source).import
-  }
+  context 'imported object' do
+    subject {
+      described_class.new(source).import
+    }
 
-  it 'creates a RetailTheftOffence' do
-    expect(subject).to be_kind_of(RetailTheftOffence)
-  end
+    it 'is a RetailTheftOffence' do
+      expect(subject).to be_kind_of(RetailTheftOffence)
+    end
 
-  it 'imports top-level properties' do
-    expect(subject.cjs_offence_code).to eq('h410')
-  end
+    it 'has top-level properties' do
+      expect(subject.cjs_offence_code).to eq('h410')
+    end
 
-  it 'imports properties from the offence sub-object' do
-    expect(subject.offence_title).to eq('Offence Title from PNLD')
+    it 'has properties from the offence sub-object' do
+      expect(subject.offence_title).to eq('Offence Title from PNLD')
+    end
   end
 end

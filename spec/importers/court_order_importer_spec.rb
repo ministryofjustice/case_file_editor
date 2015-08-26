@@ -9,15 +9,17 @@ RSpec.describe CourtOrderImporter do
     }
   }
 
-  subject {
-    described_class.new(source).import
-  }
+  context 'imported object' do
+    subject {
+      described_class.new(source).import
+    }
 
-  it 'creates a CourtOrder' do
-    expect(subject).to be_kind_of(CourtOrder)
-  end
+    it 'is a CourtOrder' do
+      expect(subject).to be_kind_of(CourtOrder)
+    end
 
-  it 'imports the title' do
-    expect(subject.court_order_title).to eq('confiscation_order')
+    it 'has a title' do
+      expect(subject.court_order_title).to eq('confiscation_order')
+    end
   end
 end

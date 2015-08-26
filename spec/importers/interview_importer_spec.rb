@@ -5,23 +5,19 @@ RSpec.describe InterviewImporter do
     described_class.importer(source).import
   }
 
-  context 'standard interview' do
+  context 'imported standard interview' do
     let(:source) {
       { "type" => "StandardInterview" }
     }
 
-    it 'imports a standard interview' do
-      expect(subject).to be_kind_of(StandardInterview)
-    end
+    it { is_expected.to be_kind_of(StandardInterview) }
   end
 
-  context 'not interviewed' do
+  context 'imported "not interviewed" record' do
     let(:source) {
       { 'reason' => 'just because' }
     }
 
-    it 'imports a not interviewed object' do
-      expect(subject).to be_kind_of(NotInterviewed)
-    end
+    it { is_expected.to be_kind_of(NotInterviewed) }
   end
 end
