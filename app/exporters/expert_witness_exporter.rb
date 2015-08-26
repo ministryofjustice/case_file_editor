@@ -1,14 +1,7 @@
-class ExpertWitnessExporter < GenericExporter
+class ExpertWitnessExporter < WitnessSubclassExporter
   attributes \
-    :witness_id,
+    :name,
     :type,
     :witness_type,
-    :nature_of_involvement,
-    :evidence_they_can_give,
-    :special_measures,
-    :interpreter_required,
-    :interpreter_language_or_dialect,
-    :wish_to_use_video_link,
-    :name,
-    :date_of_birth
+    :evidence_they_can_give
 end

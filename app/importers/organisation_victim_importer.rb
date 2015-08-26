@@ -1,2 +1,2 @@
-class OrganisationVictimImporter < GenericImporter
+class OrganisationVictimImporter < VictimSubclassImporter
 end

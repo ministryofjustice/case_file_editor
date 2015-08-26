@@ -1,2 +1,2 @@
-class NgapOtherWitnessImporter < GenericImporter
+class NgapOtherWitnessImporter < WitnessSubclassImporter
 end

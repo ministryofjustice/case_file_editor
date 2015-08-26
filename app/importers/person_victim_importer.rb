@@ -1,2 +1,2 @@
-class PersonVictimImporter < GenericImporter
+class PersonVictimImporter < VictimSubclassImporter
 end

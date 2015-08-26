@@ -1,2 +1,2 @@
-class StatementWitnessImporter < GenericImporter
+class StatementWitnessImporter < WitnessSubclassImporter
 end

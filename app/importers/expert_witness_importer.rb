@@ -1,2 +1,2 @@
-class ExpertWitnessImporter < GenericImporter
+class ExpertWitnessImporter < WitnessSubclassImporter
 end
