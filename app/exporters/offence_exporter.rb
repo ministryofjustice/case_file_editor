@@ -1,7 +1,6 @@
 class OffenceExporter < GenericExporter
   attributes \
     :date,
-    :type,
     :from_date,
     :to_date,
     :offence_title,
@@ -13,4 +12,8 @@ class OffenceExporter < GenericExporter
     :committed_on_bail,
     :children_present,
     :ages_of_children
+
+  def export
+    super().merge('type' => 'Offence')
+  end
 end

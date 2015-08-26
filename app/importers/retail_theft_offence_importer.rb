@@ -1,2 +1,2 @@
-class RetailTheftOffenceImporter < GenericImporter
+class RetailTheftOffenceImporter < OffenceSubclassImporter
 end

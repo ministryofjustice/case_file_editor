@@ -1,2 +1,2 @@
-class AssaultOffenceImporter < GenericImporter
+class AssaultOffenceImporter < OffenceSubclassImporter
 end
