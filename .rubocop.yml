@@ -56,6 +56,10 @@ Style/FormatString:
 Style/GuardClause:
   Enabled: false
 
+Style/WordArray:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/ClassLength:
   Exclude:
     - 'app/models/**/*'
