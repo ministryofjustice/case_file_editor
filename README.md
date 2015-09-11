@@ -11,8 +11,7 @@ Most validations are implemented, with the exception of those that require
 knowledge of the whole case file. These are indicated with `# TODO` in the
 `app/models` directory.
 
-This is based on the JSON schema Version 1.1.0 Draft 2 with some tweaks to the
-JSON to fix errors identified.
+This is based on the JSON schema Version 1.1.0 Draft 5.
 
 An example file can be found in `spec/fixtures/example_1.json`.
 
