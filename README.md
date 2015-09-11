@@ -20,7 +20,7 @@ An example file can be found in `spec/fixtures/example_1.json`.
 #### Import
 
 ```ruby
-dcf = CaseImporter.new(JSON.parse(casefile_as_json))
+dcf = CaseImporter.new(JSON.parse(casefile_as_json)).import
 ```
 
 #### Validate
