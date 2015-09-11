@@ -1,5 +1,5 @@
 module Enumerations
   RetailCjsCode = %w[
-    h410
+    th68010
   ]
 end

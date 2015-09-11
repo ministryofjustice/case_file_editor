@@ -1,3 +1,32 @@
 module Enumerations
-  AssaultCjsCode = %w[ h4302 h901 ]
+  AssaultCjsCode = %w[
+    ba07004
+    ca05006
+    cd98070
+    cd98073
+    cj88001
+    cj88001a
+    cj88001b
+    cj88116
+    cj91010
+    cj91034
+    cy33049
+    of61016
+    of61017
+    of61022
+    of61050
+    of61059
+    of61060
+    of61095
+    of61102
+    of61102a
+    of61126
+    of61127
+    of61131
+    pl96001
+    pl96002
+    pl96004
+    th68025
+    tm04001
+  ]
 end
