@@ -1,0 +1,2 @@
+class FloatExporter < BasicObjectExporter
+end

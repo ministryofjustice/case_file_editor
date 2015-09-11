@@ -12,7 +12,7 @@ class Property
   attribute :description, String
   validates :description, presence: true
 
-  attribute :value, Integer
+  attribute :value, Float # Not ideal, but it's floating-point in the JSON too
   validates :value, presence: true
 
   attribute :damage_description, String
