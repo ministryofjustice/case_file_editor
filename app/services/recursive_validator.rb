@@ -1,4 +1,3 @@
-
 class RecursiveValidator
   def initialize(root)
     @root = root
@@ -11,9 +10,9 @@ class RecursiveValidator
 private
 
   def node_errors(node)
-    return {} unless node.respond_to?(:valid?)
+    return {} unless node.respond_to?(:validate)
 
-    node.valid?
+    node.validate
     node.attributes.inject(node.errors.messages) { |acc, (key, value)|
       acc.merge(attribute_errors(key, value))
     }
