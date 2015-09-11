@@ -11,7 +11,7 @@ class CourtOrder
     presence: true,
     if: :court_order_title_needed?
 
-  attribute :reason_for_the_request, String
+  attribute :reason_for_request, String
 
   attribute :draft_conditions, Array[String]
 

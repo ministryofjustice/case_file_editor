@@ -4,7 +4,7 @@ RSpec.describe CourtOrderImporter do
   let(:source) {
     {
       'court_order_title' => 'confiscation_order',
-      'reason_for_the_request' => 'These are the reasons for request 2',
+      'reason_for_request' => 'These are the reasons for request 2',
       'draft_conditions' => ['Condition 1', 'Condition 2']
     }
   }
