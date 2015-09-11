@@ -9,14 +9,14 @@ en:
       # The values :model, :attribute and :value are always available for interpolation
       # The value :count is available when applicable. Can be used for pluralization.
       messages:
-        inclusion: "is not included in the list"
+        inclusion: "is not one of the allowed values"
         exclusion: "is reserved"
         invalid: "is invalid"
-        confirmation: "doesn't match %{attribute}"
+        confirmation: "doesn’t match %{attribute}"
         accepted: "must be accepted"
-        empty: "can't be empty"
-        blank: "can't be blank"
-        present: "must be blank"
+        empty: "can’t be empty"
+        blank: "is required"
+        present: "must not be present"
         too_long:
           one: "is too long (maximum is 1 character)"
           other: "is too long (maximum is %{count} characters)"
