@@ -4,7 +4,6 @@
   "associated_case_urns": [ "AAAA1111115", "AAAA2222215" ],
   "version": 1,
   "brief_description_of_case": "A brief description of the case.",
-  "case_markers": ["DV"],
   "defendants": [
     {
       "name": {
@@ -25,7 +24,7 @@
           "retail_theft_offences": [
             {
               "type": "RetailTheftOffence",
-              "cjs_offence_code": "h410",
+              "cjs_offence_code": "th68010",
               "offence": {
                 "type": "Offence",
                 "from_date": "2014-01-01",
@@ -113,12 +112,12 @@
       "pnc_convictions": true,
       "court_order_applications": [
         {
-          "court_order_title":  "antisocial_behaviour_order" ,
-          "reason_for_the_request": "These are the reasons for request 1"
+          "court_order_title": "antisocial_behaviour_order",
+          "reason_for_request": "These are the reasons for request 1"
         },
         {
-          "court_order_title": "confiscation_order" ,
-          "reason_for_the_request": "These are the reasons for request 2",
+          "court_order_title": "confiscation_order",
+          "reason_for_request": "These are the reasons for request 2",
           "draft_conditions": [
             "Condition 1",
             "Condition 2"
@@ -139,16 +138,16 @@
       "dealt_with_in_welsh": false,
       "person_remand_status": "custody",
       "given_charges": true,
+      "signed_charge_sheet": true,
       "initiation_type": "charge",
       "interview": {
         "type": "StandardInterview",
         "date": "2014-01-01",
         "defendant_legally_represented": true,
-        "legally_represented_by":
-          {
-            "given_name": [ "Jennie", "Claire" ],
-            "surname": "Jones"
-          },
+        "legally_represented_by": {
+          "given_name": [ "Jennie", "Claire" ],
+          "surname": "Jones"
+        },
         "legal_representative_firm": "The firm",
         "interpreters": [
           {
@@ -181,14 +180,17 @@
         "given_name": [ "Jennie", "Claire" ],
         "surname": "Jones"
       },
-      "nature_of_involvement": "Nature of involvement",
-      "evidence_they_can_give": "Evidence they can give",
-      "wish_to_use_video_link": false,
+      "witness": {
+        "nature_of_involvement": "Nature of involvement",
+        "evidence_they_can_give": "Evidence they can give"
+      },
+
       "date_of_birth": "1980-08-01",
       "visually_recorded_interview": false
     }
   ],
   "common_law_disclosure": {
+    "type": "CommonLawNotForDisclosure",
     "reporting_officer": {
       "surname": "Collins",
       "given_name": [ "Simon" ]
@@ -208,21 +210,25 @@
       "url": "http://test.gov.uk/askdasdjds/asds"
     }
   ],
-    "expert_evidence": false,
-    "test_code": "full_code_test",
-    "pca_cps": false,
-    "safeguarding_assessment": {
-        "assessment_completed": true,
-        "safeguarding_level": "moderate"
-    },
-    "officer_in_the_case": {
-        "surname": "Smith",
-        "given_name": [ "Penny" ]
-    },
-    "signatory_name": {
-        "surname": "Collins",
-        "given_name": [ "Simon" ]
-    },
-    "date": "2014-01-01",
-    "signatory_rank": "Sergeant"
+  "expert_evidence": false,
+  "test_code": "full_code_test",
+  "pca_cps": false,
+  "property": [
+    {
+      "property_id": 1,
+      "property_action": "stolen_not_recovered",
+      "description": "Description of property here",
+      "value": 10.52
+    }
+  ],
+  "officer_in_the_case": {
+    "surname": "Smith",
+    "given_name": [ "Penny" ]
+  },
+  "signatory_name": {
+    "surname": "Collins",
+    "given_name": [ "Simon" ]
+  },
+  "date": "2014-01-01",
+  "signatory_rank": "Sergeant"
 }
