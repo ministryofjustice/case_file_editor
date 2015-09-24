@@ -47,10 +47,14 @@ class Case
   validates :likely_case_progression,
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
   validates :likely_case_progression,
-    presence: true,
+    presence: {
+      message: 'must be present when there is a guilty anticipated plea'
+    },
     if: :anticipated_guilty_plea?
   validates :likely_case_progression,
-    absence: true,
+    absence: {
+      message: 'must be absent when there is no guilty anticipated plea'
+    },
     unless: :anticipated_guilty_plea?
 
   attribute :multimedia_evidence, Array[Mme]
@@ -58,18 +62,28 @@ class Case
 
   attribute :is_hearsay, Boolean
   validates :is_hearsay,
-    inclusion: { in: [true, false] },
+    inclusion: {
+      in: [true, false],
+      message: 'must be present when there is a guilty anticipated plea'
+    },
     if: :anticipated_guilty_plea?
   validates :is_hearsay,
-    inclusion: { in: [nil] },
+    inclusion: {
+      in: [nil],
+      message: 'must be absent when there is no guilty anticipated plea'
+    },
     unless: :anticipated_guilty_plea?
 
   attribute :hearsay_details, String
   validates :hearsay_details,
-    presence: true,
+    presence: {
+      message: 'must be present when case is hearsay'
+    },
     if: :is_hearsay
   validates :hearsay_details,
-    absence: true,
+    absence: {
+      message: 'must be absent when case is not hearsay'
+    },
     unless: :is_hearsay
 
   attribute :expert_evidence, Boolean
@@ -84,10 +98,14 @@ class Case
 
   attribute :safeguarding_assessment, SafeguardingAssessment
   validates :safeguarding_assessment,
-    presence: true,
+    presence: {
+      message: 'must be present when case is domestic violence'
+    },
     if: :domestic_violence?
   validates :safeguarding_assessment,
-    absence: true,
+    absence: {
+      message: 'must be absent when case is not domestic violence'
+    },
     unless: :domestic_violence?
 
   attribute :property, Array[Property]

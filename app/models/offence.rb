@@ -34,7 +34,10 @@ class Offence < Event
 
   attribute :ages_of_children, Array[String]
   validates :ages_of_children,
-    length: { minimum: 1 },
+    length: {
+      minimum: 1,
+      message: 'at least one is required if there were children present'
+    },
     if: :children_present
 
   def anticipated_guilty_plea?

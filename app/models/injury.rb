@@ -16,12 +16,16 @@ class Injury
 
   attribute :image_description, String
   validates :image_description,
-    presence: true,
+    presence: {
+      message: 'must be present if images were taken'
+    },
     if: :images_taken
 
   attribute :reason_images_not_taken, String
   validates :reason_images_not_taken,
-    presence: true,
+    presence: {
+      message: 'must be present if images are not provided'
+    },
     unless: :images_provided?
 
   attribute :received_medical_treatment, Boolean
@@ -29,7 +33,9 @@ class Injury
 
   attribute :details_of_medical_treatment, String
   validates :details_of_medical_treatment,
-    presence: true,
+    presence: {
+      message: 'must be present if medical treatment was received'
+    },
     if: :received_medical_treatment
 
   attribute :injuries_visible, Boolean

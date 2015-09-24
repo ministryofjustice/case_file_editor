@@ -8,7 +8,9 @@ class CourtOrder
 
   attribute :court_order_title_other, String
   validates :court_order_title_other,
-    presence: true,
+    presence: {
+      message: 'must be present if court order title is ‘other’'
+    },
     if: :court_order_title_needed?
 
   attribute :reason_for_request, String

@@ -17,26 +17,38 @@ class Property
 
   attribute :damage_description, String
   validates :damage_description,
-    presence: true,
+    presence: {
+      message: 'must be present if item was damaged'
+    },
     if: :damaged?
   validates :damage_description,
-    absence: true,
+    absence: {
+      message: 'must be absent unless item was damaged'
+    },
     unless: :damaged?
 
   attribute :damage_cost, String
   validates :damage_cost,
-    presence: true,
+    presence: {
+      message: 'must be present if item was damaged'
+    },
     if: :damaged?
   validates :damage_cost,
-    absence: true,
+    absence: {
+      message: 'must be absent unless item was damaged'
+    },
     unless: :damaged?
 
   attribute :recovered_from, String
   validates :recovered_from,
-    presence: true,
+    presence: {
+      message: 'must be present if item was recovered'
+    },
     if: :recovered?
   validates :recovered_from,
-    absence: true,
+    absence: {
+      message: 'must be absent unless item was recovered'
+    },
     unless: :recovered?
 
   def damaged?

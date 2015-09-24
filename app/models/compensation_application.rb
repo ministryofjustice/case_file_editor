@@ -15,18 +15,30 @@ class CompensationApplication
 
   attribute :details_of_expenses, String
   validates :details_of_expenses,
-    inclusion: { in: [true, false] },
+    inclusion: {
+      in: [true, false],
+      message: 'must be present when there are other expenses'
+    },
     if: :other_expenses?
   validates :details_of_expenses,
-    inclusion: { in: [nil] },
+    inclusion: {
+      in: [nil],
+      message: 'must be absent when there are no other expenses'
+    },
     unless: :other_expenses?
 
   attribute :details_of_other_losses, String
   validates :details_of_other_losses,
-    inclusion: { in: [true, false] },
+    inclusion: {
+      in: [true, false],
+      message: 'must be present when there are other losses'
+    },
     if: :other_losses?
   validates :details_of_other_losses,
-    inclusion: { in: [nil] },
+    inclusion: {
+      in: [nil],
+      message: 'must be absent when there are no other losses'
+    },
     unless: :other_losses?
 
   attribute :amount_compensation_requested, Integer

@@ -14,7 +14,9 @@ class StatementWitness < Witness
 
   attribute :reason_dob_not_provided, String
   validates :reason_dob_not_provided,
-    presence: true,
+    presence: {
+      message: 'must be present unless date of birth is present'
+    },
     unless: :date_of_birth
 
   attribute :visually_recorded_interview, Boolean
@@ -22,10 +24,14 @@ class StatementWitness < Witness
 
   attribute :url, String
   validates :url,
-    presence: true,
+    presence: {
+      message: 'must be present if visually recorded'
+    },
     if: :visually_recorded_interview
   validates :url,
-    absence: true,
+    absence: {
+      message: 'must be absent unless visually recorded'
+    },
     unless: :visually_recorded_interview
 
   attribute :rank, String

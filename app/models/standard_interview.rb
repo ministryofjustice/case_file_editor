@@ -12,12 +12,16 @@ class StandardInterview < Interview
 
   attribute :legally_represented_by, PersonName
   validates :legally_represented_by,
-    presence: true,
+    presence: {
+      message: 'must be present if represented'
+    },
     if: :defendant_legally_represented
 
   attribute :legal_representative_firm, String
   validates :legal_representative_firm,
-    presence: true,
+    presence: {
+      message: 'must be present if represented'
+    },
     if: :defendant_legally_represented
 
   attribute :interpreters, Array[PersonName]
@@ -31,10 +35,14 @@ class StandardInterview < Interview
 
   attribute :questions_asked, String
   validates :questions_asked,
-    presence: true,
+    presence: {
+      message: 'must be present if response was no comment'
+    },
     if: :no_comment_response
   validates :questions_asked,
-    absence: true,
+    absence: {
+      message: 'must be absent unless response was no comment'
+    },
     unless: :no_comment_response
 
   attribute :admissions_made, String

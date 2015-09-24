@@ -18,18 +18,30 @@ class Mme < Event
 
   attribute :relied_upon_trial, Boolean
   validates :relied_upon_trial,
-    inclusion: { in: [true] },
+    inclusion: {
+      in: [true],
+      message: 'must be true unless relied upon at sentence'
+    },
     unless: :relied_upon_sentence
   validates :relied_upon_trial,
-    inclusion: { in: [false] },
+    inclusion: {
+      in: [false],
+      message: 'must be false if relied upon at sentence'
+    },
     if: :relied_upon_sentence
 
   attribute :relied_upon_sentence, Boolean
   validates :relied_upon_sentence,
-    inclusion: { in: [true] },
+    inclusion: {
+      in: [true],
+      message: 'must be true unless relied upon at trial'
+    },
     unless: :relied_upon_trial
   validates :relied_upon_sentence,
-    inclusion: { in: [false] },
+    inclusion: {
+      in: [false],
+      message: 'must be false if relied upon at trial'
+    },
     if: :relied_upon_trial
 
   attribute :description_of_what_is_contained_in_multimedia_evidence, String

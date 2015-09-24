@@ -7,18 +7,26 @@ class SafeguardingAssessment
 
   attribute :reasons_not_completed, String
   validates :reasons_not_completed,
-    presence: true,
+    presence: {
+      message: 'must be present unless assessment completed'
+    },
     unless: :assessment_completed
   validates :reasons_not_completed,
-    absence: true,
+    absence: {
+      message: 'must be absent if assessment completed'
+    },
     if: :assessment_completed
 
   attribute :safeguarding_level, String
   validates :safeguarding_level,
-    inclusion: { in: Enumerations::SafeguardingLevel },
-    presence: true,
+    inclusion: {
+      in: Enumerations::SafeguardingLevel,
+      message: 'must be a valid safeguarding level if assessment completed'
+    },
     if: :assessment_completed
   validates :safeguarding_level,
-    absence: true,
+    absence: {
+      message: 'must be absent unless assessment completed'
+    },
     unless: :assessment_completed
 end

@@ -25,7 +25,9 @@ class Witness
 
   attribute :interpreter_language_or_dialect, String
   validates :interpreter_language_or_dialect,
-    presence: true,
+    presence: {
+      message: 'must be present if interpreter required'
+    },
     if: :interpreter_required
 
   attribute :wish_to_use_video_link, Boolean
