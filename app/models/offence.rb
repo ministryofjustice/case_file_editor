@@ -36,4 +36,8 @@ class Offence < Event
   validates :ages_of_children,
     length: { minimum: 1 },
     if: :children_present
+
+  def anticipated_guilty_plea?
+    anticipated_plea == 'guilty'
+  end
 end

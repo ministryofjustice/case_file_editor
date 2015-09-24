@@ -46,13 +46,23 @@ class Case
   attribute :likely_case_progression, String
   validates :likely_case_progression,
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
-  # TODO: Must be provided iff anticipated_plea = not_guilty > 0
+  validates :likely_case_progression,
+    presence: true,
+    if: :anticipated_guilty_plea?
+  validates :likely_case_progression,
+    absence: true,
+    unless: :anticipated_guilty_plea?
 
   attribute :multimedia_evidence, Array[Mme]
   validates :multimedia_evidence, array_uniqueness: true
 
   attribute :is_hearsay, Boolean
-  # TODO: Must be provided iff anticipated_plea = not_guilty > 0
+  validates :is_hearsay,
+    inclusion: { in: [true, false] },
+    if: :anticipated_guilty_plea?
+  validates :is_hearsay,
+    inclusion: { in: [nil] },
+    unless: :anticipated_guilty_plea?
 
   attribute :hearsay_details, String
   validates :hearsay_details,
@@ -98,5 +108,9 @@ class Case
 
   def domestic_violence?
     case_markers.include?('DV')
+  end
+
+  def anticipated_guilty_plea?
+    defendants.any?(&:anticipated_guilty_plea?)
   end
 end
