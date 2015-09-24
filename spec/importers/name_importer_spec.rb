@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe NameImporter do
   subject {
     described_class.importer(source).import

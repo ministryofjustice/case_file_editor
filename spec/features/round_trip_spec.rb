@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'Round-trip importing and exporting' do
   let(:dcf) {
     CaseImporter.new(source).import

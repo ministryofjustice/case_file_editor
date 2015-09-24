@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe OrganisationVictimExporter do
   let(:victim) {
     OrganisationVictim.new(

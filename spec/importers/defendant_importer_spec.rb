@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe DefendantImporter do
   subject {
     described_class.new(source).import

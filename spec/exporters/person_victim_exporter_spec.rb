@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe PersonVictimExporter do
   let(:victim) {
     PersonVictim.new(

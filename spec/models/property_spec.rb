@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Property do
   subject { described_class.new }
 

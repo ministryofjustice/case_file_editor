@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RetailTheftOffenceImporter do
   let(:source) {
     {

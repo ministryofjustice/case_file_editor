@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe NgapOtherWitnessExporter do
   let(:witness) {
     NgapOtherWitness.new(

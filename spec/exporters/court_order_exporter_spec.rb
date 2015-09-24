@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe CourtOrderExporter do
   let(:court_order) {
     CourtOrder.new(

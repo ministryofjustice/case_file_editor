@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe InterviewImporter do
   subject {
     described_class.importer(source).import

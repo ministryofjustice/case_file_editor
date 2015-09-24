@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe StatementWitnessImporter do
   let(:source) {
     {

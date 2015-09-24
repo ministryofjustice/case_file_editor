@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe RetailTheftOffenceExporter do
   let(:offence) {
     RetailTheftOffence.new(

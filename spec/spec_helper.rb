@@ -6,8 +6,14 @@ SimpleCov.start 'rails' do
 end
 SimpleCov.minimum_coverage 100
 
+# Minimal auto-load for quicker specs. This avoids loading the whole of Rails
+# solely for dependency resolution.
+autoload :ActiveModel, 'active_model'
+autoload :Virtus, 'virtus'
+require 'active_support/dependencies'
 Dir[File.expand_path('../../{lib,app/*}', __FILE__)].each do |path|
-  $LOAD_PATH.unshift(path) unless $LOAD_PATH.include?(path)
+  next unless File.directory?(path)
+  ActiveSupport::Dependencies.autoload_paths << path
 end
 
 RSpec.configure do |config|

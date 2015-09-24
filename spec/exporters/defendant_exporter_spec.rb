@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe DefendantExporter do
   subject {
     described_class.new(defendant).export

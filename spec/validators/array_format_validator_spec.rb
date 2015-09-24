@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe ArrayFormatValidator do
   let(:klass) {
     Class.new do

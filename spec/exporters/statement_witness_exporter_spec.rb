@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe StatementWitnessExporter do
   let(:witness) {
     StatementWitness.new(
