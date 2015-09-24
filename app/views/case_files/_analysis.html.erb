@@ -1,0 +1,21 @@
+<% if @exception %>
+  <div class="row">
+    <h2>Exception</h2>
+  </div>
+
+  <div class="row">
+    <pre><%= @exception.pretty_inspect %></pre>
+  </div>
+<% end %>
+
+<div class="row">
+  <h2>Errors</h2>
+</div>
+
+<div class="row">
+<% if @errors && @errors.any? %>
+  <%= render partial: 'errors', locals: { errors: @errors } %>
+<% else %>
+  <p>None</p>
+<% end %>
+</div>
