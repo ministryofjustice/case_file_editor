@@ -1,6 +1,4 @@
 RSpec.describe Defendant do
-  subject { described_class.new }
-
   describe 'initiated_as_charge?' do
     it 'is true if initiation_type is charge' do
       subject.initiation_type = 'charge'

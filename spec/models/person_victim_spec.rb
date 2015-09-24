@@ -1,6 +1,4 @@
 RSpec.describe PersonVictim do
-  subject { described_class.new }
-
   describe 'victim_to_read?' do
     it 'is true if victim wishes to attend court and read' do
       subject.victim_wish_to_attend_court = 'yes_victim_to_read'

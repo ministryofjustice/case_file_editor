@@ -1,6 +1,4 @@
 RSpec.describe Case do
-  subject { described_class.new }
-
   describe 'domestic_violence?' do
     it 'is true if there is a DV case marker' do
       subject.case_markers << 'DV'

@@ -1,6 +1,4 @@
 RSpec.describe CompensationApplication do
-  subject { described_class.new }
-
   describe 'other_expenses?' do
     it 'is true if reasons for application include other_expenses' do
       subject.reasons_for_application << 'other_expenses'

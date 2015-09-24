@@ -1,6 +1,4 @@
 RSpec.describe Property do
-  subject { described_class.new }
-
   describe 'damaged?' do
     it 'is true if property_action is damaged' do
       subject.property_action = 'damaged'

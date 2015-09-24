@@ -1,6 +1,4 @@
 RSpec.describe Injury do
-  subject { described_class.new }
-
   describe 'images_provided?' do
     it 'is true if there is a description' do
       subject.image_description = 'blah'

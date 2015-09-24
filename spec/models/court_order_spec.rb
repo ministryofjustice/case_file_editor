@@ -1,6 +1,4 @@
 RSpec.describe CourtOrder do
-  subject { described_class.new }
-
   describe 'court_order_title_needed?' do
     it 'is true if court_order_title is other' do
       subject.court_order_title = 'other'
