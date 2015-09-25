@@ -113,4 +113,9 @@ class Case
   def anticipated_guilty_plea?
     defendants.any?(&:anticipated_guilty_plea?)
   end
+
+  def young_witness?
+    return false unless date
+    witnesses.any? { |w| w.respond_to?(:age) && w.age(date) <= 10 }
+  end
 end
