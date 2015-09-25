@@ -1,4 +1,6 @@
 class ExpertWitness < Witness
+  include AgeCalculation
+
   attribute :name, Name
   validates :name, presence: true
 

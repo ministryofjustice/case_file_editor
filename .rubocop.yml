@@ -113,4 +113,8 @@ RSpec/DescribeClass:
   Exclude:
     - 'spec/features/**/*'
 
+RSpec/DescribedClass:
+  Exclude:
+    - 'spec/models/concerns/**/*'
+
 require: rubocop-rspec

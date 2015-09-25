@@ -3,6 +3,7 @@ require_dependency 'enumerations/c_c_not_suitable_reason'
 class Defendant
   include Virtus.model
   include ActiveModel::Validations
+  include AgeCalculation
 
   attribute :defendant_id, String
 
