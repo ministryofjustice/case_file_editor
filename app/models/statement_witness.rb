@@ -10,8 +10,6 @@ class StatementWitness < Witness
   validates :witness_type,
     array_inclusion: { in: Enumerations::StatementWitnessType }
 
-  attribute :date_of_birth, Date
-
   attribute :reason_dob_not_provided, String
   validates :reason_dob_not_provided,
     presence: true,

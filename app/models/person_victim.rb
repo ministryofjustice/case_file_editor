@@ -6,8 +6,6 @@ class PersonVictim < Victim
   attribute :name, Name
   validates :name, presence: true
 
-  attribute :date_of_birth, Date
-
   attribute :reason_dob_not_provided, String
   validates :reason_dob_not_provided,
     presence: true,
