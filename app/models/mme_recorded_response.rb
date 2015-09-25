@@ -4,7 +4,7 @@ class MmeRecordedResponse < MmeResponse
   attribute :id, String
   validates :id, presence: true
 
-  attribute :defendant_shown, Boolean
+  attribute :defendant_shown, Virtus::Attribute::Boolean
   validates :defendant_shown, inclusion: { in: [true, false] }
 
   attribute :reasons_if_not_shown, String
@@ -21,11 +21,11 @@ class MmeRecordedResponse < MmeResponse
     },
     if: :defendant_shown
 
-  attribute :is_defendant_believed_to_be_in_the_mme, Boolean
+  attribute :is_defendant_believed_to_be_in_the_mme, Virtus::Attribute::Boolean
   validates :is_defendant_believed_to_be_in_the_mme,
     inclusion: { in: [true, false] }
 
-  attribute :defendant_admits_being_in_mme, Boolean
+  attribute :defendant_admits_being_in_mme, Virtus::Attribute::Boolean
   validates :is_defendant_believed_to_be_in_the_mme,
     inclusion: {
       in: [true, false],

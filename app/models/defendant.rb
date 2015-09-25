@@ -19,7 +19,7 @@ class Defendant
     },
     if: :initiated_as_charge?
 
-  attribute :conditional_caution_considered, Boolean
+  attribute :conditional_caution_considered, Virtus::Attribute::Boolean
   validates :conditional_caution_considered, inclusion: { in: [true] }
 
   attribute :cc_not_suitable_reasons, Array[String]
@@ -36,7 +36,7 @@ class Defendant
   attribute :occupation, String
   validates :occupation, presence: true
 
-  attribute :class_a_drug_test_provided, Boolean
+  attribute :class_a_drug_test_provided, Virtus::Attribute::Boolean
   validates :class_a_drug_test_provided, inclusion: { in: [true, false] }
 
   attribute :class_a_drug_test_details, String
@@ -51,7 +51,7 @@ class Defendant
     },
     unless: :class_a_drug_test_provided
 
-  attribute :accepts_drugs_result, Boolean
+  attribute :accepts_drugs_result, Virtus::Attribute::Boolean
   validates :accepts_drugs_result,
     inclusion: {
       in: [true, false],
@@ -65,10 +65,10 @@ class Defendant
     },
     unless: :class_a_drug_test_provided
 
-  attribute :has_eec_passports, Boolean
+  attribute :has_eec_passports, Virtus::Attribute::Boolean
   validates :has_eec_passports, inclusion: { in: [true, false] }
 
-  attribute :eec_check_submitted, Boolean
+  attribute :eec_check_submitted, Virtus::Attribute::Boolean
   validates :eec_check_submitted,
     inclusion: {
       in: [true, false],
@@ -82,7 +82,7 @@ class Defendant
     },
     unless: :has_eec_passports
 
-  attribute :eec_convictions_record_received, Boolean
+  attribute :eec_convictions_record_received, Virtus::Attribute::Boolean
   validates :eec_convictions_record_received,
     inclusion: {
       in: [true, false],
@@ -96,10 +96,10 @@ class Defendant
     },
     unless: :has_eec_passports
 
-  attribute :foreign_national_offender, Boolean
+  attribute :foreign_national_offender, Virtus::Attribute::Boolean
   validates :foreign_national_offender, inclusion: { in: [true, false] }
 
-  attribute :breach_of_order, Boolean
+  attribute :breach_of_order, Virtus::Attribute::Boolean
   validates :breach_of_order, inclusion: { in: [true, false] }
 
   attribute :breach_order_date_issued, Date
@@ -162,10 +162,10 @@ class Defendant
 
   attribute :breach_of_bail, BreachOfBail
 
-  attribute :pnc_check_performed, Boolean
+  attribute :pnc_check_performed, Virtus::Attribute::Boolean
   validates :pnc_check_performed, inclusion: { in: [true, false] }
 
-  attribute :pnc_convictions, Boolean
+  attribute :pnc_convictions, Virtus::Attribute::Boolean
   validates :pnc_convictions,
     inclusion: {
       in: [true, false],
@@ -182,7 +182,7 @@ class Defendant
   attribute :court_order_applications, Array[CourtOrder]
   validates :court_order_applications, length: { minimum: 1 }
 
-  attribute :interpreter_required, Boolean
+  attribute :interpreter_required, Virtus::Attribute::Boolean
   validates :interpreter_required, inclusion: { in: [true, false] }
 
   attribute :interpreter_language_or_dialect, String
@@ -209,7 +209,7 @@ class Defendant
     },
     unless: :mme_recorded_responses_present?
 
-  attribute :notice_to_provide_bad_character_evidence, Boolean
+  attribute :notice_to_provide_bad_character_evidence, Virtus::Attribute::Boolean
   validates :notice_to_provide_bad_character_evidence,
     inclusion: {
       in: [true, false],
@@ -235,21 +235,21 @@ class Defendant
     },
     unless: :notice_to_provide_bad_character_evidence
 
-  attribute :dealt_with_in_welsh, Boolean
+  attribute :dealt_with_in_welsh, Virtus::Attribute::Boolean
   validates :dealt_with_in_welsh, inclusion: { in: [true, false] }
 
   attribute :person_remand_status, String
   validates :person_remand_status,
     inclusion: { in: Enumerations::PersonRemandStatus }
 
-  attribute :given_charges, Boolean
+  attribute :given_charges, Virtus::Attribute::Boolean
   validates :given_charges, inclusion: { in: [true, false] }
 
   attribute :initiation_type, String
   validates :initiation_type,
     inclusion: { in: Enumerations::InitiationType }
 
-  attribute :signed_charge_sheet, Boolean
+  attribute :signed_charge_sheet, Virtus::Attribute::Boolean
   validates :signed_charge_sheet,
     inclusion: {
       in: [true, false],
@@ -275,7 +275,7 @@ class Defendant
     },
     unless: :initiated_as_requisition?
 
-  attribute :parent_guardian_copy, Boolean
+  attribute :parent_guardian_copy, Virtus::Attribute::Boolean
   # TODO: validate present iff under 18 (TBD)
 
   attribute :parent_gardian_date_sent, Date
@@ -286,7 +286,7 @@ class Defendant
     if: :parent_guardian_copy
   # TODO: validate present iff under 18 (TBD)
 
-  attribute :bail_conditions_provided, Boolean
+  attribute :bail_conditions_provided, Virtus::Attribute::Boolean
   validates :bail_conditions_provided,
     inclusion: {
       in: [true, false],
@@ -300,7 +300,7 @@ class Defendant
     },
     unless: :conditional_bail?
 
-  attribute :signed_for_bail, Boolean
+  attribute :signed_for_bail, Virtus::Attribute::Boolean
   validates :signed_for_bail,
     inclusion: {
       in: [true, false],

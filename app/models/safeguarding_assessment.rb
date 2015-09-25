@@ -2,7 +2,7 @@ class SafeguardingAssessment
   include Virtus.model
   include ActiveModel::Validations
 
-  attribute :assessment_completed, Boolean
+  attribute :assessment_completed, Virtus::Attribute::Boolean
   validates :assessment_completed, inclusion: { in: [true, false] }
 
   attribute :reasons_not_completed, String

@@ -7,7 +7,7 @@ class StandardInterview < Interview
   attribute :date, Date
   validates :date, presence: true
 
-  attribute :defendant_legally_represented, Boolean
+  attribute :defendant_legally_represented, Virtus::Attribute::Boolean
   validates :defendant_legally_represented, inclusion: { in: [true, false] }
 
   attribute :legally_represented_by, PersonName
@@ -27,10 +27,10 @@ class StandardInterview < Interview
   attribute :interpreters, Array[PersonName]
   validates :interpreters, array_uniqueness: true
 
-  attribute :special_warnings_given, Boolean
+  attribute :special_warnings_given, Virtus::Attribute::Boolean
   validates :special_warnings_given, inclusion: { in: [true, false] }
 
-  attribute :no_comment_response, Boolean
+  attribute :no_comment_response, Virtus::Attribute::Boolean
   validates :no_comment_response, inclusion: { in: [true, false] }
 
   attribute :questions_asked, String

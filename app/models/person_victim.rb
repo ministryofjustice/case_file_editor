@@ -15,12 +15,12 @@ class PersonVictim < Victim
     },
     unless: :date_of_birth
 
-  attribute :visually_recorded_interview, Boolean
+  attribute :visually_recorded_interview, Virtus::Attribute::Boolean
   validates :visually_recorded_interview, inclusion: { in: [true, false] }
 
   attribute :url, String
 
-  attribute :special_measures, Boolean
+  attribute :special_measures, Virtus::Attribute::Boolean
   validates :special_measures,
     inclusion: {
       in: [true, false],
@@ -30,7 +30,7 @@ class PersonVictim < Victim
 
   attribute :injuries, Array[Injury]
 
-  attribute :wish_to_use_video_link, Boolean
+  attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
   validates :wish_to_use_video_link,
     inclusion: {
       in: [true, false],

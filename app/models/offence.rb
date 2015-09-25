@@ -26,10 +26,10 @@ class Offence < Event
   attribute :anticipated_plea, String
   validates :anticipated_plea, inclusion: { in: Enumerations::PleaStatusCode }
 
-  attribute :committed_on_bail, Boolean
+  attribute :committed_on_bail, Virtus::Attribute::Boolean
   validates :committed_on_bail, inclusion: { in: [true, false] }
 
-  attribute :children_present, Boolean
+  attribute :children_present, Virtus::Attribute::Boolean
   # TODO: validate present if case is DV
 
   attribute :ages_of_children, Array[String]

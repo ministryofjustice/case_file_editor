@@ -1,7 +1,7 @@
 class MmeNotRecordedResponse < MmeResponse
   attribute :type, String, writer: :private, default: 'MmeNotRecordedResponse'
 
-  attribute :defendant_admitted_to_location, Boolean
+  attribute :defendant_admitted_to_location, Virtus::Attribute::Boolean
   validates :defendant_admitted_to_location, inclusion: { in: [true, false] }
 
   attribute :how_is_identification_established, String

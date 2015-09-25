@@ -44,7 +44,7 @@ class CompensationApplication
   attribute :amount_compensation_requested, Integer
   validates :amount_compensation_requested, presence: true
 
-  attribute :is_estimate, Boolean
+  attribute :is_estimate, Virtus::Attribute::Boolean
   validates :is_estimate, inclusion: { in: [true, false] }
 
   def other_expenses?

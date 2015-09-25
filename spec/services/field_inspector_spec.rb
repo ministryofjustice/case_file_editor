@@ -13,7 +13,7 @@ RSpec.describe FieldInspector do
       include Virtus.model
 
       attribute :a, String
-      attribute :b, Boolean
+      attribute :b, Virtus::Attribute::Boolean
       attribute :c, DateTime
       attribute :d, Date
       attribute :e, Bar

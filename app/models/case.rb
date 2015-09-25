@@ -60,7 +60,7 @@ class Case
   attribute :multimedia_evidence, Array[Mme]
   validates :multimedia_evidence, array_uniqueness: true
 
-  attribute :is_hearsay, Boolean
+  attribute :is_hearsay, Virtus::Attribute::Boolean
   validates :is_hearsay,
     inclusion: {
       in: [true, false],
@@ -86,14 +86,14 @@ class Case
     },
     unless: :is_hearsay
 
-  attribute :expert_evidence, Boolean
+  attribute :expert_evidence, Virtus::Attribute::Boolean
   validates :expert_evidence, inclusion: { in: [true, false] }
 
   attribute :test_code, String
   validates :test_code,
     inclusion: { in: Enumerations::TestCode }
 
-  attribute :pca_cps, Boolean
+  attribute :pca_cps, Virtus::Attribute::Boolean
   validates :pca_cps, inclusion: { in: [true, false] }
 
   attribute :safeguarding_assessment, SafeguardingAssessment

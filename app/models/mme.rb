@@ -13,10 +13,10 @@ class Mme < Event
   validates :type,
     inclusion: { in: Enumerations::MmeType }
 
-  attribute :evidential_value, Boolean
+  attribute :evidential_value, Virtus::Attribute::Boolean
   validates :evidential_value, inclusion: { in: [true] }
 
-  attribute :relied_upon_trial, Boolean
+  attribute :relied_upon_trial, Virtus::Attribute::Boolean
   validates :relied_upon_trial,
     inclusion: {
       in: [true],
@@ -30,7 +30,7 @@ class Mme < Event
     },
     if: :relied_upon_sentence
 
-  attribute :relied_upon_sentence, Boolean
+  attribute :relied_upon_sentence, Virtus::Attribute::Boolean
   validates :relied_upon_sentence,
     inclusion: {
       in: [true],
