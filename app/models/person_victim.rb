@@ -10,9 +10,7 @@ class PersonVictim < Victim
 
   attribute :reason_dob_not_provided, String
   validates :reason_dob_not_provided,
-    presence: {
-      message: 'must be present unless date of birth is present'
-    },
+    presence: true,
     unless: :date_of_birth
 
   attribute :visually_recorded_interview, Virtus::Attribute::Boolean
@@ -22,18 +20,14 @@ class PersonVictim < Victim
 
   attribute :special_measures, Virtus::Attribute::Boolean
   validates :special_measures,
-    boolean_presence: {
-      message: 'must be present if victim is to attend and read'
-    },
+    boolean_presence: true,
     if: :victim_to_read?
 
   attribute :injuries, Array[Injury]
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
   validates :wish_to_use_video_link,
-    boolean_presence: {
-      message: 'must be present if victim is to attend and read'
-    },
+    boolean_presence: true,
     if: :victim_to_read?
 
   def victim_to_read?

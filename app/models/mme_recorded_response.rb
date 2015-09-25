@@ -9,16 +9,12 @@ class MmeRecordedResponse < MmeResponse
 
   attribute :reasons_if_not_shown, String
   validates :reasons_if_not_shown,
-    presence: {
-      message: 'must be present unless shown to defendant'
-    },
+    presence: true,
     unless: :defendant_shown
 
   attribute :defendant_comments_if_shown, String
   validates :defendant_comments_if_shown,
-    presence: {
-      message: 'must be present if shown to defendant'
-    },
+    presence: true,
     if: :defendant_shown
 
   attribute :is_defendant_believed_to_be_in_the_mme, Virtus::Attribute::Boolean
@@ -27,20 +23,14 @@ class MmeRecordedResponse < MmeResponse
 
   attribute :defendant_admits_being_in_mme, Virtus::Attribute::Boolean
   validates :is_defendant_believed_to_be_in_the_mme,
-    boolean_presence: {
-      message: 'must be present if shown to defendant and defendant believed to be in the MME'
-    },
+    boolean_presence: true,
     if: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
   validates :is_defendant_believed_to_be_in_the_mme,
-    boolean_absence: {
-      message: 'must be absent unless shown to defendant and defendant believed to be in the MME'
-    },
+    boolean_absence: true,
     unless: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
 
   attribute :how_is_identification_established, String
   validates :how_is_identification_established,
-    presence: {
-      message: 'must be present if shown to defendant and defendant believed to be in the MME'
-    },
+    presence: true,
     unless: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
 end

@@ -1,0 +1,175 @@
+---
+en:
+  activemodel:
+    errors:
+      models:
+        witness:
+          attributes:
+            interpreter_language_or_dialect:
+              blank: must be present if interpreter required
+        statement_witness:
+          attributes:
+            reason_dob_not_provided:
+              blank: must be present unless date of birth is present
+            url:
+              blank: must be present if visually recorded
+              present: must be absent unless visually recorded
+        property:
+          attributes:
+            damage_description:
+              blank: must be present if item was damaged
+              present: must be absent unless item was damaged
+            damage_cost:
+              blank: must be present if item was damaged
+              present: must be absent unless item was damaged
+            recovered_from:
+              blank: must be present if item was recovered
+              present: must be absent unless item was recovered
+        injury:
+          attributes:
+            image_description:
+              blank: must be present if images were taken
+            reason_images_not_taken:
+              blank: must be present if images are not provided
+            details_of_medical_treatment:
+              blank: must be present if medical treatment was received
+        standard_interview:
+          attributes:
+            legally_represented_by:
+              blank: must be present if represented
+            legal_representative_firm:
+              blank: must be present if represented
+            questions_asked:
+              blank: must be present if response was no comment
+              present: must be absent unless response was no comment
+        offence:
+          attributes:
+            ages_of_children:
+              too_short: at least one is required if there were children present
+        person_victim:
+          attributes:
+            reason_dob_not_provided:
+              blank: must be present unless date of birth is present
+            special_measures:
+              blank: must be present if victim is to attend and read
+            wish_to_use_video_link:
+              blank: must be present if victim is to attend and read
+        court_order:
+          attributes:
+            court_order_title_other:
+              blank: must be present if court order title is ‘other’
+        mme_recorded_response:
+          attributes:
+            reasons_if_not_shown:
+              blank: must be present unless shown to defendant
+            defendant_comments_if_shown:
+              blank: must be present if shown to defendant
+            is_defendant_believed_to_be_in_the_mme:
+              blank: must be present if shown to defendant and defendant believed to
+                be in the MME
+              present: must be absent unless shown to defendant and defendant believed
+                to be in the MME
+            how_is_identification_established:
+              blank: must be present if shown to defendant and defendant believed to
+                be in the MME
+        safeguarding_assessment:
+          attributes:
+            reasons_not_completed:
+              blank: must be present unless assessment completed
+              present: must be absent if assessment completed
+            safeguarding_level:
+              inclusion: must be a valid safeguarding level if assessment completed
+              present: must be absent unless assessment completed
+        mme:
+          attributes:
+            relied_upon_trial:
+              truth: must be true unless relied upon at sentence
+              falsehood: must be false if relied upon at sentence
+            relied_upon_sentence:
+              truth: must be true unless relied upon at trial
+              falsehood: must be false if relied upon at trial
+        compensation_application:
+          attributes:
+            details_of_expenses:
+              blank: must be present when there are other expenses
+              present: must be absent when there are no other expenses
+            details_of_other_losses:
+              blank: must be present when there are other losses
+              present: must be absent when there are no other losses
+        defendant:
+          attributes:
+            arrest:
+              blank: must be present when initiation type is ‘charge’
+            class_a_drug_test_details:
+              blank: must be present when a Class A drug test is provided
+              present: must be absent unless a Class A drug test is provided
+            accepts_drugs_result:
+              blank: must be present when a Class A drug test is provided
+              present: must be absent unless a Class A drug test is provided
+            eec_check_submitted:
+              blank: must be present if defendant has EEC passports
+              present: must be absent unless defendant has EEC passports
+            eec_convictions_record_received:
+              blank: must be present if defendant has EEC passports
+              present: must be absent unless defendant has EEC passports
+            breach_order_date_issued:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_court_issued:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_title:
+              inclusion: must be a court order title if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_title_other:
+              blank: must be present if breach order title is ‘other’
+            breach_order_lapse_date:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            pnc_convictions:
+              blank: must be present if a PNC check was performed
+              present: must be absent unless a PNC check was performed
+            interpreter_language_or_dialect:
+              blank: must be present if an interpreter is required
+            multimedia_evidence_recorded_responses:
+              too_short: at least one must be provided unless there is a not recorded
+                response
+            multimedia_evidence_not_recorded_response:
+              blank: must be provided unless there are recorded responses
+            notice_to_provide_bad_character_evidence:
+              blank: must be present if there is an anticipated guilty plea
+              present: must be absent if there is no anticipated guilty plea
+            bad_character_details:
+              blank: must be present if there is a notice to provide bad character evidence
+              present: must be absent unless there is a notice to provide bad character
+                evidence
+            signed_charge_sheet:
+              blank: must be present when initiation type is ‘charge’
+              present: must be absent unless initiation type is ‘charge’
+            date_sent:
+              blank: must be present when initiation type is ‘requisition’
+              present: must be absent unless initiation type is ‘requisition’
+            parent_gardian_date_sent:
+              blank: must be present if there is a parent/guardian copy
+            bail_conditions_provided:
+              blank: must be present if bail is conditional
+              present: must be absent if bail is unconditional
+            signed_for_bail:
+              blank: must be present if bail is unconditional
+              present: must be absent if bail is conditional
+            bail_conditions:
+              too_short: at least one must be present if bail is conditional
+        case:
+          attributes:
+            likely_case_progression:
+              blank: must be present when there is a guilty anticipated plea
+              present: must be absent when there is no guilty anticipated plea
+            is_hearsay:
+              blank: must be present when there is a guilty anticipated plea
+              present: must be absent when there is no guilty anticipated plea
+            hearsay_details:
+              blank: must be present when case is hearsay
+              present: must be absent when case is not hearsay
+            safeguarding_assessment:
+              blank: must be present when case is domestic violence
+              present: must be absent when case is not domestic violence

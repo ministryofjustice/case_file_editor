@@ -14,9 +14,7 @@ class StatementWitness < Witness
 
   attribute :reason_dob_not_provided, String
   validates :reason_dob_not_provided,
-    presence: {
-      message: 'must be present unless date of birth is present'
-    },
+    presence: true,
     unless: :date_of_birth
 
   attribute :visually_recorded_interview, Virtus::Attribute::Boolean
@@ -24,14 +22,10 @@ class StatementWitness < Witness
 
   attribute :url, String
   validates :url,
-    presence: {
-      message: 'must be present if visually recorded'
-    },
+    presence: true,
     if: :visually_recorded_interview
   validates :url,
-    absence: {
-      message: 'must be absent unless visually recorded'
-    },
+    absence: true,
     unless: :visually_recorded_interview
 
   attribute :rank, String

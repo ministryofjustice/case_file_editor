@@ -14,9 +14,7 @@ class Defendant
 
   attribute :arrest, Arrest
   validates :arrest,
-    presence: {
-      message: 'must be present when initiation type is ‘charge’'
-    },
+    presence: true,
     if: :initiated_as_charge?
 
   attribute :conditional_caution_considered, Virtus::Attribute::Boolean
@@ -41,26 +39,18 @@ class Defendant
 
   attribute :class_a_drug_test_details, String
   validates :class_a_drug_test_details,
-    presence: {
-      message: 'must be present when a Class A drug test is provided'
-    },
+    presence: true,
     if: :class_a_drug_test_provided
   validates :class_a_drug_test_details,
-    absence: {
-      message: 'must be absent unless a Class A drug test is provided'
-    },
+    absence: true,
     unless: :class_a_drug_test_provided
 
   attribute :accepts_drugs_result, Virtus::Attribute::Boolean
   validates :accepts_drugs_result,
-    boolean_presence: {
-      message: 'must be present when a Class A drug test is provided'
-    },
+    boolean_presence: true,
     if: :class_a_drug_test_provided
   validates :accepts_drugs_result,
-    boolean_absence: {
-      message: 'must be absent unless a Class A drug test is provided'
-    },
+    boolean_absence: true,
     unless: :class_a_drug_test_provided
 
   attribute :has_eec_passports, Virtus::Attribute::Boolean
@@ -68,26 +58,18 @@ class Defendant
 
   attribute :eec_check_submitted, Virtus::Attribute::Boolean
   validates :eec_check_submitted,
-    boolean_presence: {
-      message: 'must be present if defendant has EEC passports'
-    },
+    boolean_presence: true,
     if: :has_eec_passports
   validates :eec_check_submitted,
-    boolean_absence: {
-      message: 'must be absent unless defendant has EEC passports'
-    },
+    boolean_absence: true,
     unless: :has_eec_passports
 
   attribute :eec_convictions_record_received, Virtus::Attribute::Boolean
   validates :eec_convictions_record_received,
-    boolean_presence: {
-      message: 'must be present if defendant has EEC passports'
-    },
+    boolean_presence: true,
     if: :has_eec_passports
   validates :eec_convictions_record_received,
-    boolean_absence: {
-      message: 'must be absent unless defendant has EEC passports'
-    },
+    boolean_absence: true,
     unless: :has_eec_passports
 
   attribute :foreign_national_offender, Virtus::Attribute::Boolean
@@ -98,58 +80,39 @@ class Defendant
 
   attribute :breach_order_date_issued, Date
   validates :breach_order_date_issued,
-    presence: {
-      message: 'must be present if there is a breach of order'
-    },
+    presence: true,
     if: :breach_of_order
   validates :breach_order_date_issued,
-    absence: {
-      message: 'must be absent unless there is a breach of order'
-    },
+    absence: true,
     unless: :breach_of_order
 
   attribute :breach_order_court_issued, OrganisationLocation
   validates :breach_order_court_issued,
-    presence: {
-      message: 'must be present if there is a breach of order'
-    },
+    presence: true,
     if: :breach_of_order
   validates :breach_order_court_issued,
-    absence: {
-      message: 'must be absent unless there is a breach of order'
-    },
+    absence: true,
     unless: :breach_of_order
 
   attribute :breach_order_title, String
   validates :breach_order_title,
-    inclusion: {
-      in: Enumerations::CourtOrderTitle,
-      message: 'must be a court order title if there is a breach of order'
-    },
+    inclusion: { in: Enumerations::CourtOrderTitle },
     if: :breach_of_order
   validates :breach_order_title,
-    absence: {
-      message: 'must be absent unless there is a breach of order'
-    },
+    absence: true,
     unless: :breach_of_order
 
   attribute :breach_order_title_other, String
   validates :breach_order_title_other,
-    presence: {
-      message: 'must be present if breach order title is ‘other’'
-    },
+    presence: true,
     if: :breach_order_title_needed?
 
   attribute :breach_order_lapse_date, Date
   validates :breach_order_lapse_date,
-    presence: {
-      message: 'must be present if there is a breach of order'
-    },
+    presence: true,
     if: :breach_of_order
   validates :breach_order_lapse_date,
-    absence: {
-      message: 'must be absent unless there is a breach of order'
-    },
+    absence: true,
     unless: :breach_of_order
 
   attribute :remand_application, RemandApplication
@@ -161,14 +124,10 @@ class Defendant
 
   attribute :pnc_convictions, Virtus::Attribute::Boolean
   validates :pnc_convictions,
-    boolean_presence: {
-      message: 'must be present if a PNC check was performed'
-    },
+    boolean_presence: true,
     if: :pnc_check_performed
   validates :pnc_convictions,
-    boolean_absence: {
-      message: 'must be absent unless a PNC check was performed'
-    },
+    boolean_absence: true,
     unless: :pnc_check_performed
 
   attribute :court_order_applications, Array[CourtOrder]
@@ -179,50 +138,36 @@ class Defendant
 
   attribute :interpreter_language_or_dialect, String
   validates :interpreter_language_or_dialect,
-    presence: {
-      message: 'must be present if an interpreter is required'
-    },
+    presence: true,
     if: :interpreter_required
 
   attribute :multimedia_evidence_recorded_responses, [MmeRecordedResponse]
   validates :multimedia_evidence_recorded_responses,
-    length: {
-      minimum: 1,
-      message: 'at least one must be provided unless there is a not recorded response'
-    },
+    length: { minimum: 1 },
     unless: :multimedia_evidence_not_recorded_response
   validates :multimedia_evidence_recorded_responses,
     array_uniqueness: true
 
   attribute :multimedia_evidence_not_recorded_response, MmeNotRecordedResponse
   validates :multimedia_evidence_not_recorded_response,
-    presence: {
-      message: 'must be provided unless there are recorded responses'
-    },
+    presence: true,
     unless: :mme_recorded_responses_present?
 
-  attribute :notice_to_provide_bad_character_evidence, Virtus::Attribute::Boolean
+  attribute :notice_to_provide_bad_character_evidence,
+    Virtus::Attribute::Boolean
   validates :notice_to_provide_bad_character_evidence,
-    boolean_presence: {
-      message: 'must be present if there is an anticipated guilty plea'
-    },
+    boolean_presence: true,
     if: :anticipated_guilty_plea?
   validates :notice_to_provide_bad_character_evidence,
-    boolean_absence: {
-      message: 'must be absent if there is no anticipated guilty plea'
-    },
+    boolean_absence: true,
     unless: :anticipated_guilty_plea?
 
   attribute :bad_character_details, String
   validates :bad_character_details,
-    presence: {
-      message: 'must be present if there is a notice to provide bad character evidence'
-    },
+    presence: true,
     if: :notice_to_provide_bad_character_evidence
   validates :bad_character_details,
-    absence: {
-      message: 'must be absent unless there is a notice to provide bad character evidence'
-    },
+    absence: true,
     unless: :notice_to_provide_bad_character_evidence
 
   attribute :dealt_with_in_welsh, Virtus::Attribute::Boolean
@@ -241,26 +186,18 @@ class Defendant
 
   attribute :signed_charge_sheet, Virtus::Attribute::Boolean
   validates :signed_charge_sheet,
-    boolean_presence: {
-      message: 'must be present when initiation type is ‘charge’'
-    },
+    boolean_presence: true,
     if: :initiated_as_charge?
   validates :signed_charge_sheet,
-    boolean_absence: {
-      message: 'must be absent unless initiation type is ‘charge’'
-    },
+    boolean_absence: true,
     unless: :initiated_as_charge?
 
   attribute :date_sent, Date
   validates :date_sent,
-    presence: {
-      message: 'must be present when initiation type is ‘requisition’'
-    },
+    presence: true,
     if: :initiated_as_requisition?
   validates :date_sent,
-    absence: {
-      message: 'must be absent unless initiation type is ‘requisition’'
-    },
+    absence: true,
     unless: :initiated_as_requisition?
 
   attribute :parent_guardian_copy, Virtus::Attribute::Boolean
@@ -268,42 +205,29 @@ class Defendant
 
   attribute :parent_gardian_date_sent, Date
   validates :parent_gardian_date_sent,
-    presence: {
-      message: 'must be present if there is a parent/guardian copy'
-    },
+    presence: true,
     if: :parent_guardian_copy
   # TODO: validate present iff under 18 (TBD)
 
   attribute :bail_conditions_provided, Virtus::Attribute::Boolean
   validates :bail_conditions_provided,
-    boolean_presence: {
-      message: 'must be present if bail is conditional'
-    },
+    boolean_presence: true,
     if: :conditional_bail?
   validates :bail_conditions_provided,
-    boolean_absence: {
-      message: 'must be absent if bail is unconditional'
-    },
+    boolean_absence: true,
     unless: :conditional_bail?
 
   attribute :signed_for_bail, Virtus::Attribute::Boolean
   validates :signed_for_bail,
-    boolean_presence: {
-      message: 'must be present if bail is unconditional'
-    },
+    boolean_presence: true,
     if: :unconditional_bail?
   validates :signed_for_bail,
-    boolean_absence: {
-      message: 'must be absent if bail is conditional'
-    },
+    boolean_absence: true,
     unless: :unconditional_bail?
 
   attribute :bail_conditions, Array[BailCondition]
   validates :bail_conditions,
-    length: {
-      minimum: 1,
-      message: 'at least one must be present if bail is conditional'
-    },
+    length: { minimum: 1 },
     if: :conditional_bail?
 
   attribute :interview, Interview

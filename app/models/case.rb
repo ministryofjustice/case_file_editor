@@ -47,14 +47,10 @@ class Case
   validates :likely_case_progression,
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
   validates :likely_case_progression,
-    presence: {
-      message: 'must be present when there is a guilty anticipated plea'
-    },
+    presence: true,
     if: :anticipated_guilty_plea?
   validates :likely_case_progression,
-    absence: {
-      message: 'must be absent when there is no guilty anticipated plea'
-    },
+    absence: true,
     unless: :anticipated_guilty_plea?
 
   attribute :multimedia_evidence, Array[Mme]
@@ -62,26 +58,18 @@ class Case
 
   attribute :is_hearsay, Virtus::Attribute::Boolean
   validates :is_hearsay,
-    boolean_presence: {
-      message: 'must be present when there is a guilty anticipated plea'
-    },
+    boolean_presence: true,
     if: :anticipated_guilty_plea?
   validates :is_hearsay,
-    boolean_absence: {
-      message: 'must be absent when there is no guilty anticipated plea'
-    },
+    boolean_absence: true,
     unless: :anticipated_guilty_plea?
 
   attribute :hearsay_details, String
   validates :hearsay_details,
-    presence: {
-      message: 'must be present when case is hearsay'
-    },
+    presence: true,
     if: :is_hearsay
   validates :hearsay_details,
-    absence: {
-      message: 'must be absent when case is not hearsay'
-    },
+    absence: true,
     unless: :is_hearsay
 
   attribute :expert_evidence, Virtus::Attribute::Boolean
@@ -96,14 +84,10 @@ class Case
 
   attribute :safeguarding_assessment, SafeguardingAssessment
   validates :safeguarding_assessment,
-    presence: {
-      message: 'must be present when case is domestic violence'
-    },
+    presence: true,
     if: :domestic_violence?
   validates :safeguarding_assessment,
-    absence: {
-      message: 'must be absent when case is not domestic violence'
-    },
+    absence: true,
     unless: :domestic_violence?
 
   attribute :property, Array[Property]

@@ -15,26 +15,18 @@ class CompensationApplication
 
   attribute :details_of_expenses, String
   validates :details_of_expenses,
-    boolean_presence: {
-      message: 'must be present when there are other expenses'
-    },
+    boolean_presence: true,
     if: :other_expenses?
   validates :details_of_expenses,
-    boolean_absence: {
-      message: 'must be absent when there are no other expenses'
-    },
+    boolean_absence: true,
     unless: :other_expenses?
 
   attribute :details_of_other_losses, String
   validates :details_of_other_losses,
-    boolean_presence: {
-      message: 'must be present when there are other losses'
-    },
+    boolean_presence: true,
     if: :other_losses?
   validates :details_of_other_losses,
-    boolean_absence: {
-      message: 'must be absent when there are no other losses'
-    },
+    boolean_absence: true,
     unless: :other_losses?
 
   attribute :amount_compensation_requested, Integer
