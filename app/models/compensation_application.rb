@@ -15,28 +15,24 @@ class CompensationApplication
 
   attribute :details_of_expenses, String
   validates :details_of_expenses,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present when there are other expenses'
     },
     if: :other_expenses?
   validates :details_of_expenses,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent when there are no other expenses'
     },
     unless: :other_expenses?
 
   attribute :details_of_other_losses, String
   validates :details_of_other_losses,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present when there are other losses'
     },
     if: :other_losses?
   validates :details_of_other_losses,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent when there are no other losses'
     },
     unless: :other_losses?
@@ -45,7 +41,7 @@ class CompensationApplication
   validates :amount_compensation_requested, presence: true
 
   attribute :is_estimate, Virtus::Attribute::Boolean
-  validates :is_estimate, inclusion: { in: [true, false] }
+  validates :is_estimate, boolean_presence: true
 
   def other_expenses?
     reasons_for_application.include?('other_expenses')

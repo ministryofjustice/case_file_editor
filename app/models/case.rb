@@ -62,14 +62,12 @@ class Case
 
   attribute :is_hearsay, Virtus::Attribute::Boolean
   validates :is_hearsay,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present when there is a guilty anticipated plea'
     },
     if: :anticipated_guilty_plea?
   validates :is_hearsay,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent when there is no guilty anticipated plea'
     },
     unless: :anticipated_guilty_plea?
@@ -87,14 +85,14 @@ class Case
     unless: :is_hearsay
 
   attribute :expert_evidence, Virtus::Attribute::Boolean
-  validates :expert_evidence, inclusion: { in: [true, false] }
+  validates :expert_evidence, boolean_presence: true
 
   attribute :test_code, String
   validates :test_code,
     inclusion: { in: Enumerations::TestCode }
 
   attribute :pca_cps, Virtus::Attribute::Boolean
-  validates :pca_cps, inclusion: { in: [true, false] }
+  validates :pca_cps, boolean_presence: true
 
   attribute :safeguarding_assessment, SafeguardingAssessment
   validates :safeguarding_assessment,

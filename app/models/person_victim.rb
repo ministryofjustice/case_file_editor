@@ -16,14 +16,13 @@ class PersonVictim < Victim
     unless: :date_of_birth
 
   attribute :visually_recorded_interview, Virtus::Attribute::Boolean
-  validates :visually_recorded_interview, inclusion: { in: [true, false] }
+  validates :visually_recorded_interview, boolean_presence: true
 
   attribute :url, String
 
   attribute :special_measures, Virtus::Attribute::Boolean
   validates :special_measures,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if victim is to attend and read'
     },
     if: :victim_to_read?
@@ -32,8 +31,7 @@ class PersonVictim < Victim
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
   validates :wish_to_use_video_link,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if victim is to attend and read'
     },
     if: :victim_to_read?

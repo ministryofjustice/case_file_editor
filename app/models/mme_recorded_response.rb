@@ -5,7 +5,7 @@ class MmeRecordedResponse < MmeResponse
   validates :id, presence: true
 
   attribute :defendant_shown, Virtus::Attribute::Boolean
-  validates :defendant_shown, inclusion: { in: [true, false] }
+  validates :defendant_shown, boolean_presence: true
 
   attribute :reasons_if_not_shown, String
   validates :reasons_if_not_shown,
@@ -23,18 +23,16 @@ class MmeRecordedResponse < MmeResponse
 
   attribute :is_defendant_believed_to_be_in_the_mme, Virtus::Attribute::Boolean
   validates :is_defendant_believed_to_be_in_the_mme,
-    inclusion: { in: [true, false] }
+    boolean_presence: true
 
   attribute :defendant_admits_being_in_mme, Virtus::Attribute::Boolean
   validates :is_defendant_believed_to_be_in_the_mme,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if shown to defendant and defendant believed to be in the MME'
     },
     if: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
   validates :is_defendant_believed_to_be_in_the_mme,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless shown to defendant and defendant believed to be in the MME'
     },
     unless: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]

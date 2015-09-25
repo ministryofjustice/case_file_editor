@@ -27,7 +27,7 @@ class Offence < Event
   validates :anticipated_plea, inclusion: { in: Enumerations::PleaStatusCode }
 
   attribute :committed_on_bail, Virtus::Attribute::Boolean
-  validates :committed_on_bail, inclusion: { in: [true, false] }
+  validates :committed_on_bail, boolean_presence: true
 
   attribute :children_present, Virtus::Attribute::Boolean
   # TODO: validate present if case is DV

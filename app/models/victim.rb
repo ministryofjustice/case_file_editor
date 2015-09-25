@@ -3,10 +3,10 @@ class Victim < Witness
     array_inclusion: { in: Enumerations::VictimWitnessType }
 
   attribute :victim_code_requirements_met, Virtus::Attribute::Boolean
-  validates :victim_code_requirements_met, inclusion: { in: [true, false] }
+  validates :victim_code_requirements_met, boolean_presence: true
 
   attribute :has_the_victim_made_a_vps_isb, Virtus::Attribute::Boolean
-  validates :has_the_victim_made_a_vps_isb, inclusion: { in: [true, false] }
+  validates :has_the_victim_made_a_vps_isb, boolean_presence: true
 
   attribute :victim_wish_to_attend_court, String
   validates :victim_wish_to_attend_court,

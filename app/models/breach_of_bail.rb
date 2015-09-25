@@ -7,7 +7,7 @@ class BreachOfBail
 
   attribute :witness_statement_establishes_breach, Virtus::Attribute::Boolean
   validates :witness_statement_establishes_breach,
-    inclusion: { in: [true, false] }
+    boolean_presence: true
 
   attribute :key_evidence, String
   validates :key_evidence, presence: true

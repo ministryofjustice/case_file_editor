@@ -8,9 +8,9 @@ class RetailTheftInterviewExtension
 
   attribute :admit_being_dishonest, Virtus::Attribute::Boolean
   validates :admit_being_dishonest,
-    inclusion: { in: [true, false] }
+    boolean_presence: true
 
   attribute :admit_intending_to_permanently_deprive, Virtus::Attribute::Boolean
   validates :admit_intending_to_permanently_deprive,
-    inclusion: { in: [true, false] }
+    boolean_presence: true
 end

@@ -20,7 +20,7 @@ class StatementWitness < Witness
     unless: :date_of_birth
 
   attribute :visually_recorded_interview, Virtus::Attribute::Boolean
-  validates :visually_recorded_interview, inclusion: { in: [true, false] }
+  validates :visually_recorded_interview, boolean_presence: true
 
   attribute :url, String
   validates :url,

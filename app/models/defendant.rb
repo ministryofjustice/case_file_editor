@@ -20,7 +20,7 @@ class Defendant
     if: :initiated_as_charge?
 
   attribute :conditional_caution_considered, Virtus::Attribute::Boolean
-  validates :conditional_caution_considered, inclusion: { in: [true] }
+  validates :conditional_caution_considered, truth: true
 
   attribute :cc_not_suitable_reasons, Array[String]
   validates :cc_not_suitable_reasons,
@@ -37,7 +37,7 @@ class Defendant
   validates :occupation, presence: true
 
   attribute :class_a_drug_test_provided, Virtus::Attribute::Boolean
-  validates :class_a_drug_test_provided, inclusion: { in: [true, false] }
+  validates :class_a_drug_test_provided, boolean_presence: true
 
   attribute :class_a_drug_test_details, String
   validates :class_a_drug_test_details,
@@ -53,54 +53,48 @@ class Defendant
 
   attribute :accepts_drugs_result, Virtus::Attribute::Boolean
   validates :accepts_drugs_result,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present when a Class A drug test is provided'
     },
     if: :class_a_drug_test_provided
   validates :accepts_drugs_result,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless a Class A drug test is provided'
     },
     unless: :class_a_drug_test_provided
 
   attribute :has_eec_passports, Virtus::Attribute::Boolean
-  validates :has_eec_passports, inclusion: { in: [true, false] }
+  validates :has_eec_passports, boolean_presence: true
 
   attribute :eec_check_submitted, Virtus::Attribute::Boolean
   validates :eec_check_submitted,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if defendant has EEC passports'
     },
     if: :has_eec_passports
   validates :eec_check_submitted,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless defendant has EEC passports'
     },
     unless: :has_eec_passports
 
   attribute :eec_convictions_record_received, Virtus::Attribute::Boolean
   validates :eec_convictions_record_received,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if defendant has EEC passports'
     },
     if: :has_eec_passports
   validates :eec_convictions_record_received,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless defendant has EEC passports'
     },
     unless: :has_eec_passports
 
   attribute :foreign_national_offender, Virtus::Attribute::Boolean
-  validates :foreign_national_offender, inclusion: { in: [true, false] }
+  validates :foreign_national_offender, boolean_presence: true
 
   attribute :breach_of_order, Virtus::Attribute::Boolean
-  validates :breach_of_order, inclusion: { in: [true, false] }
+  validates :breach_of_order, boolean_presence: true
 
   attribute :breach_order_date_issued, Date
   validates :breach_order_date_issued,
@@ -163,18 +157,16 @@ class Defendant
   attribute :breach_of_bail, BreachOfBail
 
   attribute :pnc_check_performed, Virtus::Attribute::Boolean
-  validates :pnc_check_performed, inclusion: { in: [true, false] }
+  validates :pnc_check_performed, boolean_presence: true
 
   attribute :pnc_convictions, Virtus::Attribute::Boolean
   validates :pnc_convictions,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if a PNC check was performed'
     },
     if: :pnc_check_performed
   validates :pnc_convictions,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless a PNC check was performed'
     },
     unless: :pnc_check_performed
@@ -183,7 +175,7 @@ class Defendant
   validates :court_order_applications, length: { minimum: 1 }
 
   attribute :interpreter_required, Virtus::Attribute::Boolean
-  validates :interpreter_required, inclusion: { in: [true, false] }
+  validates :interpreter_required, boolean_presence: true
 
   attribute :interpreter_language_or_dialect, String
   validates :interpreter_language_or_dialect,
@@ -211,14 +203,12 @@ class Defendant
 
   attribute :notice_to_provide_bad_character_evidence, Virtus::Attribute::Boolean
   validates :notice_to_provide_bad_character_evidence,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if there is an anticipated guilty plea'
     },
     if: :anticipated_guilty_plea?
   validates :notice_to_provide_bad_character_evidence,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent if there is no anticipated guilty plea'
     },
     unless: :anticipated_guilty_plea?
@@ -236,14 +226,14 @@ class Defendant
     unless: :notice_to_provide_bad_character_evidence
 
   attribute :dealt_with_in_welsh, Virtus::Attribute::Boolean
-  validates :dealt_with_in_welsh, inclusion: { in: [true, false] }
+  validates :dealt_with_in_welsh, boolean_presence: true
 
   attribute :person_remand_status, String
   validates :person_remand_status,
     inclusion: { in: Enumerations::PersonRemandStatus }
 
   attribute :given_charges, Virtus::Attribute::Boolean
-  validates :given_charges, inclusion: { in: [true, false] }
+  validates :given_charges, boolean_presence: true
 
   attribute :initiation_type, String
   validates :initiation_type,
@@ -251,14 +241,12 @@ class Defendant
 
   attribute :signed_charge_sheet, Virtus::Attribute::Boolean
   validates :signed_charge_sheet,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present when initiation type is ‘charge’'
     },
     if: :initiated_as_charge?
   validates :signed_charge_sheet,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent unless initiation type is ‘charge’'
     },
     unless: :initiated_as_charge?
@@ -288,28 +276,24 @@ class Defendant
 
   attribute :bail_conditions_provided, Virtus::Attribute::Boolean
   validates :bail_conditions_provided,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if bail is conditional'
     },
     if: :conditional_bail?
   validates :bail_conditions_provided,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent if bail is unconditional'
     },
     unless: :conditional_bail?
 
   attribute :signed_for_bail, Virtus::Attribute::Boolean
   validates :signed_for_bail,
-    inclusion: {
-      in: [true, false],
+    boolean_presence: {
       message: 'must be present if bail is unconditional'
     },
     if: :unconditional_bail?
   validates :signed_for_bail,
-    inclusion: {
-      in: [nil],
+    boolean_absence: {
       message: 'must be absent if bail is conditional'
     },
     unless: :unconditional_bail?

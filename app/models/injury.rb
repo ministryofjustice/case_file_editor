@@ -10,7 +10,7 @@ class Injury
   validates :description_of_injuries, presence: true
 
   attribute :images_taken, Virtus::Attribute::Boolean
-  validates :images_taken, inclusion: { in: [true, false] }
+  validates :images_taken, boolean_presence: true
 
   attribute :image_urls, Array[String]
 
@@ -29,7 +29,7 @@ class Injury
     unless: :images_provided?
 
   attribute :received_medical_treatment, Virtus::Attribute::Boolean
-  validates :received_medical_treatment, inclusion: { in: [true, false] }
+  validates :received_medical_treatment, boolean_presence: true
 
   attribute :details_of_medical_treatment, String
   validates :details_of_medical_treatment,
@@ -39,7 +39,7 @@ class Injury
     if: :received_medical_treatment
 
   attribute :injuries_visible, Virtus::Attribute::Boolean
-  validates :injuries_visible, inclusion: { in: [true, false] }
+  validates :injuries_visible, boolean_presence: true
 
   def images_provided?
     image_description.present? || image_urls.any?

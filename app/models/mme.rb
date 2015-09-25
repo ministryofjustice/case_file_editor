@@ -14,32 +14,28 @@ class Mme < Event
     inclusion: { in: Enumerations::MmeType }
 
   attribute :evidential_value, Virtus::Attribute::Boolean
-  validates :evidential_value, inclusion: { in: [true] }
+  validates :evidential_value, truth: true
 
   attribute :relied_upon_trial, Virtus::Attribute::Boolean
   validates :relied_upon_trial,
-    inclusion: {
-      in: [true],
+    truth: {
       message: 'must be true unless relied upon at sentence'
     },
     unless: :relied_upon_sentence
   validates :relied_upon_trial,
-    inclusion: {
-      in: [false],
+    falsehood: {
       message: 'must be false if relied upon at sentence'
     },
     if: :relied_upon_sentence
 
   attribute :relied_upon_sentence, Virtus::Attribute::Boolean
   validates :relied_upon_sentence,
-    inclusion: {
-      in: [true],
+    truth: {
       message: 'must be true unless relied upon at trial'
     },
     unless: :relied_upon_trial
   validates :relied_upon_sentence,
-    inclusion: {
-      in: [false],
+    falsehood: {
       message: 'must be false if relied upon at trial'
     },
     if: :relied_upon_trial
