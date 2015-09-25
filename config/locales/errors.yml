@@ -149,7 +149,7 @@ en:
             date_sent:
               blank: must be present when initiation type is ‘requisition’
               present: must be absent unless initiation type is ‘requisition’
-            parent_gardian_date_sent:
+            parent_guardian_date_sent:
               blank: must be present if there is a parent/guardian copy
             bail_conditions_provided:
               blank: must be present if bail is conditional

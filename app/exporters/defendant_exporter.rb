@@ -37,7 +37,7 @@ class DefendantExporter < GenericExporter
     :signed_charge_sheet,
     :date_sent,
     :parent_guardian_copy,
-    :parent_gardian_date_sent,
+    :parent_guardian_date_sent,
     :bail_conditions_provided,
     :signed_for_bail,
     :bail_conditions,

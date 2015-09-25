@@ -204,8 +204,8 @@ class Defendant
   attribute :parent_guardian_copy, Virtus::Attribute::Boolean
   # TODO: validate present iff under 18 (TBD)
 
-  attribute :parent_gardian_date_sent, Date
-  validates :parent_gardian_date_sent,
+  attribute :parent_guardian_date_sent, Date
+  validates :parent_guardian_date_sent,
     presence: true,
     if: :parent_guardian_copy
   # TODO: validate present iff under 18 (TBD)
