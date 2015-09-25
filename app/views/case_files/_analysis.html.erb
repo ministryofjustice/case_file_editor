@@ -1,21 +1,33 @@
 <% if @exception %>
+  <div class="row analysis-exception">
+    <p>Result: an exception occurred</p>
+  </div>
+
   <div class="row">
-    <h2>Exception</h2>
+    <h2>Details</h2>
   </div>
 
   <div class="row">
     <pre><%= @exception.pretty_inspect %></pre>
   </div>
-<% end %>
+<% elsif @errors && @errors.any? %>
+  <div class="row analysis-exception">
+    <p>Result: invalid</p>
+  </div>
 
-<div class="row">
-  <h2>Errors</h2>
-</div>
+  <div class="row">
+    <h2>Errors</h2>
+  </div>
 
-<div class="row">
-<% if @errors && @errors.any? %>
-  <%= render partial: 'errors', locals: { errors: @errors } %>
+  <div class="row">
+    <% if @errors && @errors.any? %>
+      <%= render partial: 'errors', locals: { errors: @errors } %>
+    <% else %>
+      <p>None</p>
+    <% end %>
+  </div>
 <% else %>
-  <p>None</p>
+  <div class="row analysis-exception">
+    <p>Result: valid</p>
+  </div>
 <% end %>
-</div>

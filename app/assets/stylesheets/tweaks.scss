@@ -1,3 +1,17 @@
+@import 'foundation_and_overrides';
+
 dd {
   margin-left: 2em;
+}
+
+.analysis-exception {
+  color: $alert-color;
+}
+
+.analysis-invalid {
+  color: $warning-color;
+}
+
+.analysis-valid {
+  color: $success-color;
 }
