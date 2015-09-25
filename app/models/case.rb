@@ -23,9 +23,13 @@ class Case
   validates :case_markers,
     array_inclusion: { in: Enumerations::CaseMarker }
   # TODO: If witness is 10 or under, Case must be marked as
-  #       YoungWitnessInitiative
+  #       YoungWitnessInitiative. WHAT IS THIS CODE?
+  #       validates :case_markers,
+  #         array_membership: { of: ??? },
+  #         if: :young_witness?
   # TODO: If a Victim is over 60 years old, Case must be marked as
-  #       CrimeAgainstAnOlderPerson
+  #       CrimeAgainstAnOlderPerson. However, a Victim does not have a date of
+  #       birth.
 
   attribute :brief_description_of_case, String
   validates :brief_description_of_case, format: { with: MAX_1200_WORDS }
