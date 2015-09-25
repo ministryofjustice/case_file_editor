@@ -32,3 +32,6 @@ en:
         other_than: "must be other than %{count}"
         odd: "must be odd"
         even: "must be even"
+        array_invalid: "must all be valid"
+        array_inclusion: "must all be one of the allowed values"
+        array_unique: "must all be unique"

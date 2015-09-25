@@ -4,6 +4,10 @@ RSpec.describe ArrayFormatValidator do
       include Virtus.model
       include ActiveModel::Validations
 
+      def self.model_name
+        ActiveModel::Name.new(self, nil, 'thing')
+      end
+
       attribute :wotsit, Array[String]
       validates :wotsit,
         array_format: { with: /OK/ }
