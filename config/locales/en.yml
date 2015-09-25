@@ -35,5 +35,6 @@ en:
         array_invalid: "must all be valid"
         array_inclusion: "must all be one of the allowed values"
         array_unique: "must all be unique"
+        array_membership: "is missing a required element"
         truth: "must be true"
         falsehood: "must be false"
