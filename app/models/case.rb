@@ -25,9 +25,9 @@ class Case
   validates :case_markers,
     array_membership: { of: 'YoungWitnessInitiative' },
     if: :young_witness?
-  # TODO: If a Victim is over 60 years old, Case must be marked as
-  #       CrimeAgainstAnOlderPerson. However, a Victim does not have a date of
-  #       birth.
+  validates :case_markers,
+    array_membership: { of: 'CrimeAgainstAnOlderPerson' },
+    if: :older_victim?
 
   attribute :brief_description_of_case, String
   validates :brief_description_of_case, format: { with: MAX_1200_WORDS }
@@ -119,6 +119,11 @@ class Case
   def young_witness?
     return false unless date
     witnesses.any? { |w| w.respond_to?(:age) && w.age(date) <= 10 }
+  end
+
+  def older_victim?
+    return false unless date
+    victims.any? { |v| v.respond_to?(:age) && v.age(date) >= 60 }
   end
 
   def victims

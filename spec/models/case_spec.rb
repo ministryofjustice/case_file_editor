@@ -45,6 +45,29 @@ RSpec.describe Case do
     end
   end
 
+  describe 'older_victim?' do
+    it 'is true if any victim is 60 or over' do
+      subject.date = Date.new(2015, 2, 3)
+      dob = Date.new(1955, 2, 3)
+      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      expect(subject).to be_older_victim
+    end
+
+    it 'is false if no witness is 60 or over' do
+      subject.date = Date.new(2015, 2, 3)
+      dob = Date.new(1965, 2, 3)
+      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      expect(subject).not_to be_older_victim
+    end
+
+    it 'is false if date is not set' do
+      subject.date = nil
+      dob = Date.new(1955, 2, 3)
+      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      expect(subject).not_to be_young_witness
+    end
+  end
+
   context 'whole-file validations' do
     context 'compensation_applications' do
       let(:compensation_application_a) {
