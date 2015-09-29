@@ -1,7 +1,7 @@
 RSpec.describe Case do
   describe 'domestic_violence?' do
     it 'is true if there is a DV case marker' do
-      subject.case_markers << 'DV'
+      subject.case_markers << 'DomesticViolence'
       expect(subject).to be_domestic_violence
     end
 

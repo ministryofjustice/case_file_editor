@@ -111,7 +111,7 @@ class Case
   # TODO: Validate against CJSE Data Standards Section 3.108
 
   def domestic_violence?
-    case_markers.include?('DV')
+    case_markers.include?('DomesticViolence')
   end
 
   def anticipated_guilty_plea?

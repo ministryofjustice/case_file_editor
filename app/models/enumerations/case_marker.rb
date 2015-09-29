@@ -1,3 +1,22 @@
 module Enumerations
-  CaseMarker = %w[ AE CO DH DV FM FT HC HP HT LO NU PW RA RE RP TG ]
+  CaseMarker = %w[
+    AssetRecovery
+    ChildAbuse
+    CrimeAgainstAnOlderPerson
+    DrugInterventionProgramme
+    DisabilityHateCrime
+    DomesticViolence
+    Fatality
+    ForcedMarriage
+    Homophobic
+    HonourCrime
+    IdentifiedVictim
+    MediaInterest
+    PoliceComplaints
+    Rape
+    RacistCrime
+    ReligiousCrime
+    Transgender
+    YoungWitnessInitiative
+  ]
 end
