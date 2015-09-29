@@ -11,7 +11,11 @@ RSpec.describe CaseFileUpload do
     end
 
     it 'has validation errors' do
-      expect(subject.errors).to include(pti_urn: ["is invalid"])
+      expect(subject.object_errors).to include(pti_urn: ["is invalid"])
+    end
+
+    it 'has schema errors' do
+      expect(subject.schema_errors).to be_a(Array)
     end
   end
 
@@ -27,7 +31,11 @@ RSpec.describe CaseFileUpload do
     end
 
     it 'has no validation errors' do
-      expect(subject.errors).to be_nil
+      expect(subject.object_errors).to be_nil
+    end
+
+    it 'has no schema errors' do
+      expect(subject.schema_errors).to be_nil
     end
   end
 end

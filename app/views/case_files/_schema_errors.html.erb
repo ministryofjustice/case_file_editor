@@ -1,0 +1,6 @@
+<dl>
+  <% errors.each do |err| %>
+    <dt>in <%= err.path.join(' → ') %>:</dt>
+    <dd><%= err.message %></dd>
+  <% end %>
+</dl>

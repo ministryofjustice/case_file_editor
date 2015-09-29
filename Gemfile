@@ -5,6 +5,7 @@ gem 'rails'
 
 gem 'foundation-rails'
 gem 'jquery-rails'
+gem 'json_schema'
 gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

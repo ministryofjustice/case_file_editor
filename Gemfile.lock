@@ -92,6 +92,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    json_schema (0.7.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.3)
@@ -231,6 +232,7 @@ DEPENDENCIES
   capybara
   foundation-rails
   jquery-rails
+  json_schema
   launchy
   poltergeist
   pry-rails

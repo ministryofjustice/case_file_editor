@@ -18,43 +18,18 @@ RSpec.describe CaseFilesController, type: :controller do
 
   describe 'POST #create' do
     context 'with valid params' do
-      it 'assigns a Case to @case' do
+      it 'assigns an upload' do
         post :create, case_file: attributes
-        expect(assigns(:case)).to be_a(Case)
-      end
-
-      it 'does not assign anything to @exception' do
-        post :create, case_file: attributes
-        expect(assigns(:exception)).to be_nil
-      end
-
-      it 'assigns the errors to @errors' do
-        post :create, case_file: attributes
-        expect(assigns(:errors)).to be_a(Hash)
-      end
-
-      it 'renders the "create" template' do
-        post :create, case_file: attributes
-        expect(response).to render_template('create')
+        expect(assigns(:upload)).to be_a(CaseFileUpload)
       end
     end
 
     context 'with invalid JSON' do
       let(:json) { 'garbage.json' }
 
-      it 'assigns the exception to @exception' do
+      it 'assigns an upload' do
         post :create, case_file: attributes
-        expect(assigns(:exception)).to be_a(StandardError)
-      end
-
-      it 'does not assign anything to @errors' do
-        post :create, case_file: attributes
-        expect(assigns(:errors)).to be_nil
-      end
-
-      it 'renders the "create" template' do
-        post :create, case_file: attributes
-        expect(response).to render_template('create')
+        expect(assigns(:upload)).to be_a(CaseFileUpload)
       end
     end
   end

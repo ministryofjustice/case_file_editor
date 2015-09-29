@@ -1,4 +1,4 @@
-<% if @exception %>
+<% if @upload.exception %>
   <div class="row analysis-exception">
     <p>Result: an exception occurred</p>
   </div>
@@ -8,26 +8,34 @@
   </div>
 
   <div class="row">
-    <pre><%= @exception.pretty_inspect %></pre>
+    <pre><%= @upload.exception.pretty_inspect %></pre>
   </div>
-<% elsif @errors && @errors.any? %>
-  <div class="row analysis-exception">
+<% elsif @upload.errors? %>
+  <div class="row analysis-invalid">
     <p>Result: invalid</p>
   </div>
 
-  <div class="row">
-    <h2>Errors</h2>
-  </div>
+  <% if @upload.schema_errors? %>
+    <div class="row">
+      <h2>Schema errors</h2>
+    </div>
 
-  <div class="row">
-    <% if @errors && @errors.any? %>
-      <%= render partial: 'errors', locals: { errors: @errors } %>
-    <% else %>
-      <p>None</p>
-    <% end %>
-  </div>
+    <div class="row">
+      <%= render partial: 'schema_errors', locals: { errors: @upload.schema_errors } %>
+    </div>
+  <% end %>
+
+  <% if @upload.object_errors? %>
+    <div class="row">
+      <h2>Object errors</h2>
+    </div>
+
+    <div class="row">
+      <%= render partial: 'object_errors', locals: { errors: @upload.object_errors } %>
+    </div>
+  <% end %>
 <% else %>
-  <div class="row analysis-exception">
+  <div class="row analysis-valid">
     <p>Result: valid</p>
   </div>
 <% end %>
