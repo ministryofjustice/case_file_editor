@@ -202,13 +202,11 @@ class Defendant
     unless: :initiated_as_requisition?
 
   attribute :parent_guardian_copy, Virtus::Attribute::Boolean
-  # TODO: validate present iff under 18 (TBD)
 
   attribute :parent_guardian_date_sent, Date
   validates :parent_guardian_date_sent,
     presence: true,
     if: :parent_guardian_copy
-  # TODO: validate present iff under 18 (TBD)
 
   attribute :bail_conditions_provided, Virtus::Attribute::Boolean
   validates :bail_conditions_provided,
@@ -269,5 +267,17 @@ class Defendant
 
   def anticipated_guilty_plea?
     offences.any?(&:anticipated_guilty_plea?)
+  end
+
+  def validate_by_age(case_date)
+    age_at_case_date = age(case_date)
+    return unless age_at_case_date
+    if age_at_case_date < 18
+      BooleanPresenceValidator.new(attributes: [:parent_guardian_copy]).
+        validate(self)
+    else
+      BooleanAbsenceValidator.new(attributes: [:parent_guardian_copy]).
+        validate(self)
+    end
   end
 end

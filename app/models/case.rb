@@ -108,8 +108,6 @@ class Case
   validates :signatory_rank, presence: true
   # TODO: Validate against CJSE Data Standards Section 3.108
 
-  validate :validate_compensation_application_defendant_names
-
   def domestic_violence?
     case_markers.include?('DomesticViolence')
   end
@@ -140,4 +138,12 @@ private
       end
     end
   end
+  validate :validate_compensation_application_defendant_names
+
+  def validate_defendants_by_age
+    defendants.each do |defendant|
+      defendant.validate_by_age(date)
+    end
+  end
+  validate :validate_defendants_by_age
 end

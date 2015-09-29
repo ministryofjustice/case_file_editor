@@ -151,6 +151,9 @@ en:
             date_sent:
               blank: must be present when initiation type is ‘requisition’
               present: must be absent unless initiation type is ‘requisition’
+            parent_guardian_copy:
+              blank: must be present when defendant is under 18
+              present: must be absent when defendant is over 18
             parent_guardian_date_sent:
               blank: must be present if there is a parent/guardian copy
             bail_conditions_provided:
