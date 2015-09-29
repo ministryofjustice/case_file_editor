@@ -19,7 +19,13 @@ class Victim < Witness
     allow_nil: true
 
   attribute :is_retraction_statement, Virtus::Attribute::Boolean
-  # TODO: validate if case is DV
 
   attribute :compensation_applications, Array[CompensationApplication]
+
+  def validate_domestic_violence_specific(is_dv)
+    if is_dv
+      BooleanPresenceValidator.new(attributes: [:is_retraction_statement]).
+        validate(self)
+    end
+  end
 end

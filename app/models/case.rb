@@ -153,4 +153,11 @@ private
     end
   end
   validate :validate_offence_domestic_violence_specific
+
+  def validate_victim_domestic_violence_specific
+    victims.each do |victim|
+      victim.validate_domestic_violence_specific(domestic_violence?)
+    end
+  end
+  validate :validate_victim_domestic_violence_specific
 end
