@@ -280,4 +280,8 @@ class Defendant
         validate(self)
     end
   end
+
+  def all_offences
+    offences.flat_map(&:offences)
+  end
 end

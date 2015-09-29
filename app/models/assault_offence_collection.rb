@@ -5,4 +5,6 @@ class AssaultOffenceCollection < OffenceCollection
   def anticipated_guilty_plea?
     assault_offences.any?(&:anticipated_guilty_plea?)
   end
+
+  alias_method :offences, :assault_offences
 end

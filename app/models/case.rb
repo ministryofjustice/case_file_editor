@@ -146,4 +146,11 @@ private
     end
   end
   validate :validate_defendants_by_age
+
+  def validate_offence_domestic_violence_specific
+    defendants.flat_map(&:all_offences).each do |offence|
+      offence.validate_domestic_violence_specific(domestic_violence?)
+    end
+  end
+  validate :validate_offence_domestic_violence_specific
 end
