@@ -96,6 +96,8 @@ en:
             details_of_other_losses:
               blank: must be present when there are other losses
               present: must be absent when there are no other losses
+            defendant_names:
+              match_defendant: must match the name of a defendant
         defendant:
           attributes:
             arrest:

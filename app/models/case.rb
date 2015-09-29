@@ -108,6 +108,8 @@ class Case
   validates :signatory_rank, presence: true
   # TODO: Validate against CJSE Data Standards Section 3.108
 
+  validate :validate_compensation_application_defendant_names
+
   def domestic_violence?
     case_markers.include?('DomesticViolence')
   end
@@ -119,5 +121,23 @@ class Case
   def young_witness?
     return false unless date
     witnesses.any? { |w| w.respond_to?(:age) && w.age(date) <= 10 }
+  end
+
+  def victims
+    witnesses.select { |w| w.is_a?(Victim) }
+  end
+
+private
+
+  def validate_compensation_application_defendant_names
+    available_names = defendants.map(&:name)
+    victims.each do |victim|
+      victim.compensation_applications.each do |ca|
+        invalid_names = ca.defendant_names - available_names
+        if invalid_names.any?
+          ca.errors.add(:defendant_names, :match_defendant)
+        end
+      end
+    end
   end
 end

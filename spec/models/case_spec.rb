@@ -44,4 +44,52 @@ RSpec.describe Case do
       expect(subject).not_to be_young_witness
     end
   end
+
+  context 'whole-file validations' do
+    let(:compensation_application_a) {
+      CompensationApplication.new(
+        defendant_names: [
+          PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+        ]
+      )
+    }
+
+    let(:compensation_application_b) {
+      CompensationApplication.new(
+        defendant_names: [
+          PersonName.new(surname: 'Doe', given_name: %w[ Jane ])
+        ]
+      )
+    }
+
+    subject {
+      described_class.new(
+        defendants: Defendant.new(
+          name: PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+        ),
+        witnesses: [
+          PersonVictim.new(
+            compensation_applications: [
+              compensation_application_a,
+              compensation_application_b
+            ]
+          )
+        ]
+      )
+    }
+
+    context 'compensation_applications' do
+      before do
+        subject.validate
+      end
+
+      it 'is valid when the defendant_names matches a defendant' do
+        expect(compensation_application_a.errors[:defendant_names]).to be_empty
+      end
+
+      it 'is invalid when the defendant_names does not match a defendant' do
+        expect(compensation_application_b.errors[:defendant_names]).not_to be_empty
+      end
+    end
+  end
 end

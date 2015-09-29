@@ -5,7 +5,6 @@ class CompensationApplication
   attribute :defendant_names, Array[PersonName]
   validates :defendant_names,
     length: { minimum: 1 }
-  # TODO: validate against defendants
 
   attribute :reasons_for_application, Array[String]
   validates :reasons_for_application,
