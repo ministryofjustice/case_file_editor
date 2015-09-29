@@ -21,7 +21,7 @@
     </div>
 
     <div class="row">
-      <%= render partial: 'schema_errors', locals: { errors: @upload.schema_errors } %>
+      <%= render partial: 'errors', locals: { errors: @upload.schema_errors } %>
     </div>
   <% end %>
 
@@ -31,7 +31,7 @@
     </div>
 
     <div class="row">
-      <%= render partial: 'object_errors', locals: { errors: @upload.object_errors } %>
+      <%= render partial: 'errors', locals: { errors: @upload.object_errors } %>
     </div>
   <% end %>
 <% else %>

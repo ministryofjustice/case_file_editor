@@ -15,7 +15,7 @@ RSpec.describe CaseFileUpload do
     end
 
     it 'has schema errors' do
-      expect(subject.schema_errors).to be_a(Array)
+      expect(subject.schema_errors).to be_a(Hash)
     end
   end
 

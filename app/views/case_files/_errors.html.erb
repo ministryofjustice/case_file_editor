@@ -2,8 +2,8 @@
 <% when Hash %>
   <dl>
     <% errors.each do |key, value| %>
-      <dt><%= render partial: 'object_errors', locals: { errors: key } %></dt>
-      <dd><%= render partial: 'object_errors', locals: { errors: value } %></dd>
+      <dt><%= render partial: 'errors', locals: { errors: key } %></dt>
+      <dd><%= render partial: 'errors', locals: { errors: value } %></dd>
     <% end %>
   </dl>
 <% when Fixnum %>
@@ -11,7 +11,7 @@
 <% when Array %>
   <ul>
     <% errors.each do |value| %>
-      <li><%= render partial: 'object_errors', locals: { errors: value } %></li>
+      <li><%= render partial: 'errors', locals: { errors: value } %></li>
     <% end %>
   </ul>
 <% when String, Symbol %>

@@ -31,14 +31,6 @@ private
   end
 
   def validate_schema(json)
-    schema = JsonSchema.parse!(JSON.parse(File.read(schema_path)))
-    schema.expand_references!
-    validator = JsonSchema::Validator.new(schema)
-    validator.validate json
-    validator.errors
-  end
-
-  def schema_path
-    File.expand_path('../../schemas/first-hearing.schema.json', __FILE__)
+    SchemaValidator.new(json).errors
   end
 end
