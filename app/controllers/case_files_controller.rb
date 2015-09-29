@@ -3,11 +3,9 @@ class CaseFilesController < ApplicationController
   end
 
   def create
-    @case = FileIngester.new.ingest(params[:case_file][:raw].read)
-    if @case
-      @errors = RecursiveValidator.new(@case).errors
-    end
-  rescue StandardError => ex
-    @exception = ex
+    upload = CaseFileUpload.new(params[:case_file][:raw].read)
+    @case = upload.case
+    @errors = upload.errors
+    @exception = upload.exception
   end
 end
