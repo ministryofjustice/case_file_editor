@@ -3,6 +3,10 @@ class CaseFilesController < ApplicationController
   end
 
   def create
-    @upload = CaseFileUpload.new(params[:case_file][:raw].read)
+    if params.key?(:case_file)
+      @upload = CaseFileUpload.new(params[:case_file][:raw].read)
+    else
+      redirect_to action: :index
+    end
   end
 end

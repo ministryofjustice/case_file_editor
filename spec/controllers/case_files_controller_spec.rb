@@ -22,6 +22,11 @@ RSpec.describe CaseFilesController, type: :controller do
         post :create, case_file: attributes
         expect(assigns(:upload)).to be_a(CaseFileUpload)
       end
+
+      it 'responds with success' do
+        post :create, case_file: attributes
+        expect(response).to have_http_status(:success)
+      end
     end
 
     context 'with invalid JSON' do
@@ -30,6 +35,18 @@ RSpec.describe CaseFilesController, type: :controller do
       it 'assigns an upload' do
         post :create, case_file: attributes
         expect(assigns(:upload)).to be_a(CaseFileUpload)
+      end
+
+      it 'responds with success' do
+        post :create, case_file: attributes
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'with no upload' do
+      it 'redirects to the index' do
+        post :create
+        expect(response).to redirect_to(case_files_path)
       end
     end
   end
