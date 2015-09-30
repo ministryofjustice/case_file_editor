@@ -3,7 +3,6 @@ class Witness
   include ActiveModel::Validations
 
   attribute :witness_id, String
-  # TODO: validate unique within case file
 
   attribute :witness_type, Array[String]
   validates :witness_type,

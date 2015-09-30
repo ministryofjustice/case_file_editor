@@ -172,5 +172,21 @@ RSpec.describe Case do
         expect(mme_c.errors[:id]).to be_empty
       end
     end
+
+    context 'witnesses' do
+      let(:witness_a) { StatementWitness.new(witness_id: 'ABC123') }
+      let(:witness_b) { StatementWitness.new(witness_id: 'ABC123') }
+      let(:witness_c) { StatementWitness.new(witness_id: 'ABC124') }
+      subject {
+        described_class.new(witnesses: [witness_a, witness_b, witness_c])
+      }
+
+      it 'validates multimedia_evidence id uniqueness' do
+        subject.validate
+        expect(witness_a.errors[:witness_id]).not_to be_empty
+        expect(witness_b.errors[:witness_id]).not_to be_empty
+        expect(witness_c.errors[:witness_id]).to be_empty
+      end
+    end
   end
 end

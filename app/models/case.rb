@@ -175,4 +175,14 @@ private
       end
   end
   validate :validate_mme_unique_ids
+
+  def validate_witness_unique_ids
+    witness_ids = witnesses.map(&:witness_id).compact
+    witnesses.
+      select { |e| witness_ids.count(e.witness_id) > 1 }.
+      each do |witness|
+        witness.errors.add(:witness_id, :unique_within_case_file)
+      end
+  end
+  validate :validate_witness_unique_ids
 end

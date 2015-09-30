@@ -7,6 +7,8 @@ en:
           attributes:
             interpreter_language_or_dialect:
               blank: must be present if interpreter required
+            witness_id:
+              unique_within_case_file: must be unique within case file
         statement_witness:
           attributes:
             reason_dob_not_provided:
