@@ -2,7 +2,6 @@ class Mme < Event
   HOURS_AND_MINUTES = /\A([01][0-9]|2[0-3]):[0-5][0-9]\z/
   attribute :id, String
   validates :id, presence: true
-  # TODO: validate uniqueness within case
 
   attribute :date, Date
   validates :date, presence: true

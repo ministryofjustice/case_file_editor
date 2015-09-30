@@ -82,6 +82,8 @@ en:
               present: must be absent unless assessment completed
         mme:
           attributes:
+            id:
+              unique_within_case_file: must be unique within case file
             relied_upon_trial:
               truth: must be true unless relied upon at sentence
               falsehood: must be false if relied upon at sentence

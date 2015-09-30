@@ -156,5 +156,21 @@ RSpec.describe Case do
         subject.validate
       end
     end
+
+    context 'multimedia_evidence' do
+      let(:mme_a) { Mme.new(id: 'ABC123') }
+      let(:mme_b) { Mme.new(id: 'ABC123') }
+      let(:mme_c) { Mme.new(id: 'ABC124') }
+      subject {
+        described_class.new(multimedia_evidence: [mme_a, mme_b, mme_c])
+      }
+
+      it 'validates multimedia_evidence id uniqueness' do
+        subject.validate
+        expect(mme_a.errors[:id]).not_to be_empty
+        expect(mme_b.errors[:id]).not_to be_empty
+        expect(mme_c.errors[:id]).to be_empty
+      end
+    end
   end
 end

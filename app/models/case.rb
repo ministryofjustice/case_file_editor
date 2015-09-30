@@ -165,4 +165,14 @@ private
     end
   end
   validate :validate_victim_domestic_violence_specific
+
+  def validate_mme_unique_ids
+    mme_ids = multimedia_evidence.map(&:id).compact
+    multimedia_evidence.
+      select { |e| mme_ids.count(e.id) > 1 }.
+      each do |mme|
+        mme.errors.add(:id, :unique_within_case_file)
+      end
+  end
+  validate :validate_mme_unique_ids
 end
