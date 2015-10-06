@@ -13,7 +13,7 @@ knowledge of the whole case file. These are indicated with `# TODO` in the
 
 This is based on the JSON schema Version 1.1.0 Draft 5.
 
-An example file can be found in `spec/fixtures/example_1.json`.
+An example file can be found in `spec/fixtures/example_01.json`.
 
 ### Examples
 
