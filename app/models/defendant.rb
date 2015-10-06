@@ -158,10 +158,10 @@ class Defendant
     Virtus::Attribute::Boolean
   validates :notice_to_provide_bad_character_evidence,
     boolean_presence: true,
-    if: :anticipated_guilty_plea?
+    unless: :anticipated_guilty_plea?
   validates :notice_to_provide_bad_character_evidence,
     boolean_absence: true,
-    unless: :anticipated_guilty_plea?
+    if: :anticipated_guilty_plea?
 
   attribute :bad_character_details, String
   validates :bad_character_details,

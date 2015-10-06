@@ -50,10 +50,10 @@ class Case
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
   validates :likely_case_progression,
     presence: true,
-    if: :anticipated_guilty_plea?
+    unless: :anticipated_guilty_plea?
   validates :likely_case_progression,
     absence: true,
-    unless: :anticipated_guilty_plea?
+    if: :anticipated_guilty_plea?
 
   attribute :multimedia_evidence, Array[Mme]
   validates :multimedia_evidence, array_uniqueness: true
@@ -61,10 +61,10 @@ class Case
   attribute :is_hearsay, Virtus::Attribute::Boolean
   validates :is_hearsay,
     boolean_presence: true,
-    if: :anticipated_guilty_plea?
+    unless: :anticipated_guilty_plea?
   validates :is_hearsay,
     boolean_absence: true,
-    unless: :anticipated_guilty_plea?
+    if: :anticipated_guilty_plea?
 
   attribute :hearsay_details, String
   validates :hearsay_details,
