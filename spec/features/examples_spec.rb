@@ -27,5 +27,9 @@ RSpec.describe 'Parsing example files' do
     it 'does not require Defendant#notice_to_provide_bad_character_evidence for GAP' do
       expect(errors).not_to have_key(:defendants)
     end
+
+    it 'does not require CommonLawNotForDisclosure#details_of_relevant_unused_material' do
+      expect(errors).not_to have_key(:common_law_disclosure)
+    end
   end
 end
