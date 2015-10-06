@@ -55,18 +55,6 @@ RSpec.describe Defendant do
     end
   end
 
-  describe 'mme_recorded_responses_present?' do
-    it 'is true if there are responses' do
-      subject.multimedia_evidence_recorded_responses <<
-        MmeRecordedResponse.new
-      expect(subject).to be_mme_recorded_responses_present
-    end
-
-    it 'is false if there are no responses' do
-      expect(subject).not_to be_mme_recorded_responses_present
-    end
-  end
-
   describe 'anticipated_guilty_plea?' do
     it 'is true if there is an offence collection with a guilty anticipated plea' do
       subject.offences << double(anticipated_guilty_plea?: true)

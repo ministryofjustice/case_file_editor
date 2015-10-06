@@ -137,11 +137,8 @@ en:
               present: must be absent unless a PNC check was performed
             interpreter_language_or_dialect:
               blank: must be present if an interpreter is required
-            multimedia_evidence_recorded_responses:
-              too_short: at least one must be provided unless there is a not recorded
-                response
-            multimedia_evidence_not_recorded_response:
-              blank: must be provided unless there are recorded responses
+            multimedia_evidence_response:
+              too_short: at least one must be provided
             notice_to_provide_bad_character_evidence:
               blank: must be present if there is an anticipated guilty plea
               present: must be absent if there is no anticipated guilty plea

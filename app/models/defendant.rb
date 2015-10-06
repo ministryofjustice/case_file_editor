@@ -142,17 +142,9 @@ class Defendant
     presence: true,
     if: :interpreter_required
 
-  attribute :multimedia_evidence_recorded_responses, [MmeRecordedResponse]
-  validates :multimedia_evidence_recorded_responses,
-    length: { minimum: 1 },
-    unless: :multimedia_evidence_not_recorded_response
-  validates :multimedia_evidence_recorded_responses,
-    array_uniqueness: true
-
-  attribute :multimedia_evidence_not_recorded_response, MmeNotRecordedResponse
-  validates :multimedia_evidence_not_recorded_response,
-    presence: true,
-    unless: :mme_recorded_responses_present?
+  attribute :multimedia_evidence_response, [MmeResponse]
+  validates :multimedia_evidence_response,
+    length: { minimum: 1 }
 
   attribute :notice_to_provide_bad_character_evidence,
     Virtus::Attribute::Boolean
@@ -243,10 +235,6 @@ class Defendant
 
   def breach_order_title_needed?
     breach_order_title == 'other'
-  end
-
-  def mme_recorded_responses_present?
-    multimedia_evidence_recorded_responses.any?
   end
 
   def initiated_as_charge?

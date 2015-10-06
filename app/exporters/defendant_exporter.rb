@@ -44,20 +44,6 @@ class DefendantExporter < GenericExporter
     :interview,
     :domestic_violence,
     :first_hearing_datetime,
-    :first_hearing_location
-
-  def export
-    super.merge(
-      'multimedia_evidence_response' =>
-        exporter(multimedia_evidence_response).export
-    )
-  end
-
-  def multimedia_evidence_response
-    if object.multimedia_evidence_recorded_responses.any?
-      object.multimedia_evidence_recorded_responses
-    else
-      object.multimedia_evidence_not_recorded_response
-    end
-  end
+    :first_hearing_location,
+    :multimedia_evidence_response
 end

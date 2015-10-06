@@ -6,7 +6,7 @@ RSpec.describe DefendantExporter do
   context 'with MME responses' do
     let(:defendant) {
       Defendant.new(
-        multimedia_evidence_recorded_responses: [
+        multimedia_evidence_response: [
           MmeRecordedResponse.new(
             id: '1',
             defendant_shown: true,
@@ -37,19 +37,24 @@ RSpec.describe DefendantExporter do
   context 'without MME responses' do
     let(:defendant) {
       Defendant.new(
-        multimedia_evidence_not_recorded_response:
+        multimedia_evidence_response: [
           MmeNotRecordedResponse.new(
             defendant_admitted_to_location: true,
             how_is_identification_established: 'distinctive facial tattoos'
           )
+        ]
       )
     }
 
     it 'exports a single MME not recorded response object' do
       expect(subject['multimedia_evidence_response']).to eq(
-        'type' => 'MmeNotRecordedResponse',
-        'defendant_admitted_to_location' => true,
-        'how_is_identification_established' => 'distinctive facial tattoos'
+        [
+          {
+            'type' => 'MmeNotRecordedResponse',
+            'defendant_admitted_to_location' => true,
+            'how_is_identification_established' => 'distinctive facial tattoos'
+          }
+        ]
       )
     end
   end
