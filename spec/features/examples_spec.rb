@@ -31,5 +31,9 @@ RSpec.describe 'Parsing example files' do
     it 'does not require CommonLawNotForDisclosure#details_of_relevant_unused_material' do
       expect(errors).not_to have_key(:common_law_disclosure)
     end
+
+    it 'allows Mme#relied_upon_sentence and #relied_upon_trial both to be true' do
+      expect(errors).not_to have_key(:multimedia_evidence)
+    end
   end
 end

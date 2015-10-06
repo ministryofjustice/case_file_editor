@@ -19,17 +19,11 @@ class Mme < Event
   validates :relied_upon_trial,
     truth: true,
     unless: :relied_upon_sentence
-  validates :relied_upon_trial,
-    falsehood: true,
-    if: :relied_upon_sentence
 
   attribute :relied_upon_sentence, Virtus::Attribute::Boolean
   validates :relied_upon_sentence,
     truth: true,
     unless: :relied_upon_trial
-  validates :relied_upon_sentence,
-    falsehood: true,
-    if: :relied_upon_trial
 
   attribute :description_of_what_is_contained_in_multimedia_evidence, String
   validates :description_of_what_is_contained_in_multimedia_evidence,
