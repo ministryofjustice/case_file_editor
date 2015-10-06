@@ -3,6 +3,7 @@ class MmeRecordedResponse < MmeResponse
 
   attribute :id, String
   validates :id, presence: true
+  # TODO: Validate that id refers to an extant Mme object
 
   attribute :defendant_shown, Virtus::Attribute::Boolean
   validates :defendant_shown, boolean_presence: true
