@@ -165,6 +165,8 @@ en:
               present: must be absent if bail is conditional
             bail_conditions:
               too_short: at least one must be present if bail is conditional
+            domestic_violence:
+              too_short: at least one must be present when case is domestic violence
         case:
           attributes:
             likely_case_progression:

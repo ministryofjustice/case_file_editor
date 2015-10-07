@@ -70,40 +70,70 @@ RSpec.describe Defendant do
   context 'validations' do
     let(:today) { Date.new(2015, 1, 1) }
 
-    before do
-      subject.date_of_birth = date_of_birth
-    end
+    context 'age-specific' do
+      before do
+        subject.date_of_birth = date_of_birth
+      end
 
-    describe 'parent_guardian_copy' do
-      context 'when over 18' do
-        let(:date_of_birth) { Date.new(1980, 1, 1) }
+      describe 'parent_guardian_copy' do
+        context 'when over 18' do
+          let(:date_of_birth) { Date.new(1980, 1, 1) }
 
-        it 'is invalid if present' do
-          subject.parent_guardian_copy = false
-          subject.validate_by_age(today)
-          expect(subject.errors[:parent_guardian_copy]).not_to be_empty
+          it 'is invalid if present' do
+            subject.parent_guardian_copy = false
+            subject.validate_by_age(today)
+            expect(subject.errors[:parent_guardian_copy]).not_to be_empty
+          end
+
+          it 'is valid if nil' do
+            subject.parent_guardian_copy = nil
+            subject.validate_by_age(today)
+            expect(subject.errors[:parent_guardian_copy]).to be_empty
+          end
         end
 
-        it 'is valid if nil' do
-          subject.parent_guardian_copy = nil
-          subject.validate_by_age(today)
-          expect(subject.errors[:parent_guardian_copy]).to be_empty
+        context 'when under 18' do
+          let(:date_of_birth) { Date.new(2000, 1, 1) }
+
+          it 'is valid if present' do
+            subject.parent_guardian_copy = false
+            subject.validate_by_age(today)
+            expect(subject.errors[:parent_guardian_copy]).to be_empty
+          end
+
+          it 'is invalid if nil' do
+            subject.parent_guardian_copy = nil
+            subject.validate_by_age(today)
+            expect(subject.errors[:parent_guardian_copy]).not_to be_empty
+          end
+        end
+      end
+    end
+
+    describe 'domestic_violence' do
+      context 'when case is DV' do
+        it 'is valid if present' do
+          subject.domestic_violence = [DomesticViolence.new]
+          subject.validate_domestic_violence_specific(true)
+          expect(subject.errors[:domestic_violence]).to be_empty
+        end
+
+        it 'is invalid if absent' do
+          subject.validate_domestic_violence_specific(true)
+          expect(subject.errors[:domestic_violence]).not_to be_empty
         end
       end
 
-      context 'when under 18' do
-        let(:date_of_birth) { Date.new(2000, 1, 1) }
-
+      context 'when case is not DV' do
         it 'is valid if present' do
-          subject.parent_guardian_copy = false
-          subject.validate_by_age(today)
-          expect(subject.errors[:parent_guardian_copy]).to be_empty
+          subject.domestic_violence = [DomesticViolence.new]
+          subject.validate_domestic_violence_specific(false)
+          expect(subject.errors[:domestic_violence]).to be_empty
         end
 
-        it 'is invalid if nil' do
-          subject.parent_guardian_copy = nil
-          subject.validate_by_age(today)
-          expect(subject.errors[:parent_guardian_copy]).not_to be_empty
+        it 'is valid if absent' do
+          subject.validate_domestic_violence_specific(false)
+          expect(subject.errors[:domestic_violence]).to be_empty
         end
       end
     end

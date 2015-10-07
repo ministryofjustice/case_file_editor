@@ -157,6 +157,21 @@ RSpec.describe Case do
       end
     end
 
+    context 'defendants' do
+      let(:defendant) { Defendant.new }
+      subject { described_class.new(defendants: [defendant]) }
+
+      before do
+        allow(subject).to receive(:domestic_violence?).and_return(true)
+      end
+
+      it 'validates each defendant' do
+        expect(defendant).
+          to receive(:validate_domestic_violence_specific).with(true)
+        subject.validate
+      end
+    end
+
     context 'multimedia_evidence' do
       let(:mme_a) { Mme.new(id: 'ABC123') }
       let(:mme_b) { Mme.new(id: 'ABC123') }

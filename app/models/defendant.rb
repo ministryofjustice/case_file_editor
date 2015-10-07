@@ -225,7 +225,6 @@ class Defendant
   validates :interview, presence: true
 
   attribute :domestic_violence, Array[DomesticViolence]
-  # TODO: validate length >= 1 if case is domestic violence
 
   attribute :first_hearing_datetime, DateTime
   validates :first_hearing_datetime, presence: true
@@ -266,6 +265,12 @@ class Defendant
     else
       BooleanAbsenceValidator.new(attributes: [:parent_guardian_copy]).
         validate(self)
+    end
+  end
+
+  def validate_domestic_violence_specific(is_dv)
+    if is_dv && domestic_violence.none?
+      errors.add(:domestic_violence, :too_short)
     end
   end
 
