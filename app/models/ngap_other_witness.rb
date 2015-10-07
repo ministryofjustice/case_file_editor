@@ -17,12 +17,4 @@ class NgapOtherWitness < Witness
   validates :rank,
     absence: true,
     unless: :officer_witness?
-
-private
-
-  def validate_ngap
-    super
-    BooleanPresenceValidator.new(attributes: [:interpreter_required]).
-      validate(self)
-  end
 end
