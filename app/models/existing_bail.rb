@@ -18,5 +18,6 @@ class ExistingBail
   validates :datetime_to_appear, presence: true
 
   attribute :list_of_conditions, Array[BailCondition]
-  # TODO: validate same length as original_charge_wording (if true, TBD)
+  # TODO: Validate unclear requirement:
+  # "One condition to be provided per String."
 end
