@@ -166,23 +166,18 @@ private
   end
   validate :validate_gap_specific
 
-  def validate_mme_unique_ids
-    mme_ids = multimedia_evidence.map(&:id).compact
-    multimedia_evidence.
-      select { |e| mme_ids.count(e.id) > 1 }.
-      each do |mme|
-        mme.errors.add(:id, :unique_within_case_file)
-      end
+  def validate_unique_ids
+    validate_unique_on_collection multimedia_evidence, :id
+    validate_unique_on_collection witnesses, :witness_id
   end
-  validate :validate_mme_unique_ids
+  validate :validate_unique_ids
 
-  def validate_witness_unique_ids
-    witness_ids = witnesses.map(&:witness_id).compact
-    witnesses.
-      select { |e| witness_ids.count(e.witness_id) > 1 }.
-      each do |witness|
-        witness.errors.add(:witness_id, :unique_within_case_file)
+  def validate_unique_on_collection(collection, field)
+    ids = collection.map(&field).compact
+    collection.
+      select { |e| ids.count(e.send(field)) > 1 }.
+      each do |item|
+        item.errors.add field, :unique_within_case_file
       end
   end
-  validate :validate_witness_unique_ids
 end
