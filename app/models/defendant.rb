@@ -305,6 +305,12 @@ class Defendant
     end
   end
 
+  def validate_dv_victims(names)
+    domestic_violence.each do |dv|
+      dv.validate_victim names
+    end
+  end
+
   def all_offences
     offences.flat_map(&:offences)
   end

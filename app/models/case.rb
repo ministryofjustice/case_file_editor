@@ -158,6 +158,14 @@ private
   end
   validate :validate_defendants_by_age
 
+  def validate_dv_victims
+    names = victims.map(&:name)
+    defendants.each do |defendant|
+      defendant.validate_dv_victims names
+    end
+  end
+  validate :validate_dv_victims
+
   def validate_domestic_violence_specific
     [*defendants, *victims].each do |item|
       item.validate_domestic_violence_specific(domestic_violence?)

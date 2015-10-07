@@ -281,5 +281,40 @@ RSpec.describe Case do
         expect(property_c.errors[:property_id]).to be_empty
       end
     end
+
+    context 'domestic_violence' do
+      let(:victim) {
+        PersonVictim.new(
+          name: PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+        )
+      }
+
+      let(:defendant) {
+        Defendant.new(domestic_violence: [domestic_violence])
+      }
+
+      let(:domestic_violence) { DomesticViolence.new }
+
+      subject {
+        described_class.new(
+          defendants: [defendant],
+          witnesses: [victim]
+        )
+      }
+
+      it 'is valid if the victim name matches a victim' do
+        domestic_violence.victim_name =
+          PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+        subject.validate
+        expect(domestic_violence.errors[:victim_name]).to be_empty
+      end
+
+      it 'is invalid if the victim name does not match a victim' do
+        domestic_violence.victim_name =
+          PersonName.new(surname: 'Jones', given_name: %w[ Bob ])
+        subject.validate
+        expect(domestic_violence.errors[:victim_name]).not_to be_empty
+      end
+    end
   end
 end
