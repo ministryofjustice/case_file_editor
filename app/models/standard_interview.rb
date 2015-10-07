@@ -44,6 +44,6 @@ class StandardInterview < Interview
   attribute :mitigations, String
   attribute :aggravating_features, String
 
-  attribute :appropriate_adults, Name
+  attribute :appropriate_adults, Array[PersonName]
   # TODO: Validate present if defendant is a youth
 end
