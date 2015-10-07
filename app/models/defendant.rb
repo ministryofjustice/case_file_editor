@@ -5,6 +5,8 @@ class Defendant
   include ActiveModel::Validations
   include AgeCalculation
 
+  ADULT_MIN_AGE = 18
+
   attribute :defendant_id, String
 
   attribute :name, PersonName
@@ -259,7 +261,7 @@ class Defendant
   def validate_by_age(case_date)
     age_at_case_date = age(case_date)
     return unless age_at_case_date
-    if age_at_case_date < 18
+    if age_at_case_date < ADULT_MIN_AGE
       BooleanPresenceValidator.new(attributes: [:parent_guardian_copy]).
         validate(self)
     else

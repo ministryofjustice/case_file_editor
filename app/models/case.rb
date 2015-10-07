@@ -4,6 +4,8 @@ class Case
 
   VALID_URN = /\A[A-Z]{4}\d{5}\d{2}(-[A-Z]{2})?\z/
   MAX_1200_WORDS = /\A\s*(\S+\s*){1,1200}\z/
+  YOUNG_WITNESS_MAX_AGE = 10
+  OLDER_VICTIM_MIN_AGE = 60
 
   attribute :pti_urn, String
   validates :pti_urn,
@@ -118,12 +120,16 @@ class Case
 
   def young_witness?
     return false unless date
-    witnesses.any? { |w| w.respond_to?(:age) && w.age(date) <= 10 }
+    witnesses.any? { |w|
+      w.respond_to?(:age) && w.age(date) <= YOUNG_WITNESS_MAX_AGE
+    }
   end
 
   def older_victim?
     return false unless date
-    victims.any? { |v| v.respond_to?(:age) && v.age(date) >= 60 }
+    victims.any? { |v|
+      v.respond_to?(:age) && v.age(date) >= OLDER_VICTIM_MIN_AGE
+    }
   end
 
   def victims
