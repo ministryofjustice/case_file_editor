@@ -269,6 +269,9 @@ class Defendant
   end
 
   def validate_domestic_violence_specific(is_dv)
+    all_offences.each do |offence|
+      offence.validate_domestic_violence_specific(is_dv)
+    end
     if is_dv && domestic_violence.none?
       errors.add(:domestic_violence, :too_short)
     end

@@ -152,26 +152,12 @@ private
   end
   validate :validate_defendants_by_age
 
-  def validate_offence_domestic_violence_specific
-    defendants.flat_map(&:all_offences).each do |offence|
-      offence.validate_domestic_violence_specific(domestic_violence?)
+  def validate_domestic_violence_specific
+    [*defendants, *victims].each do |item|
+      item.validate_domestic_violence_specific(domestic_violence?)
     end
   end
-  validate :validate_offence_domestic_violence_specific
-
-  def validate_defendant_domestic_violence_specific
-    defendants.each do |defendant|
-      defendant.validate_domestic_violence_specific(domestic_violence?)
-    end
-  end
-  validate :validate_defendant_domestic_violence_specific
-
-  def validate_victim_domestic_violence_specific
-    victims.each do |victim|
-      victim.validate_domestic_violence_specific(domestic_violence?)
-    end
-  end
-  validate :validate_victim_domestic_violence_specific
+  validate :validate_domestic_violence_specific
 
   def validate_mme_unique_ids
     mme_ids = multimedia_evidence.map(&:id).compact
