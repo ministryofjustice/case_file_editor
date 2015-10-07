@@ -22,8 +22,7 @@ private
 
   def validate_ngap
     super
-    if interpreter_required.nil?
-      errors.add :interpreter_required, :blank
-    end
+    BooleanPresenceValidator.new(attributes: [:interpreter_required]).
+      validate(self)
   end
 end

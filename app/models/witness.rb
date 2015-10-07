@@ -38,11 +38,8 @@ class Witness
 private
 
   def validate_ngap
-    if special_measures.nil?
-      errors.add :special_measures, :blank
-    end
-    if wish_to_use_video_link.nil?
-      errors.add :wish_to_use_video_link, :blank
-    end
+    BooleanPresenceValidator.new(
+      attributes: [:special_measures, :wish_to_use_video_link]
+    ).validate(self)
   end
 end
