@@ -261,13 +261,23 @@ class Defendant
   def validate_by_age(case_date)
     age_at_case_date = age(case_date)
     return unless age_at_case_date
-    if age_at_case_date < ADULT_MIN_AGE
-      BooleanPresenceValidator.new(attributes: [:parent_guardian_copy]).
-        validate(self)
+    is_adult = age_at_case_date >= ADULT_MIN_AGE
+    if is_adult
+      validate_as_adult
     else
-      BooleanAbsenceValidator.new(attributes: [:parent_guardian_copy]).
-        validate(self)
+      validate_as_youth
     end
+  end
+
+  def validate_as_adult
+    BooleanAbsenceValidator.new(attributes: [:parent_guardian_copy]).
+      validate(self)
+  end
+
+  def validate_as_youth
+    BooleanPresenceValidator.new(attributes: [:parent_guardian_copy]).
+      validate(self)
+    interview.validate_as_youth if interview.respond_to?(:validate_as_youth)
   end
 
   def validate_domestic_violence_specific(is_dv)

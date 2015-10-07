@@ -108,6 +108,30 @@ RSpec.describe Defendant do
           end
         end
       end
+
+      describe 'interview' do
+        before do
+          subject.interview = StandardInterview.new
+        end
+
+        context 'when over 18' do
+          let(:date_of_birth) { Date.new(1980, 1, 1) }
+
+          it 'does not call validate_as_youth' do
+            expect(subject.interview).to receive(:validate_as_youth).never
+            subject.validate_by_age(today)
+          end
+        end
+
+        context 'when under 18' do
+          let(:date_of_birth) { Date.new(2000, 1, 1) }
+
+          it 'calls validate_as_youth' do
+            expect(subject.interview).to receive(:validate_as_youth).once
+            subject.validate_by_age(today)
+          end
+        end
+      end
     end
 
     describe 'domestic_violence' do

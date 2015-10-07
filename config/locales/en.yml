@@ -202,6 +202,8 @@ en:
               present: must be absent unless assessment completed
         standard_interview:
           attributes:
+            appropriate_adults:
+              blank: must be present if defendant is a youth
             legal_representative_firm:
               blank: must be present if represented
             legally_represented_by:

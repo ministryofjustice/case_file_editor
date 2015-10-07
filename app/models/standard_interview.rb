@@ -45,5 +45,9 @@ class StandardInterview < Interview
   attribute :aggravating_features, String
 
   attribute :appropriate_adults, Array[PersonName]
-  # TODO: Validate present if defendant is a youth
+
+  def validate_as_youth
+    PresenceValidator.new(attributes: [:appropriate_adults]).
+      validate(self)
+  end
 end
