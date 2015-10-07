@@ -173,6 +173,14 @@ private
   end
   validate :validate_unique_ids
 
+  def validate_mme_response_ids
+    ids = multimedia_evidence.map(&:id)
+    defendants.each do |defendant|
+      defendant.validate_mme_response_ids ids
+    end
+  end
+  validate :validate_mme_response_ids
+
   def validate_unique_on_collection(collection, field)
     ids = collection.map(&field).compact
     collection.

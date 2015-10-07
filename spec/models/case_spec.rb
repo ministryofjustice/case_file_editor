@@ -186,6 +186,18 @@ RSpec.describe Case do
         expect(mme_b.errors[:id]).not_to be_empty
         expect(mme_c.errors[:id]).to be_empty
       end
+
+      it 'validates that recorded responses refer to Mme' do
+        defendant = Defendant.new
+        subject.defendants << defendant
+        response_a = MmeRecordedResponse.new(id: 'ABC123')
+        response_b = MmeRecordedResponse.new(id: 'XYZ999')
+        defendant.multimedia_evidence_response = [response_a, response_b]
+        subject.validate
+
+        expect(response_a.errors[:id]).to be_empty
+        expect(response_b.errors[:id]).not_to be_empty
+      end
     end
 
     context 'witnesses' do

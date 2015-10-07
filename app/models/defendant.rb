@@ -277,6 +277,14 @@ class Defendant
     end
   end
 
+  def validate_mme_response_ids(ids)
+    multimedia_evidence_response.each do |response|
+      if response.respond_to?(:validate_id)
+        response.validate_id ids
+      end
+    end
+  end
+
   def all_offences
     offences.flat_map(&:offences)
   end
