@@ -144,7 +144,7 @@ private
       victim.compensation_applications.each do |ca|
         invalid_names = ca.defendant_names - available_names
         if invalid_names.any?
-          ca.errors.add(:defendant_names, :match_defendant)
+          ca.errors.add :defendant_names, :match_defendant
         end
       end
     end
