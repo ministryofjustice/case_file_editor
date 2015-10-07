@@ -17,10 +17,8 @@ class Witness
   validates :evidence_they_can_give, presence: true
 
   attribute :special_measures, Virtus::Attribute::Boolean
-  # TODO: validate present iff case is NGAP
 
   attribute :interpreter_required, Virtus::Attribute::Boolean
-  # TODO: validate present only for 'other witnesses' iff case is NGAP
 
   attribute :interpreter_language_or_dialect, String
   validates :interpreter_language_or_dialect,
@@ -28,5 +26,19 @@ class Witness
     if: :interpreter_required
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
-  # TODO: validate present iff case is NGAP
+
+  def validate_gap_specific(is_gap)
+    validate_ngap unless is_gap
+  end
+
+private
+
+  def validate_ngap
+    if special_measures.nil?
+      errors.add :special_measures, :blank
+    end
+    if wish_to_use_video_link.nil?
+      errors.add :wish_to_use_video_link, :blank
+    end
+  end
 end

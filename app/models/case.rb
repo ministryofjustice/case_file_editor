@@ -159,6 +159,13 @@ private
   end
   validate :validate_domestic_violence_specific
 
+  def validate_gap_specific
+    witnesses.each do |witness|
+      witness.validate_gap_specific anticipated_guilty_plea?
+    end
+  end
+  validate :validate_gap_specific
+
   def validate_mme_unique_ids
     mme_ids = multimedia_evidence.map(&:id).compact
     multimedia_evidence.

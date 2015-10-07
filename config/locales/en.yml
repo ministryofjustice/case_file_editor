@@ -160,6 +160,10 @@ en:
                 to be in the MME
             reasons_if_not_shown:
               blank: must be present unless shown to defendant
+        ngap_other_witness:
+          attributes:
+            interpreter_required:
+              blank: must be present when there is a guilty anticipated plea
         offence:
           attributes:
             ages_of_children:
@@ -211,5 +215,9 @@ en:
           attributes:
             interpreter_language_or_dialect:
               blank: must be present if interpreter required
+            special_measures:
+              blank: must be present when there is a guilty anticipated plea
+            wish_to_use_video_link:
+              blank: must be present when there is a guilty anticipated plea
             witness_id:
               unique_within_case_file: must be unique within case file

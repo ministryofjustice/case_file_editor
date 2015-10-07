@@ -10,6 +10,15 @@ class NgapOtherWitness < Witness
 
   attribute :number, String
 
-  attribute :rank, String
   # TODO: validate present iff witness_type is an officer
+  attribute :rank, String
+
+private
+
+  def validate_ngap
+    super
+    if interpreter_required.nil?
+      errors.add :interpreter_required, :blank
+    end
+  end
 end
