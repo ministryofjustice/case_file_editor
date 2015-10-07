@@ -1,40 +1,215 @@
 # See http://guides.rubyonrails.org/i18n.html
-
 en:
   activemodel:
     errors:
-      # The default format to use in full error messages.
       format: "%{attribute} %{message}"
-
-      # The values :model, :attribute and :value are always available for interpolation
-      # The value :count is available when applicable. Can be used for pluralization.
       messages:
-        inclusion: "is not one of the allowed values"
-        exclusion: "is reserved"
-        invalid: "is invalid"
-        confirmation: "doesn’t match %{attribute}"
-        accepted: "must be accepted"
-        empty: "can’t be empty"
-        blank: "is required"
-        present: "must not be present"
-        too_long: "is too long (maximum is %{count})"
-        too_short: "is too short (minimum is %{count})"
+        accepted: must be accepted
+        array_inclusion: must all be one of the allowed values
+        array_invalid: must all be valid
+        array_membership: is missing a required element
+        array_unique: must all be unique
+        blank: is required
+        confirmation: doesn’t match %{attribute}
+        empty: can’t be empty
+        equal_to: must be equal to %{count}
+        even: must be even
+        exclusion: is reserved
+        falsehood: must be false
+        greater_than: must be greater than %{count}
+        greater_than_or_equal_to: must be greater than or equal to %{count}
+        inclusion: is not one of the allowed values
+        invalid: is invalid
+        less_than: must be less than %{count}
+        less_than_or_equal_to: must be less than or equal to %{count}
+        not_a_number: is not a number
+        not_an_integer: must be an integer
+        odd: must be odd
+        other_than: must be other than %{count}
+        present: must not be present
+        too_long: is too long (maximum is %{count})
+        too_short: is too short (minimum is %{count})
+        truth: must be true
         wrong_length:
-          one: "is the wrong length (should be 1 character)"
-          other: "is the wrong length (should be %{count} characters)"
-        not_a_number: "is not a number"
-        not_an_integer: "must be an integer"
-        greater_than: "must be greater than %{count}"
-        greater_than_or_equal_to: "must be greater than or equal to %{count}"
-        equal_to: "must be equal to %{count}"
-        less_than: "must be less than %{count}"
-        less_than_or_equal_to: "must be less than or equal to %{count}"
-        other_than: "must be other than %{count}"
-        odd: "must be odd"
-        even: "must be even"
-        array_invalid: "must all be valid"
-        array_inclusion: "must all be one of the allowed values"
-        array_unique: "must all be unique"
-        array_membership: "is missing a required element"
-        truth: "must be true"
-        falsehood: "must be false"
+          one: is the wrong length (should be 1 character)
+          other: is the wrong length (should be %{count} characters)
+      models:
+        case:
+          attributes:
+            hearsay_details:
+              blank: must be present when case is hearsay
+              present: must be absent when case is not hearsay
+            is_hearsay:
+              blank: must be present when there is a guilty anticipated plea
+              present: must be absent when there is no guilty anticipated plea
+            likely_case_progression:
+              blank: must be present when there is a guilty anticipated plea
+              present: must be absent when there is no guilty anticipated plea
+            safeguarding_assessment:
+              blank: must be present when case is domestic violence
+              present: must be absent when case is not domestic violence
+        compensation_application:
+          attributes:
+            defendant_names:
+              match_defendant: must match the name of a defendant
+            details_of_expenses:
+              blank: must be present when there are other expenses
+              present: must be absent when there are no other expenses
+            details_of_other_losses:
+              blank: must be present when there are other losses
+              present: must be absent when there are no other losses
+        court_order:
+          attributes:
+            court_order_title_other:
+              blank: must be present if court order title is ‘other’
+        defendant:
+          attributes:
+            accepts_drugs_result:
+              blank: must be present when a Class A drug test is provided
+              present: must be absent unless a Class A drug test is provided
+            arrest:
+              blank: must be present when initiation type is ‘charge’
+            bad_character_details:
+              blank: must be present if there is a notice to provide bad character
+                evidence
+              present: must be absent unless there is a notice to provide bad character
+                evidence
+            bail_conditions:
+              too_short: at least one must be present if bail is conditional
+            bail_conditions_provided:
+              blank: must be present if bail is conditional
+              present: must be absent if bail is unconditional
+            breach_order_court_issued:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_date_issued:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_lapse_date:
+              blank: must be present if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_title:
+              inclusion: must be a court order title if there is a breach of order
+              present: must be absent unless there is a breach of order
+            breach_order_title_other:
+              blank: must be present if breach order title is ‘other’
+            class_a_drug_test_details:
+              blank: must be present when a Class A drug test is provided
+              present: must be absent unless a Class A drug test is provided
+            date_sent:
+              blank: must be present when initiation type is ‘requisition’
+              present: must be absent unless initiation type is ‘requisition’
+            domestic_violence:
+              too_short: at least one must be present when case is domestic violence
+            eec_check_submitted:
+              blank: must be present if defendant has EEC passports
+              present: must be absent unless defendant has EEC passports
+            eec_convictions_record_received:
+              blank: must be present if defendant has EEC passports
+              present: must be absent unless defendant has EEC passports
+            interpreter_language_or_dialect:
+              blank: must be present if an interpreter is required
+            multimedia_evidence_response:
+              too_short: at least one must be provided
+            notice_to_provide_bad_character_evidence:
+              blank: must be present if there is an anticipated guilty plea
+              present: must be absent if there is no anticipated guilty plea
+            parent_guardian_copy:
+              blank: must be present when defendant is under 18
+              present: must be absent when defendant is over 18
+            parent_guardian_date_sent:
+              blank: must be present if there is a parent/guardian copy
+            pnc_convictions:
+              blank: must be present if a PNC check was performed
+              present: must be absent unless a PNC check was performed
+            signed_charge_sheet:
+              blank: must be present when initiation type is ‘charge’
+              present: must be absent unless initiation type is ‘charge’
+            signed_for_bail:
+              blank: must be present if bail is unconditional
+              present: must be absent if bail is conditional
+        injury:
+          attributes:
+            details_of_medical_treatment:
+              blank: must be present if medical treatment was received
+            image_description:
+              blank: must be present if images were taken
+            reason_images_not_taken:
+              blank: must be present if images are not provided
+        mme:
+          attributes:
+            id:
+              unique_within_case_file: must be unique within case file
+            relied_upon_sentence:
+              falsehood: must be false if relied upon at trial
+              truth: must be true unless relied upon at trial
+            relied_upon_trial:
+              falsehood: must be false if relied upon at sentence
+              truth: must be true unless relied upon at sentence
+        mme_recorded_response:
+          attributes:
+            defendant_comments_if_shown:
+              blank: must be present if shown to defendant
+            how_is_identification_established:
+              blank: must be present if shown to defendant and defendant believed
+                to be in the MME
+            is_defendant_believed_to_be_in_the_mme:
+              blank: must be present if shown to defendant and defendant believed
+                to be in the MME
+              present: must be absent unless shown to defendant and defendant believed
+                to be in the MME
+            reasons_if_not_shown:
+              blank: must be present unless shown to defendant
+        offence:
+          attributes:
+            ages_of_children:
+              too_short: at least one is required if there were children present
+        person_victim:
+          attributes:
+            reason_dob_not_provided:
+              blank: must be present unless date of birth is present
+            special_measures:
+              blank: must be present if victim is to attend and read
+            wish_to_use_video_link:
+              blank: must be present if victim is to attend and read
+        property:
+          attributes:
+            damage_cost:
+              blank: must be present if item was damaged
+              present: must be absent unless item was damaged
+            damage_description:
+              blank: must be present if item was damaged
+              present: must be absent unless item was damaged
+            recovered_from:
+              blank: must be present if item was recovered
+              present: must be absent unless item was recovered
+        safeguarding_assessment:
+          attributes:
+            reasons_not_completed:
+              blank: must be present unless assessment completed
+              present: must be absent if assessment completed
+            safeguarding_level:
+              inclusion: must be a valid safeguarding level if assessment completed
+              present: must be absent unless assessment completed
+        standard_interview:
+          attributes:
+            legal_representative_firm:
+              blank: must be present if represented
+            legally_represented_by:
+              blank: must be present if represented
+            questions_asked:
+              blank: must be present if response was no comment
+              present: must be absent unless response was no comment
+        statement_witness:
+          attributes:
+            reason_dob_not_provided:
+              blank: must be present unless date of birth is present
+            url:
+              blank: must be present if visually recorded
+              present: must be absent unless visually recorded
+        witness:
+          attributes:
+            interpreter_language_or_dialect:
+              blank: must be present if interpreter required
+            witness_id:
+              unique_within_case_file: must be unique within case file
