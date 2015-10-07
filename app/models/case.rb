@@ -169,6 +169,7 @@ private
   def validate_unique_ids
     validate_unique_on_collection multimedia_evidence, :id
     validate_unique_on_collection witnesses, :witness_id
+    validate_unique_on_collection property, :property_id
   end
   validate :validate_unique_ids
 

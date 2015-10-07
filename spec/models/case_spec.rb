@@ -209,5 +209,21 @@ RSpec.describe Case do
         subject.validate
       end
     end
+
+    context 'property' do
+      let(:property_a) { Property.new(property_id: 'ABC123') }
+      let(:property_b) { Property.new(property_id: 'ABC123') }
+      let(:property_c) { Property.new(property_id: 'ABC124') }
+      subject {
+        described_class.new(property: [property_a, property_b, property_c])
+      }
+
+      it 'validates multimedia_evidence id uniqueness' do
+        subject.validate
+        expect(property_a.errors[:property_id]).not_to be_empty
+        expect(property_b.errors[:property_id]).not_to be_empty
+        expect(property_c.errors[:property_id]).to be_empty
+      end
+    end
   end
 end

@@ -4,7 +4,6 @@ class Property
 
   attribute :property_id, Integer
   validates :property_id, presence: true
-  # TODO: validate uniqueness within case file
 
   attribute :property_action, String
   validates :property_action, inclusion: { in: Enumerations::PropertyAction }
