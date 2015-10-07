@@ -187,6 +187,14 @@ private
   end
   validate :validate_mme_response_ids
 
+  def validate_property_ids
+    available_ids = property.map(&:property_id)
+    defendants.each do |defendant|
+      defendant.validate_property_ids available_ids
+    end
+  end
+  validate :validate_property_ids
+
   def validate_unique_on_collection(collection, field)
     ids = collection.map(&field).compact
     collection.

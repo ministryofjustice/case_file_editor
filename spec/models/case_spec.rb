@@ -155,6 +155,50 @@ RSpec.describe Case do
           to receive(:validate_domestic_violence_specific).with(true)
         subject.validate
       end
+
+      context 'generic offences' do
+        it 'is valid if every ID refers to a piece of property' do
+          subject.property = [
+            Property.new(property_id: 'ABC123'),
+            Property.new(property_id: 'ABC124')
+          ]
+          generic_offence.property_ids = %w[ABC123 ABC124]
+          subject.validate
+          expect(generic_offence.errors[:property_ids]).to be_empty
+        end
+
+        it 'is invalid if an ID does not refer to a piece of property' do
+          subject.property = [
+            Property.new(property_id: 'ABC123'),
+            Property.new(property_id: 'ABC124')
+          ]
+          generic_offence.property_ids = %w[ABC123 XYZ999]
+          subject.validate
+          expect(generic_offence.errors[:property_ids]).not_to be_empty
+        end
+      end
+
+      context 'retail theft offences' do
+        it 'is valid if every ID refers to a piece of property' do
+          subject.property = [
+            Property.new(property_id: 'ABC123'),
+            Property.new(property_id: 'ABC124')
+          ]
+          retail_theft_offence.property_ids = %w[ABC123 ABC124]
+          subject.validate
+          expect(retail_theft_offence.errors[:property_ids]).to be_empty
+        end
+
+        it 'is invalid if an ID does not refer to a piece of property' do
+          subject.property = [
+            Property.new(property_id: 'ABC123'),
+            Property.new(property_id: 'ABC124')
+          ]
+          retail_theft_offence.property_ids = %w[ABC123 XYZ999]
+          subject.validate
+          expect(retail_theft_offence.errors[:property_ids]).not_to be_empty
+        end
+      end
     end
 
     context 'defendants' do

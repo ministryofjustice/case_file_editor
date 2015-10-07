@@ -128,6 +128,10 @@ en:
             signed_for_bail:
               blank: must be present if bail is unconditional
               present: must be absent if bail is conditional
+        generic_offence:
+          attributes:
+            property_ids:
+              refer_to_property: must each refer to a piece of property in the case
         injury:
           attributes:
             details_of_medical_treatment:
@@ -192,6 +196,10 @@ en:
             recovered_from:
               blank: must be present if item was recovered
               present: must be absent unless item was recovered
+        retail_theft_offence:
+          attributes:
+            property_ids:
+              refer_to_property: must each refer to a piece of property in the case
         safeguarding_assessment:
           attributes:
             reasons_not_completed:

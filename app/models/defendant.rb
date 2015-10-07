@@ -297,6 +297,14 @@ class Defendant
     end
   end
 
+  def validate_property_ids(available_ids)
+    offences.each do |collection|
+      if collection.respond_to?(:validate_property_ids)
+        collection.validate_property_ids available_ids
+      end
+    end
+  end
+
   def all_offences
     offences.flat_map(&:offences)
   end

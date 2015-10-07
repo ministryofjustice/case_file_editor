@@ -7,4 +7,10 @@ class RetailTheftOffenceCollection < OffenceCollection
   end
 
   alias_method :offences, :retail_theft_offences
+
+  def validate_property_ids(available_ids)
+    retail_theft_offences.each do |offence|
+      offence.validate_property_ids available_ids
+    end
+  end
 end
