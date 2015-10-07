@@ -27,5 +27,10 @@ class StatementWitness < Witness
     unless: :visually_recorded_interview
 
   attribute :rank, String
-  # TODO: validate present iff witness_type is an officer
+  validates :rank,
+    presence: true,
+    if: :officer_witness?
+  validates :rank,
+    absence: true,
+    unless: :officer_witness?
 end

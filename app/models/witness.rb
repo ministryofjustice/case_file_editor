@@ -31,6 +31,10 @@ class Witness
     validate_ngap unless is_gap
   end
 
+  def officer_witness?
+    (Enumerations::OfficerWitnessType & witness_type).any?
+  end
+
 private
 
   def validate_ngap

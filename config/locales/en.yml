@@ -166,6 +166,9 @@ en:
           attributes:
             interpreter_required:
               blank: must be present when there is a guilty anticipated plea
+            rank:
+              blank: must be present if the witness is an officer
+              blank: must be absent unless the witness is an officer
         offence:
           attributes:
             ages_of_children:
@@ -210,6 +213,9 @@ en:
           attributes:
             reason_dob_not_provided:
               blank: must be present unless date of birth is present
+            rank:
+              blank: must be present if the witness is an officer
+              blank: must be absent unless the witness is an officer
             url:
               blank: must be present if visually recorded
               present: must be absent unless visually recorded

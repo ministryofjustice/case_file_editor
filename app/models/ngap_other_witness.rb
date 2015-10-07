@@ -10,8 +10,13 @@ class NgapOtherWitness < Witness
 
   attribute :number, String
 
-  # TODO: validate present iff witness_type is an officer
   attribute :rank, String
+  validates :rank,
+    presence: true,
+    if: :officer_witness?
+  validates :rank,
+    absence: true,
+    unless: :officer_witness?
 
 private
 
