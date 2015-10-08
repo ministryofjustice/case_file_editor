@@ -48,7 +48,22 @@ RSpec.describe 'Parsing example files' do
 
     it 'identifies one error on case' do
       expect(errors).to eq(
-        case_markers: ["must all be one of the allowed values"]
+        case_markers: ["must all be one of the allowed values"],
+        defendants: {
+          0 => {
+            offences: {
+              0 => {
+                retail_theft_offences: {
+                  0 => {
+                    demeanour_at_incident: [
+                      "must be absent if case is not domestic violence"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       )
     end
   end
