@@ -181,6 +181,9 @@ en:
           attributes:
             ages_of_children:
               too_short: at least one is required if there were children present
+            demeanour_at_incident:
+              blank: must be present if case is domestic violence
+              present: must be absent if case is not domestic violence
         person_victim:
           attributes:
             reason_dob_not_provided:
