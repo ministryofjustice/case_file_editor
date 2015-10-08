@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 RSpec.describe 'Parsing example files' do
   let(:dcf) {
     CaseImporter.new(source).import
@@ -34,6 +36,73 @@ RSpec.describe 'Parsing example files' do
 
     it 'allows Mme#relied_upon_sentence and #relied_upon_trial both to be true' do
       expect(errors).not_to have_key(:multimedia_evidence)
+    end
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
+
+  context 'example 02' do
+    let(:name) { 'example_02' }
+
+    it 'identifies one error on case' do
+      expect(errors).to eq(
+        case_markers: ["must all be one of the allowed values"]
+      )
+    end
+  end
+
+  context 'example 04' do
+    let(:name) { 'example_04' }
+
+    it 'identifies two errors on first defendant' do
+      expect(errors).to eq(
+        defendants: {
+          0 => {
+            eec_check_submitted: [
+              "must be absent unless defendant has EEC passports"
+            ],
+            eec_convictions_record_received: [
+              "must be absent unless defendant has EEC passports"
+            ]
+          }
+        }
+      )
+    end
+  end
+
+  context 'example 08' do
+    let(:name) { 'example_08' }
+
+    it 'identifies one error on first defendant’s first MME response' do
+      expect(errors).to eq(
+        defendants: {
+          0 => {
+            multimedia_evidence_response: {
+              0 => {
+                defendant_admitted_to_location: ["is required"]
+              }
+            }
+          }
+        }
+      )
+    end
+  end
+
+  context 'example 09' do
+    let(:name) { 'example_09' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
+
+  context 'example 12' do
+    let(:name) { 'example_12' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
     end
   end
 end
