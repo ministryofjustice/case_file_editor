@@ -1,7 +1,6 @@
 class Event
+  include BasicModel
   extend AbstractClass
-  include Virtus.model
-  include ActiveModel::Validations
 
   attribute :date, Date
   attribute :type, String

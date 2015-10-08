@@ -1,8 +1,7 @@
 require_dependency 'enumerations/c_c_not_suitable_reason'
 
 class Defendant
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
   include AgeCalculation
 
   ADULT_MIN_AGE = 18

@@ -1,5 +1,4 @@
 class Name
+  include BasicModel
   extend AbstractClass
-  include Virtus.model
-  include ActiveModel::Validations
 end

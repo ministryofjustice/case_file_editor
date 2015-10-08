@@ -1,6 +1,5 @@
 class OrganisationLocation
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :ou_top_level_name, String
   validates :ou_top_level_name, presence: true

@@ -1,6 +1,5 @@
 class BreachOfBail
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :breach_details, String
   validates :breach_details, presence: true

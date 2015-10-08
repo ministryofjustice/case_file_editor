@@ -1,6 +1,5 @@
 class SafeguardingAssessment
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :assessment_completed, Virtus::Attribute::Boolean
   validates :assessment_completed, boolean_presence: true

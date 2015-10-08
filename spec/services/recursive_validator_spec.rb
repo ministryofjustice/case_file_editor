@@ -2,16 +2,14 @@ require 'rails_helper'
 
 module RecursiveValidatorSpec
   class Child
-    include Virtus.model
-    include ActiveModel::Validations
+    include BasicModel
 
     attribute :name, String
     validates :name, presence: true
   end
 
   class Parent
-    include Virtus.model
-    include ActiveModel::Validations
+    include BasicModel
 
     attribute :children, Array[Child]
     attribute :child, Child

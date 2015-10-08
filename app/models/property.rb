@@ -1,6 +1,5 @@
 class Property
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :property_id, Integer
   validates :property_id, presence: true

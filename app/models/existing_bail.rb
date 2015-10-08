@@ -1,6 +1,5 @@
 class ExistingBail
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :original_charge_wording, Array[String]
   validates :original_charge_wording, length: { minimum: 1 }

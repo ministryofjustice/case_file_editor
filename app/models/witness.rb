@@ -1,6 +1,5 @@
 class Witness
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :witness_id, String
 

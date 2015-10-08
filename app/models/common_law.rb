@@ -1,6 +1,5 @@
 class CommonLaw
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :reporting_officer, PersonName
   validates :reporting_officer, presence: true

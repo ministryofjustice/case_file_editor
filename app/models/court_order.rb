@@ -1,6 +1,5 @@
 class CourtOrder
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :court_order_title, String
   validates :court_order_title,

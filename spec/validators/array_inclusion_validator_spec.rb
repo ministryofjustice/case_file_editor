@@ -1,8 +1,7 @@
 RSpec.describe ArrayInclusionValidator do
   let(:klass) {
     Class.new do
-      include Virtus.model
-      include ActiveModel::Validations
+      include BasicModel
 
       def self.model_name
         ActiveModel::Name.new(self, nil, 'thing')

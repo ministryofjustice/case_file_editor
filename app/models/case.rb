@@ -1,6 +1,5 @@
 class Case
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   VALID_URN = /\A[A-Z]{4}\d{5}\d{2}(-[A-Z]{2})?\z/
   MAX_1200_WORDS = /\A\s*(\S+\s*){1,1200}\z/

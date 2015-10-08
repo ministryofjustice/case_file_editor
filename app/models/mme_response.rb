@@ -1,5 +1,4 @@
 class MmeResponse
+  include BasicModel
   extend AbstractClass
-  include Virtus.model
-  include ActiveModel::Validations
 end

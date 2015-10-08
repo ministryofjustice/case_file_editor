@@ -1,6 +1,5 @@
 class Injury
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :names_of_defendants_causing_injuries, Array[PersonName]
   validates :names_of_defendants_causing_injuries,

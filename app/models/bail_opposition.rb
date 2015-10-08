@@ -1,6 +1,5 @@
 class BailOpposition
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :opposition_ground, String
   validates :opposition_ground,

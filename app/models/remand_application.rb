@@ -1,6 +1,5 @@
 class RemandApplication
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :substantial_grounds, Array[BailOpposition]
   validates :substantial_grounds, length: { minimum: 1 }

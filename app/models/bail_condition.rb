@@ -1,6 +1,5 @@
 class BailCondition
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :grounds, Array[String]
   validates :grounds,

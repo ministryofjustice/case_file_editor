@@ -1,6 +1,5 @@
 class RetailTheftInterviewExtension
-  include Virtus.model
-  include ActiveModel::Validations
+  include BasicModel
 
   attribute :admit_taking_property, String
   validates :admit_taking_property,
