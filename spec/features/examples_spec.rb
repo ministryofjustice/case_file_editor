@@ -72,6 +72,16 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
+  context 'example 05' do
+    let(:name) { 'example_05' }
+
+    it 'complains that special_measures is present for GAP' do
+      expect(errors).to match(
+        witnesses: { 0 => { special_measures: anything } }
+      )
+    end
+  end
+
   context 'example 08' do
     let(:name) { 'example_08' }
 

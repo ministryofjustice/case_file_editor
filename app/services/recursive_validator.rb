@@ -14,7 +14,7 @@ private
 
     node.validate
     node.attributes.inject(node.errors.messages) { |acc, (key, value)|
-      acc.merge(attribute_errors(key, value))
+      SmartHashMerge.merge(acc, attribute_errors(key, value))
     }
   end
 
