@@ -120,14 +120,18 @@ class Case
   def young_witness?
     return false unless date
     witnesses.any? { |w|
-      w.respond_to?(:age) && w.age(date) <= YOUNG_WITNESS_MAX_AGE
+      w.respond_to?(:age) &&
+        w.age(date) &&
+        w.age(date) <= YOUNG_WITNESS_MAX_AGE
     }
   end
 
   def older_victim?
     return false unless date
     victims.any? { |v|
-      v.respond_to?(:age) && v.age(date) >= OLDER_VICTIM_MIN_AGE
+      v.respond_to?(:age) &&
+        v.age(date) &&
+        v.age(date) >= OLDER_VICTIM_MIN_AGE
     }
   end
 
