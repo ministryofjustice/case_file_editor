@@ -36,7 +36,7 @@ RSpec.describe SmartHashMerge do
   end
 
   it "does not merge nil array values" do
-    lhs = { }
+    lhs = {}
     rhs = { "foo" => ["baz"] }
     expected = { "foo" => ["baz"] }
     expect(subject.merge(lhs, rhs)).to eq(expected)

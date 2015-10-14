@@ -4,7 +4,8 @@ class SmartHashMerge
   end
 
   def initialize(lhash, rhash)
-    @lhash, @rhash = lhash, rhash
+    @lhash = lhash
+    @rhash = rhash
   end
 
   def merge
@@ -13,20 +14,26 @@ class SmartHashMerge
   end
 
 private
+
   def deep_merge(lhash, rhash)
     merged = lhash.dup
     rhash.each do |key, rvalue|
-      lvalue = lhash[key]
-      if lvalue.is_a?(Hash) and rvalue.is_a?(Hash)
-        merged[key] = deep_merge(lhash[key], rhash[key])
-      elsif lvalue.is_a?(Array) and rvalue.is_a?(Array)
-        merged[key] = lvalue + rvalue
-      elsif rvalue.is_a?(Array) && !lvalue.nil?
-        merged[key] = [lvalue] + rvalue
-      else
-        merged[key] = rvalue
-      end
+      merged[key] = merge_pair(lhash[key], rvalue)
     end
     merged
+  end
+
+  # rubocop:disable Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity
+  def merge_pair(lvalue, rvalue)
+    if lvalue.is_a?(Hash) && rvalue.is_a?(Hash)
+      deep_merge(lvalue, rvalue)
+    elsif lvalue.is_a?(Array) && rvalue.is_a?(Array)
+      lvalue + rvalue
+    elsif rvalue.is_a?(Array) && !lvalue.nil?
+      [lvalue] + rvalue
+    else
+      rvalue
+    end
   end
 end
