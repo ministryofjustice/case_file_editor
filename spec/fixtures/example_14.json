@@ -1,0 +1,118 @@
+{
+  "pti_urn": "AAAA9999915-AA",
+  "type": "FirstHearingDCF",
+  "version": 1,
+  "brief_description_of_case": "Officers see 2 males on the street, Market Street, Anywhere. PC666 stops the car as the 2 males are having a loud and heated argument whilst gesturing furiously at one another.PC99 got out of the car and approached the men. BULL shouted at the other “you fucking halfwit” and pushed male 2 in the chest. PC99 told both males to calm down and leave the area. Male 2 immediately apologised and walked off down the street. BULL looked at PC99 and shouted “you’re a fucking halfwit too” and started to move towards the officer. Bull was subsequently arrested.",
+  "defendants": [
+    {
+      "name": {
+        "surname": "Bull",
+        "given_name": [ "John" ]
+      },
+      "date_of_birth": "1989-12-01",
+      "arrest": {
+        "type": "Arrest",
+        "date_time": "2015-09-04T22:35Z",
+        "comments_on_arrest_and_caution": "I knew you were a halfwit."
+      },
+      "conditional_caution_considered": true,
+      "cc_not_suitable_reasons": [ "reoffending_risk_offending_history" ],
+      "offences": [
+        {
+          "type": "GenericOffences",
+          "generic_offences": [
+            {
+              "type": "GenericOffence",
+              "cjs_offence_code": "to_be_added",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2015-09-04",
+                "to_date": "2015-09-04",
+                "offence_title": "Use threatening / abusive words / behaviour or disorderly behaviour likely to cause harassment, alarm or distress",
+                "charge_wording": "On 4th September 2015 at Anytown used threatening or abusive words or behaviour or disorderly behaviour within the hearing or sight of a person likely to be caused harassment, alarm or distress thereby.Contrary to section 5(1) and (6) of the Public Order Act 1986.",
+                "reply_to_charge": "I'm sorry",
+                "points_to_prove_met_by": "Date and Location - officers statement \n Used disorderly language and behaviour - witnessed by police and in officers statement",
+                "anticipated_plea": "guilty",
+                "committed_on_bail": false
+              }
+            }
+          ]
+        }
+      ],
+      "occupation": "Unemployed",
+      "has_eec_passports": false,
+      "foreign_national_offender": false,
+      "breach_of_order": false,
+      "pnc_check_performed": true,
+      "pnc_convictions": true,
+      "court_order_applications": [
+        {
+          "court_order_title": "no_orders_required"
+        }
+      ],
+      "interpreter_required": false,
+      "multimedia_evidence_response": [
+        {
+          "type": "MmeNotRecordedResponse",
+          "defendant_admitted_to_location": true,
+          "how_is_identification_established": "Seen and arrested at the scene by PC666."
+        }
+      ],
+      "dealt_with_in_welsh": false,
+      "person_remand_status": "unconditional_bail",
+      "given_charges": true,
+      "initiation_type": "charge",
+      "interview": {
+        "type": "NotInterviewed",
+        "reason": "S5 witnessed by police"
+      },
+      "signed_charge_sheet": true,
+      "signed_for_bail": true,
+      "first_hearing_datetime": "2015-09-20T10:20Z",
+      "first_hearing_location": {
+        "ou_top_level_name": "Magistrates' Courts",
+        "ou_second_level_name": "London",
+        "ou_third_level_name": "Barking (East Street)",
+        "ou_bottom_level_name": "A"
+      }
+    }
+  ],
+  "witnesses": [
+    {
+      "type": "StatementWitness",
+      "witness_type": [ "eye", "police" ],
+      "name": {
+        "given_name": [ "Craig" ],
+        "surname": "MARROW"
+      },
+      "rank": "PC",
+      "witness": {
+        "nature_of_involvement": "Witnessed the defendants behaviour and arrested him",
+        "evidence_they_can_give": "Witnessed the defendants conduct"
+      },
+      "reason_dob_not_provided": "Police officer",
+      "visually_recorded_interview": false
+    }
+  ],
+  "common_law_disclosure": {
+    "type": "CommonLawNotForDisclosure",
+    "reporting_officer": {
+      "surname": "SPRAY",
+      "given_name": [ "John" ]
+    },
+    "reporting_officer_signature_date": "2015-09-04"
+  },
+  "expert_evidence": false,
+  "test_code": "full_code_test",
+  "pca_cps": false,
+  "officer_in_the_case": {
+    "surname": "SPRAY",
+    "given_name": [ "John" ]
+  },
+  "signatory_name": {
+    "surname": "Specific",
+    "given_name": [ "Test" ]
+  },
+  "date": "2015-10-14",
+  "signatory_rank": "Test Specific"
+}

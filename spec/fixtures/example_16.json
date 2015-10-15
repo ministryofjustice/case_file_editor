@@ -1,0 +1,230 @@
+{
+  "pti_urn": "AAAA9999915-AA",
+  "type": "FirstHearingDCF",
+  "version": 1,
+  "brief_description_of_case": "Witness LORD was working at Boots, Central Avenue and saw the defendant BULLOVA take a packet of razor blades, place them inside his jacket pocket and  leave the store without making any effort to pay.  PC MORRIS attended and, on viewing the CCTV, identified BULLOVA. PS MORRIS and ASTON attended at the home address of the defendant and arrested him for the offence.  No property was recovered.",
+  "defendants": [
+    {
+      "name": {
+        "surname": "Bullova",
+        "given_name": [ "Joshua" ]
+      },
+      "date_of_birth": "1989-12-13",
+      "arrest": {
+        "type": "Arrest",
+        "date_time": "2015-09-05T09:58Z",
+        "comments_on_arrest_and_caution": "You must be joking. I've been in bed all morning."
+      },
+      "conditional_caution_considered": true,
+      "cc_not_suitable_reasons": [ "offence_not_admitted" ],
+      "offences": [
+        {
+          "type": "RetailTheftOffences",
+          "retail_theft_offences": [
+            {
+              "type": "RetailTheftOffence",
+              "cjs_offence_code": "th68010",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2014-09-05",
+                "to_date": "2014-09-05",
+                "offence_title": "Theft from a shop",
+                "charge_wording": "On Saturday 5th September 2015 at Anytown, stole a quantity of razors , of a  value unknown belonging to Boots.",
+                "reply_to_charge": "I am not guilty",
+                "points_to_prove_met_by": "CCTV shows MARSHALL: \n taking the property \n consuming the property \n leaving the shop without paying",
+                "anticipated_plea": "not_guilty",
+                "committed_on_bail": false
+              },
+              "property_ids": [ 1 ],
+              "retail_theft_interview_extension": {
+                "admit_taking_property": "admits_nothing",
+                "admit_being_dishonest": false,
+                "admit_intending_to_permanently_deprive": false
+              }
+            }
+          ]
+        }
+      ],
+      "occupation": "Roofer",
+      "has_eec_passports": false,
+      "foreign_national_offender": false,
+      "breach_of_order": false,
+      "pnc_check_performed": true,
+      "pnc_convictions": true,
+      "court_order_applications": [
+        {
+          "court_order_title": "no_orders_required"
+        }
+      ],
+      "interpreter_required": false,
+      "multimedia_evidence_response": [
+        {
+          "id": "RSW1",
+          "type": "MmeRecordedResponse",
+          "defendant_shown": true,
+          "defendant_comments_if_shown": "No Comment made",
+          "is_defendant_believed_to_be_in_the_mme": true,
+          "defendant_admits_being_in_mme": false,
+          "how_is_identification_established": "Identified by PC Michael MORRIS"
+        }
+      ],
+      "notice_to_provide_bad_character_evidence": false,
+      "dealt_with_in_welsh": false,
+      "person_remand_status": "unconditional_bail",
+      "given_charges": true,
+      "initiation_type": "charge",
+      "interview": {
+        "type": "StandardInterview",
+        "date": "2014-09-05",
+        "defendant_legally_represented": true,
+        "legally_represented_by": {
+          "given_name": [ "Andrew" ],
+          "surname": "Mitchell"
+        },
+        "legal_representative_firm": "CD Sols",
+        "special_warnings_given": false,
+        "no_comment_response": true,
+        "questions_asked": "Did you go into Boots today? \n Did you remove razors from the shelf? \n Did you leave the store without offering payment for the razors? \n Where are the razors now? \n Is there any reason why you took the razors? \n Do you accept that you are shown on the CCTV in the store? \n Do you accept that the CCTV shows you removing razors from the shelf, placing them in your pocket and leaving the store without offering or making any payment? \n Do you accept that you were being dishonest by putting the razors in your pocket and leaving the store without paying?"
+      },
+      "signed_charge_sheet": true,
+      "signed_for_bail": true,
+      "first_hearing_datetime": "2015-09-20T10:20Z",
+      "first_hearing_location": {
+        "ou_top_level_name": "Magistrates' Courts",
+        "ou_second_level_name": "London",
+        "ou_third_level_name": "Barking (East Street)",
+        "ou_bottom_level_name": "A"
+      }
+    }
+  ],
+  "witnesses": [
+    {
+      "type": "StatementWitness",
+      "witness_type": [ "eye" ],
+      "name": {
+        "given_name": [ "John" ],
+        "surname": "Lord"
+      },
+      "witness": {
+        "nature_of_involvement": "Witnessed offence being committed on CCTV at the time",
+        "evidence_they_can_give": "Identification, theft and consumption of property, failure to pay for property, exhibit CCTV",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "date_of_birth": "1973-07-20",
+      "visually_recorded_interview": false
+    },
+    {
+      "type": "StatementWitness",
+      "witness_type": [ "identity", "arresting_officer", "interviewing_officer", "police" ],
+      "name": {
+        "given_name": [ "Michael" ],
+        "surname": "Morris"
+      },
+      "witness": {
+        "nature_of_involvement": "Identified defendant, searched defendant's home, arrested defendant and interviewed defendant.",
+        "evidence_they_can_give": "Identification of defendant",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "reason_dob_not_provided": "Police Officer",
+      "visually_recorded_interview": false,
+      "rank": "PC"
+    },
+    {
+      "type": "NgapOtherWitness",
+      "witness_type": [ "corroborative", "police" ],
+      "name": {
+        "given_name": [ "Michael" ],
+        "surname": "Morris"
+      },
+      "witness": {
+        "nature_of_involvement": "Present at arrest and search.",
+        "evidence_they_can_give": "None",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "rank": "PC",
+      "number": "2"
+    },
+    {
+      "type": "OrganisationVictim",
+      "name": {
+        "organisation_name": "BOOTS, Anytown"
+      },
+      "victim": {
+        "witness_type": [ "other" ],
+        "witness": {
+          "nature_of_involvement": "The shop from which the property was stolen",
+          "evidence_they_can_give": "Evidence property has been stolen.",
+          "special_measures": false,
+          "interpreter_required": false,
+          "wish_to_use_video_link": false
+        },
+        "victim_code_requirements_met": true,
+        "has_the_victim_made_a_vps_isb": true,
+        "victim_wish_to_attend_court": "no_cps_to_disclose_and_not_to_read",
+        "compensation_applications": [
+          {
+            "defendant_names": [
+              {
+                "given_name": [ "Joshua" ],
+                "surname": "Bullova"
+              }
+            ],
+            "reasons_for_application": [ "property_loss" ],
+            "amount_compensation_requested": 15.00,
+            "is_estimate": true
+          }
+        ]
+      }
+    }
+  ],
+  "common_law_disclosure": {
+    "type": "CommonLawForDisclosure",
+    "reporting_officer": {
+      "surname": "MORRIS",
+      "given_name": [ "Michael" ]
+    },
+    "reporting_officer_signature_date": "2015-07-10",
+    "details_of_relevant_unused_material": "TO-DO"
+  },
+  "likely_case_progression": "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
+  "multimedia_evidence": [
+    {
+      "id": "RSW1",
+      "date": "2015-09-05",
+      "type": "cctv",
+      "description_of_what_is_contained_in_multimedia_evidence": "BULLOVA taking the razor blades at 00:00:20.",
+      "evidential_value": true,
+      "relied_upon_trial": true,
+      "relied_upon_sentence": false,
+      "total_duration": "00:05"
+    }
+  ],
+  "is_hearsay": false,
+  "expert_evidence": false,
+  "test_code": "full_code_test",
+  "pca_cps": false,
+  "property": [
+    {
+      "property_id": 1,
+      "property_action": "stolen_not_recovered",
+      "description": "Razor blades",
+      "value": 15.00
+    }
+  ],
+  "officer_in_the_case": {
+    "surname": "MORRIS",
+    "given_name": [ "Michael" ]
+  },
+  "signatory_name": {
+    "surname": "Specific",
+    "given_name": [ "Test" ]
+  },
+  "date": "2015-10-14",
+  "signatory_rank": "Test Specific"
+}

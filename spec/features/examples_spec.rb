@@ -130,4 +130,28 @@ RSpec.describe 'Parsing example files' do
       expect(errors).to eq({})
     end
   end
+
+  context 'example 14' do
+    let(:name) { 'example_14' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
+
+  context 'example 15' do
+    let(:name) { 'example_15' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
+
+  context 'example 16' do
+    let(:name) { 'example_16' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
 end
