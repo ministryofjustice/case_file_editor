@@ -3,7 +3,7 @@ RSpec.describe StatementWitness do
     describe 'rank' do
       context 'for an officer' do
         before do
-          subject.witness_type << 'arresting officer'
+          subject.witness_type << 'arresting_officer'
         end
 
         it 'is valid if present' do

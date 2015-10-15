@@ -1,5 +1,5 @@
 {
-  "description": "First Hearing Digital Case File 1.1.0 Draft 5",
+  "description": "First Hearing Digital Case File 1.1.0 Draft 6",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -62,7 +62,8 @@
       "items": {
         "anyOf": [
           { "$ref": "#/definitions/StatementWitness" },
-          { "$ref": "#/definitions/Victim" },
+          { "$ref": "#/definitions/PersonVictim" },
+          { "$ref": "#/definitions/OrganisationVictim" },
           { "$ref": "#/definitions/NgapOtherWitness" },
           { "$ref": "#/definitions/ExpertWitness" }
         ]
@@ -175,7 +176,7 @@
           "enum": [ "CommonLawForDisclosure" ]
         },
         "reporting_officer": {
-          "type": "string"
+          "$ref": "#/definitions/PersonName"
         },
         "reporting_officer_signature_date": {
           "description": "ISO 8601 Conformant Date",
@@ -305,10 +306,10 @@
               "offence_whilst_on_bail",
               "liable_for_resentence_of_an_earlier_offence",
               "liable_for_prison_recall",
-              "defendants_response_on arrest_co operation",
-              "reoffending_risk_ offending history",
-              "reoffending_risk_ response_to_sentence_bail",
-              "reoffending_risk_ not_reduced_by_conditions"
+              "defendants_response_on_arrest_co-operation",
+              "reoffending_risk_offending_history",
+              "reoffending_risk_response_to_sentence_bail",
+              "reoffending_risk_not_reduced_by_conditions"
             ]
           }
         },
@@ -1007,15 +1008,16 @@
       "type": "object",
       "properties": {
         "type": { "enum": [ "MmeNotRecordedResponse" ] },
-        "defendent_addmitted_to_location": {
+        "defendant_admitted_to_location": {
           "type": "boolean"
         },
         "how_is_identification_established": {
-          "type": "boolean"
+          "type": "string"
         }
       },
       "required": [
-        "defendent_addmitted_to_location",
+        "type",
+        "defendant_admitted_to_location",
         "how_is_identification_established"
       ],
       "additionalProperties": false
@@ -1138,7 +1140,7 @@
       "additionalProperties": false,
       "required": [
         "victim_name",
-        "relationship_between_parties",
+        "relationship_description",
         "lenth_of_relationship"
       ]
     },
@@ -1296,8 +1298,7 @@
         }
       },
       "required": [
-        "court_order_title",
-        "reason_for_request"
+        "court_order_title"
       ],
       "additionalProperties": false
     },
@@ -1321,7 +1322,7 @@
           "type": "boolean"
         },
         "interpreter_language_or_dialect": {
-          "type": "boolean"
+          "type": "string"
         },
         "wish_to_use_video_link": {
           "type": "boolean"
@@ -1508,8 +1509,8 @@
             "enum": [
               "eye",
               "identity",
-              "arresting officer",
-              "interviewing officer",
+              "arresting_officer",
+              "interviewing_officer",
               "child",
               "corroborative",
               "continuity",

@@ -1,7 +1,7 @@
 module Enumerations
-  OfficerWitnessType = [
-    'arresting officer',
-    'interviewing officer',
-    'police'
+  OfficerWitnessType = %w[
+    arresting_officer
+    interviewing_officer
+    police
   ]
 end

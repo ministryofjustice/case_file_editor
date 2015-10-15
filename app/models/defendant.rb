@@ -37,7 +37,6 @@ class Defendant
   validates :occupation, presence: true
 
   attribute :class_a_drug_test_provided, Virtus::Attribute::Boolean
-  validates :class_a_drug_test_provided, boolean_presence: true
 
   attribute :class_a_drug_test_details, String
   validates :class_a_drug_test_details,
