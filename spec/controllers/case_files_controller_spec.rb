@@ -23,7 +23,7 @@ RSpec.describe CaseFilesController, type: :controller do
         expect(assigns(:upload)).to be_a(CaseFileUpload)
       end
 
-      it 'responds with success' do
+      it 'responds with success (200)' do
         post :create, case_file: attributes
         expect(response).to have_http_status(:success)
       end
@@ -37,9 +37,9 @@ RSpec.describe CaseFilesController, type: :controller do
         expect(assigns(:upload)).to be_a(CaseFileUpload)
       end
 
-      it 'responds with success' do
+      it 'responds with bad request (400)' do
         post :create, case_file: attributes
-        expect(response).to have_http_status(:success)
+        expect(response).to have_http_status(:bad_request)
       end
     end
 

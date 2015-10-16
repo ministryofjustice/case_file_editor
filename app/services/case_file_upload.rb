@@ -24,6 +24,10 @@ class CaseFileUpload
     object_errors? || schema_errors?
   end
 
+  def exception_log_string
+    ([@exception.inspect] + @exception.backtrace).join("\n")
+  end
+
 private
 
   def validate_objects(obj)
