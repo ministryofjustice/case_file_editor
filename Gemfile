@@ -15,6 +15,7 @@ group :development, :test do
   gem 'brakeman'
   gem 'byebug'
   gem 'capybara'
+  gem 'curb'
   gem 'launchy'
   gem 'poltergeist'
   gem 'pry-rails'
