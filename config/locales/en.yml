@@ -154,6 +154,10 @@ en:
             relied_upon_trial:
               falsehood: must be false if relied upon at sentence
               truth: must be true unless relied upon at sentence
+        mme_not_recorded_response:
+          attributes:
+            type:
+              response_required: cannot be a not recorded response if there is multimedia evidence in the case
         mme_recorded_response:
           attributes:
             defendant_comments_if_shown:

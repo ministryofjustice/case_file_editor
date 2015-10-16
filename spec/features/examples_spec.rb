@@ -97,6 +97,24 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
+  context 'example 07' do
+    let(:name) { 'example_07' }
+
+    it 'identifies that MmeNotRecordedResponse is invalid when there is MME' do
+      expect(errors).to match(
+        defendants: {
+          0 => {
+            multimedia_evidence_response: {
+              0 => include(
+                type: include("cannot be a not recorded response if there is multimedia evidence in the case")
+              )
+            }
+          }
+        }
+      )
+    end
+  end
+
   context 'example 08' do
     let(:name) { 'example_08' }
 
