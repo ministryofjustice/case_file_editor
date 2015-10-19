@@ -8,7 +8,7 @@ class ExpertWitness < Witness
 
   attribute :type, String, writer: :private, default: 'ExpertWitness'
 
-  attribute :witness_type, String, writer: :private, default: 'expert'
+  attribute :witness_type, Array[String], writer: :private, default: ['expert']
 
   attribute :evidence_they_can_give, String
   validates :evidence_they_can_give, presence: true

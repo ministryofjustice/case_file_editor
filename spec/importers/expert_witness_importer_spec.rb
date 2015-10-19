@@ -2,7 +2,7 @@ RSpec.describe ExpertWitnessImporter do
   let(:source) {
     {
       'type' => 'ExpertWitness',
-      'witness_type' => 'expert',
+      'witness_type' => ['expert'],
       'name' => name,
       'witness' => {
         'nature_of_involvement' => 'Nature of involvement',
@@ -27,7 +27,7 @@ RSpec.describe ExpertWitnessImporter do
       it { is_expected.to be_kind_of(ExpertWitness) }
 
       it 'has top-level properties' do
-        expect(subject.witness_type).to eq('expert')
+        expect(subject.witness_type).to eq(['expert'])
       end
 
       it 'has properties from the witness sub-object' do
