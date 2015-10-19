@@ -3,7 +3,7 @@ module Enumerations
     cctv
     facewatch
     body_worn_video
-    surveillance _camera
+    surveillance_camera
     telephone_call
   ]
 end

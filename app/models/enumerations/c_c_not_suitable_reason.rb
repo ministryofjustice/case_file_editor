@@ -1,6 +1,6 @@
 module Enumerations
   CCNotSuitableReason = %w[
-    offence_not_one_for_which_conditional_caution_can_be_offered
+    offence_not_one_in_dpps_guidance_for_conditional_caution
     offence_not_admitted
     partial_defence_raised
     offence_whilst_on_bail
