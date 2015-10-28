@@ -1134,7 +1134,7 @@
           "type": "string"
         },
         "length_of_relationship": {
-          "type": "string"
+          "type": "number"
         }
       },
       "additionalProperties": false,
@@ -1675,3 +1675,6 @@
     }
   }
 }
+
+
+
