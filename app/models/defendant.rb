@@ -198,7 +198,7 @@ class Defendant
   attribute :parent_guardian_date_sent, Date
   validates :parent_guardian_date_sent,
     presence: true,
-    if: :parent_guardian_copy
+    if: :parent_guardian_date_sent_needed?
 
   attribute :bail_conditions_provided, Virtus::Attribute::Boolean
   validates :bail_conditions_provided,
@@ -319,5 +319,9 @@ class Defendant
 
   def all_offences
     offences.flat_map(&:offences)
+  end
+
+  def parent_guardian_date_sent_needed?
+    parent_guardian_copy && initiated_as_requisition?
   end
 end
