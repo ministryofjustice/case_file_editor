@@ -177,8 +177,10 @@ private
   validate :validate_domestic_violence_specific
 
   def validate_gap_specific
-    witnesses.each do |witness|
-      witness.validate_gap_specific not_guilty_anticipated_plea?
+    if not_guilty_anticipated_plea?
+      witnesses.each(&:validate_as_ngap)
+    else
+      witnesses.each(&:validate_as_gap)
     end
   end
   validate :validate_gap_specific

@@ -26,21 +26,11 @@ class Witness
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
 
-  def validate_gap_specific(is_ngap)
-    if is_ngap
-      validate_ngap
-    else
-      validate_gap
-    end
-  end
-
   def officer_witness?
     (Enumerations::OfficerWitnessType & witness_type).any?
   end
 
-private
-
-  def validate_gap
+  def validate_as_gap
     BooleanAbsenceValidator.new(
       attributes: [
         :special_measures, :interpreter_required, :wish_to_use_video_link
@@ -48,7 +38,7 @@ private
     ).validate(self)
   end
 
-  def validate_ngap
+  def validate_as_ngap
     BooleanPresenceValidator.new(
       attributes: [
         :special_measures, :interpreter_required, :wish_to_use_video_link
