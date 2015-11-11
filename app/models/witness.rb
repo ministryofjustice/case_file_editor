@@ -26,11 +26,11 @@ class Witness
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
 
-  def validate_gap_specific(is_gap)
-    if is_gap
-      validate_gap
-    else
+  def validate_gap_specific(is_ngap)
+    if is_ngap
       validate_ngap
+    else
+      validate_gap
     end
   end
 

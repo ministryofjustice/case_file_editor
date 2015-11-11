@@ -55,15 +55,16 @@ RSpec.describe Defendant do
     end
   end
 
-  describe 'anticipated_guilty_plea?' do
-    it 'is true if there is an offence collection with a guilty anticipated plea' do
-      subject.offences << double(anticipated_guilty_plea?: true)
-      expect(subject).to be_anticipated_guilty_plea
+  describe 'not_guilty_anticipated_plea?' do
+    it 'is true if there is an offence collection with a not guilty anticipated plea' do
+      subject.offences << double(not_guilty_anticipated_plea?: true)
+      subject.offences << double(not_guilty_anticipated_plea?: false)
+      expect(subject).to be_not_guilty_anticipated_plea
     end
 
-    it 'is false if there is no offence collection with a guilty anticipated plea' do
-      subject.offences << double(anticipated_guilty_plea?: false)
-      expect(subject).not_to be_anticipated_guilty_plea
+    it 'is false if there is no offence collection with a not guilty anticipated plea' do
+      subject.offences << double(not_guilty_anticipated_plea?: false)
+      expect(subject).not_to be_not_guilty_anticipated_plea
     end
   end
 

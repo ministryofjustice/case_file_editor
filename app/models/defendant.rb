@@ -150,10 +150,10 @@ class Defendant
     Virtus::Attribute::Boolean
   validates :notice_to_provide_bad_character_evidence,
     boolean_presence: true,
-    unless: :anticipated_guilty_plea?
+    if: :not_guilty_anticipated_plea?
   validates :notice_to_provide_bad_character_evidence,
     boolean_absence: true,
-    if: :anticipated_guilty_plea?
+    unless: :not_guilty_anticipated_plea?
 
   attribute :bad_character_details, String
   validates :bad_character_details,
@@ -252,8 +252,8 @@ class Defendant
     person_remand_status == 'unconditional_bail'
   end
 
-  def anticipated_guilty_plea?
-    offences.any?(&:anticipated_guilty_plea?)
+  def not_guilty_anticipated_plea?
+    offences.any?(&:not_guilty_anticipated_plea?)
   end
 
   def validate_by_age(case_date)

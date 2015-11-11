@@ -10,15 +10,16 @@ RSpec.describe Case do
     end
   end
 
-  describe 'anticipated_guilty_plea?' do
-    it 'is true if there is a defendant with a guilty anticipated plea' do
-      subject.defendants << double(anticipated_guilty_plea?: true)
-      expect(subject).to be_anticipated_guilty_plea
+  describe 'not_guilty_anticipated_plea?' do
+    it 'is true if there is a defendant with a not guilty anticipated plea' do
+      subject.defendants << double(not_guilty_anticipated_plea?: true)
+      subject.defendants << double(not_guilty_anticipated_plea?: false)
+      expect(subject).to be_not_guilty_anticipated_plea
     end
 
-    it 'is false if there is no defendant with a guilty anticipated plea' do
-      subject.defendants << double(anticipated_guilty_plea?: false)
-      expect(subject).not_to be_anticipated_guilty_plea
+    it 'is false if all defendants have guilty anticipated plea' do
+      subject.defendants << double(not_guilty_anticipated_plea?: false)
+      expect(subject).not_to be_not_guilty_anticipated_plea
     end
   end
 
@@ -260,8 +261,8 @@ RSpec.describe Case do
       end
 
       it 'validates each witness for GAP/NGAP' do
-        allow(subject).to receive(:anticipated_guilty_plea?).and_return(true)
-        expect(witness_a).to receive(:validate_gap_specific).with(true)
+        allow(subject).to receive(:not_guilty_anticipated_plea?).and_return(false)
+        expect(witness_a).to receive(:validate_gap_specific).with(false)
         subject.validate
       end
     end

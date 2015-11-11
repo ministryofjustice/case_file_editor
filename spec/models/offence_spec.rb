@@ -1,13 +1,13 @@
 RSpec.describe Offence do
-  describe 'anticipated_guilty_plea?' do
-    it 'is true if anticipated plea is guilty' do
+  describe 'not_guilty_anticipated_plea?' do
+    it 'is false if anticipated plea is guilty' do
       subject.anticipated_plea = 'guilty'
-      expect(subject).to be_anticipated_guilty_plea
+      expect(subject).not_to be_not_guilty_anticipated_plea
     end
 
-    it 'is false if anticipated pleas is not guilty' do
+    it 'is true if anticipated pleas is not guilty' do
       subject.anticipated_plea = 'not_guilty'
-      expect(subject).not_to be_anticipated_guilty_plea
+      expect(subject).to be_not_guilty_anticipated_plea
     end
   end
 

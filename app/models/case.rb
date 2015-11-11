@@ -51,10 +51,10 @@ class Case
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
   validates :likely_case_progression,
     presence: true,
-    unless: :anticipated_guilty_plea?
+    if: :not_guilty_anticipated_plea?
   validates :likely_case_progression,
     absence: true,
-    if: :anticipated_guilty_plea?
+    unless: :not_guilty_anticipated_plea?
 
   attribute :multimedia_evidence, Array[Mme]
   validates :multimedia_evidence, array_uniqueness: true
@@ -62,10 +62,10 @@ class Case
   attribute :is_hearsay, Virtus::Attribute::Boolean
   validates :is_hearsay,
     boolean_presence: true,
-    unless: :anticipated_guilty_plea?
+    if: :not_guilty_anticipated_plea?
   validates :is_hearsay,
     boolean_absence: true,
-    if: :anticipated_guilty_plea?
+    unless: :not_guilty_anticipated_plea?
 
   attribute :hearsay_details, String
   validates :hearsay_details,
@@ -113,8 +113,8 @@ class Case
     case_markers.include?('DomesticViolence')
   end
 
-  def anticipated_guilty_plea?
-    defendants.any?(&:anticipated_guilty_plea?)
+  def not_guilty_anticipated_plea?
+    defendants.any?(&:not_guilty_anticipated_plea?)
   end
 
   def young_witness?
@@ -178,7 +178,7 @@ private
 
   def validate_gap_specific
     witnesses.each do |witness|
-      witness.validate_gap_specific anticipated_guilty_plea?
+      witness.validate_gap_specific not_guilty_anticipated_plea?
     end
   end
   validate :validate_gap_specific

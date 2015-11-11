@@ -35,8 +35,8 @@ class Offence < Event
     length: { minimum: 1 },
     if: :children_present
 
-  def anticipated_guilty_plea?
-    anticipated_plea == 'guilty'
+  def not_guilty_anticipated_plea?
+    anticipated_plea == 'not_guilty'
   end
 
   def validate_domestic_violence_specific(is_dv)

@@ -172,4 +172,12 @@ RSpec.describe 'Parsing example files' do
       expect(errors).to eq({})
     end
   end
+
+  context 'example 17' do
+    let(:name) { 'example_17' }
+
+    it 'is NGAP' do
+      expect(dcf).to be_not_guilty_anticipated_plea
+    end
+  end
 end
