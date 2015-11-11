@@ -7,7 +7,7 @@ SimpleCov.minimum_coverage 100
 # solely for dependency resolution.
 autoload :ActiveModel, 'active_model'
 autoload :Virtus, 'virtus'
-require 'active_support/dependencies'
+require 'active_support'
 Dir[File.expand_path('../../{lib,app/**/*}', __FILE__)].each do |path|
   next unless File.directory?(path)
   ActiveSupport::Dependencies.autoload_paths << path
