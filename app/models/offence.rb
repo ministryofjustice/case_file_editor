@@ -9,6 +9,9 @@ class Offence < Event
   attribute :to_date, Date
   validates :to_date, presence: true
 
+  attribute :charge_date, Date
+  validates :charge_date, presence: true
+
   attribute :offence_title, String
   validates :offence_title, presence: true
 

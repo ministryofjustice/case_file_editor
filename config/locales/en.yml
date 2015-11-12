@@ -45,9 +45,6 @@ en:
             likely_case_progression:
               blank: must be present when there is a guilty anticipated plea
               present: must be absent when there is no guilty anticipated plea
-            safeguarding_assessment:
-              blank: must be present when case is domestic violence
-              present: must be absent when case is not domestic violence
         compensation_application:
           attributes:
             defendant_names:
@@ -211,14 +208,6 @@ en:
           attributes:
             property_ids:
               refer_to_property: must each refer to a piece of property in the case
-        safeguarding_assessment:
-          attributes:
-            reasons_not_completed:
-              blank: must be present unless assessment completed
-              present: must be absent if assessment completed
-            safeguarding_level:
-              inclusion: must be a valid safeguarding level if assessment completed
-              present: must be absent unless assessment completed
         standard_interview:
           attributes:
             appropriate_adults:

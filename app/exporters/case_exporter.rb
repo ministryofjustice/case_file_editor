@@ -1,5 +1,6 @@
 class CaseExporter < GenericExporter
   attributes \
+    :schema_version,
     :pti_urn,
     :type,
     :associated_case_urns,
@@ -16,10 +17,10 @@ class CaseExporter < GenericExporter
     :expert_evidence,
     :test_code,
     :pca_cps,
-    :safeguarding_assessment,
     :property,
     :officer_in_the_case,
     :signatory_name,
     :date,
-    :signatory_rank
+    :signatory_rank,
+    :signatory_collar_number
 end

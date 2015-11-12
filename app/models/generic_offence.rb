@@ -7,7 +7,7 @@ class GenericOffence < Offence
 
   attribute :property_ids, Array[Integer]
 
-  attribute :victim_names, Array[PersonName]
+  attribute :victim_names, Array[Name]
 
   def validate_property_ids(available_ids)
     unless property_ids.all? { |id| available_ids.include?(id) }

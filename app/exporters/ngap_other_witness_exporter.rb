@@ -4,5 +4,6 @@ class NgapOtherWitnessExporter < WitnessSubclassExporter
     :name,
     :witness_type,
     :number,
-    :rank
+    :rank,
+    :collar_number
 end

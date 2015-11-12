@@ -5,7 +5,7 @@ module Enumerations
     application_for_costs_against_convicted_defendant
     bind_over
     bind_over_to_keep_the_peace
-    breach_of_non_molestation_order
+    non_molestation_order
     cash_seizure_and_forfeiture_order
     civil_disclosure_order
     civil_recovery_order

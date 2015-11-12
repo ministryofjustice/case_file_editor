@@ -3,18 +3,21 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "schema_version": {
+      "enum": [ "1.2.0" ]
+    },
     "pti_urn": {
       "type": "string",
-      "pattern": "[A-Z]{4}[0-9]{5}[0-9]{2}(-[A-Z]{2})?"
+      "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?"
     },
     "type": {
-      "enum": [ "FirstHearingDCF", "BobDCF" ]
+      "enum": [ "FirstHearingDCF" ]
     },
     "associated_case_urns": {
       "type": "array",
       "items": {
         "type": "string",
-        "pattern": "[A-Z]{4}[0-9]{5}[0-9]{2}(-[A-Z]{2})?",
+        "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?",
         "uniqueItems": true,
         "minItems": 1
       }
@@ -106,9 +109,6 @@
     "pca_cps": {
       "type": "boolean"
     },
-    "safeguarding_assessment": {
-      "$ref": "#/definitions/SafeguardingAssessment"
-    },
     "property": {
       "type": "array",
       "items": { "$ref": "#/definitions/Property" }
@@ -125,9 +125,13 @@
     },
     "signatory_rank": {
       "type": "string"
+    },
+    "signatory_collar_number": {
+      "type": "string"
     }
   },
   "required": [
+    "schema_version",
     "pti_urn",
     "type",
     "version",
@@ -141,7 +145,8 @@
     "officer_in_the_case",
     "signatory_name",
     "date",
-    "signatory_rank"
+    "signatory_rank",
+    "signatory_collar_number"
   ],
   "additionalProperties": false,
 
@@ -156,6 +161,12 @@
         "reporting_officer": {
           "$ref": "#/definitions/PersonName"
         },
+        "reporting_officer_rank": {
+          "type": "string"
+        },
+        "reporting_officer_collar_number": {
+          "type": "string"
+        },
         "reporting_officer_signature_date": {
           "description": "ISO 8601 Conformant Date",
           "type": "string"
@@ -164,6 +175,8 @@
       "required": [
         "type",
         "reporting_officer",
+        "reporting_officer_rank",
+        "reporting_officer_collar_number",
         "reporting_officer_signature_date"
       ],
       "additionalProperties": false
@@ -178,6 +191,12 @@
         "reporting_officer": {
           "$ref": "#/definitions/PersonName"
         },
+        "reporting_officer_rank": {
+          "type": "string"
+        },
+        "reporting_officer_collar_number": {
+          "type": "string"
+        },
         "reporting_officer_signature_date": {
           "description": "ISO 8601 Conformant Date",
           "type": "string"
@@ -189,33 +208,10 @@
       "required": [
         "type",
         "reporting_officer",
+        "reporting_officer_rank",
+        "reporting_officer_collar_number",
         "reporting_officer_signature_date",
         "details_of_relevant_unused_material"
-      ],
-      "additionalProperties": false
-    },
-
-    "SafeguardingAssessment": {
-      "type": "object",
-      "properties": {
-        "assessment_completed": {
-          "type": "boolean"
-        },
-        "reasons_not_completed": {
-          "type": "string"
-        },
-        "safeguarding_level": {
-          "enum": [
-            "moderate",
-            "moderate_serious",
-            "serious",
-            "severe"
-          ]
-        }
-
-      },
-      "required": [
-        "assessment_completed"
       ],
       "additionalProperties": false
     },
@@ -235,13 +231,7 @@
           "type": "string"
         },
         "type": {
-          "enum": [
-            "cctv",
-            "facewatch",
-            "body_worn_video",
-            "surveillance_camera",
-            "telephone_call"
-          ]
+          "type": "string"
         },
         "evidential_value": {
           "enum": [ true ]
@@ -702,9 +692,7 @@
         }
       },
       "required": [
-        "grounds",
-        "condition",
-        "reason"
+        "condition"
       ],
       "additionalProperties": false
     },
@@ -717,6 +705,9 @@
           "type": "string"
         },
         "to_date": {
+          "type": "string"
+        },
+        "charge_date": {
           "type": "string"
         },
         "offence_title": {
@@ -752,6 +743,7 @@
         "type",
         "from_date",
         "to_date",
+        "charge_date",
         "offence_title",
         "charge_wording",
         "points_to_prove_met_by",
@@ -794,7 +786,12 @@
         },
         "victim_names": {
           "type": "array",
-          "items": { "$ref": "#/definitions/PersonName" }
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/PersonName" },
+              { "$ref": "#/definitions/OrganisationName" }
+            ]
+          }
         }
       },
       "required": [
@@ -864,9 +861,8 @@
           "$ref": "#/definitions/AssaultInterviewExtension"
         },
         "victim_name": {
-          "$ref": "#/definitions/PersonName"
+            "$ref": "#/definitions/PersonName"
         }
-
       },
       "required": [
         "type",
@@ -1228,11 +1224,11 @@
             "application_for_costs_against_convicted_defendant",
             "bind_over",
             "bind_over_to_keep_the_peace",
-            "breach_of_non_molestation_order",
+            "non_molestation_order",
             "cash_seizure_and_forfeiture_order",
             "civil_disclosure_order",
             "civil_recovery_order",
-            "closure_notice_for_premesis",
+            "closure_notice_for_premises",
             "compensation_order",
             "confiscation_order",
             "costs",
@@ -1251,7 +1247,7 @@
             "enforcement_receivership_order",
             "european_arrest_warrant",
             "european_protection_order",
-            "exclusion_order_licenced_premesis",
+            "exclusion_order_licenced_premises",
             "financial_reporting_order",
             "football_banning_order",
             "forced_marriage_protection_order",
@@ -1539,6 +1535,9 @@
         },
         "rank": {
           "type": "string"
+        },
+        "collar_number": {
+          "type": "string"
         }
       },
       "additionalProperties": false,
@@ -1585,6 +1584,9 @@
           "type": "string"
         },
         "rank": {
+          "type": "string"
+        },
+        "collar_number": {
           "type": "string"
         }
       },
@@ -1675,6 +1677,3 @@
     }
   }
 }
-
-
-

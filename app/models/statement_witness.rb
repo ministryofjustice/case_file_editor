@@ -33,4 +33,12 @@ class StatementWitness < Witness
   validates :rank,
     absence: true,
     unless: :officer_witness?
+
+  attribute :collar_number, String
+  validates :collar_number,
+    presence: true,
+    if: :officer_witness?
+  validates :collar_number,
+    absence: true,
+    unless: :officer_witness?
 end

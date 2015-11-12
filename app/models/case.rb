@@ -1,10 +1,13 @@
 class Case
   include BasicModel
 
-  VALID_URN = /\A[A-Z]{4}\d{5}\d{2}(-[A-Z]{2})?\z/
+  VALID_URN = /\A[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?\z/
   MAX_1200_WORDS = /\A\s*(\S+\s*){1,1200}\z/
   YOUNG_WITNESS_MAX_AGE = 10
   OLDER_VICTIM_MIN_AGE = 60
+
+  attribute :schema_version, String
+  validates :schema_version, presence: true
 
   attribute :pti_urn, String
   validates :pti_urn,
@@ -85,14 +88,6 @@ class Case
   attribute :pca_cps, Virtus::Attribute::Boolean
   validates :pca_cps, boolean_presence: true
 
-  attribute :safeguarding_assessment, SafeguardingAssessment
-  validates :safeguarding_assessment,
-    presence: true,
-    if: :domestic_violence?
-  validates :safeguarding_assessment,
-    absence: true,
-    unless: :domestic_violence?
-
   attribute :property, Array[Property]
   validates :property, array_uniqueness: true
 
@@ -108,6 +103,9 @@ class Case
   attribute :signatory_rank, String
   validates :signatory_rank, presence: true
   # TODO: Validate against CJSE Data Standards Section 3.108
+
+  attribute :signatory_collar_number, String
+  validates :signatory_collar_number, presence: true
 
   def domestic_violence?
     case_markers.include?('DomesticViolence')

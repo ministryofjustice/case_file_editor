@@ -18,26 +18,6 @@ RSpec.describe 'Parsing example files' do
   context 'example 01' do
     let(:name) { 'example_01' }
 
-    it 'does not require Case#likely_case_progression for GAP' do
-      expect(errors).not_to have_key(:likely_case_progression)
-    end
-
-    it 'does not require Case#is_hearsay for GAP' do
-      expect(errors).not_to have_key(:is_hearsay)
-    end
-
-    it 'does not require Defendant#notice_to_provide_bad_character_evidence for GAP' do
-      expect(errors).not_to have_key(:defendants)
-    end
-
-    it 'does not require CommonLawNotForDisclosure#details_of_relevant_unused_material' do
-      expect(errors).not_to have_key(:common_law_disclosure)
-    end
-
-    it 'allows Mme#relied_upon_sentence and #relied_upon_trial both to be true' do
-      expect(errors).not_to have_key(:multimedia_evidence)
-    end
-
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
@@ -62,6 +42,28 @@ RSpec.describe 'Parsing example files' do
                 }
               }
             }
+          }
+        }
+      )
+    end
+  end
+
+  context 'example 03' do
+    let(:name) { 'example_03' }
+
+    it 'identifies three errors on first defendant' do
+      expect(errors).to eq(
+        defendants: {
+          0 => {
+            class_a_drug_test_details: [
+              "must be present when a Class A drug test is provided"
+            ],
+            accepts_drugs_result: [
+              "must be present when a Class A drug test is provided"
+            ],
+            eec_convictions_record_received: [
+              "must be present if defendant has EEC passports"
+            ]
           }
         }
       )
@@ -97,6 +99,24 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
+  context 'example 06' do
+    let(:name) { 'example_06' }
+
+    it 'identifies that the mme_id provided in the MMEResponse does not match mme on the case' do
+           expect(errors).to match(
+        defendants: {
+          0 => {
+            multimedia_evidence_response: {
+		0 => {
+		   id: [ "must refer to a piece of multimedia evidence in the case"]
+	        }
+            }
+          }
+        }
+      )
+    end
+  end
+
   context 'example 07' do
     let(:name) { 'example_07' }
 
@@ -116,20 +136,10 @@ RSpec.describe 'Parsing example files' do
   end
 
   context 'example 08' do
-    let(:name) { 'example_08' }
+    let(:name) { 'example_09' }
 
-    it 'identifies one error on first defendant’s first MME response' do
-      expect(errors).to eq(
-        defendants: {
-          0 => {
-            multimedia_evidence_response: {
-              0 => {
-                defendant_admitted_to_location: ["is required"]
-              }
-            }
-          }
-        }
-      )
+    it 'identifies no errors' do
+      expect(errors).to eq({})
     end
   end
 
@@ -141,6 +151,37 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
+  context 'example 10' do
+    let(:name) { 'example_10' }
+
+    it 'identifies missing youth fields' do
+      expect(errors).to eq(
+        defendants: {
+          0 => {
+            parent_guardian_copy: [
+              "must be present when defendant is under 18"
+            ],
+            interview: {
+              appropriate_adults: [
+                "must be present if defendant is a youth"
+              ]
+	    }
+          }
+        }
+      )
+    end
+  end	
+
+  context 'example 11' do
+    let(:name) { 'example_11' }
+
+    it 'identifies that madatory field brief description of the case is not present' do
+      expect(errors).to match(
+	brief_description_of_case: ["is invalid"]
+      )
+    end
+  end
+
   context 'example 12' do
     let(:name) { 'example_12' }
 
@@ -149,6 +190,30 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
+  context 'example 13' do
+    let(:name) { 'example_13' }
+
+    it 'identifies the property ids referred to in the retail theft offences are not part of the case' do
+      expect(errors).to eq(
+        defendants: {
+          0 => {
+            offences: {
+              0 => {
+                retail_theft_offences: {
+                  0 => {
+                    property_ids: [
+                      "must each refer to a piece of property in the case"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      )
+    end
+  end
+  
   context 'example 14' do
     let(:name) { 'example_14' }
 
@@ -161,6 +226,7 @@ RSpec.describe 'Parsing example files' do
     let(:name) { 'example_15' }
 
     it 'identifies no errors' do
+      pending 'Scenario test files not updated t0 1.2.0'
       expect(errors).to eq({})
     end
   end
@@ -169,6 +235,7 @@ RSpec.describe 'Parsing example files' do
     let(:name) { 'example_16' }
 
     it 'identifies no errors' do
+      pending 'Scenario test files not updated t0 1.2.0'
       expect(errors).to eq({})
     end
   end
@@ -177,6 +244,7 @@ RSpec.describe 'Parsing example files' do
     let(:name) { 'example_17' }
 
     it 'is NGAP' do
+      pending 'Scenario test files not updated t0 1.2.0'
       expect(dcf).to be_not_guilty_anticipated_plea
     end
   end

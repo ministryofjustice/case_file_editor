@@ -3,6 +3,7 @@ class OffenceExporter < GenericExporter
     :date,
     :from_date,
     :to_date,
+    :charge_date,
     :offence_title,
     :charge_wording,
     :reply_to_charge,

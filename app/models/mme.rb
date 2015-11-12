@@ -9,8 +9,7 @@ class Mme < Event
   attribute :end_date, Date
 
   attribute :type, String
-  validates :type,
-    inclusion: { in: Enumerations::MmeType }
+  validates :type, presence: true
 
   attribute :evidential_value, Virtus::Attribute::Boolean
   validates :evidential_value, truth: true

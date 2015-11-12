@@ -1,7 +1,8 @@
 {
-  "pti_urn": "AAAA9999915-AA",
+  "schema_version": "1.2.0",
+  "pti_urn": "01AA9999915-AA",
   "type": "FirstHearingDCF",
-  "associated_case_urns": [ "AAAA1111115", "AAAA2222215" ],
+  "associated_case_urns": [ "01AA1111115", "01AA2222215" ],
   "version": 1,
   "brief_description_of_case": "A brief description of the case.",
   "case_markers": [ "INVALID" ],
@@ -30,6 +31,7 @@
                 "type": "Offence",
                 "from_date": "2014-01-01",
                 "to_date": "2014-01-01",
+                "charge_date": "2014-01-01",
                 "offence_title": "Offence Title from PNLD",
                 "charge_wording": "This is the charge wording",
                 "points_to_prove_met_by": "Description of how the points to prove have been met.",
@@ -186,8 +188,7 @@
         "nature_of_involvement": "Nature of involvement",
         "evidence_they_can_give": "Evidence they can give"
       },
-
-      "date_of_birth": "1980-08-01T12:00Z",
+      "date_of_birth": "1980-08-01",
       "visually_recorded_interview": false
     }
   ],
@@ -197,6 +198,8 @@
       "surname": "Collins",
       "given_name": [ "Simon" ]
     },
+    "reporting_officer_rank": "PC",
+    "reporting_officer_collar_number": "AA12",
     "reporting_officer_signature_date": "2014-01-01"
   },
   "multimedia_evidence": [
@@ -232,5 +235,6 @@
     "given_name": [ "Simon" ]
   },
   "date": "2014-01-01",
-  "signatory_rank": "Sergeant"
+  "signatory_rank": "Sergeant",
+  "signatory_collar_number": "AA11"
 }
