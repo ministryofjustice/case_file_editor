@@ -228,6 +228,8 @@
     "surname": "Smith",
     "given_name": [ "Penny" ]
   },
+  "officer_in_the_case_rank": "Sergeant",
+  "officer_in_the_case_collar_number": "AA11",
   "signatory_name": {
     "surname": "Collins",
     "given_name": [ "Simon" ]

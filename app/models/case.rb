@@ -94,6 +94,13 @@ class Case
   attribute :officer_in_the_case, PersonName
   validates :officer_in_the_case, presence: true
 
+  attribute :officer_in_the_case_rank, String
+  validates :officer_in_the_case_rank, presence: true
+  # TODO: Validate against CJSE Data Standards Section 3.108
+
+  attribute :officer_in_the_case_collar_number, String
+  validates :officer_in_the_case_collar_number, presence: true
+
   attribute :signatory_name, PersonName
   validates :signatory_name, presence: true
 

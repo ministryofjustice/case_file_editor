@@ -19,6 +19,8 @@ class CaseExporter < GenericExporter
     :pca_cps,
     :property,
     :officer_in_the_case,
+    :officer_in_the_case_rank,
+    :officer_in_the_case_collar_number,
     :signatory_name,
     :date,
     :signatory_rank,

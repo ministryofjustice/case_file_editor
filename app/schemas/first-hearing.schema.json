@@ -116,6 +116,12 @@
     "officer_in_the_case": {
       "$ref": "#/definitions/PersonName"
     },
+    "officer_in_the_case_rank": {
+      "type": "string"
+    },
+    "officer_in_the_case_collar_number": {
+      "type": "string"
+    },
     "signatory_name": {
       "$ref": "#/definitions/PersonName"
     },
@@ -143,6 +149,8 @@
     "test_code",
     "pca_cps",
     "officer_in_the_case",
+    "officer_in_the_case_rank",
+    "officer_in_the_case_collar_number",
     "signatory_name",
     "date",
     "signatory_rank",
