@@ -114,25 +114,13 @@
       "items": { "$ref": "#/definitions/Property" }
     },
     "officer_in_the_case": {
-      "$ref": "#/definitions/PersonName"
-    },
-    "officer_in_the_case_rank": {
-      "type": "string"
-    },
-    "officer_in_the_case_collar_number": {
-      "type": "string"
+      "$ref": "#/definitions/OfficerName"
     },
     "signatory_name": {
-      "$ref": "#/definitions/PersonName"
+      "$ref": "#/definitions/OfficerName"
     },
     "date": {
       "description": "ISO 8601 Conformant Date",
-      "type": "string"
-    },
-    "signatory_rank": {
-      "type": "string"
-    },
-    "signatory_collar_number": {
       "type": "string"
     }
   },
@@ -149,12 +137,8 @@
     "test_code",
     "pca_cps",
     "officer_in_the_case",
-    "officer_in_the_case_rank",
-    "officer_in_the_case_collar_number",
     "signatory_name",
-    "date",
-    "signatory_rank",
-    "signatory_collar_number"
+    "date"
   ],
   "additionalProperties": false,
 
@@ -167,13 +151,7 @@
           "enum": [ "CommonLawNotForDisclosure" ]
         },
         "reporting_officer": {
-          "$ref": "#/definitions/PersonName"
-        },
-        "reporting_officer_rank": {
-          "type": "string"
-        },
-        "reporting_officer_collar_number": {
-          "type": "string"
+          "$ref": "#/definitions/OfficerName"
         },
         "reporting_officer_signature_date": {
           "description": "ISO 8601 Conformant Date",
@@ -183,8 +161,6 @@
       "required": [
         "type",
         "reporting_officer",
-        "reporting_officer_rank",
-        "reporting_officer_collar_number",
         "reporting_officer_signature_date"
       ],
       "additionalProperties": false
@@ -197,13 +173,7 @@
           "enum": [ "CommonLawForDisclosure" ]
         },
         "reporting_officer": {
-          "$ref": "#/definitions/PersonName"
-        },
-        "reporting_officer_rank": {
-          "type": "string"
-        },
-        "reporting_officer_collar_number": {
-          "type": "string"
+          "$ref": "#/definitions/OfficerName"
         },
         "reporting_officer_signature_date": {
           "description": "ISO 8601 Conformant Date",
@@ -216,8 +186,6 @@
       "required": [
         "type",
         "reporting_officer",
-        "reporting_officer_rank",
-        "reporting_officer_collar_number",
         "reporting_officer_signature_date",
         "details_of_relevant_unused_material"
       ],
@@ -869,7 +837,7 @@
           "$ref": "#/definitions/AssaultInterviewExtension"
         },
         "victim_name": {
-            "$ref": "#/definitions/PersonName"
+          "$ref": "#/definitions/PersonName"
         }
       },
       "required": [
@@ -1504,7 +1472,10 @@
           "$ref": "#/definitions/Witness"
         },
         "name": {
-          "$ref": "#/definitions/PersonName"
+          "oneOf": [
+            { "$ref": "#/definitions/PersonName" },
+            { "$ref": "#/definitions/OfficerName" }
+          ]
         },
         "witness_type": {
           "type": "array",
@@ -1539,12 +1510,6 @@
           "type": "boolean"
         },
         "url": {
-          "type": "string"
-        },
-        "rank": {
-          "type": "string"
-        },
-        "collar_number": {
           "type": "string"
         }
       },
@@ -1586,15 +1551,12 @@
           }
         },
         "name": {
-          "$ref": "#/definitions/PersonName"
+          "oneOf": [
+            { "$ref": "#/definitions/PersonName" },
+            { "$ref": "#/definitions/OfficerName" }
+          ]
         },
         "number": {
-          "type": "string"
-        },
-        "rank": {
-          "type": "string"
-        },
-        "collar_number": {
           "type": "string"
         }
       },
@@ -1620,11 +1582,16 @@
           }
         },
         "name": {
-          "$ref": "#/definitions/PersonName"
+          "oneOf": [
+            { "$ref": "#/definitions/PersonName" },
+            { "$ref": "#/definitions/OfficerName" },
+            { "$ref": "#/definitions/OrganisationName" }
+          ]
         }
       },
       "additionalProperties": false,
       "required": [
+        "type",
         "witness",
         "witness_type",
         "name"
@@ -1633,6 +1600,7 @@
 
     "PersonName": {
       "properties": {
+        "type": { "enum": [ "PersonName" ] },
         "surname": {
           "type": "string"
         },
@@ -1645,19 +1613,53 @@
       },
       "additionalProperties": false,
       "required": [
+        "type",
         "surname",
         "given_name"
       ]
     },
 
+    "OfficerName": {
+      "properties": {
+        "type": { "enum": [ "OfficerName" ] },
+        "surname": {
+          "type": "string"
+        },
+        "given_name": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "rank": {
+          "type": "string"
+        },
+        "collar_number": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "surname",
+        "given_name",
+        "rank",
+        "collar_number"
+      ]
+    },
+
     "OrganisationName": {
       "properties": {
+        "type": { "enum": [ "OrganisationName" ] },
         "organisation_name": {
           "type": "string"
         }
       },
       "additionalItems": false,
-      "required": [ "organisation_name" ]
+      "required": [
+        "type",
+        "organisation_name"
+      ]
     },
 
     "OrganisationLocation": {

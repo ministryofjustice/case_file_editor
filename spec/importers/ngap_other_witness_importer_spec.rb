@@ -4,15 +4,17 @@ RSpec.describe NgapOtherWitnessImporter do
       'type' => 'NgapOtherWitness',
       'witness_type' => %w[ eye ],
       'name' => {
+	'type' => 'OfficerName',
         'given_name' => %w[ Jennie Claire ],
-        'surname' => 'Jones'
+        'surname' => 'Jones',
+	'rank' => 'Sergeant',
+	'collar_number' => 'AA11'
       },
       'witness' => {
         'nature_of_involvement' => 'Nature of involvement',
         'evidence_they_can_give' => 'Evidence they can give'
       },
-      'number' => 'ABC123',
-      'rank' => 'Sergeant'
+      'number' => 'ABC123'
     }
   }
 
@@ -34,7 +36,7 @@ RSpec.describe NgapOtherWitnessImporter do
     context 'name' do
       subject { super().name }
 
-      it { is_expected.to be_kind_of(PersonName) }
+      it { is_expected.to be_kind_of(OfficerName) }
 
       it 'has given_name' do
         expect(subject.given_name).to eq(%w[ Jennie Claire ])
@@ -42,6 +44,14 @@ RSpec.describe NgapOtherWitnessImporter do
 
       it 'has surname' do
         expect(subject.surname).to eq('Jones')
+      end
+
+      it 'has rank' do
+        expect(subject.rank).to eq('Sergeant')
+      end
+
+      it 'has collar number' do
+        expect(subject.collar_number).to eq('AA11')
       end
     end
   end

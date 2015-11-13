@@ -6,7 +6,5 @@ class StatementWitnessExporter < WitnessSubclassExporter
     :date_of_birth,
     :reason_dob_not_provided,
     :visually_recorded_interview,
-    :url,
-    :rank,
-    :collar_number
+    :url
 end

@@ -19,6 +19,7 @@ RSpec.describe ExpertWitnessImporter do
     context 'with person name' do
       let(:name) {
         {
+          'type' => 'PersonName',
           'given_name' => %w[ Jennie Claire ],
           'surname' => 'Jones'
         }
@@ -51,7 +52,10 @@ RSpec.describe ExpertWitnessImporter do
 
     context 'with organisation name' do
       let(:name) {
-        { 'organisation_name' => 'ACME, Inc.' }
+        { 
+	'type' => 'OrganisationName',
+	'organisation_name' => 'ACME, Inc.' 
+	}
       }
 
       context 'name' do

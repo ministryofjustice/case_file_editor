@@ -1,50 +1,48 @@
-RSpec.describe StatementWitnessExporter do
-  let(:witness) {
-    StatementWitness.new(
-      witness_type: ['eye'],
-      name: PersonName.new(
-        given_name: ['Jennie', 'Claire'],
-        surname: 'Jones'
-      ),
-      nature_of_involvement: 'Nature of involvement',
-      evidence_they_can_give: 'Evidence they can give',
-      date_of_birth: Date.new(1980, 8, 1),
-      visually_recorded_interview: false
-    )
+RSpec.describe StatementWitnessImporter do
+  let(:source) {
+    {
+      'type' => 'StatementWitness',
+      'witness_type' => ['eye'],
+      'name' => {
+	'type' => PersonName,
+        'given_name' => ['Jennie', 'Claire'],
+        'surname' => 'Jones'
+      },
+      'witness' => {
+        'nature_of_involvement' => 'Nature of involvement',
+        'evidence_they_can_give' => 'Evidence they can give'
+      },
+      'date_of_birth' => '1980-08-01',
+      'visually_recorded_interview' => false
+    }
   }
 
-  context 'exported hash' do
-    subject { described_class.new(witness).export }
+  context 'imported object' do
+    subject {
+      described_class.new(source).import
+    }
 
-    it 'includes a type' do
-      expect(subject).to include('type' => 'StatementWitness')
+    it { is_expected.to be_kind_of(StatementWitness) }
+
+    it 'has top-level properties' do
+      expect(subject.date_of_birth).to eq(Date.new(1980, 8, 1))
     end
 
-    it 'includes subclass-specific attributes' do
-      expect(subject).to include(
-        'witness_type' => ['eye'],
-        'date_of_birth' => '1980-08-01',
-        'visually_recorded_interview' => false
-      )
+    it 'has properties from the witness sub-object' do
+      expect(subject.nature_of_involvement).to eq('Nature of involvement')
     end
 
-    it 'includes a name object' do
-      expect(subject).to include(
-        'name' => include(
-          'given_name' => %w[ Jennie Claire ],
-          'surname' => 'Jones'
-        )
-      )
-    end
+    context 'name' do
+      subject { super().name }
 
-    context 'witness sub-document' do
-      subject { super().fetch('witness') }
+      it { is_expected.to be_kind_of(PersonName) }
 
-      it 'includes witness-specific fields' do
-        expect(subject).to eq(
-          "nature_of_involvement" => "Nature of involvement",
-          "evidence_they_can_give" => "Evidence they can give"
-        )
+      it 'has given_name' do
+        expect(subject.given_name).to eq(%w[ Jennie Claire ])
+      end
+
+      it 'has surname' do
+        expect(subject.surname).to eq('Jones')
       end
     end
   end

@@ -3,6 +3,7 @@ RSpec.describe PersonVictimExporter do
     PersonVictim.new(
       witness_type: ['other'],
       name: PersonName.new(
+	type: 'PersonName',
         given_name: ['Jennie', 'Claire'],
         surname: 'Jones'
       ),
@@ -32,6 +33,7 @@ RSpec.describe PersonVictimExporter do
     it 'includes a name object' do
       expect(subject).to include(
         'name' => include(
+	  'type' => 'PersonName',
           'given_name' => %w[ Jennie Claire ],
           'surname' => 'Jones'
         )

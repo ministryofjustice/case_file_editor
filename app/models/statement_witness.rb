@@ -3,7 +3,7 @@ class StatementWitness < Witness
 
   attribute :type, String, writer: :private, default: 'StatementWitness'
 
-  attribute :name, PersonName
+  attribute :name, Name
   validates :name, presence: true
 
   attribute :witness_type, Array[String]
@@ -26,19 +26,4 @@ class StatementWitness < Witness
     absence: true,
     unless: :visually_recorded_interview
 
-  attribute :rank, String
-  validates :rank,
-    presence: true,
-    if: :officer_witness?
-  validates :rank,
-    absence: true,
-    unless: :officer_witness?
-
-  attribute :collar_number, String
-  validates :collar_number,
-    presence: true,
-    if: :officer_witness?
-  validates :collar_number,
-    absence: true,
-    unless: :officer_witness?
 end

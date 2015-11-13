@@ -1,13 +1,7 @@
 class CommonLaw
   include BasicModel
 
-  attribute :reporting_officer, PersonName
-  validates :reporting_officer, presence: true
-
-  attribute :reporting_officer_rank, String
-  validates :reporting_officer, presence: true
-
-  attribute :reporting_officer_collar_number, String
+  attribute :reporting_officer, OfficerName
   validates :reporting_officer, presence: true
 
   attribute :reporting_officer_signature_date, Date

@@ -91,28 +91,14 @@ class Case
   attribute :property, Array[Property]
   validates :property, array_uniqueness: true
 
-  attribute :officer_in_the_case, PersonName
+  attribute :officer_in_the_case, OfficerName
   validates :officer_in_the_case, presence: true
 
-  attribute :officer_in_the_case_rank, String
-  validates :officer_in_the_case_rank, presence: true
-  # TODO: Validate against CJSE Data Standards Section 3.108
-
-  attribute :officer_in_the_case_collar_number, String
-  validates :officer_in_the_case_collar_number, presence: true
-
-  attribute :signatory_name, PersonName
+  attribute :signatory_name, OfficerName
   validates :signatory_name, presence: true
 
   attribute :date, Date
   validates :date, presence: true
-
-  attribute :signatory_rank, String
-  validates :signatory_rank, presence: true
-  # TODO: Validate against CJSE Data Standards Section 3.108
-
-  attribute :signatory_collar_number, String
-  validates :signatory_collar_number, presence: true
 
   def domestic_violence?
     case_markers.include?('DomesticViolence')

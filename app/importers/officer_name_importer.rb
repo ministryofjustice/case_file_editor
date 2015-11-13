@@ -1,0 +1,2 @@
+class OfficerNameImporter < GenericImporter
+end

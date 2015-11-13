@@ -9,6 +9,7 @@
   "defendants": [
     {
       "name": {
+        "type": "PersonName",
         "surname": "Smith",
         "given_name": [ "John", "William" ]
       },
@@ -149,12 +150,14 @@
         "date": "2014-01-01",
         "defendant_legally_represented": true,
         "legally_represented_by": {
+          "type": "PersonName",
           "given_name": [ "Jennie", "Claire" ],
           "surname": "Jones"
         },
         "legal_representative_firm": "The firm",
         "interpreters": [
           {
+            "type": "PersonName",
             "given_name": [ "Jennie", "Claire" ],
             "surname": "Jones"
           }
@@ -181,6 +184,7 @@
       "type": "StatementWitness",
       "witness_type": [ "eye" ],
       "name": {
+        "type": "PersonName",
         "given_name": [ "Jennie", "Claire" ],
         "surname": "Jones"
       },
@@ -195,11 +199,12 @@
   "common_law_disclosure": {
     "type": "CommonLawNotForDisclosure",
     "reporting_officer": {
+      "type": "OfficerName",
       "surname": "Collins",
-      "given_name": [ "Simon" ]
+      "given_name": [ "Simon" ],
+      "rank": "PC",
+      "collar_number": "AA12"
     },
-    "reporting_officer_rank": "PC",
-    "reporting_officer_collar_number": "AA12",
     "reporting_officer_signature_date": "2014-01-01"
   },
   "multimedia_evidence": [
@@ -227,16 +232,19 @@
     }
   ],
   "officer_in_the_case": {
+    "type": "OfficerName",
     "surname": "Smith",
-    "given_name": [ "Penny" ]
+    "given_name": [ "Penny" ],
+    "rank": "PC",
+    "collar_number": "AA11"
+
   },
-  "officer_in_the_case_rank": "Sergeant",
-  "officer_in_the_case_collar_number": "AA11",
   "signatory_name": {
+    "type": "OfficerName",
     "surname": "Collins",
-    "given_name": [ "Simon" ]
+    "given_name": [ "Simon" ],
+    "rank": "PC",
+    "collar_number": "AA12"
   },
-  "date": "2014-01-01",
-  "signatory_rank": "Sergeant",
-  "signatory_collar_number": "AA11"
+  "date": "2014-01-01"
 }

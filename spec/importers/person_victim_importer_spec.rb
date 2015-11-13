@@ -3,6 +3,7 @@ RSpec.describe PersonVictimImporter do
     {
       'type' => 'PersonVictim',
       'name' => {
+	'type' => 'PersonName',
         'given_name' => ['Jennie', 'Claire'],
         'surname' => 'Jones'
       },

@@ -3,6 +3,7 @@ RSpec.describe OrganisationVictimExporter do
     OrganisationVictim.new(
       witness_type: ['other'],
       name: OrganisationName.new(
+	type: 'OrganisationName',
         organisation_name: 'ACME, Inc.'
       ),
       nature_of_involvement: 'Nature of involvement',
@@ -21,7 +22,10 @@ RSpec.describe OrganisationVictimExporter do
 
     it 'includes a name object' do
       expect(subject).to include(
-        'name' => { 'organisation_name' => 'ACME, Inc.' }
+        'name' => { 
+	  'type' => 'OrganisationName',
+	  'organisation_name' => 'ACME, Inc.' 
+	  }
       )
     end
 

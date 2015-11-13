@@ -2,8 +2,9 @@ RSpec.describe StatementWitnessImporter do
   let(:source) {
     {
       'type' => 'StatementWitness',
-      'witness_type' => ['eye'],
+      'witness_type' => %w['eye'],
       'name' => {
+	'type' => 'PersonName',
         'given_name' => ['Jennie', 'Claire'],
         'surname' => 'Jones'
       },
