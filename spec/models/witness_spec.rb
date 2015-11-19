@@ -1,9 +1,24 @@
 RSpec.describe Witness do
   let!(:case_file) {
-    Case.new(witnesses: [subject])
+    Case.new(witnesses: [subject, other_witness])
   }
+  let(:other_witness) { described_class.new(witness_id: 'ABC123') }
 
   context 'validations' do
+    describe 'witness_id' do
+      it 'is valid if unique in the file' do
+        subject.witness_id = 'XYZ999'
+        subject.validate
+        expect(subject.errors).not_to have_key(:witness_id)
+      end
+
+      it 'is invalid if not unique in the file' do
+        subject.witness_id = 'ABC123'
+        subject.validate
+        expect(subject.errors).to have_key(:witness_id)
+      end
+    end
+
     describe 'special_measures' do
       context 'when GAP' do
         before do

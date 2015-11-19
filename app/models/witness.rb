@@ -1,5 +1,6 @@
 class Witness
   include BasicModel
+  include DuplicateIdentifiers
 
   attribute :witness_id, String
 
@@ -42,4 +43,11 @@ private
   def not_guilty_anticipated_plea?
     case_file.not_guilty_anticipated_plea?
   end
+
+  def validate_id_uniqueness
+    if duplicate_identifiers(case_file.witness_ids).include?(witness_id)
+      errors.add :witness_id, :unique_within_case_file
+    end
+  end
+  validate :validate_id_uniqueness
 end

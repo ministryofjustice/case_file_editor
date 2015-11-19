@@ -1,4 +1,6 @@
 class Mme < Event
+  include DuplicateIdentifiers
+
   HOURS_AND_MINUTES = /\A([01][0-9]|2[0-3]):[0-5][0-9]\z/
   attribute :id, String
   validates :id, presence: true
@@ -33,4 +35,11 @@ class Mme < Event
     format: { with: HOURS_AND_MINUTES }
 
   attribute :url, String
+
+  def validate_id_uniqueness
+    if duplicate_identifiers(case_file.mme_ids).include?(id)
+      errors.add :id, :unique_within_case_file
+    end
+  end
+  validate :validate_id_uniqueness
 end

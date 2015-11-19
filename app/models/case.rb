@@ -60,7 +60,7 @@ class Case
     absence: true,
     unless: :not_guilty_anticipated_plea?
 
-  attribute :multimedia_evidence, Array[Mme]
+  attribute :multimedia_evidence, Array[Mme], relation: true
   validates :multimedia_evidence, array_uniqueness: true
 
   attribute :is_hearsay, Virtus::Attribute::Boolean
@@ -89,7 +89,7 @@ class Case
   attribute :pca_cps, Virtus::Attribute::Boolean
   validates :pca_cps, boolean_presence: true
 
-  attribute :property, Array[Property]
+  attribute :property, Array[Property], relation: true
   validates :property, array_uniqueness: true
 
   attribute :officer_in_the_case, OfficerName
@@ -143,21 +143,7 @@ class Case
     multimedia_evidence.map(&:id)
   end
 
-private
-
-  def validate_unique_ids
-    validate_unique_on_collection multimedia_evidence, :id
-    validate_unique_on_collection witnesses, :witness_id
-    validate_unique_on_collection property, :property_id
-  end
-  validate :validate_unique_ids
-
-  def validate_unique_on_collection(collection, field)
-    ids = collection.map(&field).compact
-    collection.
-      select { |e| ids.count(e.send(field)) > 1 }.
-      each do |item|
-        item.errors.add field, :unique_within_case_file
-      end
+  def witness_ids
+    witnesses.map(&:witness_id)
   end
 end

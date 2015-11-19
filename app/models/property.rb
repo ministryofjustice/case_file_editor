@@ -1,5 +1,6 @@
 class Property
   include BasicModel
+  include DuplicateIdentifiers
 
   attribute :property_id, Integer
   validates :property_id, presence: true
@@ -44,4 +45,11 @@ class Property
   def recovered?
     %w[ stolen_recovered_damaged stolen_recovered ].include?(property_action)
   end
+
+  def validate_id_uniqueness
+    if duplicate_identifiers(case_file.property_ids).include?(property_id)
+      errors.add :property_id, :unique_within_case_file
+    end
+  end
+  validate :validate_id_uniqueness
 end
