@@ -90,4 +90,16 @@ RSpec.describe Witness do
       end
     end
   end
+
+  describe 'officer_witness?' do
+    it 'is true if the witness_type includes an officer' do
+      subject.witness_type = %w[ eye police ]
+      expect(subject).to be_officer_witness
+    end
+
+    it 'is false if the witness_type does not include an officer' do
+      subject.witness_type = %w[ eye child ]
+      expect(subject).not_to be_officer_witness
+    end
+  end
 end
