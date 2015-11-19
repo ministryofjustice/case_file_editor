@@ -3,6 +3,7 @@ require_dependency 'enumerations/c_c_not_suitable_reason'
 class Defendant
   include BasicModel
   include AgeCalculation
+  include Virtus.relations(as: :defendant)
 
   ADULT_MIN_AGE = 18
 
@@ -224,7 +225,7 @@ class Defendant
   attribute :interview, Interview
   validates :interview, presence: true
 
-  attribute :domestic_violence, Array[DomesticViolence]
+  attribute :domestic_violence, Array[DomesticViolence], relation: true
 
   attribute :first_hearing_datetime, DateTime
   validates :first_hearing_datetime, presence: true
@@ -301,12 +302,6 @@ class Defendant
       if collection.respond_to?(:validate_property_ids)
         collection.validate_property_ids available_ids
       end
-    end
-  end
-
-  def validate_dv_victims(names)
-    domestic_violence.each do |dv|
-      dv.validate_victim names
     end
   end
 
