@@ -256,8 +256,8 @@ class Defendant
     offences.any?(&:not_guilty_anticipated_plea?)
   end
 
-  def validate_by_age(case_date)
-    age_at_case_date = age(case_date)
+  def validate_by_age
+    age_at_case_date = age(case_file.date)
     return unless age_at_case_date
     is_adult = age_at_case_date >= ADULT_MIN_AGE
     if is_adult
@@ -266,6 +266,7 @@ class Defendant
       validate_as_youth
     end
   end
+  validate :validate_by_age
 
   def validate_as_adult
     BooleanAbsenceValidator.new(attributes: [:parent_guardian_copy]).

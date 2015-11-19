@@ -1,5 +1,6 @@
 class Case
   include BasicModel
+  include Virtus.relations(as: :case_file)
 
   VALID_URN = /\A[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?\z/
   MAX_1200_WORDS = /\A\s*(\S+\s*){1,1200}\z/
@@ -36,7 +37,7 @@ class Case
   attribute :brief_description_of_case, String
   validates :brief_description_of_case, format: { with: MAX_1200_WORDS }
 
-  attribute :defendants, Array[Defendant]
+  attribute :defendants, Array[Defendant], relation: true
   validates :defendants,
     length: { minimum: 1 },
     array_uniqueness: true
@@ -144,13 +145,6 @@ private
     end
   end
   validate :validate_compensation_application_defendant_names
-
-  def validate_defendants_by_age
-    defendants.each do |defendant|
-      defendant.validate_by_age(date)
-    end
-  end
-  validate :validate_defendants_by_age
 
   def validate_dv_victims
     names = victims.map(&:name)

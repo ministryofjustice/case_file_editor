@@ -1,4 +1,11 @@
 RSpec.describe Defendant do
+  subject {
+    described_class.new.tap { |d| case_file.defendants = [d] }
+  }
+
+  let(:today) { Date.new(2015, 1, 1) }
+  let(:case_file) { Case.new(date: today) }
+
   describe 'initiated_as_charge?' do
     it 'is true if initiation_type is charge' do
       subject.initiation_type = 'charge'
@@ -69,8 +76,6 @@ RSpec.describe Defendant do
   end
 
   context 'validations' do
-    let(:today) { Date.new(2015, 1, 1) }
-
     context 'age-specific' do
       before do
         subject.date_of_birth = date_of_birth
@@ -82,13 +87,13 @@ RSpec.describe Defendant do
 
           it 'is invalid if present' do
             subject.parent_guardian_copy = false
-            subject.validate_by_age(today)
+            subject.validate
             expect(subject.errors[:parent_guardian_copy]).not_to be_empty
           end
 
           it 'is valid if nil' do
             subject.parent_guardian_copy = nil
-            subject.validate_by_age(today)
+            subject.validate
             expect(subject.errors[:parent_guardian_copy]).to be_empty
           end
         end
@@ -98,13 +103,13 @@ RSpec.describe Defendant do
 
           it 'is valid if present' do
             subject.parent_guardian_copy = false
-            subject.validate_by_age(today)
+            subject.validate
             expect(subject.errors[:parent_guardian_copy]).to be_empty
           end
 
           it 'is invalid if nil' do
             subject.parent_guardian_copy = nil
-            subject.validate_by_age(today)
+            subject.validate
             expect(subject.errors[:parent_guardian_copy]).not_to be_empty
           end
         end
@@ -120,7 +125,7 @@ RSpec.describe Defendant do
 
           it 'does not call validate_as_youth' do
             expect(subject.interview).to receive(:validate_as_youth).never
-            subject.validate_by_age(today)
+            subject.validate
           end
         end
 
@@ -129,7 +134,7 @@ RSpec.describe Defendant do
 
           it 'calls validate_as_youth' do
             expect(subject.interview).to receive(:validate_as_youth).once
-            subject.validate_by_age(today)
+            subject.validate
           end
         end
       end

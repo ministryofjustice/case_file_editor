@@ -6,7 +6,7 @@ SimpleCov.minimum_coverage 100
 # Minimal auto-load for quicker specs. This avoids loading the whole of Rails
 # solely for dependency resolution.
 autoload :ActiveModel, 'active_model'
-autoload :Virtus, 'virtus'
+autoload :Virtus, 'virtus/relations'
 require 'active_support'
 Dir[File.expand_path('../../{lib,app/**/*}', __FILE__)].each do |path|
   next unless File.directory?(path)
