@@ -19,6 +19,8 @@ module Dcf
     config.middleware.
       insert_before ActionDispatch::ParamsParser, 'CatchJsonParseErrors'
 
+    config.supported_version = '1.1.0'
+
     # Settings in config/environments/* take precedence over those specified
     # here.
     # Application configuration should go into files in config/initializers
