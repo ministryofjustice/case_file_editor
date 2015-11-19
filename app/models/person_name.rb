@@ -19,7 +19,9 @@ class PersonName < Name
   def_delegators :full_name, :hash
 
   def eql?(other)
-    surname == other.surname && given_name == other.given_name
+    self.class == other.class &&
+      surname == other.surname &&
+      given_name == other.given_name
   end
 
   alias_method :==, :eql?
