@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Parsing example files' do
+RSpec.describe 'Parsing first hearing files' do
   let(:dcf) {
     CaseImporter.new(source).import
   }
@@ -15,16 +15,16 @@ RSpec.describe 'Parsing example files' do
     RecursiveValidator.new(dcf).errors
   }
 
-  context 'example 01' do
-    let(:name) { 'example_01' }
+  context 'first hearing 01' do
+    let(:name) { 'first_hearing_01' }
 
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
   end
 
-  context 'example 02' do
-    let(:name) { 'example_02' }
+  context 'first hearing 02' do
+    let(:name) { 'first_hearing_02' }
 
     it 'identifies one error on case' do
       expect(errors).to eq(
@@ -48,8 +48,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 03' do
-    let(:name) { 'example_03' }
+  context 'first hearing 03' do
+    let(:name) { 'first_hearing_03' }
 
     it 'identifies three errors on first defendant' do
       expect(errors).to eq(
@@ -70,8 +70,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 04' do
-    let(:name) { 'example_04' }
+  context 'first hearing 04' do
+    let(:name) { 'first_hearing_04' }
 
     it 'identifies two errors on first defendant' do
       expect(errors).to eq(
@@ -89,8 +89,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 05' do
-    let(:name) { 'example_05' }
+  context 'first hearing 05' do
+    let(:name) { 'first_hearing_05' }
 
     it 'complains that special_measures is present for GAP' do
       expect(errors).to match(
@@ -99,8 +99,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 06' do
-    let(:name) { 'example_06' }
+  context 'first hearing 06' do
+    let(:name) { 'first_hearing_06' }
 
     it 'identifies that the mme_id provided in the MMEResponse does not match mme on the case' do
       expect(errors).to match(
@@ -117,8 +117,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 07' do
-    let(:name) { 'example_07' }
+  context 'first hearing 07' do
+    let(:name) { 'first_hearing_07' }
 
     it 'identifies that MmeNotRecordedResponse is invalid when there is MME' do
       expect(errors).to match(
@@ -135,24 +135,24 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 08' do
-    let(:name) { 'example_09' }
+  context 'first hearing 08' do
+    let(:name) { 'first_hearing_09' }
 
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
   end
 
-  context 'example 09' do
-    let(:name) { 'example_09' }
+  context 'first hearing 09' do
+    let(:name) { 'first_hearing_09' }
 
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
   end
 
-  context 'example 10' do
-    let(:name) { 'example_10' }
+  context 'first hearing 10' do
+    let(:name) { 'first_hearing_10' }
 
     it 'identifies missing youth fields' do
       expect(errors).to eq(
@@ -172,8 +172,8 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 11' do
-    let(:name) { 'example_11' }
+  context 'first hearing 11' do
+    let(:name) { 'first_hearing_11' }
 
     it 'identifies that madatory field brief description of the case is not present' do
       expect(errors).to match(
@@ -182,16 +182,16 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 12' do
-    let(:name) { 'example_12' }
+  context 'first hearing 12' do
+    let(:name) { 'first_hearing_12' }
 
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
   end
 
-  context 'example 13' do
-    let(:name) { 'example_13' }
+  context 'first hearing 13' do
+    let(:name) { 'first_hearing_13' }
 
     it 'identifies the property ids referred to in the retail theft offences are not part of the case' do
       expect(errors).to eq(
@@ -214,25 +214,16 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 14' do
-    let(:name) { 'example_14' }
+  context 'first hearing 14' do
+    let(:name) { 'first_hearing_14' }
 
     it 'identifies no errors' do
       expect(errors).to eq({})
     end
   end
 
-  context 'example 15' do
-    let(:name) { 'example_15' }
-
-    it 'identifies no errors' do
-      pending 'Scenario test files not updated t0 1.2.0'
-      expect(errors).to eq({})
-    end
-  end
-
-  context 'example 16' do
-    let(:name) { 'example_16' }
+  context 'first hearing 15' do
+    let(:name) { 'first_hearing_15' }
 
     it 'identifies no errors' do
       pending 'Scenario test files not updated t0 1.2.0'
@@ -240,8 +231,17 @@ RSpec.describe 'Parsing example files' do
     end
   end
 
-  context 'example 17' do
-    let(:name) { 'example_17' }
+  context 'first hearing 16' do
+    let(:name) { 'first_hearing_16' }
+
+    it 'identifies no errors' do
+      pending 'Scenario test files not updated t0 1.2.0'
+      expect(errors).to eq({})
+    end
+  end
+
+  context 'first hearing 17' do
+    let(:name) { 'first_hearing_17' }
 
     it 'is NGAP' do
       pending 'Scenario test files not updated t0 1.2.0'

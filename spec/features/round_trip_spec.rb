@@ -7,11 +7,11 @@ RSpec.describe 'Round-trip importing and exporting' do
     CaseExporter.new(dcf).export
   }
 
-  context 'example_01.json' do
+  context 'first_hearing_01.json' do
     let(:source) {
       JSON.load(
         File.read(
-          File.expand_path('../../fixtures/example_01.json', __FILE__)))
+          File.expand_path('../../fixtures/first_hearing_01.json', __FILE__)))
     }
 
     it 'produces the same structure after being imported and exported' do
