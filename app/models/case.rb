@@ -135,14 +135,11 @@ class Case
     defendants.map(&:name)
   end
 
-private
-
-  def validate_domestic_violence_specific
-    [*defendants, *victims].each do |item|
-      item.validate_domestic_violence_specific(domestic_violence?)
-    end
+  def property_ids
+    property.map(&:property_id)
   end
-  validate :validate_domestic_violence_specific
+
+private
 
   def validate_unique_ids
     validate_unique_on_collection multimedia_evidence, :id
@@ -158,14 +155,6 @@ private
     end
   end
   validate :validate_mme_response_ids
-
-  def validate_property_ids
-    available_ids = property.map(&:property_id)
-    defendants.each do |defendant|
-      defendant.validate_property_ids available_ids
-    end
-  end
-  validate :validate_property_ids
 
   def validate_no_mme_not_recorded_if_mme
     if multimedia_evidence.any?

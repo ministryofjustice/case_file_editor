@@ -21,14 +21,12 @@ class Victim < Witness
     allow_nil: true
 
   attribute :is_retraction_statement, Virtus::Attribute::Boolean
+  validates :is_retraction_statement,
+    boolean_presence: true,
+    if: :domestic_violence?
 
   attribute :compensation_applications, Array[CompensationApplication],
     relation: true
 
-  def validate_domestic_violence_specific(is_dv)
-    if is_dv
-      BooleanPresenceValidator.new(attributes: [:is_retraction_statement]).
-        validate(self)
-    end
-  end
+  delegate :domestic_violence?, to: :case_file
 end

@@ -24,6 +24,12 @@ class Offence < Event
   validates :points_to_prove_met_by, presence: true
 
   attribute :demeanour_at_incident, String
+  validates :demeanour_at_incident,
+    presence: true,
+    if: :domestic_violence?
+  validates :demeanour_at_incident,
+    absence: true,
+    unless: :domestic_violence?
 
   attribute :anticipated_plea, String
   validates :anticipated_plea, inclusion: { in: Enumerations::PleaStatusCode }
@@ -32,37 +38,21 @@ class Offence < Event
   validates :committed_on_bail, boolean_presence: true
 
   attribute :children_present, Virtus::Attribute::Boolean
+  validates :children_present,
+    boolean_presence: true,
+    if: :domestic_violence?
+  validates :children_present,
+    boolean_absence: true,
+    unless: :domestic_violence?
 
   attribute :ages_of_children, Array[String]
   validates :ages_of_children,
     length: { minimum: 1 },
     if: :children_present
 
+  delegate :domestic_violence?, to: :offence_collection
+
   def not_guilty_anticipated_plea?
     anticipated_plea == 'not_guilty'
-  end
-
-  def validate_domestic_violence_specific(is_dv)
-    if is_dv
-      validate_domestic_violence
-    else
-      validate_not_domestic_violence
-    end
-  end
-
-private
-
-  def validate_domestic_violence
-    PresenceValidator.new(attributes: [:demeanour_at_incident]).
-      validate(self)
-    BooleanPresenceValidator.new(attributes: [:children_present]).
-      validate(self)
-  end
-
-  def validate_not_domestic_violence
-    AbsenceValidator.new(attributes: [:demeanour_at_incident]).
-      validate(self)
-    BooleanAbsenceValidator.new(attributes: [:children_present]).
-      validate(self)
   end
 end

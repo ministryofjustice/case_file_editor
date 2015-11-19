@@ -1,5 +1,5 @@
 class RetailTheftOffenceCollection < OffenceCollection
-  attribute :retail_theft_offences, Array[RetailTheftOffence]
+  attribute :retail_theft_offences, Array[RetailTheftOffence], relation: true
   attribute :type, String, writer: :private, default: 'RetailTheftOffences'
 
   def not_guilty_anticipated_plea?
@@ -7,10 +7,4 @@ class RetailTheftOffenceCollection < OffenceCollection
   end
 
   alias_method :offences, :retail_theft_offences
-
-  def validate_property_ids(available_ids)
-    retail_theft_offences.each do |offence|
-      offence.validate_property_ids available_ids
-    end
-  end
 end

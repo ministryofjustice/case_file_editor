@@ -1,5 +1,5 @@
 class AssaultOffenceCollection < OffenceCollection
-  attribute :assault_offences, Array[AssaultOffence]
+  attribute :assault_offences, Array[AssaultOffence], relation: true
   attribute :type, String, writer: :private, default: 'AssaultOffences'
 
   def not_guilty_anticipated_plea?

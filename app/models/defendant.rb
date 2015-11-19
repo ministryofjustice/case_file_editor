@@ -29,7 +29,7 @@ class Defendant
     array_uniqueness: true,
     length: { minimum: 1 }
 
-  attribute :offences, Array[OffenceCollection]
+  attribute :offences, Array[OffenceCollection], relation: true
   validates :offences,
     array_uniqueness: true,
     length: { minimum: 1 }
@@ -226,6 +226,9 @@ class Defendant
   validates :interview, presence: true
 
   attribute :domestic_violence, Array[DomesticViolence], relation: true
+  validates :domestic_violence,
+    length: { minimum: 1 },
+    if: :domestic_violence?
 
   attribute :first_hearing_datetime, DateTime
   validates :first_hearing_datetime, presence: true
@@ -280,27 +283,10 @@ class Defendant
     interview.validate_as_youth if interview.respond_to?(:validate_as_youth)
   end
 
-  def validate_domestic_violence_specific(is_dv)
-    all_offences.each do |offence|
-      offence.validate_domestic_violence_specific(is_dv)
-    end
-    if is_dv && domestic_violence.none?
-      errors.add :domestic_violence, :too_short
-    end
-  end
-
   def validate_mme_response_ids(ids)
     multimedia_evidence_response.each do |response|
       if response.respond_to?(:validate_id)
         response.validate_id ids
-      end
-    end
-  end
-
-  def validate_property_ids(available_ids)
-    offences.each do |collection|
-      if collection.respond_to?(:validate_property_ids)
-        collection.validate_property_ids available_ids
       end
     end
   end
@@ -313,11 +299,9 @@ class Defendant
     end
   end
 
-  def all_offences
-    offences.flat_map(&:offences)
-  end
-
   def parent_guardian_date_sent_needed?
     parent_guardian_copy && initiated_as_requisition?
   end
+
+  delegate :domestic_violence?, to: :case_file
 end

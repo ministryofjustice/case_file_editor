@@ -1,10 +1,6 @@
 RSpec.describe Defendant do
-  subject {
-    described_class.new.tap { |d| case_file.defendants = [d] }
-  }
-
+  let!(:case_file) { Case.new(defendants: [subject], date: today) }
   let(:today) { Date.new(2015, 1, 1) }
-  let(:case_file) { Case.new(date: today) }
 
   describe 'initiated_as_charge?' do
     it 'is true if initiation_type is charge' do
@@ -142,27 +138,35 @@ RSpec.describe Defendant do
 
     describe 'domestic_violence' do
       context 'when case is DV' do
+        before do
+          allow(case_file).to receive(:domestic_violence?).and_return(true)
+        end
+
         it 'is valid if present' do
           subject.domestic_violence = [DomesticViolence.new]
-          subject.validate_domestic_violence_specific(true)
+          subject.validate
           expect(subject.errors[:domestic_violence]).to be_empty
         end
 
         it 'is invalid if absent' do
-          subject.validate_domestic_violence_specific(true)
+          subject.validate
           expect(subject.errors[:domestic_violence]).not_to be_empty
         end
       end
 
       context 'when case is not DV' do
+        before do
+          allow(case_file).to receive(:domestic_violence?).and_return(false)
+        end
+
         it 'is valid if present' do
           subject.domestic_violence = [DomesticViolence.new]
-          subject.validate_domestic_violence_specific(false)
+          subject.validate
           expect(subject.errors[:domestic_violence]).to be_empty
         end
 
         it 'is valid if absent' do
-          subject.validate_domestic_violence_specific(false)
+          subject.validate
           expect(subject.errors[:domestic_violence]).to be_empty
         end
       end

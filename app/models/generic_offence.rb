@@ -1,4 +1,6 @@
 class GenericOffence < Offence
+  include PropertyIdValidation
+
   attribute :type, String, writer: :private, default: 'GenericOffence'
 
   attribute :cjs_offence_code, String
@@ -8,10 +10,4 @@ class GenericOffence < Offence
   attribute :property_ids, Array[Integer]
 
   attribute :victim_names, Array[Name]
-
-  def validate_property_ids(available_ids)
-    unless property_ids.all? { |id| available_ids.include?(id) }
-      errors.add :property_ids, :refer_to_property
-    end
-  end
 end
