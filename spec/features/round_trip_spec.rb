@@ -18,4 +18,17 @@ RSpec.describe 'Round-trip importing and exporting' do
       expect(exported).to eq(source)
     end
   end
+
+  context 'breach_of_bail_01.json' do
+    let(:source) {
+      JSON.load(
+        File.read(
+          File.expand_path('../../fixtures/breach_of_bail_01.json', __FILE__)))
+    }
+
+    it 'produces the same structure after being imported and exported' do
+      pending
+      expect(exported).to eq(source)
+    end
+  end
 end
