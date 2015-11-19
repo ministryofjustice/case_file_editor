@@ -131,20 +131,11 @@ class Case
     witnesses.select { |w| w.is_a?(Victim) }
   end
 
-private
-
-  def validate_compensation_application_defendant_names
-    available_names = defendants.map(&:name)
-    victims.each do |victim|
-      victim.compensation_applications.each do |ca|
-        invalid_names = ca.defendant_names - available_names
-        if invalid_names.any?
-          ca.errors.add :defendant_names, :match_defendant
-        end
-      end
-    end
+  def defendant_names
+    defendants.map(&:name)
   end
-  validate :validate_compensation_application_defendant_names
+
+private
 
   def validate_domestic_violence_specific
     [*defendants, *victims].each do |item|

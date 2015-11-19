@@ -20,4 +20,37 @@ RSpec.describe CompensationApplication do
       expect(subject).not_to be_other_losses
     end
   end
+
+  describe 'validations' do
+    let!(:case_file) {
+      Case.new(
+        defendants: [
+          Defendant.new(
+            name: PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+          )
+        ],
+        witnesses: [
+          PersonVictim.new(
+            compensation_applications: [subject]
+          )
+        ]
+      )
+    }
+
+    it 'is valid when the defendant_names matches a defendant' do
+      subject.defendant_names = [
+        PersonName.new(surname: 'Smith', given_name: %w[ Bob ])
+      ]
+      subject.validate
+      expect(subject.errors[:defendant_names]).to be_empty
+    end
+
+    it 'is invalid when the defendant_names does not match a defendant' do
+      subject.defendant_names = [
+        PersonName.new(surname: 'Jones', given_name: %w[ Bob ])
+      ]
+      subject.validate
+      expect(subject.errors[:defendant_names]).not_to be_empty
+    end
+  end
 end

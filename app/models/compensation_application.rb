@@ -40,4 +40,12 @@ class CompensationApplication
   def other_losses?
     reasons_for_application.include?('other_losses')
   end
+
+  def validate_defendant_names
+    available_names = victim.case_file.defendant_names
+    if (defendant_names - available_names).any?
+      errors.add :defendant_names, :match_defendant
+    end
+  end
+  validate :validate_defendant_names
 end

@@ -1,4 +1,6 @@
 class Victim < Witness
+  include Virtus.relations(as: :victim)
+
   validates :witness_type,
     array_inclusion: { in: Enumerations::VictimWitnessType }
 
@@ -20,7 +22,8 @@ class Victim < Witness
 
   attribute :is_retraction_statement, Virtus::Attribute::Boolean
 
-  attribute :compensation_applications, Array[CompensationApplication]
+  attribute :compensation_applications, Array[CompensationApplication],
+    relation: true
 
   def validate_domestic_violence_specific(is_dv)
     if is_dv
