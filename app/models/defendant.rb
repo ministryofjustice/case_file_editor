@@ -283,14 +283,6 @@ class Defendant
     interview.validate_as_youth if interview.respond_to?(:validate_as_youth)
   end
 
-  def validate_no_mme_not_recorded
-    multimedia_evidence_response.each do |response|
-      if response.is_a?(MmeNotRecordedResponse)
-        response.errors.add :type, :response_required
-      end
-    end
-  end
-
   def parent_guardian_date_sent_needed?
     parent_guardian_copy && initiated_as_requisition?
   end

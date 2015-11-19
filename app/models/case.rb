@@ -152,13 +152,6 @@ private
   end
   validate :validate_unique_ids
 
-  def validate_no_mme_not_recorded_if_mme
-    if multimedia_evidence.any?
-      defendants.each(&:validate_no_mme_not_recorded)
-    end
-  end
-  validate :validate_no_mme_not_recorded_if_mme
-
   def validate_unique_on_collection(collection, field)
     ids = collection.map(&field).compact
     collection.
