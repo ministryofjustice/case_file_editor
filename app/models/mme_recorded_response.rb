@@ -34,8 +34,10 @@ class MmeRecordedResponse < MmeResponse
     presence: true,
     unless: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
 
-  def validate_id(available_ids)
+  def validate_id
+    available_ids = defendant.case_file.mme_ids
     return if id && available_ids.include?(id)
     errors.add :id, :refer_to_mme
   end
+  validate :validate_id
 end

@@ -139,6 +139,10 @@ class Case
     property.map(&:property_id)
   end
 
+  def mme_ids
+    multimedia_evidence.map(&:id)
+  end
+
 private
 
   def validate_unique_ids
@@ -147,14 +151,6 @@ private
     validate_unique_on_collection property, :property_id
   end
   validate :validate_unique_ids
-
-  def validate_mme_response_ids
-    ids = multimedia_evidence.map(&:id)
-    defendants.each do |defendant|
-      defendant.validate_mme_response_ids ids
-    end
-  end
-  validate :validate_mme_response_ids
 
   def validate_no_mme_not_recorded_if_mme
     if multimedia_evidence.any?

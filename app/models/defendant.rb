@@ -143,7 +143,7 @@ class Defendant
     presence: true,
     if: :interpreter_required
 
-  attribute :multimedia_evidence_response, [MmeResponse]
+  attribute :multimedia_evidence_response, Array[MmeResponse], relation: true
   validates :multimedia_evidence_response,
     length: { minimum: 1 }
 
@@ -281,14 +281,6 @@ class Defendant
     BooleanPresenceValidator.new(attributes: [:parent_guardian_copy]).
       validate(self)
     interview.validate_as_youth if interview.respond_to?(:validate_as_youth)
-  end
-
-  def validate_mme_response_ids(ids)
-    multimedia_evidence_response.each do |response|
-      if response.respond_to?(:validate_id)
-        response.validate_id ids
-      end
-    end
   end
 
   def validate_no_mme_not_recorded
