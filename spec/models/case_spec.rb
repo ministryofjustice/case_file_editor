@@ -27,21 +27,27 @@ RSpec.describe Case do
     it 'is true if any witness is 10 or under' do
       subject.date = Date.new(2015, 2, 3)
       dob = Date.new(2005, 10, 10)
-      subject.witnesses << StatementWitness.new(date_of_birth: dob)
+      subject.witnesses = [
+        StatementWitness.new(date_of_birth: dob)
+      ]
       expect(subject).to be_young_witness
     end
 
     it 'is false if no witness is 10 or under' do
       subject.date = Date.new(2015, 2, 3)
       dob = Date.new(2000, 10, 10)
-      subject.witnesses << StatementWitness.new(date_of_birth: dob)
+      subject.witnesses = [
+        StatementWitness.new(date_of_birth: dob)
+      ]
       expect(subject).not_to be_young_witness
     end
 
     it 'is false if date is not set' do
       subject.date = nil
       dob = Date.new(2005, 10, 10)
-      subject.witnesses << StatementWitness.new(date_of_birth: dob)
+      subject.witnesses = [
+        StatementWitness.new(date_of_birth: dob)
+      ]
       expect(subject).not_to be_young_witness
     end
   end
@@ -50,21 +56,27 @@ RSpec.describe Case do
     it 'is true if any victim is 60 or over' do
       subject.date = Date.new(2015, 2, 3)
       dob = Date.new(1955, 2, 3)
-      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      subject.witnesses = [
+        PersonVictim.new(date_of_birth: dob)
+      ]
       expect(subject).to be_older_victim
     end
 
     it 'is false if no witness is 60 or over' do
       subject.date = Date.new(2015, 2, 3)
       dob = Date.new(1965, 2, 3)
-      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      subject.witnesses = [
+        PersonVictim.new(date_of_birth: dob)
+      ]
       expect(subject).not_to be_older_victim
     end
 
     it 'is false if date is not set' do
       subject.date = nil
       dob = Date.new(1955, 2, 3)
-      subject.witnesses << PersonVictim.new(date_of_birth: dob)
+      subject.witnesses = [
+        PersonVictim.new(date_of_birth: dob)
+      ]
       expect(subject).not_to be_young_witness
     end
   end
@@ -234,7 +246,7 @@ RSpec.describe Case do
 
       it 'validates that recorded responses refer to Mme' do
         defendant = Defendant.new
-        subject.defendants << defendant
+        subject.defendants = [defendant]
         response_a = MmeRecordedResponse.new(id: 'ABC123')
         response_b = MmeRecordedResponse.new(id: 'XYZ999')
         defendant.multimedia_evidence_response = [response_a, response_b]
