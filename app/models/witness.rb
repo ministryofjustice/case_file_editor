@@ -26,23 +26,20 @@ class Witness
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
 
+  validates :special_measures, :interpreter_required, :wish_to_use_video_link,
+    boolean_absence: true,
+    unless: :not_guilty_anticipated_plea?
+  validates :special_measures, :interpreter_required, :wish_to_use_video_link,
+    boolean_presence: true,
+    if: :not_guilty_anticipated_plea?
+
   def officer_witness?
     (Enumerations::OfficerWitnessType & witness_type).any?
   end
 
-  def validate_as_gap
-    BooleanAbsenceValidator.new(
-      attributes: [
-        :special_measures, :interpreter_required, :wish_to_use_video_link
-      ]
-    ).validate(self)
-  end
+private
 
-  def validate_as_ngap
-    BooleanPresenceValidator.new(
-      attributes: [
-        :special_measures, :interpreter_required, :wish_to_use_video_link
-      ]
-    ).validate(self)
+  def not_guilty_anticipated_plea?
+    case_file.not_guilty_anticipated_plea?
   end
 end

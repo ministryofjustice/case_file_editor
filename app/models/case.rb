@@ -42,7 +42,7 @@ class Case
     length: { minimum: 1 },
     array_uniqueness: true
 
-  attribute :witnesses, Array[Witness]
+  attribute :witnesses, Array[Witness], relation: true
   validates :witnesses,
     length: { minimum: 1 },
     array_uniqueness: true
@@ -152,15 +152,6 @@ private
     end
   end
   validate :validate_domestic_violence_specific
-
-  def validate_gap_specific
-    if not_guilty_anticipated_plea?
-      witnesses.each(&:validate_as_ngap)
-    else
-      witnesses.each(&:validate_as_gap)
-    end
-  end
-  validate :validate_gap_specific
 
   def validate_unique_ids
     validate_unique_on_collection multimedia_evidence, :id

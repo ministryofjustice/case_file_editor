@@ -1,30 +1,46 @@
 RSpec.describe Witness do
+  let!(:case_file) {
+    Case.new(witnesses: [subject])
+  }
+
   context 'validations' do
     describe 'special_measures' do
       context 'when GAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(false)
+        end
+
         it 'is invalid if present' do
           subject.special_measures = false
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:special_measures]).not_to be_empty
         end
 
         it 'is valid if absent' do
           subject.special_measures = nil
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:special_measures]).to be_empty
         end
       end
 
       context 'when NGAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(true)
+        end
+
         it 'is valid if present' do
           subject.special_measures = false
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:special_measures]).to be_empty
         end
 
         it 'is invalid if absent' do
           subject.special_measures = nil
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:special_measures]).not_to be_empty
         end
       end
@@ -32,29 +48,41 @@ RSpec.describe Witness do
 
     describe 'wish_to_use_video_link' do
       context 'when GAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(false)
+        end
+
         it 'is invalid if present' do
           subject.wish_to_use_video_link = false
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:wish_to_use_video_link]).not_to be_empty
         end
 
         it 'is valid if absent' do
           subject.wish_to_use_video_link = nil
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:wish_to_use_video_link]).to be_empty
         end
       end
 
       context 'when NGAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(true)
+        end
+
         it 'is valid if present' do
           subject.wish_to_use_video_link = false
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:wish_to_use_video_link]).to be_empty
         end
 
         it 'is invalid if absent' do
           subject.wish_to_use_video_link = nil
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:wish_to_use_video_link]).not_to be_empty
         end
       end
@@ -62,29 +90,41 @@ RSpec.describe Witness do
 
     describe 'interpreter_required' do
       context 'when GAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(false)
+        end
+
         it 'is invalid if present' do
           subject.interpreter_required = false
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:interpreter_required]).not_to be_empty
         end
 
         it 'is valid if absent' do
           subject.interpreter_required = nil
-          subject.validate_as_gap
+          subject.validate
           expect(subject.errors[:interpreter_required]).to be_empty
         end
       end
 
       context 'when NGAP' do
+        before do
+          allow(case_file).
+            to receive(:not_guilty_anticipated_plea?).
+            and_return(true)
+        end
+
         it 'is valid if present' do
           subject.interpreter_required = false
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:interpreter_required]).to be_empty
         end
 
         it 'is invalid if absent' do
           subject.interpreter_required = nil
-          subject.validate_as_ngap
+          subject.validate
           expect(subject.errors[:interpreter_required]).not_to be_empty
         end
       end

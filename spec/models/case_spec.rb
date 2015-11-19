@@ -271,20 +271,6 @@ RSpec.describe Case do
         expect(witness_b.errors[:witness_id]).not_to be_empty
         expect(witness_c.errors[:witness_id]).to be_empty
       end
-
-      it 'validates each witness for GAP case' do
-        allow(subject).to receive(:not_guilty_anticipated_plea?).and_return(false)
-        expect(witness_a).to receive(:validate_as_gap)
-        expect(witness_a).not_to receive(:validate_as_ngap)
-        subject.validate
-      end
-
-      it 'validates each witness for NGAP case' do
-        allow(subject).to receive(:not_guilty_anticipated_plea?).and_return(true)
-        expect(witness_a).to receive(:validate_as_ngap)
-        expect(witness_a).not_to receive(:validate_as_gap)
-        subject.validate
-      end
     end
 
     context 'property' do
