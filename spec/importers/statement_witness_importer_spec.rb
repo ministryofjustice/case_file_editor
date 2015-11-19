@@ -4,7 +4,7 @@ RSpec.describe StatementWitnessImporter do
       'type' => 'StatementWitness',
       'witness_type' => %w['eye'],
       'name' => {
-	'type' => 'PersonName',
+        'type' => 'PersonName',
         'given_name' => ['Jennie', 'Claire'],
         'surname' => 'Jones'
       },

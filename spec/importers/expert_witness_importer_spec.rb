@@ -52,10 +52,10 @@ RSpec.describe ExpertWitnessImporter do
 
     context 'with organisation name' do
       let(:name) {
-        { 
-	'type' => 'OrganisationName',
-	'organisation_name' => 'ACME, Inc.' 
-	}
+        {
+          'type' => 'OrganisationName',
+          'organisation_name' => 'ACME, Inc.'
+        }
       }
 
       context 'name' do

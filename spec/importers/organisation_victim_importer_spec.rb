@@ -3,7 +3,7 @@ RSpec.describe OrganisationVictimImporter do
     {
       'type' => 'OrganisationVictim',
       'name' => {
-	'type' => 'OrganisationName',
+        'type' => 'OrganisationName',
         'organisation_name' => 'ACME, Inc.'
       },
       'victim' => {

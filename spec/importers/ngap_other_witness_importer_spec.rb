@@ -4,11 +4,11 @@ RSpec.describe NgapOtherWitnessImporter do
       'type' => 'NgapOtherWitness',
       'witness_type' => %w[ eye ],
       'name' => {
-	'type' => 'OfficerName',
+        'type' => 'OfficerName',
         'given_name' => %w[ Jennie Claire ],
         'surname' => 'Jones',
-	'rank' => 'Sergeant',
-	'collar_number' => 'AA11'
+        'rank' => 'Sergeant',
+        'collar_number' => 'AA11'
       },
       'witness' => {
         'nature_of_involvement' => 'Nature of involvement',

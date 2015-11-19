@@ -103,13 +103,13 @@ RSpec.describe 'Parsing example files' do
     let(:name) { 'example_06' }
 
     it 'identifies that the mme_id provided in the MMEResponse does not match mme on the case' do
-           expect(errors).to match(
+      expect(errors).to match(
         defendants: {
           0 => {
             multimedia_evidence_response: {
-		0 => {
-		   id: [ "must refer to a piece of multimedia evidence in the case"]
-	        }
+              0 => {
+                id: ["must refer to a piece of multimedia evidence in the case"]
+              }
             }
           }
         }
@@ -165,19 +165,19 @@ RSpec.describe 'Parsing example files' do
               appropriate_adults: [
                 "must be present if defendant is a youth"
               ]
-	    }
+            }
           }
         }
       )
     end
-  end	
+  end
 
   context 'example 11' do
     let(:name) { 'example_11' }
 
     it 'identifies that madatory field brief description of the case is not present' do
       expect(errors).to match(
-	brief_description_of_case: ["is invalid"]
+        brief_description_of_case: ["is invalid"]
       )
     end
   end
@@ -213,7 +213,7 @@ RSpec.describe 'Parsing example files' do
       )
     end
   end
-  
+
   context 'example 14' do
     let(:name) { 'example_14' }
 

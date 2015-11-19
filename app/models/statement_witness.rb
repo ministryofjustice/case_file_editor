@@ -25,5 +25,4 @@ class StatementWitness < Witness
   validates :url,
     absence: true,
     unless: :visually_recorded_interview
-
 end

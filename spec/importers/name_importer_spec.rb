@@ -29,8 +29,8 @@ RSpec.describe NameImporter do
         'type' => 'OfficerName',
         'given_name' => %w[ Jennie Claire ],
         'surname' => 'Jones',
-	'rank' => 'Sergeant',
-	'collar_number' => 'AA11'
+        'rank' => 'Sergeant',
+        'collar_number' => 'AA11'
       }
     }
 

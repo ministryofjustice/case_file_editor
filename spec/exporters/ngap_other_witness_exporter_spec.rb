@@ -3,13 +3,13 @@ RSpec.describe NgapOtherWitnessExporter do
     NgapOtherWitness.new(
       witness_type: ['eye'],
       name: PersonName.new(
-	type: 'PersonName',
+        type: 'PersonName',
         given_name: ['Jennie', 'Claire'],
         surname: 'Jones'
       ),
       nature_of_involvement: 'Nature of involvement',
       evidence_they_can_give: 'Evidence they can give',
-      number: 'ABC123',
+      number: 'ABC123'
     )
   }
 
@@ -23,14 +23,14 @@ RSpec.describe NgapOtherWitnessExporter do
     it 'includes subclass-specific attributes' do
       expect(subject).to include(
         'witness_type' => ['eye'],
-        'number' => 'ABC123',
+        'number' => 'ABC123'
       )
     end
 
     it 'includes a name object' do
       expect(subject).to include(
         'name' => include(
-	  'type' => 'PersonName',
+          'type' => 'PersonName',
           'given_name' => %w[ Jennie Claire ],
           'surname' => 'Jones'
         )

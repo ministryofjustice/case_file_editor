@@ -9,5 +9,4 @@ class NgapOtherWitness < Witness
     array_inclusion: { in: Enumerations::NgapWitnessType }
 
   attribute :number, String
-
 end

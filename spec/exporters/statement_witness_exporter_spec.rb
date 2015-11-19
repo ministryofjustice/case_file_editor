@@ -3,7 +3,7 @@ RSpec.describe StatementWitnessExporter do
     StatementWitness.new(
       witness_type: ['eye'],
       name: PersonName.new(
-	type: 'PersonName',
+        type: 'PersonName',
         given_name: ['Jennie', 'Claire'],
         surname: 'Jones'
       ),
@@ -32,7 +32,7 @@ RSpec.describe StatementWitnessExporter do
     it 'includes a name object' do
       expect(subject).to include(
         'name' => include(
-	  'type' => 'PersonName',
+          'type' => 'PersonName',
           'given_name' => %w[ Jennie Claire ],
           'surname' => 'Jones'
         )

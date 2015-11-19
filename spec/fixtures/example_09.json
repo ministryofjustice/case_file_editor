@@ -31,7 +31,7 @@
                 "type": "Offence",
                 "from_date": "2014-01-01",
                 "to_date": "2014-01-01",
-				"charge_date": "2014-01-01",
+                "charge_date": "2014-01-01",
                 "offence_title": "Offence Title from PNLD",
                 "charge_wording": "This is the charge wording",
                 "points_to_prove_met_by": "Description of how the points to prove have been met.",
@@ -148,14 +148,14 @@
         "date": "2014-01-01",
         "defendant_legally_represented": true,
         "legally_represented_by": {
-		  "type": "PersonName",
+          "type": "PersonName",
           "given_name": [ "Jennie", "Claire" ],
           "surname": "Jones"
         },
         "legal_representative_firm": "The firm",
         "interpreters": [
           {
-			"type": "PersonName",
+            "type": "PersonName",
             "given_name": [ "Jennie", "Claire" ],
             "surname": "Jones"
           }
@@ -178,7 +178,7 @@
     },
     {
       "name": {
-		"type": "PersonName",
+        "type": "PersonName",
         "surname": "Jones",
         "given_name": [ "Steve", "William" ]
       },
@@ -201,7 +201,7 @@
                 "type": "Offence",
                 "from_date": "2014-01-01",
                 "to_date": "2014-01-01",
-				"charge_date": "2014-01-01",
+                "charge_date": "2014-01-01",
                 "offence_title": "Offence Title from PNLD",
                 "charge_wording": "This is the charge wording",
                 "points_to_prove_met_by": "Description of how the points to prove have been met.",
