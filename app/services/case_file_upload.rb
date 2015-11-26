@@ -28,6 +28,10 @@ class CaseFileUpload
     ([@exception.inspect] + @exception.backtrace).join("\n")
   end
 
+  def type
+    case_file.model_name.singular
+  end
+
 private
 
   def validate_objects(obj)

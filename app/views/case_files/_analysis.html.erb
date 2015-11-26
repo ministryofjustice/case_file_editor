@@ -12,7 +12,7 @@
   </div>
 <% elsif @upload.errors? %>
   <div class="row analysis-invalid">
-    <p><%= t('.result_invalid') %></p>
+    <p><%= t('.result_invalid', type: t(".#{@upload.type}")) %></p>
   </div>
 
   <% if @upload.schema_errors? %>
@@ -36,6 +36,6 @@
   <% end %>
 <% else %>
   <div class="row analysis-valid">
-    <p><%= t('.result_valid') %></p>
+    <p><%= t('.result_valid', type: t(".#{@upload.type}")) %></p>
   </div>
 <% end %>

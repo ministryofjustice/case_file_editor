@@ -3,10 +3,12 @@ en:
     analysis:
       result_exception: "Result: An exception occurred"
       details: Details
-      result_invalid: "Result: invalid"
+      result_invalid: "Result: invalid %{type} case file"
       schema_errors: Schema errors
       object_errors: Object errors
-      result_valid: "Result: valid"
+      result_valid: "Result: valid %{type} case file"
+      first_hearing_case_file: First Hearing
+      breach_of_bail_case_file: Breach of Bail
     create:
       title: Case file analysis
       upload_another: Upload another
