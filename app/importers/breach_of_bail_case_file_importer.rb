@@ -1,0 +1,2 @@
+class BreachOfBailCaseFileImporter < GenericImporter
+end

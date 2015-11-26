@@ -1,0 +1,2 @@
+class BreachOfBailCaseFile < CaseFile
+end

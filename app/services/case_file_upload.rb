@@ -3,7 +3,7 @@ require 'json_schema'
 class CaseFileUpload
   def initialize(json_string)
     json = JsonIngester.new.ingest(json_string)
-    @case_file = CaseFileImporter.new(json).import
+    @case_file = CaseFileImporter.importer(json).import
     @object_errors = validate_objects(@case_file) if @case_file
     @schema_errors = validate_schema(json)
   rescue StandardError => ex

@@ -1,0 +1,2 @@
+class FirstHearingCaseFile < CaseFile
+end

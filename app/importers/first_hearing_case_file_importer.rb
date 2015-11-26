@@ -1,0 +1,2 @@
+class FirstHearingCaseFileImporter < GenericImporter
+end
