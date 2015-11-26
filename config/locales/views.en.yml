@@ -1,0 +1,25 @@
+en:
+  case_files:
+    analysis:
+      result_exception: "Result: An exception occurred"
+      details: Details
+      result_invalid: "Result: invalid"
+      schema_errors: Schema errors
+      object_errors: Object errors
+      result_valid: "Result: valid"
+    create:
+      title: Case file analysis
+      upload_another: Upload another
+    form:
+      case_file: File
+      upload: Upload
+    index:
+      title: Upload a case file
+  common:
+    top_bar:
+      title: Digital Case File Validator
+  layouts:
+    application:
+      title: Digital Case File Validator
+      supported_version_html: >
+        Supported Digital Case File version: <strong>%{version}</strong>

@@ -1,10 +1,10 @@
 <% if @upload.exception %>
   <div class="row analysis-exception">
-    <p>Result: an exception occurred</p>
+    <p><%= t('.result_exception') %></p>
   </div>
 
   <div class="row">
-    <h2>Details</h2>
+    <h2><%= t('.details') %></h2>
   </div>
 
   <div class="row">
@@ -12,12 +12,12 @@
   </div>
 <% elsif @upload.errors? %>
   <div class="row analysis-invalid">
-    <p>Result: invalid</p>
+    <p><%= t('.result_invalid') %></p>
   </div>
 
   <% if @upload.schema_errors? %>
     <div class="row">
-      <h2>Schema errors</h2>
+      <h2><%= t('.schema_errors' ) %></h2>
     </div>
 
     <div class="row">
@@ -27,7 +27,7 @@
 
   <% if @upload.object_errors? %>
     <div class="row">
-      <h2>Object errors</h2>
+      <h2><%= t('.object_errors' ) %></h2>
     </div>
 
     <div class="row">
@@ -36,6 +36,6 @@
   <% end %>
 <% else %>
   <div class="row analysis-valid">
-    <p>Result: valid</p>
+    <p><%= t('.result_valid') %></p>
   </div>
 <% end %>

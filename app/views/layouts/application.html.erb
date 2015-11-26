@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Digital Case File Validator</title>
+  <title><%= t('.title') %></title>
 
   <%= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'vendor/modernizr' %>
@@ -19,8 +19,8 @@
 
 <div class="row">
   <p>
-    Supported Digital Case File version:
-    <strong><%= Rails.configuration.supported_version %></strong>
+   <%= t('.supported_version_html',
+         version: Rails.configuration.supported_version) %>
   </p>
 </div>
 
