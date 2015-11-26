@@ -1,7 +1,7 @@
 RSpec.describe Mme do
   context 'validations' do
     let!(:case_file) {
-      CaseFile.new(
+      FirstHearingCaseFile.new(
         multimedia_evidence: [subject, other_mme]
       )
     }

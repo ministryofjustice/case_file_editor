@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Parsing first hearing files' do
   let(:dcf) {
-    CaseFileImporter.new(source).import
+    FirstHearingCaseFileImporter.new(source).import
   }
 
   let(:source) {
