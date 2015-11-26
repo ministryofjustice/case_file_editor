@@ -30,8 +30,8 @@ en:
         too_short: is too short (minimum is %{count})
         truth: must be true
         wrong_length:
-          one: is the wrong length (should be 1 character)
-          other: is the wrong length (should be %{count} characters)
+          one: is the wrong length (should be 1)
+          other: is the wrong length (should be %{count})
       models:
         case_file:
           attributes:
