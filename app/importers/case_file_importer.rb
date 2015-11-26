@@ -1,0 +1,2 @@
+class CaseFileImporter < GenericImporter
+end

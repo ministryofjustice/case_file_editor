@@ -1,4 +1,4 @@
-class CaseExporter < GenericExporter
+class CaseFileExporter < GenericExporter
   attributes \
     :schema_version,
     :pti_urn,

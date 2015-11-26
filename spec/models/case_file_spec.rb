@@ -1,4 +1,4 @@
-RSpec.describe Case do
+RSpec.describe CaseFile do
   describe 'domestic_violence?' do
     it 'is true if there is a DV case marker' do
       subject.case_markers << 'DomesticViolence'

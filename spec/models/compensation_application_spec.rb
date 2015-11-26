@@ -23,7 +23,7 @@ RSpec.describe CompensationApplication do
 
   describe 'validations' do
     let!(:case_file) {
-      Case.new(
+      CaseFile.new(
         defendants: [
           Defendant.new(
             name: PersonName.new(surname: 'Smith', given_name: %w[ Bob ])

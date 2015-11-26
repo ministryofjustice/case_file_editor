@@ -1,6 +1,6 @@
 RSpec.describe Property do
   let!(:case_file) {
-    Case.new(property: [subject, other_property])
+    CaseFile.new(property: [subject, other_property])
   }
   let(:other_property) { described_class.new(property_id: 'ABC123') }
 

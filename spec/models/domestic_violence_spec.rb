@@ -11,7 +11,7 @@ RSpec.describe DomesticViolence do
     }
 
     let!(:case_file) {
-      Case.new(
+      CaseFile.new(
         defendants: [defendant],
         witnesses: [victim]
       )

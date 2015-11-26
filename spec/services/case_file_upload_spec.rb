@@ -2,8 +2,8 @@ RSpec.describe CaseFileUpload do
   context 'with valid JSON' do
     subject { described_class.new('{}') }
 
-    it 'has a case' do
-      expect(subject.case).to be_a(Case)
+    it 'has a case_file' do
+      expect(subject.case_file).to be_a(CaseFile)
     end
 
     it 'has no exception' do
@@ -22,8 +22,8 @@ RSpec.describe CaseFileUpload do
   context 'with invalid JSON' do
     subject { described_class.new('!@#@#$') }
 
-    it 'has no case' do
-      expect(subject.case).to be_nil
+    it 'has no case_file' do
+      expect(subject.case_file).to be_nil
     end
 
     it 'has an exception' do

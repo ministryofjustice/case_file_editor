@@ -1,6 +1,6 @@
 RSpec.describe Victim do
   context 'validations' do
-    let!(:case_file) { Case.new(witnesses: [subject]) }
+    let!(:case_file) { CaseFile.new(witnesses: [subject]) }
 
     describe 'is_retraction_statement' do
       context 'when DV' do

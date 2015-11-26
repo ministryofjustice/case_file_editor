@@ -13,7 +13,7 @@ RSpec.describe Offence do
 
   context 'validations' do
     let!(:case_file) {
-      Case.new(
+      CaseFile.new(
         defendants: [
           Defendant.new(
             offences: [

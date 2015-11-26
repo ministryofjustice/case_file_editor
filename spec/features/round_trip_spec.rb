@@ -1,10 +1,10 @@
 RSpec.describe 'Round-trip importing and exporting' do
   let(:dcf) {
-    CaseImporter.new(source).import
+    CaseFileImporter.new(source).import
   }
 
   let(:exported) {
-    CaseExporter.new(dcf).export
+    CaseFileExporter.new(dcf).export
   }
 
   context 'first_hearing_01.json' do

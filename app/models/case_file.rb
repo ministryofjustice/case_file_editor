@@ -1,4 +1,4 @@
-class Case
+class CaseFile
   include BasicModel
   include Virtus.relations(as: :case_file)
 

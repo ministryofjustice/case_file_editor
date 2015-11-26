@@ -3,14 +3,14 @@ require 'json_schema'
 class CaseFileUpload
   def initialize(json_string)
     json = JsonIngester.new.ingest(json_string)
-    @case = CaseImporter.new(json).import
-    @object_errors = validate_objects(@case) if @case
+    @case_file = CaseFileImporter.new(json).import
+    @object_errors = validate_objects(@case_file) if @case_file
     @schema_errors = validate_schema(json)
   rescue StandardError => ex
     @exception = ex
   end
 
-  attr_reader :case, :object_errors, :schema_errors, :exception
+  attr_reader :case_file, :object_errors, :schema_errors, :exception
 
   def object_errors?
     object_errors && object_errors.any?

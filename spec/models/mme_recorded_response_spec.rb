@@ -1,7 +1,7 @@
 RSpec.describe MmeRecordedResponse do
   context 'validations' do
     let!(:case_file) {
-      Case.new(
+      CaseFile.new(
         defendants: [
           Defendant.new(
             multimedia_evidence_response: [subject]

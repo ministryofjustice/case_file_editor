@@ -1,5 +1,5 @@
 RSpec.describe Defendant do
-  let!(:case_file) { Case.new(defendants: [subject], date: today) }
+  let!(:case_file) { CaseFile.new(defendants: [subject], date: today) }
   let(:today) { Date.new(2015, 1, 1) }
 
   describe 'initiated_as_charge?' do
