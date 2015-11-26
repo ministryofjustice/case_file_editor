@@ -1,7 +1,6 @@
 class BreachOfBailCaseFile < CaseFile
   attribute :type, String, writer: :private, default: 'BobDCF'
 
-  validates :defendants, length: { is: 1 }
   validates :case_markers, length: { is: 0 }
   validates :defendants, length: { is: 1 }
   validates :common_law_disclosure, absence: true

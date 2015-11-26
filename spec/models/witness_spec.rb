@@ -1,6 +1,6 @@
 RSpec.describe Witness do
   let!(:case_file) {
-    CaseFile.new(witnesses: [subject, other_witness])
+    FirstHearingCaseFile.new(witnesses: [subject, other_witness])
   }
   let(:other_witness) { described_class.new(witness_id: 'ABC123') }
 

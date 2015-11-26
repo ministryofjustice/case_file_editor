@@ -1,6 +1,7 @@
 class Witness
   include BasicModel
   include DuplicateIdentifiers
+  include CaseTypeSpecific
 
   attribute :witness_id, String
 
@@ -21,18 +22,31 @@ class Witness
   attribute :interpreter_required, Virtus::Attribute::Boolean
 
   attribute :interpreter_language_or_dialect, String
+  with_options if: :first_hearing_case? do
+    validates :interpreter_language_or_dialect,
+      presence: true,
+      if: :interpreter_required
+  end
   validates :interpreter_language_or_dialect,
-    presence: true,
-    if: :interpreter_required
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :wish_to_use_video_link, Virtus::Attribute::Boolean
 
-  validates :special_measures, :interpreter_required, :wish_to_use_video_link,
+  with_options if: :first_hearing_case? do
+    validates :special_measures, :interpreter_required,
+      :wish_to_use_video_link,
+      boolean_absence: true,
+      unless: :not_guilty_anticipated_plea?
+    validates :special_measures, :interpreter_required,
+      :wish_to_use_video_link,
+      boolean_presence: true,
+      if: :not_guilty_anticipated_plea?
+  end
+  validates :special_measures, :interpreter_required,
+    :wish_to_use_video_link,
     boolean_absence: true,
-    unless: :not_guilty_anticipated_plea?
-  validates :special_measures, :interpreter_required, :wish_to_use_video_link,
-    boolean_presence: true,
-    if: :not_guilty_anticipated_plea?
+    if: :breach_of_bail_case?
 
   def officer_witness?
     (Enumerations::OfficerWitnessType & witness_type).any?

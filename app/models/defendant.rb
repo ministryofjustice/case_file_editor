@@ -4,6 +4,7 @@ class Defendant
   include BasicModel
   include AgeCalculation
   include Virtus.relations(as: :defendant)
+  include CaseTypeSpecific
 
   ADULT_MIN_AGE = 18
 
@@ -21,105 +22,182 @@ class Defendant
     if: :initiated_as_charge?
 
   attribute :conditional_caution_considered, Virtus::Attribute::Boolean
-  validates :conditional_caution_considered, truth: true
+  validates :conditional_caution_considered,
+    truth: true,
+    if: :first_hearing_case?
+  validates :conditional_caution_considered,
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :cc_not_suitable_reasons, Array[String]
   validates :cc_not_suitable_reasons,
     array_inclusion: { in: Enumerations::CCNotSuitableReason },
     array_uniqueness: true,
-    length: { minimum: 1 }
+    length: { minimum: 1 },
+    if: :first_hearing_case?
+  validates :cc_not_suitable_reasons,
+    length: { is: 0 },
+    if: :breach_of_bail_case?
 
   attribute :offences, Array[OffenceCollection], relation: true
   validates :offences,
     array_uniqueness: true,
-    length: { minimum: 1 }
+    length: { minimum: 1 },
+    if: :first_hearing_case?
+  validates :offences,
+    length: { is: 0 },
+    if: :breach_of_bail_case?
 
   attribute :occupation, String
   validates :occupation, presence: true
 
   attribute :class_a_drug_test_provided, Virtus::Attribute::Boolean
+  validates :class_a_drug_test_provided,
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :class_a_drug_test_details, String
-  validates :class_a_drug_test_details,
-    presence: true,
-    if: :class_a_drug_test_provided
+  with_options if: :first_hearing_case? do
+    validates :class_a_drug_test_details,
+      presence: true,
+      if: :class_a_drug_test_provided
+    validates :class_a_drug_test_details,
+      absence: true,
+      unless: :class_a_drug_test_provided
+  end
   validates :class_a_drug_test_details,
     absence: true,
-    unless: :class_a_drug_test_provided
+    if: :breach_of_bail_case?
 
   attribute :accepts_drugs_result, Virtus::Attribute::Boolean
+  with_options if: :first_hearing_case? do
+    validates :accepts_drugs_result,
+      boolean_presence: true,
+      if: :class_a_drug_test_provided
+    validates :accepts_drugs_result,
+      boolean_absence: true,
+      unless: :class_a_drug_test_provided
+  end
   validates :accepts_drugs_result,
-    boolean_presence: true,
-    if: :class_a_drug_test_provided
-  validates :accepts_drugs_result,
-    boolean_absence: true,
-    unless: :class_a_drug_test_provided
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :has_eec_passports, Virtus::Attribute::Boolean
-  validates :has_eec_passports, boolean_presence: true
+  validates :has_eec_passports,
+    boolean_presence: true,
+    if: :first_hearing_case?
+  validates :has_eec_passports,
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :eec_check_submitted, Virtus::Attribute::Boolean
-  validates :eec_check_submitted,
-    boolean_presence: true,
-    if: :has_eec_passports
+  with_options if: :first_hearing_case? do
+    validates :eec_check_submitted,
+      boolean_presence: true,
+      if: :has_eec_passports
+    validates :eec_check_submitted,
+      boolean_absence: true,
+      unless: :has_eec_passports
+  end
   validates :eec_check_submitted,
     boolean_absence: true,
-    unless: :has_eec_passports
+    if: :breach_of_bail_case?
 
   attribute :eec_convictions_record_received, Virtus::Attribute::Boolean
-  validates :eec_convictions_record_received,
-    boolean_presence: true,
-    if: :has_eec_passports
+  with_options if: :first_hearing_case? do
+    validates :eec_convictions_record_received,
+      boolean_presence: true,
+      if: :has_eec_passports
+    validates :eec_convictions_record_received,
+      boolean_absence: true,
+      unless: :has_eec_passports
+  end
   validates :eec_convictions_record_received,
     boolean_absence: true,
-    unless: :has_eec_passports
+    if: :breach_of_bail_case?
 
   attribute :foreign_national_offender, Virtus::Attribute::Boolean
   validates :foreign_national_offender, boolean_presence: true
 
   attribute :breach_of_order, Virtus::Attribute::Boolean
-  validates :breach_of_order, boolean_presence: true
+  validates :breach_of_order,
+    boolean_presence: true,
+    if: :first_hearing_case?
+  validates :breach_of_order,
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :breach_order_date_issued, Date
-  validates :breach_order_date_issued,
-    presence: true,
-    if: :breach_of_order
+  with_options if: :first_hearing_case? do
+    validates :breach_order_date_issued,
+      presence: true,
+      if: :breach_of_order
+    validates :breach_order_date_issued,
+      absence: true,
+      unless: :breach_of_order
+  end
   validates :breach_order_date_issued,
     absence: true,
-    unless: :breach_of_order
+    if: :breach_of_bail_case?
 
   attribute :breach_order_court_issued, OrganisationLocation
-  validates :breach_order_court_issued,
-    presence: true,
-    if: :breach_of_order
+  with_options if: :first_hearing_case? do
+    validates :breach_order_court_issued,
+      presence: true,
+      if: :breach_of_order
+    validates :breach_order_court_issued,
+      absence: true,
+      unless: :breach_of_order
+  end
   validates :breach_order_court_issued,
     absence: true,
-    unless: :breach_of_order
+    if: :breach_of_bail_case?
 
   attribute :breach_order_title, String
-  validates :breach_order_title,
-    inclusion: { in: Enumerations::CourtOrderTitle },
-    if: :breach_of_order
+  with_options if: :first_hearing_case? do
+    validates :breach_order_title,
+      inclusion: { in: Enumerations::CourtOrderTitle },
+      if: :breach_of_order
+    validates :breach_order_title,
+      absence: true,
+      unless: :breach_of_order
+  end
   validates :breach_order_title,
     absence: true,
-    unless: :breach_of_order
+    if: :breach_of_bail_case?
 
   attribute :breach_order_title_other, String
+  with_options if: :first_hearing_case? do
+    validates :breach_order_title_other,
+      presence: true,
+      if: :breach_order_title_needed?
+  end
   validates :breach_order_title_other,
-    presence: true,
-    if: :breach_order_title_needed?
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :breach_order_lapse_date, Date
-  validates :breach_order_lapse_date,
-    presence: true,
-    if: :breach_of_order
+  with_options if: :first_hearing_case? do
+    validates :breach_order_lapse_date,
+      presence: true,
+      if: :breach_of_order
+    validates :breach_order_lapse_date,
+      absence: true,
+      unless: :breach_of_order
+  end
   validates :breach_order_lapse_date,
     absence: true,
-    unless: :breach_of_order
+    if: :breach_of_bail_case?
 
   attribute :remand_application, RemandApplication
+  validates :remand_application,
+    presence: true,
+    if: :breach_of_bail_case?
 
   attribute :breach_of_bail, BreachOfBail
+  validates :breach_of_bail,
+    presence: true,
+    if: :breach_of_bail_case?
 
   attribute :pnc_check_performed, Virtus::Attribute::Boolean
   validates :pnc_check_performed, boolean_presence: true
@@ -133,7 +211,12 @@ class Defendant
     unless: :pnc_check_performed
 
   attribute :court_order_applications, Array[CourtOrder]
-  validates :court_order_applications, length: { minimum: 1 }
+  validates :court_order_applications,
+    length: { minimum: 1 },
+    if: :first_hearing_case?
+  validates :court_order_applications,
+    length: { is: 0 },
+    if: :breach_of_bail_case?
 
   attribute :interpreter_required, Virtus::Attribute::Boolean
   validates :interpreter_required, boolean_presence: true
@@ -149,20 +232,30 @@ class Defendant
 
   attribute :notice_to_provide_bad_character_evidence,
     Virtus::Attribute::Boolean
-  validates :notice_to_provide_bad_character_evidence,
-    boolean_presence: true,
-    if: :not_guilty_anticipated_plea?
+  with_options if: :first_hearing_case? do
+    validates :notice_to_provide_bad_character_evidence,
+      boolean_presence: true,
+      if: :not_guilty_anticipated_plea?
+    validates :notice_to_provide_bad_character_evidence,
+      boolean_absence: true,
+      unless: :not_guilty_anticipated_plea?
+  end
   validates :notice_to_provide_bad_character_evidence,
     boolean_absence: true,
-    unless: :not_guilty_anticipated_plea?
+    if: :breach_of_bail_case?
 
   attribute :bad_character_details, String
-  validates :bad_character_details,
-    presence: true,
-    if: :notice_to_provide_bad_character_evidence
+  with_options if: :first_hearing_case? do
+    validates :bad_character_details,
+      presence: true,
+      if: :notice_to_provide_bad_character_evidence
+    validates :bad_character_details,
+      absence: true,
+      unless: :notice_to_provide_bad_character_evidence
+  end
   validates :bad_character_details,
     absence: true,
-    unless: :notice_to_provide_bad_character_evidence
+    if: :breach_of_bail_case?
 
   attribute :dealt_with_in_welsh, Virtus::Attribute::Boolean
   validates :dealt_with_in_welsh, boolean_presence: true
@@ -172,63 +265,110 @@ class Defendant
     inclusion: { in: Enumerations::PersonRemandStatus }
 
   attribute :given_charges, Virtus::Attribute::Boolean
-  validates :given_charges, boolean_presence: true
+  validates :given_charges,
+    boolean_presence: true,
+    if: :first_hearing_case?
+  validates :given_charges,
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :initiation_type, String
   validates :initiation_type,
-    inclusion: { in: Enumerations::InitiationType }
+    inclusion: { in: Enumerations::InitiationType },
+    if: :first_hearing_case?
+  validates :initiation_type,
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :signed_charge_sheet, Virtus::Attribute::Boolean
-  validates :signed_charge_sheet,
-    boolean_presence: true,
-    if: :initiated_as_charge?
+  with_options if: :first_hearing_case? do
+    validates :signed_charge_sheet,
+      boolean_presence: true,
+      if: :initiated_as_charge?
+    validates :signed_charge_sheet,
+      boolean_absence: true,
+      unless: :initiated_as_charge?
+  end
   validates :signed_charge_sheet,
     boolean_absence: true,
-    unless: :initiated_as_charge?
+    if: :breach_of_bail_case?
 
   attribute :date_sent, Date
-  validates :date_sent,
-    presence: true,
-    if: :initiated_as_requisition?
+  with_options if: :first_hearing_case? do
+    validates :date_sent,
+      presence: true,
+      if: :initiated_as_requisition?
+    validates :date_sent,
+      absence: true,
+      unless: :initiated_as_requisition?
+  end
   validates :date_sent,
     absence: true,
-    unless: :initiated_as_requisition?
+    if: :breach_of_bail_case?
 
   attribute :parent_guardian_copy, Virtus::Attribute::Boolean
+  validates :parent_guardian_copy,
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :parent_guardian_date_sent, Date
+  with_options if: :first_hearing_case? do
+    validates :parent_guardian_date_sent,
+      presence: true,
+      if: :parent_guardian_date_sent_needed?
+  end
   validates :parent_guardian_date_sent,
-    presence: true,
-    if: :parent_guardian_date_sent_needed?
+    absence: true,
+    if: :breach_of_bail_case?
 
   attribute :bail_conditions_provided, Virtus::Attribute::Boolean
-  validates :bail_conditions_provided,
-    boolean_presence: true,
-    if: :conditional_bail?
+  with_options if: :first_hearing_case? do
+    validates :bail_conditions_provided,
+      boolean_presence: true,
+      if: :conditional_bail?
+    validates :bail_conditions_provided,
+      boolean_absence: true,
+      unless: :conditional_bail?
+  end
   validates :bail_conditions_provided,
     boolean_absence: true,
-    unless: :conditional_bail?
+    if: :breach_of_bail_case?
 
   attribute :signed_for_bail, Virtus::Attribute::Boolean
-  validates :signed_for_bail,
-    boolean_presence: true,
-    if: :unconditional_bail?
+  with_options if: :first_hearing_case? do
+    validates :signed_for_bail,
+      boolean_presence: true,
+      if: :unconditional_bail?
+    validates :signed_for_bail,
+      boolean_absence: true,
+      unless: :unconditional_bail?
+  end
   validates :signed_for_bail,
     boolean_absence: true,
-    unless: :unconditional_bail?
+    if: :breach_of_bail_case?
 
   attribute :bail_conditions, Array[BailCondition]
+  with_options if: :first_hearing_case? do
+    validates :bail_conditions,
+      length: { minimum: 1 },
+      if: :conditional_bail?
+  end
   validates :bail_conditions,
-    length: { minimum: 1 },
-    if: :conditional_bail?
+    length: { is: 0 },
+    if: :breach_of_bail_case?
 
   attribute :interview, Interview
   validates :interview, presence: true
 
   attribute :domestic_violence, Array[DomesticViolence], relation: true
-  validates :domestic_violence,
-    length: { minimum: 1 },
-    if: :domestic_violence?
+  with_options if: :first_hearing_case? do
+    validates :domestic_violence,
+      length: { minimum: 1 },
+      if: :domestic_violence?
+  end
+  validates :domestic_violence?,
+    length: { is: 0 },
+    if: :breach_of_bail_case?
 
   attribute :first_hearing_datetime, DateTime
   validates :first_hearing_datetime, presence: true
