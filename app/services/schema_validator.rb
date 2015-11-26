@@ -24,6 +24,15 @@ private
   end
 
   def schema_path
-    File.expand_path('../../schemas/first-hearing.schema.json', __FILE__)
+    case @json.fetch('type')
+    when 'FirstHearingDCF'
+      expand_path('first-hearing.schema.json')
+    when 'BobDCF'
+      expand_path('breach-of-bail.schema.json')
+    end
+  end
+
+  def expand_path(filename)
+    File.expand_path("../../schemas/#{filename}", __FILE__)
   end
 end

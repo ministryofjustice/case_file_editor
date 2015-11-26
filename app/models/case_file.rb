@@ -14,7 +14,7 @@ class CaseFile
   validates :pti_urn,
     format: { with: VALID_URN }
 
-  attribute :type, String, writer: :private, default: 'FirstHearingDCF'
+  attribute :type, String, writer: :private
 
   attribute :associated_case_urns, Array[String]
   validates :associated_case_urns,

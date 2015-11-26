@@ -1,0 +1,649 @@
+{
+  "description": "First Hearing Digital Case File 1.1.0 Draft 7",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "enum": [ "1.2.0" ]
+    },
+    "pti_urn": {
+      "type": "string",
+      "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?"
+    },
+    "type": {
+      "enum": [ "BobDCF" ]
+    },
+    "associated_case_urns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?",
+        "uniqueItems": true,
+        "minItems": 1
+      }
+    },
+    "version": {
+      "type": "number",
+      "minimum": 1
+    },
+    "brief_description_of_case": {
+      "type": "string",
+      "maximum": 1200
+    },
+    "defendants": {
+      "type": "array",
+      "items": [ { "$ref": "#/definitions/Defendant" } ],
+      "minItems": 1,
+      "maxItems": 1
+    },
+    "witnesses": {
+      "type": "array",
+      "items": {"$ref" : "#/definitions/StatementWitness"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "multimedia_evidence": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Mme" }
+    },
+    "officer_in_the_case": {
+      "$ref": "#/definitions/OfficerName"
+    },
+    "signatory_name": {
+      "$ref": "#/definitions/OfficerName"
+    },
+    "date": {
+      "description": "ISO 8601 Conformant Date",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "pti_urn",
+    "type",
+    "version",
+    "brief_description_of_case",
+    "defendants",
+    "witnesses",
+    "officer_in_the_case",
+    "signatory_name",
+    "date"
+  ],
+  "additionalProperties": false,
+
+  "definitions": {
+
+    "Mme": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "date": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        },
+        "end_date": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "evidential_value": {
+          "enum": [ true ]
+        },
+        "description_of_what_is_contained_in_multimedia_evidence": {
+          "type": "string"
+        },
+        "total_duration": {
+          "description": "ISO 8601 extended format, accurate to 1 minute",
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "date",
+        "type",
+        "evidential_value",
+        "description_of_what_is_contained_in_multimedia_evidence",
+        "total_duration"
+
+      ],
+      "additionalProperties": false
+    },
+
+    "Defendant": {
+      "type": "object",
+      "properties": {
+        "defendant_id": {
+          "type": "string"
+        },
+        "name": {
+          "$ref": "#/definitions/PersonName"
+        },
+        "date_of_birth": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        },
+        "arrest": {
+          "$ref": "#/definitions/Arrest"
+        },
+        "occupation": {
+          "type": "string"
+        },
+        "foreign_national_offender": {
+          "type": "boolean"
+        },
+        "remand_application": {
+          "$ref": "#/definitions/RemandApplication"
+        },
+        "breach_of_bail": {
+          "$ref": "#/definitions/BreachOfBail"
+        },
+        "pnc_check_performed": {
+          "type": "boolean"
+        },
+        "pnc_convictions": {
+          "type": "boolean"
+        },
+        "interpreter_required": {
+          "type": "boolean"
+        },
+        "interpreter_language_or_dialect": {
+          "type": "string"
+        },
+        "multimedia_evidence_response": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/MmeRecordedResponse" },
+              { "$ref": "#/definitions/MmeNotRecordedResponse" }
+            ]
+          }
+        },
+        "dealt_with_in_welsh": {
+          "type": "boolean"
+        },
+        "person_remand_status": {
+          "enum": [
+            "custody",
+            "unconditional_bail",
+            "conditional_bail",
+            "not_applicable"
+          ]
+        },
+        "interview": {
+          "type": "object",
+          "oneOf": [
+            { "$ref": "#/definitions/StandardInterview" },
+            { "$ref": "#/definitions/NotInterviewed" }
+          ]
+        },
+        "first_hearing_datetime": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        },
+        "first_hearing_location": {
+          "$ref": "#/definitions/OrganisationLocation"
+        }
+      },
+      "required": [
+        "name",
+        "date_of_birth",
+        "occupation",
+        "foreign_national_offender",
+        "breach_of_bail",
+        "pnc_check_performed",
+        "interpreter_required",
+        "multimedia_evidence_response",
+        "dealt_with_in_welsh",
+        "person_remand_status",
+        "interview",
+        "first_hearing_datetime",
+        "first_hearing_location"
+      ],
+      "additionalProperties": false
+    },
+
+    "Arrest": {
+      "properties": {
+        "type": {
+          "enum": [ "Arrest" ]
+        },
+        "date_time": {
+          "type": "string"
+        },
+        "comments_on_arrest_and_caution": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "date_time"
+      ]
+    },
+
+    "RemandApplication": {
+      "type": "object",
+      "properties": {
+        "substantial_grounds": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/BailOpposition" }
+        },
+        "bail_conditions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/BailCondition" }
+        }
+      },
+      "required": [
+        "substantial_grounds",
+        "bail_conditions"
+      ],
+      "additionalProperties": false
+    },
+
+    "BailOpposition": {
+      "type": "object",
+      "properties": {
+        "opposition_ground": {
+          "enum": [
+            "breach_of_bail",
+            "failed_to_surrender_to_custody",
+            "commit_offences_on_bail",
+            "interfere_with_witness_or_otherwise_obstruct_the_course_of_justice",
+            "for_the_defendants_own_protection",
+            "for_the_defendants_own_welfare",
+            "charged_with_or_convicted_of_a_violent_or_sexual_offence_equivalent_to_14_plus_years_imprisonment_in_the_case_of_an_adult",
+            "the_only_way_to_protect_the_public_from_serious_harm",
+            "to_prevent_the_commission_of_imprisonable_offences"
+          ]
+        },
+        "justification": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "opposition_ground",
+        "justification"
+      ]
+    },
+
+    "BreachOfBail": {
+      "type": "object",
+      "properties": {
+        "breach_details": {
+          "type": "string"
+        },
+        "witness_statement_establishes_breach": {
+          "type": "boolean"
+        },
+        "key_evidence": {
+          "type": "string"
+        },
+        "existing_bail_breached": {
+          "$ref": "#/definitions/ExistingBail"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "breach_details",
+        "witness_statement_establishes_breach",
+        "key_evidence",
+        "existing_bail_breached"
+      ]
+    },
+
+    "ExistingBail": {
+      "type": "object",
+      "properties": {
+        "original_charge_wording": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "bailed_from": {
+          "$ref": "#/definitions/OrganisationLocation"
+        },
+        "bailed_date": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        },
+        "to_appear_at": {
+          "$ref": "#/definitions/OrganisationLocation"
+        },
+        "datetime_to_appear": {
+          "description": "ISO 8601 Conformant Datetime",
+          "type": "string"
+        },
+        "list_of_conditions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/BailCondition" }
+        }
+      },
+      "required": [
+        "original_charge_wording",
+        "bailed_from",
+        "bailed_date",
+        "to_appear_at",
+        "datetime_to_appear"
+      ],
+      "additionalProperties": false
+    },
+
+    "BailCondition": {
+      "properties": {
+        "grounds": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "failing_to_surrender_to_custody",
+              "interfering_with_witnesses_or_otherwise_obstructing_the_course_of_justice",
+              "commiting_an_offence_whilst_on_bail",
+              "for_that_persons_own_protection",
+              "for_that_persons_own_welfare_or_own_interests_child_or_young_person_only"
+            ]
+          }
+        },
+        "condition": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "condition"
+      ],
+      "additionalProperties": false
+    },
+
+    "MmeNotRecordedResponse": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": [ "MmeNotRecordedResponse" ] },
+        "defendant_admitted_to_location": {
+          "type": "boolean"
+        },
+        "how_is_identification_established": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "defendant_admitted_to_location",
+        "how_is_identification_established"
+      ],
+      "additionalProperties": false
+    },
+
+    "MmeRecordedResponse": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": [ "MmeRecordedResponse" ] },
+        "id": {
+          "type": "string"
+        },
+        "defendant_shown": {
+          "type": "boolean"
+        },
+        "reasons_if_not_shown": {
+          "type": "string"
+        },
+        "defendant_comments_if_shown": {
+          "type": "string"
+        },
+        "is_defendant_believed_to_be_in_the_mme": {
+          "type": "boolean"
+        },
+        "defendant_admits_being_in_mme": {
+          "type": "boolean"
+        },
+        "how_is_identification_established": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "defendant_shown",
+        "is_defendant_believed_to_be_in_the_mme",
+        "defendant_admits_being_in_mme"
+      ]
+    },
+
+    "StandardInterview": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": [ "StandardInterview" ] },
+        "date": {
+          "description": "ISO 8601 Conformant Datetime",
+          "type": "string"
+        },
+        "defendant_legally_represented": {
+          "type": "boolean"
+        },
+        "legally_represented_by": {
+          "$ref": "#/definitions/PersonName"
+        },
+        "legal_representative_firm": {
+          "type": "string"
+        },
+        "interpreters": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PersonName" },
+          "minItems": 1
+        },
+        "special_warnings_given": {
+          "type": "boolean"
+        },
+        "no_comment_response": {
+          "type": "boolean"
+        },
+        "questions_asked": {
+          "type": "string"
+        },
+        "admissions_made": {
+          "type": "string"
+        },
+        "denials": {
+          "type": "string"
+        },
+        "defences": {
+          "type": "string"
+        },
+        "explanations": {
+          "type": "string"
+        },
+        "mitigations": {
+          "type": "string"
+        },
+        "aggravating_features": {
+          "type": "string"
+        },
+        "appropriate_adults": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/PersonName" }
+        }
+
+      },
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "type",
+        "defendant_legally_represented",
+        "special_warnings_given",
+        "no_comment_response"
+      ]
+    },
+
+    "NotInterviewed": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": [ "NotInterviewed" ] },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [ "reason" ]
+    },
+
+    "Witness": {
+      "type": "object",
+      "properties": {
+        "witness_id": {
+          "type": "string"
+        },
+        "nature_of_involvement": {
+          "type": "string"
+        },
+        "evidence_they_can_give": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nature_of_involvement",
+        "evidence_they_can_give"
+      ],
+      "additionalProperties": false
+    },
+
+    "StatementWitness": {
+      "type": "object",
+      "properties": {
+        "type": { "enum": [ "StatementWitness" ] },
+        "witness": {
+          "$ref": "#/definitions/Witness"
+        },
+        "name": {
+          "oneOf": [
+            { "$ref": "#/definitions/PersonName" },
+            { "$ref": "#/definitions/OfficerName" }
+          ]
+        },
+        "witness_type": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "eye",
+              "identity",
+              "arresting_officer",
+              "interviewing_officer",
+              "child",
+              "corroborative",
+              "continuity",
+              "interpreter",
+              "police",
+              "professional",
+              "special",
+              "prisoner",
+              "other"
+            ],
+            "uniqueItems": true,
+            "minItems": 1
+          }
+        },
+        "date_of_birth": {
+          "description": "ISO 8601 Conformant Datetime",
+          "type": "string"
+        },
+        "reason_dob_not_provided": {
+          "type": "string"
+        },
+        "visually_recorded_interview": {
+          "type": "boolean"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "witness_type",
+        "witness",
+        "visually_recorded_interview"
+      ]
+    },
+
+    "PersonName": {
+      "properties": {
+        "type": { "enum": [ "PersonName" ] },
+        "surname": {
+          "type": "string"
+        },
+        "given_name": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "surname",
+        "given_name"
+      ]
+    },
+
+    "OfficerName": {
+      "properties": {
+        "type": { "enum": [ "OfficerName" ] },
+        "surname": {
+          "type": "string"
+        },
+        "given_name": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "rank": {
+          "type": "string"
+        },
+        "collar_number": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "surname",
+        "given_name",
+        "rank",
+        "collar_number"
+      ]
+    },
+
+    "OrganisationLocation": {
+      "properties": {
+        "ou_top_level_name": {
+          "type": "string"
+        },
+        "ou_second_level_name": {
+          "type": "string"
+        },
+        "ou_third_level_name": {
+          "type": "string"
+        },
+        "ou_bottom_level_name": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "ou_top_level_name",
+        "ou_second_level_name",
+        "ou_third_level_name",
+        "ou_bottom_level_name"
+      ]
+    }
+  }
+}

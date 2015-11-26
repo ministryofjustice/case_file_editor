@@ -5,6 +5,10 @@ class GenericExporter
     @attributes
   end
 
+  def self.exporter(obj)
+    "#{obj.class}Exporter".constantize.new(obj)
+  end
+
   def initialize(object)
     @object = object
   end
@@ -20,6 +24,6 @@ private
   attr_reader :object
 
   def exporter(obj)
-    "#{obj.class}Exporter".constantize.new(obj)
+    self.class.exporter(obj)
   end
 end
