@@ -366,7 +366,7 @@ class Defendant
       length: { minimum: 1 },
       if: :domestic_violence?
   end
-  validates :domestic_violence?,
+  validates :domestic_violence,
     length: { is: 0 },
     if: :breach_of_bail_case?
 

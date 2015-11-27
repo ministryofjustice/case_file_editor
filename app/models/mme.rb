@@ -1,5 +1,6 @@
 class Mme < Event
   include DuplicateIdentifiers
+  include CaseTypeSpecific
 
   HOURS_AND_MINUTES = /\A([01][0-9]|2[0-3]):[0-5][0-9]\z/
   attribute :id, String
@@ -17,14 +18,24 @@ class Mme < Event
   validates :evidential_value, truth: true
 
   attribute :relied_upon_trial, Virtus::Attribute::Boolean
+  with_options if: :first_hearing_case? do
+    validates :relied_upon_trial,
+      truth: true,
+      unless: :relied_upon_sentence
+  end
   validates :relied_upon_trial,
-    truth: true,
-    unless: :relied_upon_sentence
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :relied_upon_sentence, Virtus::Attribute::Boolean
+  with_options if: :first_hearing_case? do
+    validates :relied_upon_sentence,
+      truth: true,
+      unless: :relied_upon_trial
+  end
   validates :relied_upon_sentence,
-    truth: true,
-    unless: :relied_upon_trial
+    boolean_absence: true,
+    if: :breach_of_bail_case?
 
   attribute :description_of_what_is_contained_in_multimedia_evidence, String
   validates :description_of_what_is_contained_in_multimedia_evidence,

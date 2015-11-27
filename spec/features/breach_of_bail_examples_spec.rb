@@ -19,25 +19,7 @@ RSpec.describe 'Parsing breach of bail files' do
     let(:name) { 'breach_of_bail_01' }
 
     it 'identifies errors' do
-      expect(errors).to eq(
-        defendants: {
-          0 => {
-            domestic_violence?: [
-              "is the wrong length (should be 0)"
-            ]
-          }
-        },
-        multimedia_evidence: {
-          0 => {
-            relied_upon_trial: [
-              "must be true unless relied upon at sentence"
-            ],
-            relied_upon_sentence: [
-              "must be true unless relied upon at trial"
-            ]
-          }
-        }
-      )
+      expect(errors).to be_empty
     end
   end
 end
