@@ -31,11 +31,11 @@ RSpec.describe Offence do
     describe 'demeanour_at_incident' do
       context 'when case is DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(true)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(true)
         end
 
         it 'is DV' do
-          expect(subject).to be_domestic_violence
+          expect(subject).to be_domestic_violence_case
         end
 
         it 'is invalid if nil' do
@@ -53,11 +53,11 @@ RSpec.describe Offence do
 
       context 'when case is not DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(false)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(false)
         end
 
         it 'is not DV' do
-          expect(subject).not_to be_domestic_violence
+          expect(subject).not_to be_domestic_violence_case
         end
 
         it 'is invalid if present' do

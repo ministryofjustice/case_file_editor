@@ -26,10 +26,10 @@ class Offence < Event
   attribute :demeanour_at_incident, String
   validates :demeanour_at_incident,
     presence: true,
-    if: :domestic_violence?
+    if: :domestic_violence_case?
   validates :demeanour_at_incident,
     absence: true,
-    unless: :domestic_violence?
+    unless: :domestic_violence_case?
 
   attribute :anticipated_plea, String
   validates :anticipated_plea, inclusion: { in: Enumerations::PleaStatusCode }
@@ -40,17 +40,17 @@ class Offence < Event
   attribute :children_present, Virtus::Attribute::Boolean
   validates :children_present,
     boolean_presence: true,
-    if: :domestic_violence?
+    if: :domestic_violence_case?
   validates :children_present,
     boolean_absence: true,
-    unless: :domestic_violence?
+    unless: :domestic_violence_case?
 
   attribute :ages_of_children, Array[String]
   validates :ages_of_children,
     length: { minimum: 1 },
     if: :children_present
 
-  delegate :domestic_violence?, to: :offence_collection
+  delegate :domestic_violence_case?, to: :offence_collection
 
   def not_guilty_anticipated_plea?
     anticipated_plea == 'not_guilty'

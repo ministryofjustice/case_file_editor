@@ -364,7 +364,7 @@ class Defendant
   with_options if: :first_hearing_case? do
     validates :domestic_violence,
       length: { minimum: 1 },
-      if: :domestic_violence?
+      if: :domestic_violence_case?
   end
   validates :domestic_violence,
     length: { is: 0 },
@@ -427,5 +427,5 @@ class Defendant
     parent_guardian_copy && initiated_as_requisition?
   end
 
-  delegate :domestic_violence?, to: :case_file
+  delegate :domestic_violence_case?, to: :case_file
 end

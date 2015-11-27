@@ -54,7 +54,7 @@ class CaseFile
   attribute :pca_cps, Virtus::Attribute::Boolean
   attribute :property, Array[Property], relation: true
 
-  def domestic_violence?
+  def domestic_violence_case?
     case_markers.include?('DomesticViolence')
   end
 

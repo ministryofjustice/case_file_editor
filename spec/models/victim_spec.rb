@@ -5,7 +5,7 @@ RSpec.describe Victim do
     describe 'is_retraction_statement' do
       context 'when DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(true)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(true)
         end
 
         it 'is invalid if nil' do
@@ -23,7 +23,7 @@ RSpec.describe Victim do
 
       context 'when not DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(false)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(false)
         end
 
         it 'is valid if present' do

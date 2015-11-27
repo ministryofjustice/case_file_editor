@@ -23,10 +23,10 @@ class Victim < Witness
   attribute :is_retraction_statement, Virtus::Attribute::Boolean
   validates :is_retraction_statement,
     boolean_presence: true,
-    if: :domestic_violence?
+    if: :domestic_violence_case?
 
   attribute :compensation_applications, Array[CompensationApplication],
     relation: true
 
-  delegate :domestic_violence?, to: :case_file
+  delegate :domestic_violence_case?, to: :case_file
 end

@@ -138,10 +138,10 @@ RSpec.describe Defendant do
       end
     end
 
-    describe 'domestic_violence' do
+    describe 'domestic_violence_case?' do
       context 'when case is DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(true)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(true)
         end
 
         it 'is valid if present' do
@@ -158,7 +158,7 @@ RSpec.describe Defendant do
 
       context 'when case is not DV' do
         before do
-          allow(case_file).to receive(:domestic_violence?).and_return(false)
+          allow(case_file).to receive(:domestic_violence_case?).and_return(false)
         end
 
         it 'is valid if present' do
