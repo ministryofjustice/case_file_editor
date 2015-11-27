@@ -1,5 +1,5 @@
 {
-  "description": "First Hearing Digital Case File 1.1.0 Draft 7",
+  "description": "Breach of Bail Digital Case File 1.2.0 Draft 1",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
