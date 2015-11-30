@@ -1,0 +1,433 @@
+{
+  "schema_version": "1.2.0",
+  "pti_urn": "01AA9999915",
+  "type": "FirstHearingDCF",
+  "version": 1,
+  "brief_description_of_case": "Police intervened in a heated argument between a number of women and after warnings arrested SMITH and BROWN for Section 5. BROWN was subsequently arrested for a common assault to CHILD and damage to her glasses.  The incident was largely captured on CCTV. Brown interview accepted the Section 5 and admitted striking CHILD but claimed self defence - this was not supported by the CCTV.",
+  "defendants": [
+    {
+      "name": {
+        "type": "PersonName",
+        "surname": "BROWN",
+        "given_name": [ "Kylie" ]
+      },
+      "date_of_birth": "1999-08-17",
+      "arrest": {
+        "type": "Arrest",
+        "date_time": "2015-10-09T22:11Z",
+        "comments_on_arrest_and_caution": "I’m really sorry, alright \n She’s fucking lying I never touched her"
+      },
+      "conditional_caution_considered": true,
+      "cc_not_suitable_reasons": [ "offence_not_admitted", "reoffending_risk_offending_history" ],
+      "offences": [
+        {
+          "type": "GenericOffences",
+          "generic_offences": [
+            {
+              "type": "GenericOffence",
+              "cjs_offence_code": "pu86149",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2015-09-09",
+                "to_date": "2015-09-09",
+                "charge_date": "2015-09-09",
+                "offence_title": "Use threatening / abusive words / behaviour or disorderly behaviour likely to cause harassment, alarm or distress ",
+                "charge_wording": "On the 9th of October 2015 at Anytown used threatening or abusive words or behaviour or disorderly behaviour within the hearing or sight of a person likely to be caused harassment, alarm or distress thereby. Contrary to section 5(1) and (6) of the Public Order Act 1986.",
+                "points_to_prove_met_by": "date and location -Officers statement \n used threatening / abusive words / behaviour or disorderly behaviour \n within hearing / sight of a person likely to be caused harassment / alarm / distress \n intending that those words / that behaviour etc was threatening OR \n being aware that such words or behaviour was likely to have that effect - Officers statement",
+                "anticipated_plea": "guilty",
+                "committed_on_bail": false
+              }
+            },
+            {
+              "type": "GenericOffence",
+              "cjs_offence_code": "cd71039",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2015-09-09",
+                "to_date": "2015-09-09",
+                "charge_date": "2015-09-09",
+                "offence_title": "Criminal damage to property valued under £5000",
+                "charge_wording": "On the 9th of October 2015 at Anytown without lawful excuse, destroyed a pair of glasses to the value of £69.99 belonging to Destiny CHILD intending to destroy or damage such property or being reckless as to whether such property would be destroyed or damaged. Contrary to sections 1(1) and 4 of the Criminal Damage Act 1971.",
+                "points_to_prove_met_by": "date and location - victims statement \n without lawful excuse destroyed/damaged property valued under £5000 \n intending to destroy/damage such property OR \n being reckless whether it was destroyed/damaged - victims statement",
+                "anticipated_plea": "not_guilty",
+                "committed_on_bail": false
+              }
+            }
+          ]
+        }
+      ],
+      "occupation": "Unemployed",
+      "has_eec_passports": false,
+      "foreign_national_offender": false,
+      "breach_of_order": false,
+      "pnc_check_performed": true,
+      "pnc_convictions": true,
+      "court_order_applications": [
+        {
+          "court_order_title": "no_orders_required"
+        }
+      ],
+      "interpreter_required": false,
+      "multimedia_evidence_response": [
+        {
+          "id": "1",
+          "type": "MmeRecordedResponse",
+          "defendant_shown": true,
+          "defendant_comments_if_shown": "Q  Is that you in the CCTV (pointing to her on the screen)? \n R Yes that is me \n Q There is nothing on the CCTV that shows you being hit first, can you explain that? \n R It’s them cameras they don’t work properly.",
+          "is_defendant_believed_to_be_in_the_mme": true,
+          "defendant_admits_being_in_mme": true
+        }
+      ],
+      "notice_to_provide_bad_character_evidence": false,
+      "dealt_with_in_welsh": false,
+      "person_remand_status": "unconditional_bail",
+      "given_charges": true,
+      "initiation_type": "charge",
+      "interview": {
+        "type": "StandardInterview",
+        "date": "2015-10-10",
+        "defendant_legally_represented": true,
+        "legally_represented_by": {
+          "type": "PersonName",
+          "given_name": [ "Owen" ],
+          "surname": "Mitchell"
+        },
+        "legal_representative_firm": "BROWN, BARLOW AND SYMTH",
+        "special_warnings_given": false,
+        "no_comment_response": false,
+        "admissions_made": "Fully accepts using abusive language and disorderly behaviour",
+        "defences": "Q -  Did you assault Child \n R - Yes I hit her but only because she hit me first and I thought she was going to hit me again, it was self-defence. ",
+        "appropriate_adults": [
+          {
+            "type": "PersonName",
+            "surname": "KENNEDY",
+            "given_name": [ "Jacklyn" ]
+          }
+        ]
+      },
+      "signed_charge_sheet": true,
+      "signed_for_bail": true,
+      "parent_guardian_copy": true,
+
+      "first_hearing_datetime": "2015-09-20T10:20Z",
+      "first_hearing_location": {
+        "ou_top_level_name": "Magistrates' Courts",
+        "ou_second_level_name": "London",
+        "ou_third_level_name": "Barking (East Street)",
+        "ou_bottom_level_name": "A"
+      }
+    },
+    {
+      "name": {
+        "type": "PersonName",
+        "surname": "SMITH",
+        "given_name": [ "Chantelle" ]
+      },
+      "date_of_birth": "1996-03-29",
+      "arrest": {
+        "type": "Arrest",
+        "date_time": "2015-10-09T22:09Z",
+        "comments_on_arrest_and_caution": "I don’t fucking believe this"
+      },
+      "conditional_caution_considered": true,
+      "cc_not_suitable_reasons": [ "offence_not_admitted", "reoffending_risk_offending_history" ],
+      "offences": [
+        {
+          "type": "GenericOffences",
+          "generic_offences": [
+            {
+              "type": "GenericOffence",
+              "cjs_offence_code": "pu86149",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2015-09-09",
+                "to_date": "2015-09-09",
+                "charge_date": "2015-09-09",
+                "offence_title": "Use threatening / abusive words / behaviour or disorderly behaviour likely to cause harassment, alarm or distress ",
+                "charge_wording": "On the 9th of October 2015 at Anytown used threatening or abusive words or behaviour or disorderly behaviour within the hearing or sight of a person likely to be caused harassment, alarm or distress thereby. Contrary to section 5(1) and (6) of the Public Order Act 1986.",
+                "points_to_prove_met_by": "date and location -Officers statement \n used threatening / abusive words / behaviour or disorderly behaviour \n within hearing / sight of a person likely to be caused harassment / alarm / distress \n intending that those words / that behaviour etc was threatening OR \n being aware that such words or behaviour was likely to have that effect - Officers statement",
+                "anticipated_plea": "guilty",
+                "committed_on_bail": false
+              }
+            }
+          ]
+        },
+        {
+          "type": "AssaultOffences",
+          "assault_offences": [
+            {
+              "type": "AssaultOffence",
+              "cjs_offence_code": "cj88116",
+              "offence": {
+                "type": "Offence",
+                "from_date": "2015-09-19",
+                "to_date": "2015-09-19",
+                "charge_date": "2015-09-09",
+                "offence_title": "Assault by beating",
+                "charge_wording": "On the 9th of October 2015 assaulted Destiny CHILD by beating her. Contrary to Section 39 of the Criminal Justice Act 1988.",
+                "points_to_prove_met_by": "date and location - Victims Statement and CCTV unlawfully assaulted another person by beating- Victims statement, CCTV, statement from PC Williams",
+                "anticipated_plea": "not_guilty",
+                "committed_on_bail": true
+
+              },
+              "assault_interview_extension": {
+                "admits_involvement_in_incident": true,
+                "admits_assaulting_victim": true,
+                "admits_causing_the_injuries": "admits_all",
+                "accepts_victims_version_of_events": false,
+                "position_of_trust": false,
+                "self_defence_put_forward": true
+              },
+              "victim_name": {
+                "type": "PersonName",
+                "surname": "CHILD",
+                "given_name": [ "Destiny" ]
+              }
+            }
+          ]
+        }
+      ],
+      "occupation": "Unemployed",
+      "has_eec_passports": false,
+      "foreign_national_offender": false,
+      "breach_of_order": false,
+      "pnc_check_performed": true,
+      "pnc_convictions": true,
+      "court_order_applications": [
+        {
+          "court_order_title": "no_orders_required"
+        }
+      ],
+      "interpreter_required": false,
+      "multimedia_evidence_response": [
+        {
+          "id": "1",
+          "type": "MmeRecordedResponse",
+          "defendant_shown": false,
+          "reasons_if_not_shown": "Not Interviewed",
+          "is_defendant_believed_to_be_in_the_mme": true
+        }
+      ],
+      "notice_to_provide_bad_character_evidence": false,
+      "dealt_with_in_welsh": false,
+      "person_remand_status": "unconditional_bail",
+      "given_charges": true,
+      "initiation_type": "charge",
+      "interview": {
+        "type": "NotInterviewed",
+        "reason": "Offence witnssed by police, no denial by defendant."
+      },
+      "signed_charge_sheet": true,
+      "signed_for_bail": true,
+      "first_hearing_datetime": "2015-09-20T10:20Z",
+      "first_hearing_location": {
+        "ou_top_level_name": "Magistrates' Courts",
+        "ou_second_level_name": "London",
+        "ou_third_level_name": "Barking (East Street)",
+        "ou_bottom_level_name": "A"
+      }
+    }
+
+  ],
+  "witnesses": [
+    {
+      "type": "PersonVictim",
+      "name": {
+        "type": "PersonName",
+        "surname": "CHILD",
+        "given_name": [ "Destiny" ]
+      },
+      "date_of_birth": "1994/09/19",
+      "visually_recorded_interview": false,
+      "victim": {
+        "witness_type": [ "eye" ],
+        "witness": {
+          "nature_of_involvement": "Victim",
+          "evidence_they_can_give": "An account of the assault. Can state she was injured. Identifies the offender to the police.",
+          "special_measures": true,
+          "interpreter_required": false,
+          "wish_to_use_video_link": false
+        },
+        "victim_code_requirements_met": true,
+        "has_the_victim_made_a_vps_isb": false,
+        "compensation_applications": [
+          {
+            "defendant_names": [
+              {
+                "type": "PersonName",
+                "surname": "BROWN",
+                "given_name": [ "Kylie" ]
+              }
+            ],
+            "reasons_for_application": [ "property_damage" ],
+            "amount_compensation_requested": 69.99,
+            "is_estimate": false
+          }
+        ]
+      },
+      "injuries": [
+        {
+          "names_of_defendants_causing_injuries": [
+            {
+              "type": "PersonName",
+              "surname": "BROWN",
+              "given_name": [ "Kylie" ]
+            }
+          ],
+          "description_of_injuries": "Cut lip",
+          "images_taken": false,
+          "reason_images_not_taken": "injury not large enough to photograph",
+          "received_medical_treatment": false,
+          "injuries_visible": true
+        }
+      ]
+    },
+    {
+      "type": "StatementWitness",
+      "witness_type": [ "eye", "identity", "arresting_officer", "police" ],
+      "name": {
+        "type": "PersonName",
+        "given_name": [ "Alison" ],
+        "surname": "WILLIAMS"
+      },
+      "witness": {
+        "nature_of_involvement": "Witnessed the disorderly conduct and arrested SMITH",
+        "evidence_they_can_give": "Witnessed the disorderly conduct and arrested BROWN, saw CHILDS injury and broken glasses",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "reason_dob_not_provided": "police",
+      "visually_recorded_interview": false
+    },
+    {
+      "type": "StatementWitness",
+      "witness_type": [ "eye", "identity", "arresting_officer", "police" ],
+      "name": {
+        "type": "OfficerName",
+        "given_name": [ "Matt" ],
+        "surname": "WILSON",
+        "rank": "PC",
+        "collar_number": "456"
+      },
+      "witness": {
+        "nature_of_involvement": "Witnessed the disorderly conduct and arrested SMITH.",
+        "evidence_they_can_give": "Witnessed the disorderly conduct and arrested SMITH",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "reason_dob_not_provided": "police",
+      "visually_recorded_interview": false
+    },
+    {
+      "type": "NgapOtherWitness",
+      "witness_type": [ "interviewing_officer", "police" ],
+      "name": {
+        "type": "OfficerName",
+        "given_name": [ "Samuel" ],
+        "surname": "COLT",
+        "rank": "PC",
+        "collar_number": "8902"
+      },
+      "witness": {
+        "nature_of_involvement": "Interviewed BROWN",
+        "evidence_they_can_give": "Interview details",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "number": "2"
+    },
+    {
+      "type": "NgapOtherWitness",
+      "witness_type": [ "other" ],
+      "name": {
+        "type": "PersonName",
+        "given_name": [ "Malcolm" ],
+        "surname": "GLADWIN"
+      },
+      "witness": {
+        "nature_of_involvement": "Produced CCTV footage",
+        "evidence_they_can_give": "Evidence relating to the operation of the CCTV system",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "number": "1"
+    },
+    {
+      "type": "NgapOtherWitness",
+      "witness_type": [ "interviewing_officer", "police" ],
+      "name": {
+        "type": "OfficerName",
+        "given_name": [ "Gemma" ],
+        "surname": "GELL",
+        "rank": "PC",
+        "collar_number": "41"
+      },
+      "witness": {
+        "nature_of_involvement": "Interviewing SMITH, Charging SMITH and BROWN, OIC",
+        "evidence_they_can_give": "Interview details",
+        "special_measures": false,
+        "interpreter_required": false,
+        "wish_to_use_video_link": false
+      },
+      "number": "3"
+    }
+  ],
+  "common_law_disclosure": {
+    "type": "CommonLawForDisclosure",
+    "reporting_officer": {
+      "type": "OfficerName",
+      "given_name": [ "Gemma" ],
+      "surname": "GELL",
+      "rank": "PC",
+      "collar_number": "41"
+    },
+    "reporting_officer_signature_date": "2015-07-10",
+    "details_of_relevant_unused_material": "Incident log, Crime Reports, Officers PNB (GELL, COLT, WILLIAMS, WILSON)"
+  },
+  "likely_case_progression": "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
+  "multimedia_evidence": [
+    {
+      "id": "1",
+      "date": "2015-09-09",
+      "type": "CCTV",
+      "description_of_what_is_contained_in_multimedia_evidence": "At 00:00 Shows BROWN punch CHILD in the face and a group of females in the Market Square waving there arms about. The police are seen to arrive and subsequently remove 2 of the females from the scene in police vehicles.",
+      "evidential_value": true,
+      "relied_upon_trial": true,
+      "relied_upon_sentence": true,
+      "total_duration": "00:07"
+    }
+  ],
+  "is_hearsay": false,
+  "expert_evidence": false,
+  "test_code": "full_code_test",
+  "pca_cps": false,
+  "property": [
+    {
+      "property_id": 1,
+      "property_action": "damaged",
+      "description": "eye glasses",
+      "damage_description": "frames and lens broken",
+      "damage_cost": 69.99,
+      "value": 69.99
+    }
+  ],
+  "officer_in_the_case": {
+    "type": "OfficerName",
+    "given_name": [ "Gemma" ],
+    "surname": "GELL",
+    "rank": "PC",
+    "collar_number": "41"
+  },
+  "signatory_name": {
+    "type": "OfficerName",
+    "surname": "Specific",
+    "given_name": [ "Test" ],
+    "rank": "Test Specific",
+    "collar_number": "Test Specific"
+  },
+  "date": "2015-10-14"
+}

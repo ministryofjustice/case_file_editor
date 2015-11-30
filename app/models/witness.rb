@@ -63,5 +63,5 @@ private
       errors.add :witness_id, :unique_within_case_file
     end
   end
-  validate :validate_id_uniqueness
+  validate :validate_id_uniqueness, if: :witness_id
 end

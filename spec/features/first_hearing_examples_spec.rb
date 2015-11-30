@@ -248,4 +248,12 @@ RSpec.describe 'Parsing first hearing files' do
       expect(dcf).to be_not_guilty_anticipated_plea
     end
   end
+
+  context 'first hearing 18' do
+    let(:name) { 'first_hearing_18' }
+
+    it 'identifies no errors' do
+      expect(errors).to eq({})
+    end
+  end
 end
