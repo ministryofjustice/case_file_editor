@@ -14,8 +14,6 @@ class FirstHearingCaseFile < CaseFile
     length: { minimum: 1 },
     array_uniqueness: true
 
-  validates :common_law_disclosure, presence: true
-
   validates :likely_case_progression,
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
   validates :likely_case_progression,

@@ -38,7 +38,8 @@
     },
     "witnesses": {
       "type": "array",
-      "items": {"$ref" : "#/definitions/StatementWitness"
+      "items": {
+        "$ref": "#/definitions/StatementWitness"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -46,6 +47,9 @@
     "multimedia_evidence": {
       "type": "array",
       "items": { "$ref": "#/definitions/Mme" }
+    },
+    "common_law_disclosure": {
+      "$ref": "#/definitions/CommonLawNotForDisclosure"
     },
     "officer_in_the_case": {
       "$ref": "#/definitions/OfficerName"
@@ -73,6 +77,28 @@
   "additionalProperties": false,
 
   "definitions": {
+
+    "CommonLawNotForDisclosure": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [ "CommonLawNotForDisclosure" ]
+        },
+        "reporting_officer": {
+          "$ref": "#/definitions/OfficerName"
+        },
+        "reporting_officer_signature_date": {
+          "description": "ISO 8601 Conformant Date",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "reporting_officer",
+        "reporting_officer_signature_date"
+      ],
+      "additionalProperties": false
+    },
 
     "Mme": {
       "type": "object",

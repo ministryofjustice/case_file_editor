@@ -98,7 +98,7 @@
           "datetime_to_appear": "2014-01-01T12:00Z",
           "list_of_conditions": [
             {
-              "grounds": [ "commiting_an_offence_whilst_on_bail" ],
+              "grounds": [ "committing_an_offence_whilst_on_bail" ],
               "condition": "Condition Description",
               "reason": "Reason Description"
             },
@@ -202,19 +202,6 @@
     },
     "reporting_officer_signature_date": "2014-01-01"
   },
-  "multimedia_evidence": [
-    {
-      "id": "1",
-      "date": "2014-01-01",
-      "type": "cctv",
-      "description_of_what_is_contained_in_multimedia_evidence": "Description goes here",
-      "evidential_value": true,
-      "relied_upon_trial": true,
-      "relied_upon_sentence": true,
-      "total_duration": "01:02",
-      "url": "http://test.gov.uk/askdasdjds/asds"
-    }
-  ],
   "expert_evidence": false,
   "test_code": "full_code_test",
   "pca_cps": false,

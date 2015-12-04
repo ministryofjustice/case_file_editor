@@ -3,7 +3,6 @@ class BreachOfBailCaseFile < CaseFile
 
   validates :case_markers, length: { is: 0 }
   validates :defendants, length: { is: 1 }
-  validates :common_law_disclosure, absence: true
   validates :likely_case_progression, absence: true
   validates :multimedia_evidence, array_uniqueness: true
   validates :is_hearsay, boolean_absence: true

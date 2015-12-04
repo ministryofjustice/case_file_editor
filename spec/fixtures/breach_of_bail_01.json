@@ -61,7 +61,7 @@
           "datetime_to_appear": "2014-01-01T12:00Z",
           "list_of_conditions": [
             {
-              "grounds": [ "commiting_an_offence_whilst_on_bail" ],
+              "grounds": [ "committing_an_offence_whilst_on_bail" ],
               "condition": "Condition Description",
               "reason": "Reason Description"
             },
@@ -135,7 +135,7 @@
         "evidence_they_can_give": "Evidence they can give"
       },
 
-      "date_of_birth": "1980-08-01",
+      "date_of_birth": "1980-08-01T12:00Z",
       "visually_recorded_interview": false
     }
   ],

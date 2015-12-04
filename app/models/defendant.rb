@@ -338,14 +338,17 @@ class Defendant
   with_options if: :first_hearing_case? do
     validates :signed_for_bail,
       boolean_presence: true,
-      if: :unconditional_bail?
+      if: :unconditional_bail? || :conditional_bail?
+    validates :signed_for_bail,
+      boolean_presence: true,
+      if: :conditional_bail?
     validates :signed_for_bail,
       boolean_absence: true,
-      unless: :unconditional_bail?
+      if: :custody?
+    validates :signed_for_bail,
+      boolean_absence: true,
+      if: :not_applicable?
   end
-  validates :signed_for_bail,
-    boolean_absence: true,
-    if: :breach_of_bail_case?
 
   attribute :bail_conditions, Array[BailCondition]
   with_options if: :first_hearing_case? do
@@ -394,6 +397,14 @@ class Defendant
 
   def unconditional_bail?
     person_remand_status == 'unconditional_bail'
+  end
+
+  def custody?
+    person_remand_status == 'custody'
+  end
+
+  def not_applicable?
+    person_remand_status == 'not_applicable'
   end
 
   def not_guilty_anticipated_plea?

@@ -213,47 +213,4 @@ RSpec.describe 'Parsing first hearing files' do
       )
     end
   end
-
-  context 'first hearing 14' do
-    let(:name) { 'first_hearing_14' }
-
-    it 'identifies no errors' do
-      expect(errors).to eq({})
-    end
-  end
-
-  context 'first hearing 15' do
-    let(:name) { 'first_hearing_15' }
-
-    it 'identifies no errors' do
-      pending 'Scenario test files not updated t0 1.2.0'
-      expect(errors).to eq({})
-    end
-  end
-
-  context 'first hearing 16' do
-    let(:name) { 'first_hearing_16' }
-
-    it 'identifies no errors' do
-      pending 'Scenario test files not updated t0 1.2.0'
-      expect(errors).to eq({})
-    end
-  end
-
-  context 'first hearing 17' do
-    let(:name) { 'first_hearing_17' }
-
-    it 'is NGAP' do
-      pending 'Scenario test files not updated t0 1.2.0'
-      expect(dcf).to be_not_guilty_anticipated_plea
-    end
-  end
-
-  context 'first hearing 18' do
-    let(:name) { 'first_hearing_18' }
-
-    it 'identifies no errors' do
-      expect(errors).to eq({})
-    end
-  end
 end

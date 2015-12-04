@@ -74,7 +74,7 @@ en:
               too_short: at least one must be present if bail is conditional
             bail_conditions_provided:
               blank: must be present if bail is conditional
-              present: must be absent if bail is unconditional
+              present: must be absent if person remand status is unconditional, custody or not applicable.
             breach_order_court_issued:
               blank: must be present if there is a breach of order
               present: must be absent unless there is a breach of order
@@ -122,8 +122,8 @@ en:
               blank: must be present when initiation type is ‘charge’
               present: must be absent unless initiation type is ‘charge’
             signed_for_bail:
-              blank: must be present if bail is unconditional
-              present: must be absent if bail is conditional
+              blank: must be present if bail is granted
+              present: must be absent if person remand status is custody or not applicable
         domestic_violence:
           attributes:
             victim_names:

@@ -44,7 +44,7 @@ class CaseFile
   validates :date, presence: true
 
   attribute :case_markers, Array[String]
-  attribute :common_law_disclosure, CommonLaw
+  attribute :common_law_disclosure, CommonLawNotForDisclosure
   attribute :likely_case_progression, String
   attribute :multimedia_evidence, Array[Mme], relation: true
   attribute :is_hearsay, Virtus::Attribute::Boolean

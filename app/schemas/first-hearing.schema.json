@@ -76,11 +76,7 @@
       "uniqueItems": true
     },
     "common_law_disclosure": {
-      "type": "object",
-      "oneOf": [
-        { "$ref": "#/definitions/CommonLawNotForDisclosure" },
-        { "$ref": "#/definitions/CommonLawForDisclosure" }
-      ]
+      "$ref": "#/definitions/CommonLawNotForDisclosure"
     },
     "likely_case_progression": {
       "enum": [
@@ -133,7 +129,6 @@
     "brief_description_of_case",
     "defendants",
     "witnesses",
-    "common_law_disclosure",
     "expert_evidence",
     "test_code",
     "pca_cps",
@@ -163,32 +158,6 @@
         "type",
         "reporting_officer",
         "reporting_officer_signature_date"
-      ],
-      "additionalProperties": false
-    },
-
-    "CommonLawForDisclosure": {
-      "type": "object",
-      "properties": {
-        "type": {
-          "enum": [ "CommonLawForDisclosure" ]
-        },
-        "reporting_officer": {
-          "$ref": "#/definitions/OfficerName"
-        },
-        "reporting_officer_signature_date": {
-          "description": "ISO 8601 Conformant Date",
-          "type": "string"
-        },
-        "details_of_relevant_unused_material": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "type",
-        "reporting_officer",
-        "reporting_officer_signature_date",
-        "details_of_relevant_unused_material"
       ],
       "additionalProperties": false
     },
