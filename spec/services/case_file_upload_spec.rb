@@ -2,7 +2,7 @@ RSpec.describe CaseFileUpload do
   subject { described_class.new(json) }
 
   context 'with valid First Hearing JSON' do
-    let(:json) { '{"type": "FirstHearingDCF"}' }
+    let(:json) { '{"case": {"type": "FirstHearingDCF"} }' }
 
     it 'has a case_file' do
       expect(subject.case_file).to be_a(FirstHearingCaseFile)
@@ -22,10 +22,10 @@ RSpec.describe CaseFileUpload do
   end
 
   context 'with a Breach of Bail case file' do
-    let(:json) { '{"type": "BobDCF"}' }
+    let(:json) { '{"case": {"type": "BobDCF"} }' }
 
     it 'has a case_file' do
-      expect(subject.case_file).to be_a(BreachOfBailCaseFile)
+      expect(subject.case).to be_a(BreachOfBailCaseFile)
     end
 
     it 'has no exception' do

@@ -24,11 +24,11 @@ private
   end
 
   def schema_path
-    case @json.fetch('type')
+    case @json.fetch('case').fetch('type')
     when 'FirstHearingDCF'
-      expand_path('first-hearing.schema.json')
+      expand_path('combined.schema.json')
     when 'BobDCF'
-      expand_path('breach-of-bail.schema.json')
+      expand_path('combined.schema.json')
     end
   end
 

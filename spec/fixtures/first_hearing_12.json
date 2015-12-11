@@ -1,249 +1,251 @@
 {
   "schema_version": "1.2.0",
-  "pti_urn": "01AA9999915-AA",
-  "type": "FirstHearingDCF",
-  "associated_case_urns": [ "01AA1111115", "01AA2222215" ],
-  "version": 1,
-  "brief_description_of_case": "A brief description of the case.",
-  "i_should_not_be_here": "look I shouldn't be here",
-  "defendants": [
-    {
-      "name": {
-        "type": "PersonName",
-        "surname": "Smith",
-        "given_name": [ "John", "William" ]
-      },
-      "date_of_birth": "1990-01-01",
-      "arrest": {
-        "type": "Arrest",
-        "date_time": "2015-01-01T12:00Z",
-        "comments_on_arrest_and_caution": "Some comments"
-      },
-      "conditional_caution_considered": true,
-      "cc_not_suitable_reasons": [ "offence_not_admitted" ],
-      "offences": [
-        {
-          "type": "RetailTheftOffences",
-          "retail_theft_offences": [
-            {
-              "type": "RetailTheftOffence",
-              "cjs_offence_code": "th68010",
-              "offence": {
-                "type": "Offence",
-                "from_date": "2014-01-01",
-                "to_date": "2014-01-01",
-                "charge_date": "2014-01-01",
-                "offence_title": "Offence Title from PNLD",
-                "charge_wording": "This is the charge wording",
-                "points_to_prove_met_by": "Description of how the points to prove have been met.",
-                "anticipated_plea": "guilty",
-                "committed_on_bail": false
-              },
-              "property_ids": [ 1 ],
-              "retail_theft_interview_extension": {
-                "admit_taking_property": "admits_all",
-                "admit_being_dishonest": true,
-                "admit_intending_to_permanently_deprive": true
+  "case": {
+    "pti_urn": "01AA9999915-AA",
+    "type": "FirstHearingDCF",
+    "associated_case_urns": [ "01AA1111115", "01AA2222215" ],
+    "version": 1,
+    "brief_description_of_case": "A brief description of the case.",
+    "i_should_not_be_here": "look I shouldn't be here",
+    "defendants": [
+      {
+        "name": {
+          "type": "PersonName",
+          "surname": "Smith",
+          "given_name": [ "John", "William" ]
+        },
+        "date_of_birth": "1990-01-01",
+        "arrest": {
+          "type": "Arrest",
+          "date_time": "2015-01-01T12:00Z",
+          "comments_on_arrest_and_caution": "Some comments"
+        },
+        "conditional_caution_considered": true,
+        "cc_not_suitable_reasons": [ "offence_not_admitted" ],
+        "offences": [
+          {
+            "type": "RetailTheftOffences",
+            "retail_theft_offences": [
+              {
+                "type": "RetailTheftOffence",
+                "cjs_offence_code": "th68010",
+                "offence": {
+                  "type": "Offence",
+                  "from_date": "2014-01-01",
+                  "to_date": "2014-01-01",
+                  "charge_date": "2014-01-01",
+                  "offence_title": "Offence Title from PNLD",
+                  "charge_wording": "This is the charge wording",
+                  "points_to_prove_met_by": "Description of how the points to prove have been met.",
+                  "anticipated_plea": "guilty",
+                  "committed_on_bail": false
+                },
+                "property_ids": [ 1 ],
+                "retail_theft_interview_extension": {
+                  "admit_taking_property": "admits_all",
+                  "admit_being_dishonest": true,
+                  "admit_intending_to_permanently_deprive": true
+                }
               }
-            }
-          ]
-        }
-      ],
-      "occupation": "A Worker",
-      "class_a_drug_test_provided": true,
-      "accepts_drugs_result": true,
-      "class_a_drug_test_details": "These are the details of the drug test",
-      "has_eec_passports": true,
-      "eec_check_submitted": true,
-      "eec_convictions_record_received": false,
-      "foreign_national_offender": false,
-      "breach_of_order": false,
-      "remand_application": {
-        "substantial_grounds": [
-          {
-            "opposition_ground": "breach_of_bail",
-            "justification": "A justification"
-          },
-          {
-            "opposition_ground": "failed_to_surrender_to_custody",
-            "justification": "A justification"
+            ]
           }
         ],
-        "bail_conditions": [
-          {
-            "grounds": [ "failing_to_surrender_to_custody" ],
-            "condition": "Condition Description",
-            "reason": "Reason Description"
-          }
-        ]
-      },
-      "breach_of_bail": {
-        "breach_details": "Details of the breach",
-        "witness_statement_establishes_breach": true,
-        "key_evidence": "Key Evidence",
-        "existing_bail_breached": {
-          "original_charge_wording": [ "CJS Original Charge Wording 1", "CJS Original Charge Wording 2" ],
-          "bailed_from": {
-            "ou_top_level_name": "AA",
-            "ou_second_level_name": "BB",
-            "ou_third_level_name": "CC",
-            "ou_bottom_level_name": "DD"
-          },
-          "bailed_date": "2014-01-01",
-          "to_appear_at": {
-            "ou_top_level_name": "AA",
-            "ou_second_level_name": "BB",
-            "ou_third_level_name": "CC",
-            "ou_bottom_level_name": "DD"
-          },
-          "datetime_to_appear": "2014-01-01T12:00Z",
-          "list_of_conditions": [
+        "occupation": "A Worker",
+        "class_a_drug_test_provided": true,
+        "accepts_drugs_result": true,
+        "class_a_drug_test_details": "These are the details of the drug test",
+        "has_eec_passports": true,
+        "eec_check_submitted": true,
+        "eec_convictions_record_received": false,
+        "foreign_national_offender": false,
+        "breach_of_order": false,
+        "remand_application": {
+          "substantial_grounds": [
             {
-              "grounds": [ "committing_an_offence_whilst_on_bail" ],
-              "condition": "Condition Description",
-              "reason": "Reason Description"
+              "opposition_ground": "breach_of_bail",
+              "justification": "A justification"
             },
+            {
+              "opposition_ground": "failed_to_surrender_to_custody",
+              "justification": "A justification"
+            }
+          ],
+          "bail_conditions": [
             {
               "grounds": [ "failing_to_surrender_to_custody" ],
               "condition": "Condition Description",
               "reason": "Reason Description"
             }
           ]
-        }
-
-      },
-      "pnc_check_performed": true,
-      "pnc_convictions": true,
-      "court_order_applications": [
-        {
-          "court_order_title": "antisocial_behaviour_order",
-          "reason_for_request": "These are the reasons for request 1"
         },
-        {
-          "court_order_title": "confiscation_order",
-          "reason_for_request": "These are the reasons for request 2",
-          "draft_conditions": [
-            "Condition 1",
-            "Condition 2"
-          ]
+        "breach_of_bail": {
+          "breach_details": "Details of the breach",
+          "witness_statement_establishes_breach": true,
+          "key_evidence": "Key Evidence",
+          "existing_bail_breached": {
+            "original_charge_wording": [ "CJS Original Charge Wording 1", "CJS Original Charge Wording 2" ],
+            "bailed_from": {
+              "ou_top_level_name": "AA",
+              "ou_second_level_name": "BB",
+              "ou_third_level_name": "CC",
+              "ou_bottom_level_name": "DD"
+            },
+            "bailed_date": "2014-01-01",
+            "to_appear_at": {
+              "ou_top_level_name": "AA",
+              "ou_second_level_name": "BB",
+              "ou_third_level_name": "CC",
+              "ou_bottom_level_name": "DD"
+            },
+            "datetime_to_appear": "2014-01-01T12:00Z",
+            "list_of_conditions": [
+              {
+                "grounds": [ "committing_an_offence_whilst_on_bail" ],
+                "condition": "Condition Description",
+                "reason": "Reason Description"
+              },
+              {
+                "grounds": [ "failing_to_surrender_to_custody" ],
+                "condition": "Condition Description",
+                "reason": "Reason Description"
+              }
+            ]
+          }
+
+        },
+        "pnc_check_performed": true,
+        "pnc_convictions": true,
+        "court_order_applications": [
+          {
+            "court_order_title": "antisocial_behaviour_order",
+            "reason_for_request": "These are the reasons for request 1"
+          },
+          {
+            "court_order_title": "confiscation_order",
+            "reason_for_request": "These are the reasons for request 2",
+            "draft_conditions": [
+              "Condition 1",
+              "Condition 2"
+            ]
+          }
+        ],
+        "interpreter_required": false,
+        "multimedia_evidence_response": [
+          {
+            "id": "1",
+            "type": "MmeRecordedResponse",
+            "defendant_shown": true,
+            "defendant_comments_if_shown": "These are the defendant comments if shown.",
+            "is_defendant_believed_to_be_in_the_mme": true,
+            "defendant_admits_being_in_mme": true
+          }
+        ],
+        "dealt_with_in_welsh": false,
+        "person_remand_status": "custody",
+        "given_charges": true,
+        "signed_charge_sheet": true,
+        "initiation_type": "charge",
+        "interview": {
+          "type": "StandardInterview",
+          "date": "2014-01-01",
+          "defendant_legally_represented": true,
+          "legally_represented_by": {
+            "type": "PersonName",
+            "given_name": [ "Jennie", "Claire" ],
+            "surname": "Jones"
+          },
+          "legal_representative_firm": "The firm",
+          "interpreters": [
+            {
+              "type": "PersonName",
+              "given_name": [ "Jennie", "Claire" ],
+              "surname": "Jones"
+            }
+          ],
+          "special_warnings_given": false,
+          "no_comment_response": false,
+          "admissions_made": "The admissions made go here.",
+          "denials": "The Denials",
+          "explanations": "Any explanations made",
+          "mitigations": "Any mitigating circumstances go here.",
+          "aggravating_features": "Any aggravating features"
+        },
+        "first_hearing_datetime": "2015-08-01T12:00Z",
+        "first_hearing_location": {
+          "ou_top_level_name": "AA",
+          "ou_second_level_name": "BB",
+          "ou_third_level_name": "CC",
+          "ou_bottom_level_name": "DD"
         }
-      ],
-      "interpreter_required": false,
-      "multimedia_evidence_response": [
-        {
-          "id": "1",
-          "type": "MmeRecordedResponse",
-          "defendant_shown": true,
-          "defendant_comments_if_shown": "These are the defendant comments if shown.",
-          "is_defendant_believed_to_be_in_the_mme": true,
-          "defendant_admits_being_in_mme": true
-        }
-      ],
-      "dealt_with_in_welsh": false,
-      "person_remand_status": "custody",
-      "given_charges": true,
-      "signed_charge_sheet": true,
-      "initiation_type": "charge",
-      "interview": {
-        "type": "StandardInterview",
-        "date": "2014-01-01",
-        "defendant_legally_represented": true,
-        "legally_represented_by": {
+      }
+    ],
+    "witnesses": [
+      {
+        "type": "StatementWitness",
+        "witness_type": [ "eye" ],
+        "name": {
           "type": "PersonName",
           "given_name": [ "Jennie", "Claire" ],
           "surname": "Jones"
         },
-        "legal_representative_firm": "The firm",
-        "interpreters": [
-          {
-            "type": "PersonName",
-            "given_name": [ "Jennie", "Claire" ],
-            "surname": "Jones"
-          }
-        ],
-        "special_warnings_given": false,
-        "no_comment_response": false,
-        "admissions_made": "The admissions made go here.",
-        "denials": "The Denials",
-        "explanations": "Any explanations made",
-        "mitigations": "Any mitigating circumstances go here.",
-        "aggravating_features": "Any aggravating features"
-      },
-      "first_hearing_datetime": "2015-08-01T12:00Z",
-      "first_hearing_location": {
-        "ou_top_level_name": "AA",
-        "ou_second_level_name": "BB",
-        "ou_third_level_name": "CC",
-        "ou_bottom_level_name": "DD"
+        "witness": {
+          "nature_of_involvement": "Nature of involvement",
+          "evidence_they_can_give": "Evidence they can give"
+        },
+        "date_of_birth": "1980-08-01",
+        "visually_recorded_interview": false
       }
-    }
-  ],
-  "witnesses": [
-    {
-      "type": "StatementWitness",
-      "witness_type": [ "eye" ],
-      "name": {
-        "type": "PersonName",
-        "given_name": [ "Jennie", "Claire" ],
-        "surname": "Jones"
+    ],
+    "common_law_disclosure": {
+      "type": "CommonLawNotForDisclosure",
+      "reporting_officer": {
+        "type": "OfficerName",
+        "surname": "Collins",
+        "given_name": [ "Simon" ],
+        "rank": "PC",
+        "collar_number": "AA12"
       },
-      "witness": {
-        "nature_of_involvement": "Nature of involvement",
-        "evidence_they_can_give": "Evidence they can give"
-      },
-      "date_of_birth": "1980-08-01",
-      "visually_recorded_interview": false
-    }
-  ],
-  "common_law_disclosure": {
-    "type": "CommonLawNotForDisclosure",
-    "reporting_officer": {
+      "reporting_officer_signature_date": "2014-01-01"
+    },
+    "multimedia_evidence": [
+      {
+        "id": "1",
+        "date": "2014-01-01",
+        "type": "cctv",
+        "description_of_what_is_contained_in_multimedia_evidence": "Description goes here",
+        "evidential_value": true,
+        "relied_upon_trial": true,
+        "relied_upon_sentence": true,
+        "total_duration": "01:02",
+        "url": "http://test.gov.uk/askdasdjds/asds"
+      }
+    ],
+    "expert_evidence": false,
+    "test_code": "full_code_test",
+    "pca_cps": false,
+    "property": [
+      {
+        "property_id": 1,
+        "property_action": "stolen_not_recovered",
+        "description": "Description of property here",
+        "value": 10.52
+      }
+    ],
+    "officer_in_the_case": {
+      "type": "OfficerName",
+      "surname": "Smith",
+      "given_name": [ "Penny" ],
+      "rank": "PC",
+      "collar_number": "AA11"
+
+    },
+    "signatory_name": {
       "type": "OfficerName",
       "surname": "Collins",
       "given_name": [ "Simon" ],
       "rank": "PC",
       "collar_number": "AA12"
     },
-    "reporting_officer_signature_date": "2014-01-01"
-  },
-  "multimedia_evidence": [
-    {
-      "id": "1",
-      "date": "2014-01-01",
-      "type": "cctv",
-      "description_of_what_is_contained_in_multimedia_evidence": "Description goes here",
-      "evidential_value": true,
-      "relied_upon_trial": true,
-      "relied_upon_sentence": true,
-      "total_duration": "01:02",
-      "url": "http://test.gov.uk/askdasdjds/asds"
-    }
-  ],
-  "expert_evidence": false,
-  "test_code": "full_code_test",
-  "pca_cps": false,
-  "property": [
-    {
-      "property_id": 1,
-      "property_action": "stolen_not_recovered",
-      "description": "Description of property here",
-      "value": 10.52
-    }
-  ],
-  "officer_in_the_case": {
-    "type": "OfficerName",
-    "surname": "Smith",
-    "given_name": [ "Penny" ],
-    "rank": "PC",
-    "collar_number": "AA11"
-
-  },
-  "signatory_name": {
-    "type": "OfficerName",
-    "surname": "Collins",
-    "given_name": [ "Simon" ],
-    "rank": "PC",
-    "collar_number": "AA12"
-  },
-  "date": "2014-01-01"
+    "date": "2014-01-01"
+  }
 }

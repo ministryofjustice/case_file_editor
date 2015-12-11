@@ -1,4 +1,4 @@
-class BreachOfBailCaseFile < CaseFile
+class BreachOfBailCaseFile < Case
   attribute :type, String, writer: :private, default: 'BobDCF'
 
   validates :case_markers, length: { is: 0 }

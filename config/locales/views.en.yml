@@ -1,5 +1,5 @@
 en:
-  case_files:
+  case:
     analysis:
       result_exception: "Result: An exception occurred"
       details: Details

@@ -1,4 +1,4 @@
-RSpec.describe CaseFile do
+RSpec.describe Case do
   describe 'not_guilty_anticipated_plea?' do
     it 'is true if there is a defendant with a not guilty anticipated plea' do
       subject.defendants << double(not_guilty_anticipated_plea?: true)

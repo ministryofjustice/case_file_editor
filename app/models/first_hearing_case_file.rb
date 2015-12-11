@@ -1,4 +1,4 @@
-class FirstHearingCaseFile < CaseFile
+class FirstHearingCaseFile < Case
   attribute :type, String, writer: :private, default: 'FirstHearingDCF'
 
   validates :case_markers,

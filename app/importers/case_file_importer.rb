@@ -1,8 +1,2 @@
-class CaseFileImporter < TypeBasedImporter
-  def self.importer_class
-    {
-      'FirstHearingDCF' => FirstHearingCaseFileImporter,
-      'BobDCF' => BreachOfBailCaseFileImporter
-    }
-  end
+class CaseFileImporter < GenericImporter
 end
