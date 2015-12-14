@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.0 Draft 1",
+  "description": "Combined Digital Case File 1.2.0 Draft 2",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -152,7 +152,8 @@
         "officer_in_the_case",
         "signatory_name",
         "date"
-      ]
+      ],
+      "additionalProperties": false
     },
 
     "BobDCF": {
@@ -224,7 +225,8 @@
         "officer_in_the_case",
         "signatory_name",
         "date"
-      ]
+      ],
+      "additionalProperties": false
     },
 
     "CommonLawNotForDisclosure": {

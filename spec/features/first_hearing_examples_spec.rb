@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Parsing first hearing files' do
   let(:dcf) {
-    FirstHearingCaseFileImporter.new(source).import
+    CaseFileImporter.new(source).import
   }
 
   let(:source) {
@@ -28,16 +28,18 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies one error on case' do
       expect(errors).to eq(
-        case_markers: ["must all be one of the allowed values"],
-        defendants: {
-          0 => {
-            offences: {
-              0 => {
-                retail_theft_offences: {
-                  0 => {
-                    demeanour_at_incident: [
-                      "must be absent if case is not domestic violence"
-                    ]
+        case: {
+          case_markers: ["must all be one of the allowed values"],
+          defendants: {
+            0 => {
+              offences: {
+                0 => {
+                  retail_theft_offences: {
+                    0 => {
+                      demeanour_at_incident: [
+                        "must be absent if case is not domestic violence"
+                      ]
+                    }
                   }
                 }
               }
@@ -53,17 +55,19 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies three errors on first defendant' do
       expect(errors).to eq(
-        defendants: {
-          0 => {
-            class_a_drug_test_details: [
-              "must be present when a Class A drug test is provided"
-            ],
-            accepts_drugs_result: [
-              "must be present when a Class A drug test is provided"
-            ],
-            eec_convictions_record_received: [
-              "must be present if defendant has EEC passports"
-            ]
+        case: {
+          defendants: {
+            0 => {
+              class_a_drug_test_details: [
+                "must be present when a Class A drug test is provided"
+              ],
+              accepts_drugs_result: [
+                "must be present when a Class A drug test is provided"
+              ],
+              eec_convictions_record_received: [
+                "must be present if defendant has EEC passports"
+              ]
+            }
           }
         }
       )
@@ -75,14 +79,16 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies two errors on first defendant' do
       expect(errors).to eq(
-        defendants: {
-          0 => {
-            eec_check_submitted: [
-              "must be absent unless defendant has EEC passports"
-            ],
-            eec_convictions_record_received: [
-              "must be absent unless defendant has EEC passports"
-            ]
+        case: {
+          defendants: {
+            0 => {
+              eec_check_submitted: [
+                "must be absent unless defendant has EEC passports"
+              ],
+              eec_convictions_record_received: [
+                "must be absent unless defendant has EEC passports"
+              ]
+            }
           }
         }
       )
@@ -94,7 +100,9 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'complains that special_measures is present for GAP' do
       expect(errors).to match(
-        witnesses: { 0 => { special_measures: anything } }
+        case: {
+          witnesses: { 0 => { special_measures: anything } }
+        }
       )
     end
   end
@@ -104,11 +112,13 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies that the mme_id provided in the MMEResponse does not match mme on the case' do
       expect(errors).to match(
-        defendants: {
-          0 => {
-            multimedia_evidence_response: {
-              0 => {
-                id: ["must refer to a piece of multimedia evidence in the case"]
+        case: {
+          defendants: {
+            0 => {
+              multimedia_evidence_response: {
+                0 => {
+                  id: ["must refer to a piece of multimedia evidence in the case"]
+                }
               }
             }
           }
@@ -122,12 +132,14 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies that MmeNotRecordedResponse is invalid when there is MME' do
       expect(errors).to match(
-        defendants: {
-          0 => {
-            multimedia_evidence_response: {
-              0 => include(
-                type: include("cannot be a not recorded response if there is multimedia evidence in the case")
-              )
+        case: {
+          defendants: {
+            0 => {
+              multimedia_evidence_response: {
+                0 => include(
+                  type: include("cannot be a not recorded response if there is multimedia evidence in the case")
+                )
+              }
             }
           }
         }
@@ -156,15 +168,17 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies missing youth fields' do
       expect(errors).to eq(
-        defendants: {
-          0 => {
-            parent_guardian_copy: [
-              "must be present when defendant is under 18"
-            ],
-            interview: {
-              appropriate_adults: [
-                "must be present if defendant is a youth"
-              ]
+        case: {
+          defendants: {
+            0 => {
+              parent_guardian_copy: [
+                "must be present when defendant is under 18"
+              ],
+              interview: {
+                appropriate_adults: [
+                  "must be present if defendant is a youth"
+                ]
+              }
             }
           }
         }
@@ -177,7 +191,9 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies that madatory field brief description of the case is not present' do
       expect(errors).to match(
-        brief_description_of_case: ["is invalid"]
+        case: {
+          brief_description_of_case: ["is invalid"]
+        }
       )
     end
   end
@@ -195,15 +211,17 @@ RSpec.describe 'Parsing first hearing files' do
 
     it 'identifies the property ids referred to in the retail theft offences are not part of the case' do
       expect(errors).to eq(
-        defendants: {
-          0 => {
-            offences: {
-              0 => {
-                retail_theft_offences: {
-                  0 => {
-                    property_ids: [
-                      "must each refer to a piece of property in the case"
-                    ]
+        case: {
+          defendants: {
+            0 => {
+              offences: {
+                0 => {
+                  retail_theft_offences: {
+                    0 => {
+                      property_ids: [
+                        "must each refer to a piece of property in the case"
+                      ]
+                    }
                   }
                 }
               }
