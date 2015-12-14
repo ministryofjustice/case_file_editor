@@ -19,7 +19,7 @@ module Dcf
     config.middleware.
       insert_before ActionDispatch::ParamsParser, 'CatchJsonParseErrors'
 
-    config.supported_version = '1.2.0 draft 1'
+    config.supported_version = '1.2.0 draft 2'
 
     # Settings in config/environments/* take precedence over those specified
     # here.

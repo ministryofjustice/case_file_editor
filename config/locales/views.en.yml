@@ -15,8 +15,8 @@ en:
     form:
       case_file: File
       upload: Upload
-    index:
-      title: Upload a case file
+  index:
+    title: Upload a case file
   common:
     top_bar:
       title: Digital Case File Validator
