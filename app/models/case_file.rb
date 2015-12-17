@@ -6,6 +6,5 @@ class CaseFile
 
   attribute :case, Case
   validates :case,
-    presence: true	
-
-  end
+    presence: true
+end
