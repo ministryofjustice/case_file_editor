@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.0 Final",
+  "description": "Combined Digital Case File 1.2.0.1 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -1609,7 +1609,8 @@
           "type": "boolean"
         },
         "injuries": {
-          "$ref": "#/definitions/Injuries"
+          "type": "array",
+          "items": [ { "$ref": "#/definitions/Injuries" } ]
         },
         "wish_to_use_video_link": {
           "type": "boolean"
