@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.0.1 Final",
+  "description": "Combined Digital Case File 1.2.0.2 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -99,7 +99,7 @@
         "likely_case_progression": {
           "enum": [
             "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
-            "indictable_only_or_either_way_and_likely_to be_heard_in_the_crown_court"
+            "indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court"
           ]
         },
         "multimedia_evidence": {
@@ -1219,8 +1219,7 @@
       "required": [
         "id",
         "defendant_shown",
-        "is_defendant_believed_to_be_in_the_mme",
-        "defendant_admits_being_in_mme"
+        "is_defendant_believed_to_be_in_the_mme"
       ]
     },
 

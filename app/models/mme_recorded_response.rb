@@ -22,10 +22,10 @@ class MmeRecordedResponse < MmeResponse
     boolean_presence: true
 
   attribute :defendant_admits_being_in_mme, Virtus::Attribute::Boolean
-  validates :is_defendant_believed_to_be_in_the_mme,
+  validates :defendant_admits_being_in_mme,
     boolean_presence: true,
     if: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
-  validates :is_defendant_believed_to_be_in_the_mme,
+  validates :defendant_admits_being_in_mme,
     boolean_absence: true,
     unless: [:defendant_shown, :is_defendant_believed_to_be_in_the_mme]
 
