@@ -37,7 +37,7 @@ RSpec.describe 'Parsing first hearing files' do
                   retail_theft_offences: {
                     0 => {
                       demeanour_at_incident: [
-                        "must be absent if case is not domestic violence"
+                        "Must be absent. Must only be provided if Case – case_marker = DomesticViolence"
                       ]
                     }
                   }
@@ -59,13 +59,13 @@ RSpec.describe 'Parsing first hearing files' do
           defendants: {
             0 => {
               class_a_drug_test_details: [
-                "must be present when a Class A drug test is provided"
+                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = true"
               ],
               accepts_drugs_result: [
-                "must be present when a Class A drug test is provided"
+                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = true"
               ],
               eec_convictions_record_received: [
-                "must be present if defendant has EEC passports"
+                "Must be present. Must (and must only) be provided if has_eec_passports = true"
               ]
             }
           }
@@ -83,10 +83,10 @@ RSpec.describe 'Parsing first hearing files' do
           defendants: {
             0 => {
               eec_check_submitted: [
-                "must be absent unless defendant has EEC passports"
+                "Must be absent. Must (and must only) only be provided if has_eec_passports = true"
               ],
               eec_convictions_record_received: [
-                "must be absent unless defendant has EEC passports"
+                "Must be absent. Must (and must only) be provided if has_eec_passports = true"
               ]
             }
           }
@@ -117,7 +117,7 @@ RSpec.describe 'Parsing first hearing files' do
             0 => {
               multimedia_evidence_response: {
                 0 => {
-                  id: ["must refer to a piece of multimedia evidence in the case"]
+                  id: ["Must refer to a piece of multimedia evidence in the case"]
                 }
               }
             }
@@ -137,7 +137,7 @@ RSpec.describe 'Parsing first hearing files' do
             0 => {
               multimedia_evidence_response: {
                 0 => include(
-                  type: include("cannot be a not recorded response if there is multimedia evidence in the case")
+                  type: include("Cannot be a not recorded response if there is multimedia evidence in the case")
                 )
               }
             }
@@ -172,11 +172,11 @@ RSpec.describe 'Parsing first hearing files' do
           defendants: {
             0 => {
               parent_guardian_copy: [
-                "must be present when defendant is under 18"
+                "Must be present. Must (and must only) be provided if Defendant is < 18 years on the date of charge as determined by Defendant -> date_of_birth and Case -> date"
               ],
               interview: {
                 appropriate_adults: [
-                  "must be present if defendant is a youth"
+                  "Must be provided for all youth cases or in adult cases where applicable"
                 ]
               }
             }
@@ -219,7 +219,7 @@ RSpec.describe 'Parsing first hearing files' do
                   retail_theft_offences: {
                     0 => {
                       property_ids: [
-                        "must each refer to a piece of property in the case"
+                        "Must each refer to a piece of property in the case"
                       ]
                     }
                   }
