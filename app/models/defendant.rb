@@ -407,8 +407,12 @@ class Defendant
     person_remand_status == 'not_applicable'
   end
 
-  def not_guilty_anticipated_plea?
+  def def_not_guilty_anticipated_plea?
     offences.any?(&:not_guilty_anticipated_plea?)
+  end
+
+  def not_guilty_anticipated_plea?
+    case_file.not_guilty_anticipated_plea?
   end
 
   def validate_by_age

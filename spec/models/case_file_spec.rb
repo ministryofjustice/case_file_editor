@@ -1,13 +1,13 @@
 RSpec.describe Case do
   describe 'not_guilty_anticipated_plea?' do
     it 'is true if there is a defendant with a not guilty anticipated plea' do
-      subject.defendants << double(not_guilty_anticipated_plea?: true)
-      subject.defendants << double(not_guilty_anticipated_plea?: false)
+      subject.defendants << double(def_not_guilty_anticipated_plea?: true)
+      subject.defendants << double(def_not_guilty_anticipated_plea?: false)
       expect(subject).to be_not_guilty_anticipated_plea
     end
 
     it 'is false if all defendants have guilty anticipated plea' do
-      subject.defendants << double(not_guilty_anticipated_plea?: false)
+      subject.defendants << double(def_not_guilty_anticipated_plea?: false)
       expect(subject).not_to be_not_guilty_anticipated_plea
     end
   end

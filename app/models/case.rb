@@ -56,7 +56,7 @@ class Case
   end
 
   def not_guilty_anticipated_plea?
-    defendants.any?(&:not_guilty_anticipated_plea?)
+    defendants.any?(&:def_not_guilty_anticipated_plea?)
   end
 
   def young_witness?
