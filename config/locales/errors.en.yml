@@ -169,7 +169,7 @@ en:
         ngap_other_witness:
           attributes:
             interpreter_required:
-              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) 
+              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
         offence:
           attributes:
             ages_of_children:
@@ -223,9 +223,9 @@ en:
             interpreter_language_or_dialect:
               blank: Must be present. Must be provided if interpreter_required = true
             special_measures:
-              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0)
-              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) 
+              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
+              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court 
             wish_to_use_video_link:
-              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) 
+              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court 
             witness_id:
               unique_within_case_file: Must be unique within case file

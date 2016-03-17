@@ -1,7 +1,7 @@
 {
   "schema_version": "1.2.0",
   "case": {
-    "pti_urn": "01AA9999915-AA",
+    "pti_urn": "01AA9999915-01",
     "type": "FirstHearingDCF",
     "associated_case_urns": [ "01AA1111115", "01AA2222215" ],
     "version": 1,
@@ -205,6 +205,7 @@
       },
       "reporting_officer_signature_date": "2014-01-01"
     },
+    "likely_case_progression": "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
     "multimedia_evidence": [
       {
         "id": "1",

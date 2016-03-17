@@ -10,5 +10,4 @@ class RetailTheftOffence < Offence
   validates :property_ids, length: { minimum: 1 }
 
   attribute :retail_theft_interview_extension, RetailTheftInterviewExtension
-  validates :retail_theft_interview_extension, presence: true
 end

@@ -16,12 +16,7 @@ class FirstHearingCaseFile < Case
 
   validates :likely_case_progression,
     inclusion: { in: Enumerations::LikelyCaseProgression, allow_nil: true }
-  validates :likely_case_progression,
-    presence: true,
-    if: :not_guilty_anticipated_plea?
-  validates :likely_case_progression,
-    absence: true,
-    unless: :not_guilty_anticipated_plea?
+  validates :likely_case_progression, presence: true
 
   validates :multimedia_evidence, array_uniqueness: true
 

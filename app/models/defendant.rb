@@ -391,6 +391,10 @@ class Defendant
     initiation_type == 'requisition'
   end
 
+ def initiated_as_summons?
+    initiation_type == 'summons'
+ end
+
   def conditional_bail?
     person_remand_status == 'conditional_bail'
   end

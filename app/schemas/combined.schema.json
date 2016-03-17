@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.0.2 Final",
+  "description": "Combined Digital Case File 1.2.1.0 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -26,7 +26,7 @@
       "properties": {
         "pti_urn": {
           "type": "string",
-          "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?"
+          "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-M|-[0-9][0-9]?)?"
         },
         "type": {
           "enum": [ "FirstHearingDCF", "BobDCF" ]
@@ -35,7 +35,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?",
+            "pattern": "[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-M|-[0-9][0-9]?)?",
             "uniqueItems": true,
             "minItems": 1
           }
@@ -146,6 +146,7 @@
         "brief_description_of_case",
         "defendants",
         "witnesses",
+        "likely_case_progression",
         "expert_evidence",
         "test_code",
         "pca_cps",
@@ -609,7 +610,6 @@
         "pnc_check_performed",
         "court_order_applications",
         "interpreter_required",
-        "multimedia_evidence_response",
         "dealt_with_in_welsh",
         "person_remand_status",
         "given_charges",
@@ -746,8 +746,7 @@
         }
       },
       "required": [
-        "substantial_grounds",
-        "bail_conditions"
+        "substantial_grounds"
       ],
       "additionalProperties": false
     },
@@ -1037,7 +1036,6 @@
       "required": [
         "type",
         "cjs_offence_code",
-        "assault_interview_extension",
         "victim_name"
       ],
       "additionalProperties": false
@@ -1083,8 +1081,7 @@
       "required": [
         "type",
         "cjs_offence_code",
-        "property_ids",
-        "retail_theft_interview_extension"
+        "property_ids"
       ],
       "additionalProperties": false
     },
@@ -1604,15 +1601,9 @@
         "url": {
           "type": "string"
         },
-        "special_measures": {
-          "type": "boolean"
-        },
         "injuries": {
           "type": "array",
           "items": [ { "$ref": "#/definitions/Injuries" } ]
-        },
-        "wish_to_use_video_link": {
-          "type": "boolean"
         }
       },
       "additionalProperties": false,
@@ -1632,7 +1623,12 @@
         "name": {
           "$ref": "#/definitions/OrganisationName"
         }
-      }
+      },
+      "required": [
+        "type",
+        "name",
+        "victim"
+      ]
     },
 
     "CompensationApplication": {
@@ -1730,6 +1726,7 @@
       },
       "additionalProperties": false,
       "required": [
+        "name",
         "type",
         "witness_type",
         "witness",
@@ -1788,6 +1785,7 @@
       },
       "additionalProperties": false,
       "required": [
+        "name",
         "type",
         "witness_type",
         "witness",
@@ -1831,11 +1829,12 @@
           ]
         },
         "number": {
-          "type": "string"
+          "type": "number"
         }
       },
       "additionalProperties": false,
       "required": [
+        "name",
         "type",
         "witness"
       ]

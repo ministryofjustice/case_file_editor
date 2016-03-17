@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "pti_urn": "01AA9999915-AA",
+  "pti_urn": "01AA9999915",
   "type": "BobDCF",
   "associated_case_urns": [ "01AA1111115", "01AA2222215" ],
   "version": 1,

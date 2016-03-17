@@ -2,7 +2,7 @@ class Case
   include BasicModel
   include Virtus.relations(as: :case_file)
 
-  VALID_URN = /\A[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-[A-Z]{2})?\z/
+  VALID_URN = /\A[0-9]{2}[A-Z]{2}[0-9]{5}[0-9]{2}(-M|-[0-9][0-9]?)?\z/
   MAX_1200_WORDS = /\A\s*(\S+\s*){1,1200}\z/
   YOUNG_WITNESS_MAX_AGE = 10
   OLDER_VICTIM_MIN_AGE = 60
@@ -42,7 +42,9 @@ class Case
 
   attribute :case_markers, Array[String]
   attribute :common_law_disclosure, CommonLawNotForDisclosure
+
   attribute :likely_case_progression, String
+
   attribute :multimedia_evidence, Array[Mme], relation: true
   attribute :is_hearsay, Virtus::Attribute::Boolean
   attribute :hearsay_details, String
@@ -56,7 +58,7 @@ class Case
   end
 
   def not_guilty_anticipated_plea?
-    defendants.any?(&:def_not_guilty_anticipated_plea?)
+    defendants.any?(&:def_not_guilty_anticipated_plea?) or likely_case_progression == 'indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court'
   end
 
   def young_witness?

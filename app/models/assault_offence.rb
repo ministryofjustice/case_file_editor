@@ -5,7 +5,6 @@ class AssaultOffence < Offence
   validates :cjs_offence_code, inclusion: { in: Enumerations::AssaultCjsCode }
 
   attribute :assault_interview_extension, AssaultInterviewExtension
-  validates :assault_interview_extension, presence: true
 
   attribute :victim_name, PersonName
   validates :victim_name, presence: true
