@@ -42,7 +42,7 @@ RSpec.describe RecursiveValidator do
   context 'with top-level errors' do
     it 'lists errors by field' do
       structure.name = nil
-      expect(subject.errors).to eq(name: ["is required"])
+      expect(subject.errors).to eq(name: ["Must be present"])
     end
   end
 
@@ -50,7 +50,7 @@ RSpec.describe RecursiveValidator do
     it 'lists errors by field in a nested hash' do
       structure.child.name = nil
       expect(subject.errors).to eq(
-        child: { name: ["is required"] }
+        child: { name: ["Must be present"] }
       )
     end
   end
@@ -59,7 +59,7 @@ RSpec.describe RecursiveValidator do
     it 'lists errors by field in a nested hash' do
       structure.children.first.name = nil
       expect(subject.errors).to eq(
-        children: { 0 => { name: ["is required"] } }
+        children: { 0 => { name: ["Must be present"] } }
       )
     end
   end

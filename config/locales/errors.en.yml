@@ -3,47 +3,44 @@ en:
     errors:
       format: "%{attribute} %{message}"
       messages:
-        accepted: must be accepted
-        array_inclusion: must all be one of the allowed values
-        array_invalid: must all be valid
-        array_membership: is missing a required element
-        array_unique: must all be unique
-        blank: is required
-        confirmation: doesn’t match %{attribute}
-        empty: can’t be empty
-        equal_to: must be equal to %{count}
-        even: must be even
-        exclusion: is reserved
-        falsehood: must be false
-        greater_than: must be greater than %{count}
-        greater_than_or_equal_to: must be greater than or equal to %{count}
-        inclusion: is not one of the allowed values
-        invalid: is invalid
-        less_than: must be less than %{count}
-        less_than_or_equal_to: must be less than or equal to %{count}
-        not_a_number: is not a number
-        not_an_integer: must be an integer
-        odd: must be odd
-        other_than: must be other than %{count}
-        present: must not be present
-        too_long: is too long (maximum is %{count})
-        too_short: is too short (minimum is %{count})
-        truth: must be true
+        accepted: Must be accepted
+        array_inclusion: Must all be one of the allowed values
+        array_invalid: Must all be valid
+        array_membership: Is missing a required element
+        array_unique: Must all be unique
+        blank: Must be present
+        confirmation: Doesn’t match %{attribute}
+        empty: Can’t be empty
+        equal_to: Must be equal to %{count}
+        even: Must be even
+        exclusion: Is reserved
+        falsehood: Must be false
+        greater_than: Must be greater than %{count}
+        greater_than_or_equal_to: Must be greater than or equal to %{count}
+        inclusion: Is not one of the allowed values
+        invalid: Is invalid
+        less_than: Must be less than %{count}
+        less_than_or_equal_to: Must be less than or equal to %{count}
+        not_a_number: Is not a number
+        not_an_integer: Must be an integer
+        odd: Must be odd
+        other_than: Must be other than %{count}
+        present: Must not be present
+        too_long: Is too long (maximum is %{count})
+        too_short: Is too short (minimum is %{count})
+        truth: Must be true
         wrong_length:
-          one: is the wrong length (should be 1)
-          other: is the wrong length (should be %{count})
+          one: Is the wrong length (should be 1)
+          other: Is the wrong length (should be %{count})
       models:
-        case_file:
+        case:
           attributes:
             hearsay_details:
               blank: Must be present. Must (and must only) be provided if is_hearsay = true
               present: Must be absent. Must (and must only) be provided if is_hearsay = true
             is_hearsay:
-              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0)
-              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0)
-            likely_case_progression:
-              blank: Must be present. Must (and must only) be provided if anticipated_plea = not_guilty > 0
-              present: Must be absent. Must (and must only) be provided if anticipated_plea = not_guilty > 0
+              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
+              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
         compensation_application:
           attributes:
             defendant_names:
@@ -61,7 +58,7 @@ en:
         defendant:
           attributes:
             accepts_drugs_result:
-              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = true
+              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = true 
               present: Must be absent. Must (and must only) be provided if class_a_drug_test_provided = true
             arrest:
               blank: Must be present when initiation type is ‘charge’
@@ -107,8 +104,8 @@ en:
             multimedia_evidence_response:
               too_short: Must be present. MME > 0 MmeRecorded Must be provided for each MME associated with the case. If MME = 0 MmeNotRecorded Must be provided
             notice_to_provide_bad_character_evidence:
-              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) 
-              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) 
+              blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
+              present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
             parent_guardian_copy:
               blank: Must be present. Must (and must only) be provided if Defendant is < 18 years on the date of charge as determined by Defendant -> date_of_birth and Case -> date
               present: Must be absent. Must (and must only) be provided if Defendant is < 18 years on the date of charge as determined by Defendant -> date_of_birth and Case -> date
@@ -222,6 +219,8 @@ en:
           attributes:
             interpreter_language_or_dialect:
               blank: Must be present. Must be provided if interpreter_required = true
+            interpreter_required:
+              blank: Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
             special_measures:
               blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
               present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court 

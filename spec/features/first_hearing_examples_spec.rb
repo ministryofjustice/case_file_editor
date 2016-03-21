@@ -29,7 +29,7 @@ RSpec.describe 'Parsing first hearing files' do
     it 'identifies one error on case' do
       expect(errors).to eq(
         case: {
-          case_markers: ["must all be one of the allowed values"],
+          case_markers: ["Must all be one of the allowed values"],
           defendants: {
             0 => {
               offences: {
@@ -192,7 +192,7 @@ RSpec.describe 'Parsing first hearing files' do
     it 'identifies that madatory field brief description of the case is not present' do
       expect(errors).to match(
         case: {
-          brief_description_of_case: ["is invalid"]
+          brief_description_of_case: ["Is invalid"]
         }
       )
     end
