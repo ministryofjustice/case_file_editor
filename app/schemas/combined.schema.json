@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.1.0 Final",
+  "description": "Combined Digital Case File 1.2.1.1 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -704,7 +704,6 @@
         "breach_of_bail",
         "pnc_check_performed",
         "interpreter_required",
-        "multimedia_evidence_response",
         "dealt_with_in_welsh",
         "person_remand_status",
         "interview",
@@ -1609,6 +1608,7 @@
       "additionalProperties": false,
       "required": [
         "type",
+        "victim",
         "name",
         "visually_recorded_interview"
       ]
