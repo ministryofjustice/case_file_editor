@@ -228,7 +228,8 @@ class Defendant
 
   attribute :multimedia_evidence_response, Array[MmeResponse], relation: true
   validates :multimedia_evidence_response,
-    length: { minimum: 1 }
+    length: { minimum: 1 },
+    if: :defendant_interviewed?
 
   attribute :notice_to_provide_bad_character_evidence,
     Virtus::Attribute::Boolean
@@ -413,6 +414,10 @@ class Defendant
 
   def def_not_guilty_anticipated_plea?
     offences.any?(&:not_guilty_anticipated_plea?)
+  end
+
+  def defendant_interviewed?
+    interview.is_a?(StandardInterview)
   end
 
   def not_guilty_anticipated_plea?

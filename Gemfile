@@ -24,9 +24,12 @@ group :development, :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'pry-rails'
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'simplecov'
   gem 'simplecov-rcov'
+  gem 'therubyracer'
 end
