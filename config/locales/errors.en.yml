@@ -102,7 +102,7 @@ en:
             interpreter_language_or_dialect:
               blank: Must be present. Must be provided if interpreter_required = true
             multimedia_evidence_response:
-              too_short: Must be present. MME > 0 MmeRecorded Must be provided for each MME associated with the case. If MME = 0 MmeNotRecorded Must be provided
+              too_short: Must be present. Defendant - interview - StandardInterview has been provided. If MME > 0 MmeRecorded. Must be provided for each MME associated with the case. If MME = 0 MmeNotRecorded Must be provided
             notice_to_provide_bad_character_evidence:
               blank: Must be present. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
               present: Must be absent. Must (and must only) be provided if (anticipated_plea = not_guilty > 0) or likely_case_progression = indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court
