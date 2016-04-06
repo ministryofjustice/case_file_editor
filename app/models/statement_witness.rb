@@ -14,6 +14,9 @@ class StatementWitness < Witness
   validates :reason_dob_not_provided,
     presence: true,
     unless: :date_of_birth
+  validates :reason_dob_not_provided,
+    absence: true,
+    if: :date_of_birth
 
   attribute :visually_recorded_interview, Virtus::Attribute::Boolean
   validates :visually_recorded_interview, boolean_presence: true

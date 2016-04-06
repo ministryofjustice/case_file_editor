@@ -13,18 +13,18 @@ class CompensationApplication
 
   attribute :details_of_expenses, String
   validates :details_of_expenses,
-    boolean_presence: true,
+    presence: true,
     if: :other_expenses?
   validates :details_of_expenses,
-    boolean_absence: true,
+    absence: true,
     unless: :other_expenses?
 
   attribute :details_of_other_losses, String
   validates :details_of_other_losses,
-    boolean_presence: true,
+    presence: true,
     if: :other_losses?
   validates :details_of_other_losses,
-    boolean_absence: true,
+    absence: true,
     unless: :other_losses?
 
   attribute :amount_compensation_requested, Integer
