@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.1",
+  "schema_version": "1.2.2",
   "case": {
     "pti_urn": "01AA9999915-01",
     "type": "FirstHearingDCF",
@@ -19,7 +19,6 @@
           "date_time": "2015-01-01T12:00Z",
           "comments_on_arrest_and_caution": "Some comments"
         },
-        "conditional_caution_considered": true,
         "cc_not_suitable_reasons": [ "offence_not_admitted" ],
         "offences": [
           {
@@ -50,7 +49,7 @@
           }
         ],
         "occupation": "A Worker",
-        "class_a_drug_test_provided": true,
+        "class_a_drug_test_provided": "provided_positive",
         "has_eec_passports": true,
         "eec_check_submitted": true,
         "foreign_national_offender": false,
@@ -203,7 +202,7 @@
       },
       "reporting_officer_signature_date": "2014-01-01"
     },
-    "likely_case_progression": "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
+    "likely_case_progression": "summary_only",
     "multimedia_evidence": [
       {
         "id": "1",

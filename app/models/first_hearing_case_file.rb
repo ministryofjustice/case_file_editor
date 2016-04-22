@@ -20,20 +20,6 @@ class FirstHearingCaseFile < Case
 
   validates :multimedia_evidence, array_uniqueness: true
 
-  validates :is_hearsay,
-    boolean_presence: true,
-    if: :not_guilty_anticipated_plea?
-  validates :is_hearsay,
-    boolean_absence: true,
-    unless: :not_guilty_anticipated_plea?
-
-  validates :hearsay_details,
-    presence: true,
-    if: :is_hearsay
-  validates :hearsay_details,
-    absence: true,
-    unless: :is_hearsay
-
   validates :expert_evidence, boolean_presence: true
 
   validates :test_code,

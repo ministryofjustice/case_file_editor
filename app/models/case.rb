@@ -46,8 +46,6 @@ class Case
   attribute :likely_case_progression, String
 
   attribute :multimedia_evidence, Array[Mme], relation: true
-  attribute :is_hearsay, Virtus::Attribute::Boolean
-  attribute :hearsay_details, String
   attribute :expert_evidence, Virtus::Attribute::Boolean
   attribute :test_code, String
   attribute :pca_cps, Virtus::Attribute::Boolean
@@ -58,7 +56,7 @@ class Case
   end
 
   def not_guilty_anticipated_plea?
-    defendants.any?(&:def_not_guilty_anticipated_plea?) or likely_case_progression == 'indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court'
+    defendants.any?(&:def_not_guilty_anticipated_plea?) or likely_case_progression == 'indictable_only' or likely_case_progression == 'either_way_and_likely_to_be_heard_in_the_crown_court'
   end
 
   def young_witness?

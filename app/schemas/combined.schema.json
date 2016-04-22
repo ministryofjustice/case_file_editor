@@ -1,10 +1,10 @@
 {
-  "description": "Combined Digital Case File 1.2.1.1 Final",
+  "description": "Combined Digital Case File 1.2.2.0 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "schema_version": {
-      "enum": [ "1.2.1" ]
+      "enum": [ "1.2.2" ]
     },
     "case": {
       "type": "object",
@@ -98,19 +98,15 @@
         },
         "likely_case_progression": {
           "enum": [
-            "summary_only_or_either_way_and_likely_to_remain_in_the_magistrates_court",
-            "indictable_only_or_either_way_and_likely_to_be_heard_in_the_crown_court"
+            "summary_only",
+            "either_way_and_likely_to_remain_in_the_magistrates_court",
+            "indictable_only",
+            "either_way_and_likely_to_be_heard_in_the_crown_court"
           ]
         },
         "multimedia_evidence": {
           "type": "array",
           "items": { "$ref": "#/definitions/FirstHearingMme" }
-        },
-        "is_hearsay": {
-          "type": "boolean"
-        },
-        "hearsay_details": {
-          "type": "string"
         },
         "expert_evidence": {
           "type": "boolean"
@@ -361,9 +357,6 @@
         "arrest": {
           "$ref": "#/definitions/Arrest"
         },
-        "conditional_caution_considered": {
-          "enum": [ true ]
-        },
         "cc_not_suitable_reasons": {
           "type": "array",
           "items": {
@@ -374,10 +367,11 @@
               "offence_whilst_on_bail",
               "liable_for_resentence_of_an_earlier_offence",
               "liable_for_prison_recall",
-              "defendants_response_on_arrest_co_operation",
+              "defendants_response_on_arrest_cooperation",
               "reoffending_risk_offending_history",
               "reoffending_risk_response_to_sentence_bail",
-              "reoffending_risk_not_reduced_by_conditions"
+              "reoffending_risk_not_reduced_by_conditions",
+              "conditional_caution_not_considered"
             ]
           }
         },
@@ -396,7 +390,12 @@
           "type": "string"
         },
         "class_a_drug_test_provided": {
-          "type": "boolean"
+          "enum": [
+            "not_requested",
+            "refused_to_provide",
+            "provided_positive",
+            "provided_negative"
+          ]
         },
         "class_a_drug_test_details": {
           "type": "string"
@@ -601,7 +600,6 @@
         "name",
         "date_of_birth",
         "offences",
-        "conditional_caution_considered",
         "cc_not_suitable_reasons",
         "occupation",
         "has_eec_passports",
@@ -825,7 +823,8 @@
         },
         "list_of_conditions": {
           "type": "array",
-          "items": { "$ref": "#/definitions/BailCondition" }
+          "items": { "$ref": "#/definitions/BailCondition" },
+          "minItems": 1
         }
       },
       "required": [
@@ -1555,7 +1554,7 @@
         "rep_wish": {
           "enum": [
             "yes_cps_to_read",
-            "yes_victim_to_read",
+            "yes_rep_to_read",
             "no_cps_to_read",
             "no_cps_to_disclose_and_not_to_read"
           ]
@@ -1836,7 +1835,9 @@
       "required": [
         "name",
         "type",
-        "witness"
+        "witness_type",
+        "witness",
+        "number"
       ]
     },
 

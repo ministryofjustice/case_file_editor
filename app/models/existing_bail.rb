@@ -17,6 +17,7 @@ class ExistingBail
   validates :datetime_to_appear, presence: true
 
   attribute :list_of_conditions, Array[BailCondition]
-  # TODO: Validate unclear requirement:
-  # "One condition to be provided per String."
+  validates :list_of_conditions,
+    presence: true,
+    length: { minimum: 1 }
 end

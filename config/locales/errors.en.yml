@@ -58,8 +58,8 @@ en:
         defendant:
           attributes:
             accepts_drugs_result:
-              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = true 
-              present: Must be absent. Must (and must only) be provided if class_a_drug_test_provided = true
+              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = provided_positive 
+              present: Must be absent. Must (and must only) be provided if class_a_drug_test_provided = provided_positive
             arrest:
               blank: Must be present when initiation type is ‘charge’
             bad_character_details:
@@ -86,8 +86,8 @@ en:
             breach_order_title_other:
               blank: Must be present. Must be provided if breach_order_title = other
             class_a_drug_test_details:
-              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = true
-              present: Must be absent. Must (and must only) be provided if class_a_drug_test_provided = true
+              blank: Must be present. Must (and must only) be provided if class_a_drug_test_provided = provided_positive
+              present: Must be absent. Must (and must only) be provided if class_a_drug_test_provided = provided_positive
             date_sent:
               blank: Must be present. Must (and must only) be provided if initiation_type = requisition
               present: Must be absent. Must (and must only) be provided if initiation_type = requisition
@@ -97,8 +97,8 @@ en:
               blank: Must be present. Must (and must only) only be provided if has_eec_passports = true
               present: Must be absent. Must (and must only) only be provided if has_eec_passports = true
             eec_convictions_record_received:
-              blank: Must be present. Must (and must only) be provided if has_eec_passports = true
-              present: Must be absent. Must (and must only) be provided if has_eec_passports = true
+              blank: Must be present. Must (and must only) be provided if eec_check_submitted = true
+              present: Must be absent. Must (and must only) be provided if eec_check_submitted = true
             interpreter_language_or_dialect:
               blank: Must be present. Must be provided if interpreter_required = true
             multimedia_evidence_response:

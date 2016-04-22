@@ -4,7 +4,6 @@ class DefendantExporter < GenericExporter
     :name,
     :date_of_birth,
     :arrest,
-    :conditional_caution_considered,
     :cc_not_suitable_reasons,
     :offences,
     :occupation,

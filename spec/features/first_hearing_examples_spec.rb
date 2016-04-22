@@ -59,13 +59,13 @@ RSpec.describe 'Parsing first hearing files' do
           defendants: {
             0 => {
               class_a_drug_test_details: [
-                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = true"
+                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = provided_positive"
               ],
               accepts_drugs_result: [
-                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = true"
+                "Must be present. Must (and must only) be provided if class_a_drug_test_provided = provided_positive"
               ],
               eec_convictions_record_received: [
-                "Must be present. Must (and must only) be provided if has_eec_passports = true"
+                "Must be present. Must (and must only) be provided if eec_check_submitted = true"
               ]
             }
           }
@@ -77,16 +77,13 @@ RSpec.describe 'Parsing first hearing files' do
   context 'first hearing 04' do
     let(:name) { 'first_hearing_04' }
 
-    it 'identifies two errors on first defendant' do
+    it 'identifies one error on first defendant' do
       expect(errors).to eq(
         case: {
           defendants: {
             0 => {
               eec_check_submitted: [
                 "Must be absent. Must (and must only) only be provided if has_eec_passports = true"
-              ],
-              eec_convictions_record_received: [
-                "Must be absent. Must (and must only) be provided if has_eec_passports = true"
               ]
             }
           }

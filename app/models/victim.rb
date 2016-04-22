@@ -17,7 +17,7 @@ class Victim < Witness
 
   attribute :rep_wish, String
   validates :rep_wish,
-    inclusion: { in: Enumerations::VictimWish },
+    inclusion: { in: Enumerations::RepWish },
     allow_nil: true
 
   attribute :is_retraction_statement, Virtus::Attribute::Boolean

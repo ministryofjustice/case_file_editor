@@ -21,14 +21,6 @@ class Defendant
     presence: true,
     if: :initiated_as_charge?
 
-  attribute :conditional_caution_considered, Virtus::Attribute::Boolean
-  validates :conditional_caution_considered,
-    truth: true,
-    if: :first_hearing_case?
-  validates :conditional_caution_considered,
-    boolean_absence: true,
-    if: :breach_of_bail_case?
-
   attribute :cc_not_suitable_reasons, Array[String]
   validates :cc_not_suitable_reasons,
     array_inclusion: { in: Enumerations::CCNotSuitableReason },
@@ -51,19 +43,22 @@ class Defendant
   attribute :occupation, String
   validates :occupation, presence: true
 
-  attribute :class_a_drug_test_provided, Virtus::Attribute::Boolean
+  attribute :class_a_drug_test_provided, String
   validates :class_a_drug_test_provided,
-    boolean_absence: true,
+    absence: true,
     if: :breach_of_bail_case?
+  validates :class_a_drug_test_provided,
+    inclusion: { in: Enumerations::ClassADrugTest },
+    allow_nil: true
 
   attribute :class_a_drug_test_details, String
   with_options if: :first_hearing_case? do
     validates :class_a_drug_test_details,
       presence: true,
-      if: :class_a_drug_test_provided
+      if: :class_a_drug_test_positive?
     validates :class_a_drug_test_details,
       absence: true,
-      unless: :class_a_drug_test_provided
+      unless: :class_a_drug_test_positive?
   end
   validates :class_a_drug_test_details,
     absence: true,
@@ -73,10 +68,10 @@ class Defendant
   with_options if: :first_hearing_case? do
     validates :accepts_drugs_result,
       boolean_presence: true,
-      if: :class_a_drug_test_provided
+      if: :class_a_drug_test_positive?
     validates :accepts_drugs_result,
       boolean_absence: true,
-      unless: :class_a_drug_test_provided
+      unless: :class_a_drug_test_positive?
   end
   validates :accepts_drugs_result,
     absence: true,
@@ -107,10 +102,10 @@ class Defendant
   with_options if: :first_hearing_case? do
     validates :eec_convictions_record_received,
       boolean_presence: true,
-      if: :has_eec_passports
+      if: :eec_check_submitted
     validates :eec_convictions_record_received,
       boolean_absence: true,
-      unless: :has_eec_passports
+      unless: :eec_check_submitted
   end
   validates :eec_convictions_record_received,
     boolean_absence: true,
@@ -395,6 +390,10 @@ class Defendant
  def initiated_as_summons?
     initiation_type == 'summons'
  end
+
+  def class_a_drug_test_positive?
+    class_a_drug_test_provided == 'provided_positive'
+  end
 
   def conditional_bail?
     person_remand_status == 'conditional_bail'
