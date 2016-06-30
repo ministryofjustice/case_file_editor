@@ -12,7 +12,6 @@ class Property
   validates :description, presence: true
 
   attribute :value, Float # Not ideal, but it's floating-point in the JSON too
-  validates :value, presence: true
 
   attribute :damage_description, String
   validates :damage_description,

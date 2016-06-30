@@ -1,5 +1,5 @@
 {
-  "description": "Combined Digital Case File 1.2.2.0 Final",
+  "description": "Combined Digital Case File 1.2.2.1 Final",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
@@ -1117,8 +1117,7 @@
       "required": [
         "property_id",
         "property_action",
-        "description",
-        "value"
+        "description"
       ],
       "additionalProperties": false
     },
